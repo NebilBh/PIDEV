@@ -5,6 +5,7 @@
  */
 package nozelites;
 
+import entities.Offre;
 import utils.ConnexionDB;
 import java.sql.Connection;
 import javafx.application.Application;
@@ -12,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import services.ServicesOffre;
 
 /**
  *
@@ -34,8 +36,6 @@ public class Nozelites extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        
-        
        
         
     }
