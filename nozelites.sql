@@ -183,14 +183,15 @@ CREATE TABLE `message` (
 --
 
 CREATE TABLE `offre` (
-  `idOffre` int(11) NOT NULL,
-  `entreprise` varchar(255) NOT NULL,
-  `poste` varchar(255) NOT NULL,
-  `domaine` varchar(255) NOT NULL,
-  `requis` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `id_chasseur` int(11) NOT NULL,
-  `id_membre` int(11) NOT NULL
+  `Id` int(11) NOT NULL,
+  `Type` varchar(30) NOT NULL,
+  `IdEmetteur` int(11) NOT NULL,
+  `IdRecepteur` int(11) NOT NULL,
+  `Entreprise` varchar(30) NOT NULL,
+  `Domaine` varchar(100) NOT NULL,
+  `Poste` varchar(100) NOT NULL,
+  `Requis` varchar(250) NOT NULL,
+  `Description` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -313,9 +314,9 @@ ALTER TABLE `message`
 -- Index pour la table `offre`
 --
 ALTER TABLE `offre`
-  ADD PRIMARY KEY (`idOffre`),
-  ADD KEY `FK_idChasseur` (`id_chasseur`),
-  ADD KEY `Fk_idMembre` (`id_membre`);
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `FK_idEmetteur` (`IdEmetteur`),
+  ADD KEY `Fk_idRecepteur` (`IdRecepteur`);
 
 --
 -- Index pour la table `portfolio`
@@ -401,7 +402,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT pour la table `offre`
 --
 ALTER TABLE `offre`
-  MODIFY `idOffre` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `portfolio`
@@ -464,8 +465,8 @@ ALTER TABLE `message`
 -- Contraintes pour la table `offre`
 --
 ALTER TABLE `offre`
-  ADD CONSTRAINT `FK_idChasseur` FOREIGN KEY (`id_chasseur`) REFERENCES `chasseur_talent` (`idUsr`),
-  ADD CONSTRAINT `Fk_idMembre` FOREIGN KEY (`id_membre`) REFERENCES `membre` (`idUsr`);
+  ADD CONSTRAINT `FK_idEmetteur` FOREIGN KEY (`IdEmetteur`) REFERENCES `chasseur_talent` (`idUsr`),
+  ADD CONSTRAINT `Fk_idRecepteur` FOREIGN KEY (`IdRecepteur`) REFERENCES `membre` (`idUsr`);
 
 --
 -- Contraintes pour la table `portfolio`
