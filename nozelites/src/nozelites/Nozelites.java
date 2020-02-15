@@ -52,7 +52,6 @@ public class Nozelites extends Application {
         srv.supprimer(c1);
         
         
-       
         
         
     }

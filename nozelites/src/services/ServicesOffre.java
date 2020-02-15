@@ -25,6 +25,33 @@ public class ServicesOffre {
     
     Connection c = ConnexionDB.getInstance().getCnx();
     
+    public void afficherStatDomaine(String Domaine){
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("SELECT count(*), nom, prenom, mail\n" +
+                                                        " FROM offre INNER JOIN membre ON offre.IdRecepteur=membre.idUsr\n" +
+                                                        " WHERE Domaine=? GROUP BY IdRecepteur ORDER BY count(*) DESC");
+            pt.setString(1, Domaine);
+            ResultSet rs = pt.executeQuery();
+            
+            int i = 0;
+            
+            while(rs.next() && i!=5 )
+            {   
+                System.out.println("Nombre d'offres : "+rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)); //ordre fel table
+                i++;
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void afficherStatMois(){
+        
+    }
+    
     public void ajouterOffre(Offre o){ 
         try 
         {
@@ -66,7 +93,7 @@ public class ServicesOffre {
             
             while(rs.next())
             {
-                System.out.println("Offre : "+rs.getString(2)+" "+rs.getString(5)+" "+rs.getString(6)+" "+rs.getString(7)+" "+rs.getString(8)+" "+rs.getString(9)); //ordre fel table
+                System.out.println("Offre : \nType : "+rs.getString(2)+"\nEntreprise : "+rs.getString(5)+"\nDomaine : "+rs.getString(6)+"\nPoste : "+rs.getString(7)+"\nRequis : "+rs.getString(8)+"\nDescription : "+rs.getString(9)+"\nDate : "+rs.getString(10)+"\n"); //ordre fel table
             }
         } 
         catch (SQLException ex) 
@@ -84,7 +111,7 @@ public class ServicesOffre {
             
             while(rs.next())
             {
-                System.out.println("Offre : "+rs.getString(2)+" "+rs.getString(5)+" "+rs.getString(6)+" "+rs.getString(7)+" "+rs.getString(8)+" "+rs.getString(9)); //ordre fel table
+                System.out.println("Offre : \nType : "+rs.getString(2)+"\nEntreprise : "+rs.getString(5)+"\nDomaine : "+rs.getString(6)+"\nPoste : "+rs.getString(7)+"\nRequis : "+rs.getString(8)+"\nDescription : "+rs.getString(9)+"\nDate : "+rs.getString(10)+"\n"); //ordre fel table
             }
         } 
         catch (SQLException ex) 
