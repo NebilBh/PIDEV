@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ConnexionDB;
@@ -27,8 +28,9 @@ public class ServicesOffre {
     public void ajouterOffre(Offre o){ 
         try 
         {
+            LocalDate localDate = LocalDate.now();
             Statement st = c.createStatement();
-            String req = "insert into offre values("+o.getId()+",'"+o.getType()+"',"+o.getIdEmetteur()+","+o.getIdRecepteur()+",'"+o.getEntreprise()+"','"+o.getDomaine()+"','"+o.getPoste()+"','"+o.getRequis()+"','"+o.getDescription()+"')";
+            String req = "insert into offre values("+o.getId()+",'"+o.getType()+"',"+o.getIdEmetteur()+","+o.getIdRecepteur()+",'"+o.getEntreprise()+"','"+o.getDomaine()+"','"+o.getPoste()+"','"+o.getRequis()+"','"+o.getDescription()+"','"+localDate+"')";
             st.executeUpdate(req);
         } 
         catch (SQLException ex) 
