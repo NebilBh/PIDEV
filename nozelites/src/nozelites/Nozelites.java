@@ -5,7 +5,7 @@
  */
 package nozelites;
 
-import Utilities.ConnexionDB;
+import utils.ConnexionDB;
 import java.sql.Connection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
