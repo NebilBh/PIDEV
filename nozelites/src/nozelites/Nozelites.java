@@ -39,17 +39,8 @@ public class Nozelites extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //launch(args);
-        //String nom, String prenom, String mail, String login, String mdp, String Exp, String Formation, int age, int tel, int id
-        //String nom, String prenom, String mail, String login, String mdp, int age, int tel,String entreprise
-        chasseurTalent c1 = new chasseurTalent("mohsen2","106","moh@gmal","moh123","mdp",26,25698,23,"CECOM");
+        launch(args);
         
-        ServiceChasseur srv = new ServiceChasseur();
-        
-        
-        //srv.ajouter(c1);
-        
-        srv.supprimer(c1);
         
         
         
