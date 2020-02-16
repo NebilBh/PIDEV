@@ -5,7 +5,9 @@
  */
 package nozelites;
 
+import entities.Membre;
 import entities.Offre;
+import entities.chasseurTalent;
 import utils.ConnexionDB;
 import java.sql.Connection;
 import javafx.application.Application;
@@ -13,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import services.ServiceChasseur;
+import services.ServiceMembre;
 import services.ServicesOffre;
 
 /**
@@ -36,14 +40,6 @@ public class Nozelites extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        Offre o = new Offre("Offre de stage",3,9,"Immo","IT","junior","bac","texte here");
-        Offre o1 = new Offre(3);
-        
-        ServicesOffre srv = new ServicesOffre();
-        
-        srv.afficherStatMois("-02-");
-        
-       
         
     }
     
