@@ -12,33 +12,34 @@ package entities;
  * @author Nebil
  */
 public class Utilisateur {
-    private String nom, prenom, mail, login, mdp ;
+    protected String nom, prenom, mail, login, mdp ;
     
-    int age, tel,usrId ;
+    protected int age, tel,usrId ;
+    protected String image ;
     
     public Utilisateur() {
     }
 
-    public Utilisateur(String nom, String prenom, String mail, String login, String mdp, int age, int tel, int id) {
+    public Utilisateur(String nom, String prenom, String mail, String login, String mdp, int age, int tel, int id,String image) {
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.login = login;
         this.mdp = mdp;
-        
+        this.image = image;
         
         this.age = age;
         this.tel = tel;
         this.usrId = id;
     }
     
-    public Utilisateur(String nom, String prenom, String mail, String login, String mdp, int age, int tel) {
+    public Utilisateur(String nom, String prenom, String mail, String login, String mdp, int age, int tel,String image) {
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.login = login;
         this.mdp = mdp;
-        
+        this.image = image;
         
         this.age = age;
         this.tel = tel;

@@ -11,13 +11,13 @@ package entities;
 public class chasseurTalent extends Utilisateur{
     private String entreprise;
     
-    public chasseurTalent(String nom, String prenom, String mail, String login, String mdp, int age, int tel, int id,String entreprise){
-        super(nom,prenom, mail,login,mdp,age,tel,id);
+    public chasseurTalent(String nom, String prenom, String mail, String login, String mdp, int age, int tel, int id,String entreprise,String image){
+        super(nom,prenom, mail,login,mdp,age,tel,id,image);
         this.entreprise = entreprise ;
     }
     
-    public chasseurTalent(String nom, String prenom, String mail, String login, String mdp, int age, int tel,String entreprise){
-        super(nom,prenom, mail,login,mdp,age,tel);
+    public chasseurTalent(String nom, String prenom, String mail, String login, String mdp, int age, int tel,String entreprise,String image){
+        super(nom,prenom, mail,login,mdp,age,tel,image);
         this.entreprise = entreprise ;
     }
 

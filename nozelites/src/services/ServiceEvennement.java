@@ -297,7 +297,7 @@ public List<Membre> AfficherParticipant(Evennement e){
              ps.setInt(1, liste.get(i));
             ResultSet rs=ps.executeQuery();
             while (rs.next()) {
-                int idm=rs.getInt(1);
+                
                 String nom=rs.getString(2);
                 String prenom=rs.getString(3);
                 int tel=rs.getInt(4);
@@ -307,7 +307,9 @@ public List<Membre> AfficherParticipant(Evennement e){
                 int age=rs.getInt(8);
                 String formation=rs.getString(9);
                 String experience=rs.getString(10);
-                 Membre m=new Membre(nom, prenom, email, login, mdp, experience, formation, age, tel, age);
+                int type = rs.getInt(11);
+                String image = rs.getString(12);
+                 Membre m=new Membre(nom, prenom, email, login, mdp, experience, formation, age, tel, type,image);
              
                 arr.add(m);
             }}

@@ -16,20 +16,20 @@ public class Membre extends Utilisateur{
     private String formation ;
     int type;
     
-    public Membre(String nom, String prenom, String mail, String login, String mdp, String Exp, String Formation, int age, int tel,int type) {
+    public Membre(String nom, String prenom, String mail, String login, String mdp, String Exp, String Formation, int age, int tel,int type,String image) {
          
          
-         super(nom,prenom, mail,login,mdp,age,tel);
+         super(nom,prenom, mail,login,mdp,age,tel,image);
 
         this.exp = Exp;
         this.formation = Formation;
         this.type = type;
          
      }
-    public Membre(String nom, String prenom, String mail, String login, String mdp, String Exp, String Formation, int age, int tel, int id,int type) {
+    public Membre(String nom, String prenom, String mail, String login, String mdp, String Exp, String Formation, int age, int tel, int id,int type,String image) {
          
          
-         super(nom,prenom, mail,login,mdp,age,tel,id);
+         super(nom,prenom, mail,login,mdp,age,tel,id,image);
 
         this.exp = Exp;
         this.formation = Formation;
