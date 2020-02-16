@@ -30,7 +30,7 @@ public class ServiceChasseur {
             state = db.createStatement();
             
             String qry ="insert into chasseur_talent values("+user.getId()+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
-                    + "'"+user.getLogin()+"','"+user.getMdp()+"',"+user.getAge()+",'"+user.getEntreprise()+"')";
+                    + "'"+user.getLogin()+"','"+user.getMdp()+"',"+user.getAge()+",'"+user.getEntreprise()+"','"+user.getImage()+"')";
             state.executeUpdate(qry);
             
             System.out.println("Ajout effectué ");
@@ -96,7 +96,8 @@ public class ServiceChasseur {
             stmt.setInt(6,newM.getTel());
             stmt.setInt(7,newM.getAge());
             stmt.setString(8,newM.getEntreprise());
-            stmt.setInt(9,user.getId());
+            stmt.setString(9,newM.getImage());
+            stmt.setInt(10,user.getId());
             stmt.executeUpdate();
             System.out.println("succes");
         } catch (SQLException ex) {

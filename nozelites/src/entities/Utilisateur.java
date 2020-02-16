@@ -50,7 +50,7 @@ public class Utilisateur {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
+    
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
@@ -103,7 +103,9 @@ public class Utilisateur {
     }
 
     
-    
+    public String getImage(){
+        return image;
+    }
 
     public int getAge() {
         return age;

@@ -64,7 +64,9 @@ public class Membre extends Utilisateur{
     public int getTel() {
         return super.getTel(); //To change body of generated methods, choose Tools | Templates.
     }
-
+    @Override public String getImage(){
+        return super.getImage();
+    }
     @Override
     public int getAge() {
         return super.getAge(); //To change body of generated methods, choose Tools | Templates.

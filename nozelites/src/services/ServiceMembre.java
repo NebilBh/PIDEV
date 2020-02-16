@@ -30,7 +30,7 @@ public class ServiceMembre {
             
             String qry ="insert into membre values("+user.getId()+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
                     + "'"+user.getLogin()+"','"+user.getMdp()+"',"+user.getAge()+",'"+user.getFormation()+"',"
-                    +"'"+user.getExp()+"',"+user.getType()+")";
+                    +"'"+user.getExp()+"',"+user.getType()+",'"+user.getImage()+"')";
             state.executeUpdate(qry);
             
             System.out.println("Ajout effectué ");
@@ -85,7 +85,7 @@ public class ServiceMembre {
     public void modifier(Membre user,Membre newM ) {
         PreparedStatement stmt ;
         
-        String qry = "update membre set nom = ?, prenom = ?,mail = ?, mdp = ?,login = ?,tel = ?,age = ?,Experience = ?,Formation = ?,type = ? where idUsr = ?";
+        String qry = "update membre set nom = ?, prenom = ?,mail = ?, mdp = ?,login = ?,tel = ?,age = ?,Experience = ?,Formation = ?,type = ?,image = ? where idUsr = ?";
         try {
             stmt = db.prepareStatement(qry);
             stmt.setString(1, newM.getNom());
@@ -98,6 +98,7 @@ public class ServiceMembre {
             stmt.setString(8,newM.getExp());
             stmt.setString(9,newM.getFormation());
             stmt.setInt(10,newM.getType());
+            stmt.setString(11,newM.getImage());
             stmt.setInt(11,user.getId());
             stmt.executeUpdate();
             System.out.println("succes");

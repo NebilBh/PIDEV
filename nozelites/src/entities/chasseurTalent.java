@@ -55,12 +55,15 @@ public class chasseurTalent extends Utilisateur{
     public String getPrenom() {
         return super.getPrenom(); //To change body of generated methods, choose Tools | Templates.
     }
-
+    @Override 
+    public String getImage(){
+        return super.getImage();
+    }
     @Override
     public String getNom() {
         return super.getNom(); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public void setTel(int tel) {
         super.setTel(tel); //To change body of generated methods, choose Tools | Templates.
