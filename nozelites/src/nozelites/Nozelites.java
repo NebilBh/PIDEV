@@ -36,7 +36,14 @@ public class Nozelites extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        Offre o = new Offre("Offre de stage",3,9,"Immo","IT","junior","bac","texte here");
+        Offre o1 = new Offre(3);
         
+        ServicesOffre srv = new ServicesOffre();
+        
+        srv.afficherStatMois("-02-");
+        
+       
         
     }
     

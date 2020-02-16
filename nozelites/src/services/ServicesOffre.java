@@ -48,7 +48,26 @@ public class ServicesOffre {
         }
     }
     
-    public void afficherStatMois(){
+    public void afficherStatMois(String Mois){ //Mois must be like -08-
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("SELECT count(*), nom, prenom, mail\n" +
+                                                        " FROM offre INNER JOIN membre ON offre.IdRecepteur=membre.idUsr\n" +
+                                                        " WHERE Date LIKE '%"+Mois+"%' GROUP BY IdRecepteur ORDER BY count(*) DESC");
+            ResultSet rs = pt.executeQuery();
+            
+            int i = 0;
+            
+            while(rs.next() && i!=5 )
+            {   
+                System.out.println("Nombre d'offres : "+rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)); //ordre fel table
+                i++;
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
