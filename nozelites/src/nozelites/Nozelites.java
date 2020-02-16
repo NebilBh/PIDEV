@@ -7,6 +7,7 @@ package nozelites;
 
 import entities.Membre;
 import entities.Offre;
+import entities.Reclamation;
 import entities.chasseurTalent;
 import utils.ConnexionDB;
 import java.sql.Connection;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 import services.ServiceChasseur;
 import services.ServiceMembre;
 import services.ServicesOffre;
+import services.ServicesReclamation;
 
 /**
  *
@@ -42,7 +44,18 @@ public class Nozelites extends Application {
         launch(args);
         
         
+      
+         
+         
+     Reclamation p = new Reclamation(12,2,3,"aaaaaa",0,"publication");
+     
         
+        ServicesReclamation srv = new ServicesReclamation();
+        
+         srv.ajouterReclamation(p);
+     //  srv.modifierPersonne(p, "publication","deploiment");
+        //JavaMail.sendMailReclamation("syrine.borjini@esprit.tn");
+        srv.afficherReclamation(); 
         
         
     }
