@@ -19,11 +19,7 @@ public class ConnexionDB {
     private static final String URL ="jdbc:mysql://localhost:3306/nozelites" ; // ATTENTION MODIFICATION DU PORT
     private static final String USR = "root";
     private static final String PWD ="";
-<<<<<<< HEAD
-    private int idSessions;
-=======
-    
->>>>>>> origin/master
+
     private Connection cnx;
     private static ConnexionDB cnxDB;
     
@@ -51,13 +47,7 @@ public class ConnexionDB {
         
     }
 
-    public int getIdSessions() {
-        return idSessions;
-    }
-
-    public void setIdSessions(int idSessions) {
-        this.idSessions = idSessions;
-    }
+    
     
     
     

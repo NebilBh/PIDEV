@@ -30,14 +30,12 @@ public class Nozelites extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-<<<<<<< HEAD
+
 
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
 
-=======
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/AdminGroupesInterface.fxml"));
+
         
->>>>>>> origin/master
         
         Scene scene = new Scene(root);
         //scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());

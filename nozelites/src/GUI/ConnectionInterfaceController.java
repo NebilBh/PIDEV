@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import services.ServiceChasseur;
 import services.ServiceMembre;
@@ -39,6 +40,10 @@ public class ConnectionInterfaceController implements Initializable {
     private TextField fieldMdp;
     @FXML
     private Button cnxButton;
+    @FXML
+    private AnchorPane authen;
+    @FXML
+    private Button btnElite;
 
     @FXML
     private void connect(MouseEvent event) throws IOException, SQLException {
@@ -96,6 +101,18 @@ public class ConnectionInterfaceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void createElite(MouseEvent event) throws IOException {
+        Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/InscriptionMembre.fxml"));
+        
+        
+        Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        Scene scene = new Scene(inscriptionM);
+        fenetre.setScene(scene);
+        fenetre.show();  
+    }
     
     
     
