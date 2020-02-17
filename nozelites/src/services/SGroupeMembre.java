@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,16 +114,16 @@ public class SGroupeMembre {
         return list;
     }
     
-    public TreeSet<GroupeMembre> chercher_groupes_membre_par_id(int id_membre)
+    public List<GroupeMembre> chercher_groupes_membre_par_id(int id_membre)
     {
-        TreeSet<GroupeMembre> list = new TreeSet<GroupeMembre>();
+        List<GroupeMembre> list = new ArrayList<>();
         try {
-            PreparedStatement pt = c.prepareStatement("select * from GroupeMembre where id_membre = "+id_membre);
+            PreparedStatement pt = c.prepareStatement("select * from Groupe_Membre where id_membre = "+id_membre);
             ResultSet rs = pt.executeQuery();
             while(rs.next())
             {
                 System.out.println("GroupeMembre : [ id_gm "+rs.getInt(1)+" id_groupe : "+rs.getInt(2)+" id_membre : "+rs.getInt(3)+" invite : "+rs.getInt(4)+" etat : "+rs.getString(5)+" ]");
-                //list.add(new GroupeMembre(rs.getInt(1),rs.getInt(2),rs.getInt(3),+rs.getInt(4),rs.getString(5)));
+                list.add(new GroupeMembre(rs.getInt(1),rs.getInt(2),rs.getInt(3),+rs.getInt(4),rs.getString(5)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SGroupeMembre.class.getName()).log(Level.SEVERE, null, ex);
@@ -132,7 +134,7 @@ public class SGroupeMembre {
     public int chercher_groupe_membre(int id_groupe,int id_membre)
     {
         try {
-            PreparedStatement pt = c.prepareStatement("select * from GroupeMembre where id_membre = "+id_membre+" and id_groupe = "+id_groupe);
+            PreparedStatement pt = c.prepareStatement("select * from Groupe_Membre where id_membre = "+id_membre+" and id_groupe = "+id_groupe);
             ResultSet rs = pt.executeQuery();
             while(rs.next())
             {

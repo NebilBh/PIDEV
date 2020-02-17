@@ -15,3 +15,4 @@ public interface ValeursParDefaut {
     int hauteur = 500;
     
 }
+    
