@@ -7,6 +7,7 @@ package nozelites;
 
 import entities.Membre;
 import entities.Offre;
+import entities.Portfolio;
 import entities.Reclamation;
 import entities.chasseurTalent;
 import utils.ConnexionDB;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import services.ServiceChasseur;
 import services.ServiceMembre;
+import services.ServicePortfolio;
 import services.ServicesOffre;
 import services.ServicesReclamation;
 
@@ -29,7 +31,7 @@ public class Nozelites extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -45,9 +47,21 @@ public class Nozelites extends Application {
         
         
       
+       /* 
+        Portfolio r =new Portfolio(1,2,"CV","attestation en microsoft","lien");
+        
+        ServicePortfolio srv = new ServicePortfolio();
+       //  srv.ajouter(r);
+        // srv.afficher();
          
+        */
          
-     Reclamation p = new Reclamation(12,2,3,"aaaaaa",0,"publication");
+     
+      
+      
+     /* Reclamation p = new Reclamation(201,2,3,"aaaaaa",0,"evenement");
+         
+     
      
         
         ServicesReclamation srv = new ServicesReclamation();
@@ -56,7 +70,7 @@ public class Nozelites extends Application {
      //  srv.modifierPersonne(p, "publication","deploiment");
         //JavaMail.sendMailReclamation("syrine.borjini@esprit.tn");
         srv.afficherReclamation(); 
-        
+        */
         
     }
     

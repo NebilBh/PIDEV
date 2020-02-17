@@ -3,10 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nebil/Desktop/Esprit3A/nozelites/src/nozelites/FXMLDocument.fxml</file>
-            <file>file:/C:/Users/Nebil/Desktop/Esprit3A/nozelites/src/nozelites/Nozelites.java</file>
-            <file>file:/C:/Users/Nebil/Desktop/Esprit3A/nozelites/src/utils/ConnexionDB.java</file>
-            <file>file:/C:/Users/Nebil/Desktop/Esprit3A/nozelites/src/nozelites/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/Membre.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServicePortfolio.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/utils/ConnexionDB.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/utils/JavaMail.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServiceMembre.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServicesReclamation.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/FXMLController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/nozelites/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/SGroupeMembre.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/Reclamation.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/Portfolio.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServicesOffre.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/GroupeMembre.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServiceChasseur.java</file>
         </group>
     </open-files>
 </project-private>

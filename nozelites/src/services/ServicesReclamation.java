@@ -97,7 +97,7 @@ public class ServicesReclamation {
                     }
                     else//evenement
                     {
-                         PreparedStatement tt = c.prepareStatement("select reclamation.idRecl , membre.nom , membre.prenom , evenement.nom , evenement.description from reclamation "
+                         PreparedStatement tt = c.prepareStatement("select reclamation.idRecl , membre.nom , membre.prenom , evenement.nomE , evenement.description,evenement.lieu from reclamation "
                                  + "inner join evenement on evemenet.idE = "+id_cible+" inner join membre on membre.idUsr = "+id_membre);
                          ResultSet ff = tt.executeQuery();
                          
@@ -136,7 +136,7 @@ public class ServicesReclamation {
         }
     }
 
-    /* public void afficherPersonne(){
+    /*public void afficherPersonne(){
         
     
         
