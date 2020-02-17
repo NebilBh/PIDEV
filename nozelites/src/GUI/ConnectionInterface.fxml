@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,4 +9,52 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
     
+=======
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="authen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="740.0" style="-fx-background-color: FFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ConnectionInterfaceController">
+   <children>
+      <HBox layoutX="44.0" layoutY="210.0" prefHeight="40.0" prefWidth="325.0" style="-fx-border-color: #4C4C4C; -fx-background-radius: 5PX; -fx-border-radius: 5Px;">
+         <children>
+            <TextField fx:id="fieldLogin" prefHeight="78.0" prefWidth="326.0" promptText="Login" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+         </children></HBox>
+      <VBox alignment="CENTER" layoutX="440.0" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: C41011;">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #231F20;" text="Creer un compte chasseur" textFill="#f5f0f0">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="75.0" layoutY="250.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #231F20;" text="Creer un compte Elite" textFill="#f5f0f0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+         </children></VBox>
+      <Label layoutX="44.0" layoutY="147.0" prefHeight="35.0" prefWidth="178.0" text="Connexion">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <HBox layoutX="44.0" layoutY="292.0" prefHeight="40.0" prefWidth="325.0" style="-fx-border-color: #4C4C4C; -fx-background-radius: 5PX; -fx-border-radius: 5Px;">
+         <children>
+            <TextField fx:id="fieldMdp" prefHeight="78.0" prefWidth="326.0" promptText="Mot de passe" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <Button fx:id="cnxButton" layoutX="44.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#connect" prefHeight="40.0" prefWidth="134.0" style="-fx-background-color: #C41011;" text="Se connecter" textFill="#f5f0f0" />
+   </children>
+>>>>>>> connection
 </AnchorPane>

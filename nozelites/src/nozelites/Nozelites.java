@@ -20,6 +20,7 @@ import services.ServiceChasseur;
 import services.ServiceMembre;
 import services.ServicesMessage;
 import services.ServicesOffre;
+import utils.Session;
 
 /**
  *
@@ -29,8 +30,12 @@ public class Nozelites extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+<<<<<<< HEAD
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/InterfacePageAcceuil.fxml"));
         
+=======
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+>>>>>>> connection
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());
@@ -45,15 +50,9 @@ public class Nozelites extends Application {
     public static void main(String[] args) {
         launch(args);
         
-        ServicesOffre srv = new ServicesOffre();
-        //Offre o = new Offre("Offre emploi",3,5,"samsung","Securite","junior","bac+3","texte here");
-        //Offre o1 = new Offre(12);
+        Session s = new Session();
         
-        srv.afficherLesOffresEnvoyees(3);
-        
-        ServicesMessage srv1 = new ServicesMessage();
-        Message m = new Message("Objet","Description",6,5);
-        Message m1 = new Message(1);
+        System.out.println(s.getIdSession());
         
         //srv1.afficherLesMessagesEnvoyes(4);
         
