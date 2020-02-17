@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ConnexionDB;
+import utils.JavaMail;
 
 /**
  *
@@ -106,7 +107,17 @@ public class ServiceMembre {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    public void confirmationMail(Membre user) throws Exception{
+        
+        JavaMail.sendMail(user.getMail(),"Confirmation email"+user.getNom(),"Monsieur"+user.getNom()+" "+user.getPrenom()+" veuillez confirmer votre email \n");
+                    
+    }
+    public void statistiqueMois(String mois){ //date jj-mm-aaaa
+        
+    }
     
-
+    public void statisqueAnnee(String annee){
+        
+    }
     
 }
