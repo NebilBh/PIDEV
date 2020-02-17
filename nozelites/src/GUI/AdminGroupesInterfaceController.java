@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.TreeSet;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -69,11 +70,12 @@ public class AdminGroupesInterfaceController implements Initializable {
                 @Override
                 public void handle(ActionEvent t) {
                     // get Selected Item
-                	Groupe currentOffre = (Groupe) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+                	Groupe currentgroupe = (Groupe) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
                 	//remove selected item from the table list
-                	lss.remove(currentOffre);
+                	lss.remove(currentgroupe);
                         //remove from DB
-                        System.out.println("ccc");
+                        SGroupe s_g = new SGroupe();
+                        s_g.supprimer_groupe(currentgroupe);
                         //srv.supprimerOffre(currentOffre);
                 }
             });
@@ -157,20 +159,28 @@ public class AdminGroupesInterfaceController implements Initializable {
         table_groupes.setEditable(true);
         colTitre.setCellFactory(TextFieldTableCell.<entities.Groupe> forTableColumn());
         colTitre.setOnEditCommit( t -> {
-        /*int index_row = ((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getTablePosition().getRow();
+        int index_row = ((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getTablePosition().getRow();
         int index_col = ((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getTablePosition().getColumn();
-        */String new_val = (String)((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getNewValue();
-        System.out.println(new_val);
+        Groupe groupe = ((TableColumn.CellEditEvent<Groupe, Object>) t).getTableView().getItems().get(index_row);
+        String new_val = (String)((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getNewValue();
+        System.out.println("---"+new_val+" --"+index_col+"---");
+        groupe.setTitre((String) ((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getNewValue());
+        //modifier
+        SGroupe s_g = new SGroupe();
+        s_g.modifier_groupe(groupe);
        
         });
         colDescription.setCellFactory(TextFieldTableCell.<entities.Groupe> forTableColumn());
         colDescription.setOnEditCommit( t -> {
-        /*int index_row = ((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getTablePosition().getRow();
+        int index_row = ((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getTablePosition().getRow();
         int index_col = ((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getTablePosition().getColumn();
-        */String new_val = (String)((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getNewValue();
-        System.out.println(new_val);
-        
-    // btn supprimer
+        Groupe groupe = ((TableColumn.CellEditEvent<Groupe, Object>) t).getTableView().getItems().get(index_row);
+        String new_val = (String)((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getNewValue();
+        System.out.println("---"+new_val+" --"+index_col+"---");
+        groupe.setDescription((String) ((TableColumn.CellEditEvent<entities.Groupe, Object>) t).getNewValue());
+        //modifier
+        SGroupe s_g = new SGroupe();
+        s_g.modifier_groupe(groupe);
 
         });
         

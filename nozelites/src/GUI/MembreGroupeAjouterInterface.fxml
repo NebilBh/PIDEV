@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembreGroupeAjouterInterfaceController">
+   <children>
+      <TextField fx:id="titre" layoutX="130.0" layoutY="112.0" promptText="Titre" />
+      <TextField fx:id="description" layoutX="130.0" layoutY="152.0" promptText="Description" styleClass="TextField" />
+      <RadioButton fx:id="groupe_public" layoutX="130.0" layoutY="195.0" mnemonicParsing="false" text="Public" />
+      <RadioButton fx:id="groupe_ferme" layoutX="205.0" layoutY="195.0" mnemonicParsing="false" text="Fermé" />
+      <Button fx:id="btn_ajouter" layoutX="205.0" layoutY="225.0" mnemonicParsing="false" onAction="#ajouter_groupe" prefHeight="25.0" prefWidth="74.0" text="Enregistrer" />
+      <Button fx:id="btn_retour" layoutX="131.0" layoutY="225.0" mnemonicParsing="false" onAction="#retour_groupe" prefHeight="25.0" prefWidth="68.0" text="Retour" />
+   </children>
 </AnchorPane>
