@@ -6,6 +6,7 @@
 package nozelites;
 
 import entities.Membre;
+import entities.Message;
 import entities.Offre;
 import entities.chasseurTalent;
 import utils.ConnexionDB;
@@ -17,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import services.ServiceChasseur;
 import services.ServiceMembre;
+import services.ServicesMessage;
 import services.ServicesOffre;
 
 /**
@@ -40,6 +42,19 @@ public class Nozelites extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        
+        ServicesOffre srv = new ServicesOffre();
+        //Offre o = new Offre("Offre emploi",3,5,"samsung","Securite","junior","bac+3","texte here");
+        //Offre o1 = new Offre(12);
+        
+        srv.afficherLesOffresEnvoyees(3);
+        
+        ServicesMessage srv1 = new ServicesMessage();
+        Message m = new Message("Objet","Description",6,5);
+        Message m1 = new Message(1);
+        
+        //srv1.afficherLesMessagesEnvoyes(4);
+        
         
     }
     
