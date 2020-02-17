@@ -18,8 +18,8 @@ import java.util.logging.Logger;
 public class ConnexionDB {
     private static final String URL ="jdbc:mysql://localhost:3306/nozelites" ; // ATTENTION MODIFICATION DU PORT
     private static final String USR = "root";
-    private static final String PWD ="99726135";
-    
+    private static final String PWD ="";
+    private int idSessions;
     private Connection cnx;
     private static ConnexionDB cnxDB;
     
@@ -46,6 +46,15 @@ public class ConnexionDB {
         return cnxDB;      
         
     }
+
+    public int getIdSessions() {
+        return idSessions;
+    }
+
+    public void setIdSessions(int idSessions) {
+        this.idSessions = idSessions;
+    }
+    
     
     
     

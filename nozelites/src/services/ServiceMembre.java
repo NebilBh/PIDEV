@@ -82,7 +82,25 @@ public class ServiceMembre {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public ResultSet authen(String login ,String mdp){
+        String qry = "Select * from membre where login = ? AND mdp = ?";
+         
+        
+        try {
+            PreparedStatement stmt = db.prepareStatement(qry);
+            stmt.setString(1,login);
+            stmt.setString(2,mdp);
+            ResultSet usrList = stmt.executeQuery();
+            
+            return usrList;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+        
+    }
     public void modifier(Membre user,Membre newM ) {
         PreparedStatement stmt ;
         
