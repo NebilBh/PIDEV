@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import services.ServiceChasseur;
 import services.ServiceMembre;
 import utils.Session;
 
@@ -45,29 +46,42 @@ public class ConnectionInterfaceController implements Initializable {
         String login = fieldLogin.getText();
         String mdp = fieldMdp.getText();
         ServiceMembre srvM = new ServiceMembre();
+        ServiceChasseur srvC = new ServiceChasseur();
         Session session = new Session();
-        ResultSet resultat = srvM.authen(login, mdp);
         
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/InterfacePageAcceuil.fxml"));
-        Scene scene = new Scene(root);
+        
+        Parent AcceuilMembre = FXMLLoader.load(getClass().getResource("/GUI/InterfacePageAcceuil.fxml"));
+        Parent AcceuilChass = FXMLLoader.load(getClass().getResource("/GUI/InterfacePageAcceuil.fxml"));
+        
         
         Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();
         
-        
+        ResultSet resultatChass = srvC.authen(login,mdp);
+        ResultSet resultatMembre = srvM.authen(login, mdp);
        
         
-        boolean hasResult = false;
+        boolean hasResultM = false;
+        boolean hasResultC = false;
        
-            hasResult = resultat.next();
-            if(hasResult){
-                session.setSession(resultat.getInt(1)); 
-                System.out.println("Connexion");
+            hasResultM = resultatMembre.next();
+            hasResultC = resultatChass.next();
+            if(hasResultM){
+                session.setSession(resultatMembre.getInt(1)); 
+                System.out.println("Connexion 1");
+                Scene scene = new Scene(AcceuilMembre);
                 fenetre.setScene(scene);
-                fenetre.show();
-                 
+                fenetre.show();     
+            }
+            else if(hasResultC){
+                session.setSession(resultatChass.getInt(1)); 
+                System.out.println("Connexion 2");
+                Scene scene = new Scene(AcceuilChass);
+                fenetre.setScene(scene);
+                fenetre.show();   
+            
             }
             else{
-            System.out.println("Connexion echoué");
+                System.out.println("connexion echoué");
             }
        
         
