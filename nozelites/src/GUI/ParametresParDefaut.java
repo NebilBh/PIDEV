@@ -17,5 +17,31 @@ public class ParametresParDefaut {
     private String blanc = "f9f9f9";
     private String gris_fonce = "282828";
     private String gris_claire = "dadada";
+
+    public int getFenetre_largeur() {
+        return fenetre_largeur;
+    }
+
+    public int getFenetre_hauteur() {
+        return fenetre_hauteur;
+    }
+
+    public String getRouge() {
+        return rouge;
+    }
+
+    public String getBlanc() {
+        return blanc;
+    }
+
+    public String getGris_fonce() {
+        return gris_fonce;
+    }
+
+    public String getGris_claire() {
+        return gris_claire;
+    }
+    
+    
     
 }

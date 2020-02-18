@@ -79,7 +79,9 @@ public class Utilisateur {
         this.tel = tel;
     }
 
-    
+    public void setId(int id){
+        this.usrId = id;
+    }
     //---Getters ---
     
     public String getNom() {

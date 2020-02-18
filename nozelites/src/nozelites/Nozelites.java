@@ -5,6 +5,7 @@
  */
 package nozelites;
 
+import GUI.ParametresParDefaut;
 import entities.Membre;
 import entities.Message;
 import entities.Offre;
@@ -26,7 +27,11 @@ import services.ServicePortfolio;
 import services.ServicesMessage;
 
 import services.ServicesOffre;
+
+import utils.Session;
+
 import services.ServicesReclamation;
+
 
 /**
  *
@@ -34,15 +39,21 @@ import services.ServicesReclamation;
  */
 public class Nozelites extends Application {
     
+    ParametresParDefaut p = new ParametresParDefaut();
+    
     @Override
     public void start(Stage stage) throws Exception {
+
 
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/AdminGroupesInterface.fxml"));
 
 
-       
-        Scene scene = new Scene(root);
+
         
+        
+
+        Scene scene = new Scene(root);
+
         stage.setScene(scene);
         stage.show();
     }
@@ -52,6 +63,14 @@ public class Nozelites extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        
+
+        Session s = new Session();
+        
+        System.out.println("id Session main"+s.getIdSession());
+        
+        //srv1.afficherLesMessagesEnvoyes(4);
+        
         
 
     }
