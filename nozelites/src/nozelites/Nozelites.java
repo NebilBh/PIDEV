@@ -37,7 +37,7 @@ public class Nozelites extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/afficher_reclamation.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/AdminGroupesInterface.fxml"));
 
 
        

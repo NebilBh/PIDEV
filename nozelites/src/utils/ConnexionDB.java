@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author Nebil
  */
 public class ConnexionDB {
-    private static final String URL ="jdbc:mysql://localhost:3306/nozelites2" ; // ATTENTION MODIFICATION DU PORT
+    private static final String URL ="jdbc:mysql://localhost:3306/nozelites" ; // ATTENTION MODIFICATION DU PORT
     
     private static final String USR = "root";
     private static final String PWD ="";
