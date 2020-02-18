@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Level;
@@ -108,16 +109,16 @@ public class SGroupe {
         
     }
     
-    public TreeSet<Groupe> chercher_groupe_par_id(int id)
+    public List<Groupe> chercher_groupe_par_id(int id)
     {
-        TreeSet<Groupe> list = new TreeSet<>();
+        List<Groupe> list = new ArrayList<>();
         try {
             PreparedStatement pt = c.prepareStatement("select * from Groupe where id_groupe = "+id);
             ResultSet rs = pt.executeQuery();
             while(rs.next())
             {
                 System.out.println("Groupe : [ id_groupe "+rs.getInt(1)+" titre : "+rs.getString(2)+" description : "+rs.getString(3)+" autorisation : "+rs.getInt(4)+" ]");
-                //list.add(new Groupe(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4)));
+                list.add(new Groupe(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SGroupe.class.getName()).log(Level.SEVERE, null, ex);

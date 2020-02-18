@@ -11,13 +11,13 @@ package entities;
 public class chasseurTalent extends Utilisateur{
     private String entreprise;
     
-    public chasseurTalent(String nom, String prenom, String mail, String login, String mdp, int age, int tel, int id,String entreprise){
-        super(nom,prenom, mail,login,mdp,age,tel,id);
+    public chasseurTalent(String nom, String prenom, String mail, String login, String mdp, int age, int tel, int id,String entreprise,String image){
+        super(nom,prenom, mail,login,mdp,age,tel,id,image);
         this.entreprise = entreprise ;
     }
     
-    public chasseurTalent(String nom, String prenom, String mail, String login, String mdp, int age, int tel,String entreprise){
-        super(nom,prenom, mail,login,mdp,age,tel);
+    public chasseurTalent(String nom, String prenom, String mail, String login, String mdp, int age, int tel,String entreprise,String image){
+        super(nom,prenom, mail,login,mdp,age,tel,image);
         this.entreprise = entreprise ;
     }
 
@@ -55,12 +55,15 @@ public class chasseurTalent extends Utilisateur{
     public String getPrenom() {
         return super.getPrenom(); //To change body of generated methods, choose Tools | Templates.
     }
-
+    @Override 
+    public String getImage(){
+        return super.getImage();
+    }
     @Override
     public String getNom() {
         return super.getNom(); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public void setTel(int tel) {
         super.setTel(tel); //To change body of generated methods, choose Tools | Templates.
