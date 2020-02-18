@@ -3,35 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entities;
+
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author KHAIRI
  */
 public class Reclamation {
-    
-    private String description,selecteur;
-    private int idRecl,id_emeteur,id_cible,etat;
-    
+
+    private String description, selecteur;
+    private int idRecl, id_emeteur, id_cible;
+    private boolean etat;
+
+    java.util.Date dt = new java.util.Date();
+    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String date = sdf.format(dt);
+
     public Reclamation() {
     }
 
-    public Reclamation(int idRecl, int id_emeteur, int id_cible, String description, int etat,String selecteur) {
+    public Reclamation(int idRecl, int id_emeteur, int id_cible, String description,  String selecteur) {
         this.description = description;
-        this.etat = etat;
+        
         this.idRecl = idRecl;
         this.id_emeteur = id_emeteur;
         this.id_cible = id_cible;
-        this.selecteur=selecteur;
+        this.selecteur = selecteur;
+        
+       
     }
 
     public String getDescription() {
         return description;
     }
 
-    public int getEtat() {
+    public boolean getEtat() {
         return etat;
     }
 
@@ -51,11 +61,35 @@ public class Reclamation {
         return selecteur;
     }
 
+    public Date getDt() {
+        return dt;
+    }
+
+    public SimpleDateFormat getSdf() {
+        return sdf;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDt(Date dt) {
+        this.dt = dt;
+    }
+
+    public void setSdf(SimpleDateFormat sdf) {
+        this.sdf = sdf;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(boolean etat) {
         this.etat = etat;
     }
 
@@ -75,19 +109,12 @@ public class Reclamation {
         this.selecteur = selecteur;
     }
 
+    
+
     @Override
     public String toString() {
-        return "Reclamation{" + ", description=" + description + ", selecteur=" + selecteur + ", idRecl=" + idRecl + ", id_emeteur=" + id_emeteur + ", id_cible=" + id_cible + ", etat=" + etat + '}';
+        return "Reclamation{" + "description=" + description + ", selecteur=" + selecteur + ", idRecl=" + idRecl + ", id_emeteur=" + id_emeteur + ", id_cible=" + id_cible + ", etat=" + etat + ", dt=" + dt + ", sdf=" + sdf + ", date=" + date + '}';
     }
+   
 
-  
-    
-    
-    
-    
-  
-
-    
-    
-    
 }

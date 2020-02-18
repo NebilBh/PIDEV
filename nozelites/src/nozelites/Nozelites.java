@@ -8,6 +8,8 @@ package nozelites;
 import entities.Membre;
 import entities.Message;
 import entities.Offre;
+import entities.Portfolio;
+import entities.Reclamation;
 import entities.chasseurTalent;
 import utils.ConnexionDB;
 import java.sql.Connection;
@@ -18,9 +20,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import services.ServiceChasseur;
 import services.ServiceMembre;
+
+import services.ServicePortfolio;
+
 import services.ServicesMessage;
+
 import services.ServicesOffre;
+
 import utils.Session;
+
+import services.ServicesReclamation;
+
 
 /**
  *
@@ -32,13 +42,14 @@ public class Nozelites extends Application {
     public void start(Stage stage) throws Exception {
 
 
+
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
 
 
         
         
+
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());
         
         stage.setScene(scene);
         stage.show();
@@ -50,6 +61,7 @@ public class Nozelites extends Application {
     public static void main(String[] args) {
         launch(args);
         
+
         Session s = new Session();
         
         System.out.println("id Session main"+s.getIdSession());
@@ -57,6 +69,7 @@ public class Nozelites extends Application {
         //srv1.afficherLesMessagesEnvoyes(4);
         
         
+
     }
     
 }

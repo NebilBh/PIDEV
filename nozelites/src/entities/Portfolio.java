@@ -5,51 +5,82 @@
  */
 package entities;
 
+import java.util.List;
+
 /**
  *
  * @author Nebil
  */
 public class Portfolio {
-    private String image;
-    private String projet ;
+   
+    private String titre;
+    private String description ;
     private int id_port;
-    
-    public void Portfolio(){   
+    private int id_membre;
+    private String lien;
+
+    public Portfolio() {
     }
 
-    public Portfolio(String image, String projet, int id_port) {
-        this.image = image;
-        this.projet = projet;
+   
+   
+
+    public Portfolio(int id_port,int id_membre,String titre, String description,String lien ) {
+        this.titre = titre;
+        this.id_membre=id_membre;
+        this.description = description;
         this.id_port = id_port;
+        this.lien=lien;
+        
     }
 
-    public Portfolio(String image, String projet) {
-        this.image = image;
-        this.projet = projet;
+    public String getLien() {
+        return lien;
     }
 
-    public String getImage() {
-        return image;
+    public int getId_membre() {
+        return id_membre;
+    }
+    
+
+   
+    public String getTitre() {
+        return titre;
     }
 
-    public String getProjet() {
-        return projet;
+    public String getDescription() {
+        return description;
     }
 
     public int getId_port() {
         return id_port;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
-    public void setProjet(String projet) {
-        this.projet = projet;
+    public void setId_membre(int id_membre) {
+        this.id_membre = id_membre;
     }
+
+   
 
     public void setId_port(int id_port) {
         this.id_port = id_port;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLien(String lien) {
+        this.lien = lien;
+    }
+
+    @Override
+    public String toString() {
+        return "Portfolio{" + "titre=" + titre + ", description=" + description + ", id_port=" + id_port + ", id_membre=" + id_membre + ", lien=" + lien + '}';
     }
     
     
