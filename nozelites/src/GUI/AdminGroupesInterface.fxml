@@ -7,8 +7,9 @@
 
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminGroupesInterfaceController">
    <children>
-      <Button layoutX="651.0" layoutY="445.0" mnemonicParsing="false" onAction="#ajouter_groupe" text="Ajouter" />
-      <TableView fx:id="table_groupes" layoutX="39.0" layoutY="83.0" prefHeight="362.0" prefWidth="667.0" />
+      <Button layoutX="640.0" layoutY="452.0" mnemonicParsing="false" onAction="#ajouter_groupe" text="Ajouter" />
+      <TableView fx:id="table_groupes" layoutX="39.0" layoutY="83.0" prefHeight="362.0" prefWidth="368.0" />
       <TextField fx:id="inpuitChercher" layoutX="39.0" layoutY="50.0" onAction="#chercher_groupe" promptText="Chercher" />
+      <TableView fx:id="table_invitations" layoutX="420.0" layoutY="83.0" prefHeight="362.0" prefWidth="275.0" />
    </children>
 </AnchorPane>

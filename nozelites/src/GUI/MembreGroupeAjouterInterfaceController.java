@@ -21,6 +21,7 @@ import javafx.scene.layout.AnchorPane;
 import services.SGroupe;
 import services.SGroupeMembre;
 import entities.GroupeMembre;
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -44,6 +45,8 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
     @FXML
     private AnchorPane root;
     private int id_membre = 1;
+    @FXML
+    private TableView<?> table_membres;
 
     /**
      * Initializes the controller class.
