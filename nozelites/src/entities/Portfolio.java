@@ -5,19 +5,25 @@
  */
 package entities;
 
+import java.util.List;
+
 /**
  *
  * @author Nebil
  */
 public class Portfolio {
+   
     private String titre;
     private String description ;
     private int id_port;
     private int id_membre;
     private String lien;
-    
-    public void Portfolio(){   
+
+    public Portfolio() {
     }
+
+   
+   
 
     public Portfolio(int id_port,int id_membre,String titre, String description,String lien ) {
         this.titre = titre;

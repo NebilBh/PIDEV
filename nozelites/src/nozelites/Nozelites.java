@@ -31,7 +31,7 @@ public class Nozelites extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/afficher_reclamation.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -47,14 +47,14 @@ public class Nozelites extends Application {
         
         
       
-       /* 
-        Portfolio r =new Portfolio(1,2,"CV","attestation en microsoft","lien");
         
-        ServicePortfolio srv = new ServicePortfolio();
-       //  srv.ajouter(r);
-        // srv.afficher();
+        //Portfolio r =new Portfolio(1,2,"CV","attestation en microsoft","lien");
+        
+        //ServicePortfolio srv = new ServicePortfolio();
+       //  srv.ajouter(r);*/
+        //srv.afficher();
          
-        */
+       
          
      
       

@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigation?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembreReclamationController">
    <children>
-      <Button layoutX="487.0" layoutY="165.0" mnemonicParsing="false" text="Envoyer" textFill="#c30f10" />
-      <Label layoutX="80.0" layoutY="92.0" prefHeight="17.0" prefWidth="115.0" text="Selecteur" />
-      <Label layoutX="59.0" layoutY="148.0" text="Expliquez nous" />
-      <TextArea layoutX="174.0" layoutY="127.0" prefHeight="104.0" prefWidth="270.0" />
-      <BottomNavigation layoutX="357.0" layoutY="317.0" />
-      <SplitMenuButton layoutX="207.0" layoutY="88.0" mnemonicParsing="false" text="SplitMenuButton">
-        <items>
-          <MenuItem mnemonicParsing="false" text="groupe" />
-          <MenuItem mnemonicParsing="false" text="membre" />
-            <MenuItem mnemonicParsing="false" text="evenement" />
-            <MenuItem mnemonicParsing="false" text="publication" />
-        </items>
-      </SplitMenuButton>
-      <Label layoutX="244.0" layoutY="32.0" text="Réclamation" />
+      <Button layoutX="469.0" layoutY="301.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="#f5f2f2">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label layoutX="216.0" layoutY="127.0" prefHeight="17.0" prefWidth="115.0" text="Selecteur" textFill="#320101">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="205.0" layoutY="209.0" prefHeight="25.0" prefWidth="91.0" text="Expliquez nous" textFill="#790a0a">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextArea fx:id="txtdescr" layoutX="300.0" layoutY="165.0" prefHeight="104.0" prefWidth="270.0" />
+      <Label layoutX="310.0" layoutY="36.0" prefHeight="17.0" prefWidth="181.0" text="Réclamation">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextField fx:id="txtselect" layoutX="331.0" layoutY="123.0" />
+      <Pane layoutX="-10.0" layoutY="-3.0" prefHeight="409.0" prefWidth="214.0" style="-fx-background-color: #c41011;" />
    </children>
 </AnchorPane>

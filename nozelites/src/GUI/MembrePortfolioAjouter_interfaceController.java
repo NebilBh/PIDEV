@@ -52,7 +52,7 @@ public class MembrePortfolioAjouter_interfaceController implements Initializable
         String lien = txtlien.getText();
     
        // String typee = type.getSelectionModel().getSelectedItem().toString();
-        String colii;
+        
         
         ServicePortfolio srv  = new ServicePortfolio();
         Portfolio p = new Portfolio(1,2,titre,description,lien);

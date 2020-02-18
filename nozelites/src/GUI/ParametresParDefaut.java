@@ -11,8 +11,8 @@ package GUI;
  */
 public class ParametresParDefaut {
     
-    private int fenetre_largeur = 600;
-    private int fenetre_hauteur = 400;
+    private int fenetre_largeur = 740;
+    private int fenetre_hauteur = 500;
     private String rouge = "c30f10";
     private String blanc = "f9f9f9";
     private String gris_fonce = "282828";

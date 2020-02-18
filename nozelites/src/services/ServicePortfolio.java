@@ -12,6 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -74,19 +77,29 @@ public class ServicePortfolio {
             
     }
     
-    public void afficher(){
-        String qry ="Select * from Portfolio";
+    public List<Portfolio> afficher(){
+        List<Portfolio> myList = new ArrayList<>();
+        String qry ="select * from portfolio";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
-            ResultSet usrList = stmt.executeQuery();
-            while(usrList.next()) {
-                System.out.println("User : [id : "+usrList.getInt(1));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+               Portfolio p =new Portfolio();
+               p.setId_port(rs.getInt(1));
+                 p.setId_membre(rs.getInt(2));
+                   p.setTitre(rs.getString(3));
+                     p.setDescription(rs.getString(4));
+                       p.setLien(rs.getString(5));
+                myList.add(p);
+               
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServicePortfolio.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(myList);
+      
+    return myList;
+    
     }
-    
-    
 }

@@ -6,12 +6,16 @@
 
 package services;
 
+import entities.Portfolio;
 import entities.Reclamation;
+import entities.ReclamationForGUI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ConnexionDB;
@@ -28,7 +32,7 @@ public class ServicesReclamation {
         try 
         {
             Statement st = c.createStatement();
-            String req = "insert into reclamation values("+p.getIdRecl()+","+p.getId_emeteur()+","+p.getId_cible()+",'"+p.getDescription()+"',"+p.getEtat()+",'"+p.getSelecteur()+"')";
+            String req = "insert into reclamation values("+p.getIdRecl()+","+p.getId_emeteur()+","+p.getId_cible()+",'"+p.getDescription()+"',"+p.getEtat()+",'"+p.getSelecteur()+"','"+p.getDate()+"')";
             st.executeUpdate(req);
         } 
         catch (SQLException ex) 
@@ -36,6 +40,26 @@ public class ServicesReclamation {
             Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    /*public void ajouterReclamation( Reclamation r){
+        try {
+           // dt = new java.util.Date();
+            //sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            
+            String Req_Add="INSERT INTO reclamation(id_Recl,id_emeteur,id_cible,description,etat,selecteur,date) VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement pt = c.prepareStatement(Req_Add);  
+            pt.setInt(1, r.getIdRecl());
+             pt.setInt(2, r.getId_emeteur());
+             pt.setInt(3, r.getId_cible());
+             pt.setString(4, r.getDescription());
+            pt.setBoolean(5, false);
+            pt.setString(6, r.getSelecteur());
+            pt.setString(7, r.getDate());
+            pt.executeUpdate();
+            
+        } catch (SQLException ex) {
+         Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }*/
     
     public void modifierReclamation(Reclamation p, String type,String description){
         try 
@@ -51,10 +75,25 @@ public class ServicesReclamation {
             Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     public void modifierReclamationFor(ReclamationForGUI o){
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("update reclamation  set description=?,selecteur=? where idRecl=?");
+         
+            pt.setString(1,o.getDescription());
+             pt.setString(2,o.getSelecteur());
+            pt.setInt(3,o.getId());
+            pt.executeUpdate();  
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
-    public void afficherReclamation(){
+    public List<Reclamation> afficherReclamation(){
         
-    
+           List<Reclamation> myList = new ArrayList<>();
         
         try 
         {
@@ -63,6 +102,15 @@ public class ServicesReclamation {
             
             while(rs.next())
             {
+                  Reclamation p =new Reclamation();
+                   p.setIdRecl(rs.getInt(1));
+                 p.setId_emeteur(rs.getInt(2));
+                   p.setId_cible(rs.getInt(3));
+                     p.setDescription(rs.getString(4));
+                       p.setEtat(rs.getBoolean(5));
+                          p.setSelecteur(rs.getString(6));
+                       p.setDt(rs.getDate(7));
+                myList.add(p);
                     String selecteur = rs.getString(6);
                     int id_cible = rs.getInt(3);
                     int id_membre = rs.getInt(2);
@@ -73,6 +121,8 @@ public class ServicesReclamation {
                          
                          while(ff.next())
                             System.out.println("reclamation :  "+ff.getInt(1)+" "+ff.getString(2)+" "+ff.getString(3)+" "+ff.getString(4)+" "+ff.getString(5));
+                           
+            
                         
                     }
                     else if(selecteur.equals("membre"))
@@ -120,7 +170,38 @@ public class ServicesReclamation {
         catch (SQLException ex) 
         {
             Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
+    
         }
+     return myList;   
+    }
+    
+    
+    
+    public List<ReclamationForGUI> afficherLesOffresEnvoyees(int id_Emetteur){
+        
+        List<ReclamationForGUI> list = new ArrayList<ReclamationForGUI>();
+        
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("select idRecl, nom, prenom, mail, description,etat,selecteur,date from reclamation INNER JOIN membre ON reclamation.id_emeteur=membre.idUsr where id_emeteur=?"
+                    + "                                                                                         ");
+            pt.setInt(1, id_Emetteur);
+            ResultSet rs = pt.executeQuery();
+            
+            while(rs.next())
+            {
+                //System.out.println("Offre : \nType : "+rs.getString(2)+"\nEntreprise : "+rs.getString(3)+"\nDomaine : "+rs.getString(4)+"\nPoste : "+rs.getString(5)+"\nRequis : "+rs.getString(6)+"\nDescription : "+rs.getString(7)+"\nLe : "+rs.getString(8)+"\nEtat : "+rs.getString(9)+"\nA : "+rs.getString(10)+" "+rs.getString(11)+"\n"); //ordre fel table
+                ReclamationForGUI o = new ReclamationForGUI(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+                list.add(o);
+            }
+           
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        
+        return list;
     }
     
     public void supprimerPersonne(Reclamation p){   
