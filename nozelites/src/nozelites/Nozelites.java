@@ -9,6 +9,8 @@ import GUI.ParametresParDefaut;
 import entities.Membre;
 import entities.Message;
 import entities.Offre;
+import entities.Portfolio;
+import entities.Reclamation;
 import entities.chasseurTalent;
 import utils.ConnexionDB;
 import java.sql.Connection;
@@ -19,8 +21,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import services.ServiceChasseur;
 import services.ServiceMembre;
+
+import services.ServicePortfolio;
+
 import services.ServicesMessage;
+
 import services.ServicesOffre;
+import services.ServicesReclamation;
 
 /**
  *
@@ -32,10 +39,10 @@ public class Nozelites extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("GUI/InterfaceMembreInboxRecus.fxml"));
         
         Scene scene = new Scene(root,p.getFenetre_largeur(),p.getFenetre_hauteur());
-        
         stage.setScene(scene);
         stage.show();
     }

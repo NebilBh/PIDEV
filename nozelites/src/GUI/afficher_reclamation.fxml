@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="afficher" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Afficher_reclamationController">
+   <children>
+      <TableView fx:id="tab_recl" layoutX="13.0" layoutY="62.0" prefHeight="327.0" prefWidth="572.0" />
+      <Label layoutX="190.0" layoutY="23.0" prefHeight="17.0" prefWidth="255.0" text="Les Reclamation" textFill="#720c0c">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
