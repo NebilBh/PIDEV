@@ -5,14 +5,13 @@
  */
 package GUI;
 
-import com.sun.prism.impl.Disposer.Record;
+import com.sun.prism.impl.Disposer;
 import entities.Groupe;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.TreeSet;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -25,26 +24,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
-import services.SGroupeMembre;
 import services.SGroupe;
-import entities.GroupeMembreInvite;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import services.SGroupeMembre;
 
 /**
  * FXML Controller class
  *
  * @author nadhir
  */
-public class AdminGroupesInterfaceController implements Initializable {
+public class MembreGroupesInterfaceController implements Initializable {
 
     @FXML
     private TableView<entities.Groupe> table_groupes;
@@ -58,17 +52,23 @@ public class AdminGroupesInterfaceController implements Initializable {
     private TableView<entities.GroupeMembreInvite> table_invitations;
     ObservableList<entities.GroupeMembreInvite> ls_invitations;//membre(nom,prenom) + groupe(titre,description)
 
+    @FXML
+    private void ajouter_groupe(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupeAjouterInterface.fxml"));
+        root.getChildren().setAll(pane);
+        
+    }
     
-    private class ButtonCell extends TableCell<Record, Boolean> {
+    private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
         final Button cellButton = new Button("supprimer");
         
-        ButtonCell()
-        {
-            //Action when the button is pressed
+        ButtonCell(){
+            
+        	//Action when the button is pressed
             cellButton.setOnAction(new EventHandler<ActionEvent>(){
+
                 @Override
-                public void handle(ActionEvent t) 
-                {
+                public void handle(ActionEvent t) {
                     // get Selected Item
                 	Groupe currentgroupe = (Groupe) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
                 	//remove selected item from the table list
@@ -79,12 +79,13 @@ public class AdminGroupesInterfaceController implements Initializable {
                         //srv.supprimerOffre(currentOffre);
                 }
             });
+            
+            
         }
         
         //Display button if the row is not empty
         @Override
-        protected void updateItem(Boolean t, boolean empty) 
-        {
+        protected void updateItem(Boolean t, boolean empty) {
             super.updateItem(t, empty);
             if(!empty){
             setGraphic(cellButton);
@@ -95,37 +96,35 @@ public class AdminGroupesInterfaceController implements Initializable {
         }
     }
     
-    private class ButtonCell2 extends TableCell<Record, Boolean> {
-        final Button cellButton = new Button("Voir");
+    private class ButtonCell2 extends TableCell<Disposer.Record, Boolean> {
+        final Button cellButton = new Button("accepter");
         
-        ButtonCell2()
-        {
-            //Action when the button is pressed
+        ButtonCell2(){
+            
+        	//Action when the button is pressed
             cellButton.setOnAction(new EventHandler<ActionEvent>(){
+
                 @Override
-                public void handle(ActionEvent t) 
-                {//afficher groupe
+                public void handle(ActionEvent t) {
                     // get Selected Item
                 	Groupe currentgroupe = (Groupe) ButtonCell2.this.getTableView().getItems().get(ButtonCell2.this.getIndex());
                 	//remove selected item from the table list
-                	
-                    try {
-                        AdminGroupeInterfaceController.gr = currentgroupe;
-                        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupeInterface.fxml"));
-                        root.getChildren().setAll(pane);
-                    } catch (IOException ex) {
-                        Logger.getLogger(AdminGroupesInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                        
-                        
+                	lss.remove(currentgroupe);
+                        //remove from DB
+                        SGroupe s_g = new SGroupe();
+                        s_g.supprimer_groupe(currentgroupe);
+                        //srv.supprimerOffre(currentOffre);
                 }
             });
+            
+            
         }
+        
+        
         
         //Display button if the row is not empty
         @Override
-        protected void updateItem(Boolean t, boolean empty) 
-        {
+        protected void updateItem(Boolean t, boolean empty) {
             super.updateItem(t, empty);
             if(!empty){
             setGraphic(cellButton);
@@ -136,7 +135,45 @@ public class AdminGroupesInterfaceController implements Initializable {
         }
     }
     
-   
+    private class ButtonCell3 extends TableCell<Disposer.Record, Boolean> {
+        final Button cellButton = new Button("refuser");
+        
+        ButtonCell3(){
+            
+        	//Action when the button is pressed
+            cellButton.setOnAction(new EventHandler<ActionEvent>(){
+
+                @Override
+                public void handle(ActionEvent t) {
+                    // get Selected Item
+                	Groupe currentgroupe = (Groupe) ButtonCell3.this.getTableView().getItems().get(ButtonCell3.this.getIndex());
+                	//remove selected item from the table list
+                	lss.remove(currentgroupe);
+                        //remove from DB
+                        SGroupe s_g = new SGroupe();
+                        s_g.supprimer_groupe(currentgroupe);
+                        //srv.supprimerOffre(currentOffre);
+                }
+            });
+            
+            
+        }
+        
+        
+        
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+            setGraphic(cellButton);
+            }
+            else{
+            setGraphic(null);
+            }
+        }
+    }
+
     /**
      * Initializes the controller class.
      */
@@ -146,7 +183,7 @@ public class AdminGroupesInterfaceController implements Initializable {
         List<entities.Groupe> list_g = new ArrayList<>();
         
         SGroupeMembre sgm = new SGroupeMembre();
-        List<entities.GroupeMembre> list = sgm.afficher_groupes_membres();
+        List<entities.GroupeMembre> list = sgm.chercher_groupes_membre_par_id(id_membre);
         SGroupe sg = new SGroupe();
         for(entities.GroupeMembre gm : list)
         {
@@ -158,26 +195,6 @@ public class AdminGroupesInterfaceController implements Initializable {
             }
         }
         //table colonnes
-        TableColumn colVoir = new TableColumn("Voir");
-        colVoir.setMinWidth(100);
-        colVoir.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Record, Boolean>, 
-                ObservableValue<Boolean>>() {
-
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue() != null);
-            }
-        });
-        colVoir.setCellFactory(
-                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
-
-            @Override
-            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell2();
-            }
-        
-        });
         TableColumn colId = new TableColumn("id");
         colId.setMinWidth(100);
         colId.setCellValueFactory(
@@ -195,29 +212,20 @@ public class AdminGroupesInterfaceController implements Initializable {
         colEtat.setCellValueFactory(
                 new PropertyValueFactory<entities.Groupe, String>("etat"));
         TableColumn colsupprimer = new TableColumn("Supprimer");
-        colsupprimer.setMinWidth(100);
+        colEtat.setMinWidth(100);
         colsupprimer.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Record, Boolean>, 
+                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
                 ObservableValue<Boolean>>() {
 
             @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
                 return new SimpleBooleanProperty(p.getValue() != null);
             }
-        });
-        colsupprimer.setCellFactory(
-                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
-
-            @Override
-            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell();
-            }
-        
         });
         //add value
         lss= FXCollections.observableArrayList(list_g);
         table_groupes.setItems( lss);
-        table_groupes.getColumns().addAll(colVoir,colId, colTitre, colDescription, colEtat,colsupprimer);
+        table_groupes.getColumns().addAll(colId, colTitre, colDescription, colEtat,colsupprimer);
         
       // trie
       colId.setSortType(TableColumn.SortType.DESCENDING);
@@ -254,6 +262,15 @@ public class AdminGroupesInterfaceController implements Initializable {
 
         });
         
+        colsupprimer.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new ButtonCell();
+            }
+        
+        });
         
         
         
@@ -267,7 +284,76 @@ public class AdminGroupesInterfaceController implements Initializable {
         
         
         
+        //accepter invitation
+        //table colonnes
+        TableColumn colIid = new TableColumn("Id");
+        colIid.setMinWidth(100);
+        colIid.setCellValueFactory(
+                new PropertyValueFactory<entities.Groupe, Integer>("id"));
+        TableColumn colInom = new TableColumn("Nom");
+        colInom.setMinWidth(100);
+        colInom.setCellValueFactory(
+                new PropertyValueFactory<entities.Groupe, String>("nom"));
+        TableColumn colItitre = new TableColumn("Titre");
+        colItitre.setMinWidth(100);
+        colItitre.setCellValueFactory(
+                new PropertyValueFactory<entities.Groupe, String>("titre"));
+        TableColumn colIpprenom = new TableColumn("Prenom");
+        colIpprenom.setMinWidth(100);
+        colIpprenom.setCellValueFactory(
+                new PropertyValueFactory<entities.Groupe, String>("prenom"));
+        TableColumn colIdescription = new TableColumn("Description");
+        colIdescription.setMinWidth(100);
+        colIdescription.setCellValueFactory(
+                new PropertyValueFactory<entities.Groupe, String>("description"));
+        TableColumn colIaccepter = new TableColumn("Accepter");
+        colIaccepter.setMinWidth(100);
+        colIaccepter.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
+                ObservableValue<Boolean>>() {
+
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+        TableColumn colIrefuser = new TableColumn("Accepter");
+        colIrefuser.setMinWidth(100);
+        colIrefuser.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
+                ObservableValue<Boolean>>() {
+
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+        //add value
+        List<entities.GroupeMembreInvite> list_i = new ArrayList<>();
+        //--------------------------------------------------------------------------------------
+        ls_invitations= FXCollections.observableArrayList(list_i);
+        table_invitations.setItems(ls_invitations);
+        table_invitations.getColumns().addAll(colIid,colInom,colIpprenom, colItitre, colIdescription, colIaccepter,colIrefuser);
         
+        colIaccepter.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new ButtonCell2();
+            }
+        
+        });
+        
+        colIrefuser.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new ButtonCell3();
+            }
+        
+        });
         
         
         

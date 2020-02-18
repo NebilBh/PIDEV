@@ -26,16 +26,16 @@ public class SGroupeMembre {
     
     Connection c = ConnexionDB.getInstance().getCnx();
     
-    public TreeSet<GroupeMembre> afficher_groupes_membres()
+    public List<GroupeMembre> afficher_groupes_membres()
     {
-        TreeSet<GroupeMembre> list = new TreeSet<GroupeMembre>();
+        List<GroupeMembre> list = new ArrayList<GroupeMembre>();
         try {
             PreparedStatement pt = c.prepareStatement("select * from Groupe_Membre");
             ResultSet rs = pt.executeQuery();
             while(rs.next())
             {
                 System.out.println("GroupeMembre : [ id_gm "+rs.getInt(1)+" id_groupe : "+rs.getInt(2)+" id_membre : "+rs.getInt(3)+" invite : "+rs.getInt(4)+" etat : "+rs.getString(5)+" ]");
-                //list.add(new GroupeMembre(rs.getInt(1),rs.getInt(2),rs.getInt(3),+rs.getInt(4),rs.getString(5)));
+                list.add(new GroupeMembre(rs.getInt(1),rs.getInt(2),rs.getInt(3),+rs.getInt(4),rs.getString(5)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SGroupeMembre.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,16 +97,16 @@ public class SGroupeMembre {
         
     }
     
-    public TreeSet<GroupeMembre> chercher_groupe_membres_par_id(int id_groupe)
+    public List<GroupeMembre> chercher_groupe_membres_par_id(int id_groupe)
     {
-        TreeSet<GroupeMembre> list = new TreeSet<GroupeMembre>();
+        List<GroupeMembre> list = new ArrayList<GroupeMembre>();
         try {
             PreparedStatement pt = c.prepareStatement("select * from Groupe_Membre where id_groupe = "+id_groupe);
             ResultSet rs = pt.executeQuery();
             while(rs.next())
             {
                 System.out.println("GroupeMembre : [ id_gm "+rs.getInt(1)+" id_groupe : "+rs.getInt(2)+" id_membre : "+rs.getInt(3)+" invite : "+rs.getInt(4)+" etat : "+rs.getString(5)+" ]");
-                //list.add(new GroupeMembre(rs.getInt(1),rs.getInt(2),rs.getInt(3),+rs.getInt(4),rs.getString(5)));
+                list.add(new GroupeMembre(rs.getInt(1),rs.getInt(2),rs.getInt(3),+rs.getInt(4),rs.getString(5)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SGroupeMembre.class.getName()).log(Level.SEVERE, null, ex);
