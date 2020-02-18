@@ -44,6 +44,8 @@ public class ConnectionInterfaceController implements Initializable {
     private AnchorPane authen;
     @FXML
     private Button btnElite;
+    @FXML
+    private Button createChasseur;
 
     @FXML
     private void connect(MouseEvent event) throws IOException, SQLException {
@@ -55,8 +57,8 @@ public class ConnectionInterfaceController implements Initializable {
         Session session = new Session();
         
         
-        Parent AcceuilMembre = FXMLLoader.load(getClass().getResource("/GUI/InterfacePageAcceuil.fxml"));
-        Parent AcceuilChass = FXMLLoader.load(getClass().getResource("/GUI/InterfacePageAcceuil.fxml"));
+        Parent AcceuilMembre = FXMLLoader.load(getClass().getResource("/GUI/InscriptionMembre.fxml"));
+        Parent AcceuilChass = FXMLLoader.load(getClass().getResource("/GUI/InscriptionMembre.fxml"));
         
         
         Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -112,6 +114,18 @@ public class ConnectionInterfaceController implements Initializable {
         Scene scene = new Scene(inscriptionM);
         fenetre.setScene(scene);
         fenetre.show();  
+    }
+
+    @FXML
+    private void createChass(MouseEvent event) throws IOException {
+        Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/InscriptionChasseur.fxml"));
+        
+        
+        Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        Scene scene = new Scene(inscriptionM);
+        fenetre.setScene(scene);
+        fenetre.show();
     }
     
     

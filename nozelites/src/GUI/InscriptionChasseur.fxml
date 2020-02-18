@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InscriptionMembreController">
+<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InscriptionChasseurController">
    <children>
       <Pane prefHeight="500.0" prefWidth="120.0" style="-fx-background-color: c41011;">
          <children>
@@ -60,14 +60,14 @@
             </TextField>
          </children>
       </VBox>
-      <VBox alignment="CENTER_LEFT" layoutX="477.0" layoutY="28.0" prefHeight="330.0" prefWidth="231.0">
+      <VBox alignment="CENTER_LEFT" layoutX="477.0" layoutY="14.0" prefHeight="330.0" prefWidth="231.0">
          <children>
             <PasswordField fx:id="labelMdp" promptText="Mot de Passe">
                <VBox.margin>
                   <Insets bottom="35.0" />
                </VBox.margin>
             </PasswordField>
-            <TextField fx:id="labelExp" promptText="Expérience">
+            <TextField fx:id="labelEnt" promptText="Entreprise">
                <VBox.margin>
                   <Insets bottom="35.0" />
                </VBox.margin>
@@ -75,11 +75,6 @@
             <TextField fx:id="labelImg" promptText="photo de profil">
                <VBox.margin>
                   <Insets bottom="35.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="labelForm" promptText="Formaton">
-               <VBox.margin>
-                  <Insets />
                </VBox.margin>
             </TextField>
          </children>

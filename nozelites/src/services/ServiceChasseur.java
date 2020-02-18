@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ConnexionDB;
@@ -30,7 +31,7 @@ public class ServiceChasseur {
             state = db.createStatement();
             
             String qry ="insert into chasseur_talent values("+user.getId()+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
-                    + "'"+user.getLogin()+"','"+user.getMdp()+"',"+user.getAge()+",'"+user.getEntreprise()+"','"+user.getImage()+"')";
+                    + "'"+user.getLogin()+"','"+user.getMdp()+"',"+user.getAge()+",'"+user.getEntreprise()+"','"+user.getImage()+"','"+LocalDate.now()+"')";
             state.executeUpdate(qry);
             
             System.out.println("Ajout effectué ");
