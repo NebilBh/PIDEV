@@ -57,11 +57,10 @@ public class ConnectionInterfaceController implements Initializable {
         Session session = new Session();
         
         
-        Parent AcceuilMembre = FXMLLoader.load(getClass().getResource("/GUI/InscriptionMembre.fxml"));
-        Parent AcceuilChass = FXMLLoader.load(getClass().getResource("/GUI/InscriptionMembre.fxml"));
         
         
-        Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        //Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();
         
         ResultSet resultatChass = srvC.authen(login,mdp);
         ResultSet resultatMembre = srvM.authen(login, mdp);
@@ -72,19 +71,21 @@ public class ConnectionInterfaceController implements Initializable {
        
             hasResultM = resultatMembre.next();
             hasResultC = resultatChass.next();
+            
             if(hasResultM){
+                
                 session.setSession(resultatMembre.getInt(1)); 
+                System.out.println("id cnx: "+session.getIdSession());
                 System.out.println("Connexion 1");
-                Scene scene = new Scene(AcceuilMembre);
-                fenetre.setScene(scene);
-                fenetre.show();     
+                
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
+                authen.getChildren().setAll(pane);   
             }
             else if(hasResultC){
                 session.setSession(resultatChass.getInt(1)); 
                 System.out.println("Connexion 2");
-                Scene scene = new Scene(AcceuilChass);
-                fenetre.setScene(scene);
-                fenetre.show();   
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
+                authen.getChildren().setAll(pane);   
             
             }
             else{

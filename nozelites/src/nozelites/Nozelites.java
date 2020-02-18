@@ -50,7 +50,9 @@ public class Nozelites extends Application {
     public static void main(String[] args) {
         launch(args);
         
+        Session s = new Session();
         
+        System.out.println("id Session main"+s.getIdSession());
         
         //srv1.afficherLesMessagesEnvoyes(4);
         

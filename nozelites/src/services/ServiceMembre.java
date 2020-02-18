@@ -69,19 +69,19 @@ public class ServiceMembre {
         }
     }
     
-    public void afficherUsr(Membre usr){
+    public ResultSet afficherUsr(Membre usr){
         String qry ="Select * from membre where idUsr = ?";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
             stmt.setInt(1,usr.getId());
             ResultSet usrList = stmt.executeQuery();
-            while(usrList.next()) {
-                System.out.println("User : [id : "+usrList.getInt(1));
-            }
+            return usrList;
+            
         } catch (SQLException ex) {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
     public ResultSet authen(String login ,String mdp){
         String qry = "Select * from membre where login = ? AND mdp = ?";
