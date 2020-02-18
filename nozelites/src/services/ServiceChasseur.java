@@ -88,19 +88,19 @@ public class ServiceChasseur {
         }
     }
     
-    public void afficherUsr(chasseurTalent usr){
+    public ResultSet afficherUsr(chasseurTalent usr){
         String qry ="Select * from chasseur_talent where idUsr = ?";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
             stmt.setInt(1,usr.getId());
             ResultSet usrList = stmt.executeQuery();
-            while(usrList.next()) {
-                System.out.println("User : [id : "+usrList.getInt(1));
-            }
+            return usrList;
         } catch (SQLException ex) {
             Logger.getLogger(ServiceChasseur.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return null;
     }
     
     public void modifier(chasseurTalent user,chasseurTalent newM ) {

@@ -84,7 +84,7 @@ public class ConnectionInterfaceController implements Initializable {
             else if(hasResultC){
                 session.setSession(resultatChass.getInt(1)); 
                 System.out.println("Connexion 2");
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurProfilInterface.fxml"));
                 authen.getChildren().setAll(pane);   
             
             }
