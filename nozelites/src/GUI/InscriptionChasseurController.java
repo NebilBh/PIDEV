@@ -19,8 +19,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.ServiceChasseur;
 
@@ -47,12 +49,17 @@ public class InscriptionChasseurController implements Initializable {
     private TextField labelNdc;
     @FXML
     private PasswordField labelMdp;
-    @FXML
     private TextField labelImg;
     @FXML
     private Button btnCreate;
     @FXML
     private TextField labelEnt;
+    @FXML
+    private Button btnImport;
+    @FXML
+    private ImageView imgProfil;
+    
+    private String lienImg;
 
     /**
      * Initializes the controller class.
@@ -77,7 +84,7 @@ public class InscriptionChasseurController implements Initializable {
     @FXML
     private void createCompte(MouseEvent event) throws IOException {
         chasseurTalent m = new chasseurTalent(labelNom.getText(), labelPrenom.getText(), labelMail.getText(), labelNdc.getText(), labelMdp.getText(),
-                Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()),labelEnt.getText(), labelImg.getText());
+                Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()),labelEnt.getText(), lienImg);
          ServiceChasseur srvC = new ServiceChasseur();
          
          srvC.ajouter(m);
@@ -90,6 +97,29 @@ public class InscriptionChasseurController implements Initializable {
         Scene scene = new Scene(inscriptionM);
         fenetre.setScene(scene);
         fenetre.show();
+    }
+
+    @FXML
+    private void Importer(MouseEvent event) {
+        
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(//
+               //
+              new FileChooser.ExtensionFilter("JPG", "*.jpg"), //
+              new FileChooser.ExtensionFilter("PNG", "*.png"));
+        
+        
+        String path = fileChooser.showOpenDialog(null).getAbsolutePath();
+        
+        path = path.replace('\\','/');
+        
+        System.out.println(path);
+        
+        Image img = new Image("file:///"+path);
+        
+        imgProfil.setImage(img);
+        
+        lienImg = path;
     }
     
 }

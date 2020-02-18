@@ -60,7 +60,7 @@
             </TextField>
          </children>
       </VBox>
-      <VBox alignment="CENTER_LEFT" layoutX="477.0" layoutY="28.0" prefHeight="330.0" prefWidth="231.0">
+      <VBox alignment="CENTER_LEFT" layoutX="477.0" layoutY="50.0" prefHeight="238.0" prefWidth="231.0">
          <children>
             <PasswordField fx:id="labelMdp" promptText="Mot de Passe">
                <VBox.margin>
@@ -68,11 +68,6 @@
                </VBox.margin>
             </PasswordField>
             <TextField fx:id="labelExp" promptText="Expérience">
-               <VBox.margin>
-                  <Insets bottom="35.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="labelImg" promptText="photo de profil">
                <VBox.margin>
                   <Insets bottom="35.0" />
                </VBox.margin>
@@ -89,6 +84,13 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btnCreate" layoutX="523.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#createCompte" prefHeight="44.0" prefWidth="139.0" style="-fx-background-color: #C41011;" text="Créer un compte" textFill="#ffffff" />
+      <Button fx:id="btnCreate" layoutX="530.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#createCompte" prefHeight="44.0" prefWidth="139.0" style="-fx-background-color: #C41011;" text="Créer un compte" textFill="#ffffff" />
+      <Button fx:id="btnImport" layoutX="645.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#importer" text="Importer" />
+      <ImageView fx:id="imgProfil" fitHeight="100.0" fitWidth="126.0" layoutX="467.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="477.0" layoutY="303.0" prefHeight="26.0" prefWidth="139.0" text="Phot de profil">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -30,7 +30,7 @@ public class ServiceMembre {
             
             state = db.createStatement();
             
-            String qry ="insert into membre values("+5+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
+            String qry ="insert into membre values("+0+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
                     + "'"+user.getLogin()+"','"+user.getMdp()+"',"+user.getAge()+",'"+user.getFormation()+"',"
                     +"'"+user.getExp()+"',"+user.getType()+",'"+user.getImage()+"','"+LocalDate.now()+"')";
             state.executeUpdate(qry);
