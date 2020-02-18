@@ -5,6 +5,7 @@
  */
 package nozelites;
 
+import GUI.ParametresParDefaut;
 import entities.Membre;
 import entities.Message;
 import entities.Offre;
@@ -38,8 +39,11 @@ import services.ServicesReclamation;
  */
 public class Nozelites extends Application {
     
+    ParametresParDefaut p = new ParametresParDefaut();
+    
     @Override
     public void start(Stage stage) throws Exception {
+
 
 
 
@@ -50,7 +54,7 @@ public class Nozelites extends Application {
         
 
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
     }

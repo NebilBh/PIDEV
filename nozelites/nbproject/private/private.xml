@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/utils/JavaMail.java</file>
             <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/MembreProfilIterface.fxml</file>
             <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/services/ServiceMembre.java</file>
@@ -24,6 +25,14 @@
             <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/ConnectionInterfaceController.java</file>
             <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/services/ServicePortfolio.java</file>
             <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/InscriptionChasseur.fxml</file>
+=======
+            <file>file:/C:/Users/Wael%20Berrachid/Desktop/3eme/Projet/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
+            <file>file:/C:/Users/Wael%20Berrachid/Desktop/3eme/Projet/PIDEV/nozelites/src/entities/Offre.java</file>
+            <file>file:/C:/Users/Wael%20Berrachid/Desktop/3eme/Projet/PIDEV/nozelites/src/GUI/InterfaceMembreEnvoyerMessageController.java</file>
+            <file>file:/C:/Users/Wael%20Berrachid/Desktop/3eme/Projet/PIDEV/nozelites/src/services/ServicesOffre.java</file>
+            <file>file:/C:/Users/Wael%20Berrachid/Desktop/3eme/Projet/PIDEV/nozelites/src/entities/Message.java</file>
+            <file>file:/C:/Users/Wael%20Berrachid/Desktop/3eme/Projet/PIDEV/nozelites/src/services/ServicesMessage.java</file>
+>>>>>>> 3c684bfcdf6b1417e529b6beeba75513c68720d2
 =======
 <<<<<<< HEAD
             <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/Membre.java</file>
@@ -52,7 +61,11 @@
             <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/css/ChartGraphique.css</file>
             <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
 >>>>>>> 483fa0537ba6bcfb747abf68eb0d91b7b56d9b09
+<<<<<<< HEAD
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> 1c8636e6325275ed26e2f306c8ab2c997aa75123
+>>>>>>> 3c684bfcdf6b1417e529b6beeba75513c68720d2
         </group>
     </open-files>
 </project-private>
