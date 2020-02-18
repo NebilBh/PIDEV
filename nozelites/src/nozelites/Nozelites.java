@@ -5,6 +5,7 @@
  */
 package nozelites;
 
+import GUI.ParametresParDefaut;
 import entities.Membre;
 import entities.Message;
 import entities.Offre;
@@ -27,11 +28,13 @@ import services.ServicesOffre;
  */
 public class Nozelites extends Application {
     
+    ParametresParDefaut p = new ParametresParDefaut();
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("GUI/InterfaceMembreInboxRecus.fxml"));
         
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,p.getFenetre_largeur(),p.getFenetre_hauteur());
         
         stage.setScene(scene);
         stage.show();
@@ -43,15 +46,16 @@ public class Nozelites extends Application {
     public static void main(String[] args) {
         launch(args);
         
-        ServicesOffre srv = new ServicesOffre();
+        //ServicesOffre srv = new ServicesOffre();
         //Offre o = new Offre("Offre emploi",3,5,"samsung","Securite","junior","bac+3","texte here");
         //Offre o1 = new Offre(12);
         
-        srv.afficherLesOffresEnvoyees(3);
+        //srv.afficherLesOffresEnvoyees(3);
+        //srv.ajouterOffre(o);
         
-        ServicesMessage srv1 = new ServicesMessage();
-        Message m = new Message("Objet","Description",6,5);
-        Message m1 = new Message(1);
+        //ServicesMessage srv1 = new ServicesMessage();
+        //Message m = new Message("Objet","Description",6,5);
+        //Message m1 = new Message(1);
         
         //srv1.afficherLesMessagesEnvoyes(4);
         
