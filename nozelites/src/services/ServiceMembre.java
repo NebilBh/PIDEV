@@ -119,7 +119,7 @@ public class ServiceMembre {
             stmt.setString(9,newM.getFormation());
             stmt.setInt(10,newM.getType());
             stmt.setString(11,newM.getImage());
-            stmt.setInt(11,user.getId());
+            stmt.setInt(12,user.getId());
             stmt.executeUpdate();
             System.out.println("succes");
         } catch (SQLException ex) {
@@ -128,7 +128,7 @@ public class ServiceMembre {
     }
     public void confirmationMail(Membre user) throws Exception{
         
-        JavaMail.sendMail(user.getMail(),"Confirmation email"+user.getNom(),"Monsieur"+user.getNom()+" "+user.getPrenom()+" veuillez confirmer votre email \n");
+        JavaMail.sendMail(user.getMail(),"Confirmation email"+user.getMail(),"Monsieur"+user.getNom()+" "+user.getPrenom()+" Bienvenue \n");
                     
     }
     public void statistiqueMois(String mois){ //date jj-mm-aaaa

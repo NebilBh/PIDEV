@@ -15,6 +15,11 @@ public class Diplome {
     private String organisation;
     private String domaine;
 
+    public Diplome(String organisation, String domaine) {
+        this.organisation = organisation;
+        this.domaine = domaine;
+    }
+    
     public Diplome(int id_diplome, String organisation, String domaine) {
         this.id_diplome = id_diplome;
         this.organisation = organisation;

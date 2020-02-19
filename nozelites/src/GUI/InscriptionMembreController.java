@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -93,7 +95,7 @@ public class InscriptionMembreController implements Initializable {
          ServiceMembre srvM = new ServiceMembre();
          
          srvM.ajouter(m);
-         
+       
         Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
         
         
@@ -125,6 +127,8 @@ public class InscriptionMembreController implements Initializable {
         imgProfil.setImage(img);
         
         lienImg = path;
+        
+        
         
          
         

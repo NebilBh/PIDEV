@@ -71,9 +71,10 @@ public void supprimer(Diplome d){
         }
 }
 public ResultSet afficherDiplomeUser(int id_membre) throws SQLException{
-    String qry ="Select listediplome.domaine, listediplome.organisation FROM listediplome INNER JOIN membre ON"
-            + " listediplome.id_membre = membre.idUsr";
+    String qry ="Select listediplome.id_diplome, listediplome.domaine, listediplome.organisation FROM listediplome INNER JOIN membre ON"
+            + " listediplome.id_membre = membre.idUsr where membre.idUsr = ?";
     PreparedStatement stmt= db.prepareStatement(qry);
+    stmt.setInt(1,id_membre);
     ResultSet usrList = stmt.executeQuery();
     return usrList;
 }
