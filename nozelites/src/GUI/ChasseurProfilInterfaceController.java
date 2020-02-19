@@ -49,6 +49,8 @@ public class ChasseurProfilInterfaceController implements Initializable {
     private Label labelEnt;
     @FXML
     private Label labelTel;
+    @FXML
+    private Button btnModif;
 
     /**
      * Initializes the controller class.
@@ -75,7 +77,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
             m.setPrenom(res.getString("prenom"));
             m.setTel(res.getInt("tel"));
             m.setAge(res.getInt("age"));
-            m.setEntreprise("entreprise");
+            m.setEntreprise(res.getString("entreprise"));
             
             m.setMail(res.getString("mail"));
         } catch (SQLException ex) {
@@ -102,6 +104,12 @@ public class ChasseurProfilInterfaceController implements Initializable {
         srvM.supprimer(m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
         profilChass.getChildren().setAll(pane); 
+    }
+
+    @FXML
+    private void modifier(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ModifierChasseurInterface.fxml"));
+        profilChass.getChildren().setAll(pane);
     }
     
 }

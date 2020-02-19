@@ -106,7 +106,7 @@ public class ServiceChasseur {
     public void modifier(chasseurTalent user,chasseurTalent newM ) {
         PreparedStatement stmt ;
         
-        String qry = "update chasseur_talent set nom = ?, prenom = ?,mail = ?, mdp = ?,login = ?,tel = ?,age = ?,entreprise = ? where idUsr = ?";
+        String qry = "update chasseur_talent set nom = ?, prenom = ?,mail = ?, mdp = ?,login = ?,tel = ?,age = ?,entreprise = ?,image = ? where idUsr = ?";
         try {
             stmt = db.prepareStatement(qry);
             stmt.setString(1, newM.getNom());

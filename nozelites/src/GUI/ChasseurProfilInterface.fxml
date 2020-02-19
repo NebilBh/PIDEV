@@ -59,5 +59,6 @@
             </Label>
             <Button fx:id="btnSupp" layoutX="561.0" layoutY="197.0" mnemonicParsing="false" onMouseClicked="#suppCompte" text="Supprimer Compte" />
          </children></Pane>
+      <Button fx:id="btnModif" layoutX="52.0" layoutY="222.0" mnemonicParsing="false" onMouseClicked="#modifier" text="Modifier" />
    </children>
 </AnchorPane>
