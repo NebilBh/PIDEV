@@ -5,6 +5,7 @@
  */
 package services;
 
+import entities.Groupe;
 import entities.Membre;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ConnexionDB;
@@ -55,18 +58,20 @@ public class ServiceMembre {
         
     }
     
-    public void afficher(){
+    public ResultSet afficher(){
         String qry ="Select * from membre";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
             ResultSet usrList = stmt.executeQuery();
-            while(usrList.next()) {
+            /*while(usrList.next()) {
                 System.out.println("User : [id : "+usrList.getInt(1));
-            }
+            }*/
+            return usrList;
         } catch (SQLException ex) {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
     
     public ResultSet afficherUsr(Membre usr){
@@ -83,6 +88,9 @@ public class ServiceMembre {
         }
         return null;
     }
+   
+    
+    
     public ResultSet authen(String login ,String mdp){
         String qry = "Select * from membre where login = ? AND mdp = ?";
          

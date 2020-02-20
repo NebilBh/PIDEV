@@ -35,13 +35,18 @@ import javafx.util.Callback;
 import services.SGroupe;
 import services.SGroupeMembre;
 import entities.Membre;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import services.ServiceMembre;
 
 /**
  * FXML Controller class
  *
  * @author nadhir
  */
-public class AdminGroupeInterfaceController implements Initializable {
+public class MembreGroupeInterfaceController implements Initializable {
 
     @FXML
     private Label titre;
@@ -51,8 +56,10 @@ public class AdminGroupeInterfaceController implements Initializable {
     private Label etat;
     
     public static Groupe gr ;
+    public static int id_groupe = 1;
     @FXML
     private AnchorPane root;
+    
     
     ObservableList<Membre> lss;
     @FXML
@@ -73,9 +80,9 @@ public class AdminGroupeInterfaceController implements Initializable {
                     // get Selected Item
                 	Membre currentmembre = (Membre) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
                 	//remove selected item from the table list
-                	//lss.remove(currentmembre);
+                	lss.remove(currentmembre);
                         //bloquer membre
-                        GroupeMembre gm = new GroupeMembre(5,2,1,3,"bloqué");
+                        GroupeMembre gm = new GroupeMembre(id_groupe,2,1,3,"bloqué");
                         SGroupeMembre s_gm = new SGroupeMembre();
                         int id_gm = s_gm.chercher_groupe_membre(gm.getId(),currentmembre.getId());
                         s_gm.modifier_groupe_membre(gm);
@@ -113,7 +120,7 @@ public class AdminGroupeInterfaceController implements Initializable {
         TableColumn colId = new TableColumn("id");
         colId.setMinWidth(100);
         colId.setCellValueFactory(
-                new PropertyValueFactory<Membre, String>("usrId"));
+                new PropertyValueFactory<Membre, String>("id"));
         TableColumn colNom = new TableColumn("Nom");
         colNom.setMinWidth(100);
         colNom.setCellValueFactory(
@@ -122,7 +129,11 @@ public class AdminGroupeInterfaceController implements Initializable {
         colPrenom.setMinWidth(100);
         colPrenom.setCellValueFactory(
                 new PropertyValueFactory<Membre, String>("prenom"));
-        TableColumn colbloquer = new TableColumn("Supprimer");
+        TableColumn coletat = new TableColumn("Etat");
+        coletat.setMinWidth(100);
+        coletat.setCellValueFactory(
+                new PropertyValueFactory<Membre, String>("mail"));
+        TableColumn colbloquer = new TableColumn("Bloquer");
         colbloquer.setMinWidth(100);
         colbloquer.setCellValueFactory(
                 new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
@@ -149,18 +160,32 @@ public class AdminGroupeInterfaceController implements Initializable {
         list_gm = s_gm.chercher_groupe_membres_par_id(gr.getId());
         for(GroupeMembre gmi : list_gm)
         {
-            //------------------------------------------------------------------------------------
+            ServiceMembre s_mb = new ServiceMembre();
+            Membre Membre_usr = new Membre("","",gmi.getEtat(),"","","","",0,0,gmi.getId_membre(),0,"");
+            ResultSet lsss = s_mb.afficherUsr(Membre_usr);
+            try {
+                lsss.next();
+                String nom_membre = lsss.getString(2);
+                String prenom_membre = lsss.getString(3);
+                list_m.add(new Membre(lsss.getString(2),lsss.getString(3),gmi.getEtat(),
+                        lsss.getString(6),lsss.getString(7),lsss.getString(10),lsss.getString(9)
+                        ,lsss.getInt(8),lsss.getInt(4),lsss.getInt(1),lsss.getInt(11),lsss.getString(12)));
+            } catch (SQLException ex) {
+                Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         lss= FXCollections.observableArrayList(list_m);
         table_membres.setItems(lss);
-        table_membres.getColumns().addAll(colId, colNom, colPrenom, colbloquer);
+        table_membres.getColumns().addAll(colId, colNom, colPrenom,coletat, colbloquer);
         
     }    
 
     @FXML
     private void retour(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));        
-        root.getChildren().setAll(pane);    }
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));        
+        root.getChildren().setAll(pane);    
+    }
+    
     
 }
