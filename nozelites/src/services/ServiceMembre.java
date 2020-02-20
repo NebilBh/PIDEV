@@ -33,7 +33,7 @@ public class ServiceMembre {
             
             state = db.createStatement();
             
-            String qry ="insert into membre values("+5+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
+            String qry ="insert into membre values("+0+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
                     + "'"+user.getLogin()+"','"+user.getMdp()+"',"+user.getAge()+",'"+user.getFormation()+"',"
                     +"'"+user.getExp()+"',"+user.getType()+",'"+user.getImage()+"','"+LocalDate.now()+"')";
             state.executeUpdate(qry);
@@ -127,7 +127,7 @@ public class ServiceMembre {
             stmt.setString(9,newM.getFormation());
             stmt.setInt(10,newM.getType());
             stmt.setString(11,newM.getImage());
-            stmt.setInt(11,user.getId());
+            stmt.setInt(12,user.getId());
             stmt.executeUpdate();
             System.out.println("succes");
         } catch (SQLException ex) {
@@ -136,7 +136,7 @@ public class ServiceMembre {
     }
     public void confirmationMail(Membre user) throws Exception{
         
-        JavaMail.sendMail(user.getMail(),"Confirmation email"+user.getNom(),"Monsieur"+user.getNom()+" "+user.getPrenom()+" veuillez confirmer votre email \n");
+        JavaMail.sendMail(user.getMail(),"Confirmation email"+user.getMail(),"Monsieur"+user.getNom()+" "+user.getPrenom()+" Bienvenue \n");
                     
     }
     public void statistiqueMois(String mois){ //date jj-mm-aaaa

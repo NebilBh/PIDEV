@@ -88,25 +88,25 @@ public class ServiceChasseur {
         }
     }
     
-    public void afficherUsr(chasseurTalent usr){
+    public ResultSet afficherUsr(chasseurTalent usr){
         String qry ="Select * from chasseur_talent where idUsr = ?";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
             stmt.setInt(1,usr.getId());
             ResultSet usrList = stmt.executeQuery();
-            while(usrList.next()) {
-                System.out.println("User : [id : "+usrList.getInt(1));
-            }
+            return usrList;
         } catch (SQLException ex) {
             Logger.getLogger(ServiceChasseur.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return null;
     }
     
     public void modifier(chasseurTalent user,chasseurTalent newM ) {
         PreparedStatement stmt ;
         
-        String qry = "update chasseur_talent set nom = ?, prenom = ?,mail = ?, mdp = ?,login = ?,tel = ?,age = ?,entreprise = ? where idUsr = ?";
+        String qry = "update chasseur_talent set nom = ?, prenom = ?,mail = ?, mdp = ?,login = ?,tel = ?,age = ?,entreprise = ?,image = ? where idUsr = ?";
         try {
             stmt = db.prepareStatement(qry);
             stmt.setString(1, newM.getNom());

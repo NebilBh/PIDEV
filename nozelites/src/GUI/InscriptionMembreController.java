@@ -5,9 +5,13 @@
  */
 package GUI;
 import entities.Membre;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,9 +20,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.ServiceMembre;
 
@@ -53,12 +59,20 @@ public class InscriptionMembreController implements Initializable {
     private Button btnCreate;
     @FXML
     private TextField labelTel;
-
+    @FXML
+    private Button btnImport;
+    @FXML
+    private ImageView imgProfil;
+    
+    private String lienImg;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Image img = new Image("file:///C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/logo.jpg");
+        //imgProfil.setImage(img);
         // TODO
     }    
 
@@ -77,11 +91,11 @@ public class InscriptionMembreController implements Initializable {
     @FXML
     private void createCompte(MouseEvent event) throws IOException {
         Membre m = new Membre(labelNom.getText(), labelPrenom.getText(), labelMail.getText(), labelNdc.getText(), labelMdp.getText(),
-                labelExp.getText(), labelForm.getText(),Integer.parseInt(labelTel.getText()),Integer.parseInt(labelAge.getText()), 0, labelImg.getText());
+                labelExp.getText(), labelForm.getText(),Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()), 0, lienImg);
          ServiceMembre srvM = new ServiceMembre();
          
          srvM.ajouter(m);
-         
+       
         Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
         
         
@@ -90,6 +104,34 @@ public class InscriptionMembreController implements Initializable {
         Scene scene = new Scene(inscriptionM);
         fenetre.setScene(scene);
         fenetre.show();
+    }
+
+    @FXML
+    private void importer(MouseEvent event) {
+        
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(//
+               //
+              new FileChooser.ExtensionFilter("JPG", "*.jpg"), //
+              new FileChooser.ExtensionFilter("PNG", "*.png"));
+        
+        
+        String path = fileChooser.showOpenDialog(null).getAbsolutePath();
+        
+        path = path.replace('\\','/');
+        
+        System.out.println(path);
+        
+        Image img = new Image("file:///"+path);
+        
+        imgProfil.setImage(img);
+        
+        lienImg = path;
+        
+        
+        
+         
+        
     }
     
 }
