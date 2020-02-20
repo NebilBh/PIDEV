@@ -45,7 +45,8 @@ public class Nozelites extends Application {
     public void start(Stage stage) throws Exception {
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ChasseurTeteAcceuilInterface.fxml"));
+
 
 
 
@@ -53,7 +54,7 @@ public class Nozelites extends Application {
         
 
         Scene scene = new Scene(root);
-
+        scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

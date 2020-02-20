@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -8,12 +9,13 @@
 
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminGroupesInterfaceController">
    <children>
-      <TableView fx:id="table_groupes" layoutX="39.0" layoutY="83.0" prefHeight="362.0" prefWidth="658.0" />
+      <TableView fx:id="table_groupes" layoutX="39.0" layoutY="83.0" prefHeight="362.0" prefWidth="489.0" />
       <TextField fx:id="inpuitChercher" layoutX="39.0" layoutY="50.0" onAction="#chercher_groupe" promptText="Chercher" />
       <Label layoutX="323.0" layoutY="20.0" text="Groupes">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
+      <PieChart fx:id="pieChart" layoutX="540.0" layoutY="166.0" prefHeight="197.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

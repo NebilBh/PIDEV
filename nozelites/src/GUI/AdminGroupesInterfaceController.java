@@ -38,6 +38,7 @@ import services.SGroupe;
 import entities.GroupeMembreInvite;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.chart.PieChart;
 
 /**
  * FXML Controller class
@@ -54,9 +55,9 @@ public class AdminGroupesInterfaceController implements Initializable {
     ObservableList<entities.Groupe> lss;
     @FXML
     private AnchorPane root;
-    @FXML
-    private TableView<entities.GroupeMembreInvite> table_invitations;
     ObservableList<entities.GroupeMembreInvite> ls_invitations;//membre(nom,prenom) + groupe(titre,description)
+    @FXML
+    private PieChart pieChart;
 
     
     private class ButtonCell extends TableCell<Record, Boolean> {
@@ -142,20 +143,33 @@ public class AdminGroupesInterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        List<entities.Groupe> list_g = new ArrayList<>();
         
-        SGroupeMembre sgm = new SGroupeMembre();
-        List<entities.GroupeMembre> list = sgm.afficher_groupes_membres();
+        
+        
+        // TODO
+        List<Groupe> list_g = new ArrayList<>();
         SGroupe sg = new SGroupe();
-        for(entities.GroupeMembre gm : list)
+        //stat
+        List<Groupe> groupes = sg.afficher_groupes();
+        int groupe_fermes = 0;
+        int groupe_ouverts = 0;
+        for(Groupe gi : groupes)
+            if(gi.getAutorisation()==0)groupe_fermes++;
+            else groupe_ouverts++;
+        
+        
+        ObservableList<PieChart.Data> pie = FXCollections.observableArrayList(
+                new PieChart.Data("Ouverts",groupe_ouverts),
+                new PieChart.Data("Fermés",groupe_fermes)
+        );
+        pieChart.setData(pie);
+        //fin stat
+        
+        List<entities.Groupe> lsg = sg.afficher_groupes();
+        for(entities.Groupe g : lsg)
         {
-            List<entities.Groupe> lsg = sg.chercher_groupe_par_id(gm.getId_groupe());
-            for(entities.Groupe g : lsg)
-            {
-                System.out.println("ccc"+g);
-                list_g.add(g);
-            }
+            System.out.println("ccc"+g);
+            list_g.add(g);
         }
         //table colonnes
         TableColumn colVoir = new TableColumn("Voir");
@@ -278,15 +292,24 @@ public class AdminGroupesInterfaceController implements Initializable {
         
         
         
-        
-        
-        
  
     }    
 
     @FXML
     private void chercher_groupe(ActionEvent event) {
+        List<Groupe> list_g = new ArrayList<>();
+        SGroupe sg = new SGroupe();
+        List<entities.Groupe> lsg = sg.afficher_groupes();
+        for(entities.Groupe g : lsg)
+        {
+            if(inpuitChercher.getText().equals(g.getTitre())||
+                            inpuitChercher.getText().equals(""))
+            list_g.add(g);
+        }
         
+        lss.removeAll();
+        lss= FXCollections.observableArrayList(list_g);
+        table_groupes.setItems( lss);
     }
     
 }

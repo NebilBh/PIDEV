@@ -29,16 +29,16 @@ public class SGroupe {
     
     Connection c = ConnexionDB.getInstance().getCnx();
     
-    public TreeSet<Groupe> afficher_groupes()
+    public List<Groupe> afficher_groupes()
     {
-        TreeSet<Groupe> list = new TreeSet<Groupe>();
+        List<Groupe> list = new ArrayList<>();
         try {
             PreparedStatement pt = c.prepareStatement("select * from Groupe");
             ResultSet rs = pt.executeQuery();
             while(rs.next())
             {
                 System.out.println("Groupe : [ id_groupe "+rs.getInt(1)+" titre : "+rs.getString(2)+" description : "+rs.getString(3)+" autorisation : "+rs.getInt(4)+" ]");
-                //list.add(new Groupe(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4)));
+                list.add(new Groupe(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SGroupe.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,9 +46,9 @@ public class SGroupe {
         return list;
     }
     
-    public TreeSet<Groupe> afficher_groupes_trier_par_id()
+    public List<Groupe> afficher_groupes_trier_par_id()
     {
-        TreeSet<Groupe> list = new TreeSet<>((e1,e2)->e1.getId()-e2.getId());
+        List<Groupe> list = new ArrayList<>();
         try {
             PreparedStatement pt = c.prepareStatement("select * from Groupe");
             ResultSet rs = pt.executeQuery();

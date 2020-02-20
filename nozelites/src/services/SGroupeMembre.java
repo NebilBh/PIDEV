@@ -28,7 +28,7 @@ public class SGroupeMembre {
     
     public List<GroupeMembre> afficher_groupes_membres()
     {
-        List<GroupeMembre> list = new ArrayList<GroupeMembre>();
+        List<GroupeMembre> list = new ArrayList<>();
         try {
             PreparedStatement pt = c.prepareStatement("select * from Groupe_Membre");
             ResultSet rs = pt.executeQuery();
