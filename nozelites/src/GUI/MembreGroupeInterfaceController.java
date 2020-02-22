@@ -5,46 +5,40 @@
  */
 package GUI;
 
-import static GUI.MembreGroupeInterfaceController.gr;
-import javafx.util.Callback;
 import com.sun.prism.impl.Disposer;
 import com.sun.prism.impl.Disposer.Record;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import entities.Groupe;
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
-import services.SGroupe;
-import services.SGroupeMembre;
 import entities.GroupeMembre;
-import entities.Membre;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ResourceBundle;
+import java.util.TreeSet;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
-import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
+import services.SGroupe;
+import services.SGroupeMembre;
+import entities.Membre;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import services.ServiceMembre;
 
 /**
@@ -52,31 +46,29 @@ import services.ServiceMembre;
  *
  * @author nadhir
  */
-public class MembreGroupeAjouterInterfaceController implements Initializable {
+public class MembreGroupeInterfaceController implements Initializable {
 
     @FXML
-    private TextField titre;
+    private Label titre;
     @FXML
-    private TextField description;
+    private Label description;
     @FXML
-    private RadioButton groupe_public;
-    @FXML
-    private RadioButton groupe_ferme;
-    @FXML
-    private Button btn_ajouter;
-    @FXML
-    private Button btn_retour;
+    private Label etat;
+    
+    public static Groupe gr ;
+    public static int id_groupe = 1;
     @FXML
     private AnchorPane root;
-    private int id_membre = 1;
+    
+    
     ObservableList<Membre> lss;
-    List<Integer> membres_invite = new ArrayList<>();
     @FXML
     private TableView<Membre> table_membres;
-    
+    @FXML
+    private TableView<entities.Publication_entities> tables_publications;
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
-        final Button cellButton = new Button("Inviter");
+        final Button cellButton = new Button("Bloquer");
         
         ButtonCell()
         {
@@ -88,13 +80,12 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
                     // get Selected Item
                 	Membre currentmembre = (Membre) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
                 	//remove selected item from the table list
-                	//lss.remove(currentmembre);
-                        cellButton.setVisible(false);
-                        membres_invite.add(currentmembre.getId());
+                	lss.remove(currentmembre);
                         //bloquer membre
-                        /*for(Membre m : lss)
-                            System.out.println(m.getId());*/
-                        
+                        GroupeMembre gm = new GroupeMembre(id_groupe,2,1,3,"bloqué");
+                        SGroupeMembre s_gm = new SGroupeMembre();
+                        int id_gm = s_gm.chercher_groupe_membre(gm.getId(),currentmembre.getId());
+                        s_gm.modifier_groupe_membre(gm);
                         //srv.supprimerOffre(currentOffre);
                 }
             });
@@ -113,7 +104,6 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
             }
         }
     }
-    
 
     /**
      * Initializes the controller class.
@@ -121,12 +111,11 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        final ToggleGroup group = new ToggleGroup();
-
-        groupe_public.setToggleGroup(group);
-        groupe_public.setSelected(true);
-
-        groupe_ferme.setToggleGroup(group);
+        titre.setText("Titre : "+gr.getTitre());
+        description.setText("Description : "+gr.getDescription());
+        etat.setText("Etat : Publique");
+        if(gr.getAutorisation()==0)etat.setText("Etat : Privé");
+        
         
         TableColumn colId = new TableColumn("id");
         colId.setMinWidth(100);
@@ -140,7 +129,11 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
         colPrenom.setMinWidth(100);
         colPrenom.setCellValueFactory(
                 new PropertyValueFactory<Membre, String>("prenom"));
-        TableColumn colbloquer = new TableColumn("Inviter");
+        TableColumn coletat = new TableColumn("Etat");
+        coletat.setMinWidth(100);
+        coletat.setCellValueFactory(
+                new PropertyValueFactory<Membre, String>("mail"));
+        TableColumn colbloquer = new TableColumn("Bloquer");
         colbloquer.setMinWidth(100);
         colbloquer.setCellValueFactory(
                 new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
@@ -162,63 +155,37 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
         });
         
         List<entities.Membre> list_m = new ArrayList<>();
-        
+        SGroupeMembre s_gm = new SGroupeMembre();
+        List<entities.GroupeMembre> list_gm = new ArrayList<>();
+        list_gm = s_gm.chercher_groupe_membres_par_id(gr.getId());
+        for(GroupeMembre gmi : list_gm)
+        {
             ServiceMembre s_mb = new ServiceMembre();
-            ResultSet lsss = s_mb.afficher();
-            
+            Membre Membre_usr = new Membre("","",gmi.getEtat(),"","","","",0,0,gmi.getId_membre(),0,"");
+            ResultSet lsss = s_mb.afficherUsr(Membre_usr);
             try {
-                while(lsss.next())
-                {System.out.println("cc");
-                    if(lsss.getInt(1)!=id_membre)
-                        list_m.add(new Membre(lsss.getString(2),lsss.getString(3),lsss.getString(5),
+                lsss.next();
+                String nom_membre = lsss.getString(2);
+                String prenom_membre = lsss.getString(3);
+                list_m.add(new Membre(lsss.getString(2),lsss.getString(3),gmi.getEtat(),
                         lsss.getString(6),lsss.getString(7),lsss.getString(10),lsss.getString(9)
                         ,lsss.getInt(8),lsss.getInt(4),lsss.getInt(1),lsss.getInt(11),lsss.getString(12)));
-                }
             } catch (SQLException ex) {
                 Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+        }
         
         lss= FXCollections.observableArrayList(list_m);
         table_membres.setItems(lss);
-        table_membres.getColumns().addAll(colId, colNom, colPrenom, colbloquer);
+        table_membres.getColumns().addAll(colId, colNom, colPrenom,coletat, colbloquer);
+        
     }    
 
     @FXML
-    private void ajouter_groupe(ActionEvent event) throws IOException {
-        int etat = 0;
-        if(groupe_public.isSelected())etat=1;
-        Groupe g = new Groupe(1,titre.getText(),description.getText(),etat);
-        SGroupe sg = new SGroupe();
-        sg.ajouter_groupe(g);
-        
-        GroupeMembre gm1 = new GroupeMembre(5,sg.get_last_id(),id_membre,-1,"administrateur");
-        SGroupeMembre s_gm = new SGroupeMembre();
-        System.out.println("ddd"+sg.get_last_id());
-        s_gm.ajouter_groupe_membre(gm1);
-        
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);
-        
-        SGroupe s_g = new SGroupe();
-        for(int i : membres_invite)
-        {
-            GroupeMembre gm = new GroupeMembre(1,/*id_groupe*/s_g.get_last_id(),i,id_membre,"invitation");
-            s_gm.ajouter_groupe_membre(gm);
-        }
-        Notifications notification = Notifications.create()
-                .title("groupe ajouté")
-                .text("avec succé")
-                .graphic(null)
-                .hideAfter(Duration.seconds(10))
-                .position(Pos.TOP_LEFT);
-        notification.showConfirm();
+    private void retour(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));        
+        root.getChildren().setAll(pane);    
     }
-
-    @FXML
-    private void retour_groupe(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);
-    }
+    
     
 }

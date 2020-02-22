@@ -10,22 +10,26 @@ import com.lynden.gmapsfx.javascript.object.MapOptions;
 //import com.lynden.gmapsfx.javascript.object.MapType;
 import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
 
 public class APIGoogleMapsController implements Initializable, MapComponentInitializedListener {
     
-    @FXML
-    private Button button;
     
     @FXML
     private GoogleMapView mapView;
     
     private GoogleMap map;
+    @FXML
+    private AnchorPane root;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,4 +96,10 @@ public class APIGoogleMapsController implements Initializable, MapComponentIniti
         InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
         fredWilkeInfoWindow.open(map, fredWilkieMarker);
     }   
+
+    @FXML
+    private void retour(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
 }

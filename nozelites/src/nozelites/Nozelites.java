@@ -27,7 +27,11 @@ import services.ServicePortfolio;
 import services.ServicesMessage;
 
 import services.ServicesOffre;
+
+import utils.Session;
+
 import services.ServicesReclamation;
+
 
 /**
  *
@@ -40,9 +44,17 @@ public class Nozelites extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("GUI/InterfaceMembreInboxRecus.fxml"));
+
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ChasseurTeteAcceuilInterface.fxml"));
+
+
+
+
         
-        Scene scene = new Scene(root,p.getFenetre_largeur(),p.getFenetre_hauteur());
+        
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -53,6 +65,17 @@ public class Nozelites extends Application {
     public static void main(String[] args) {
         launch(args);
 
+        
+
+        Session s = new Session();
+        
+        System.out.println("id Session main"+s.getIdSession());
+        
+        //ServicesOffre srv = new ServicesOffre();
+        
+        //srv.afficherTopDomaine("Audiovisuel, Cinéma");
+        //srv.afficherTopMois("-02-");
+        
         
 
     }
