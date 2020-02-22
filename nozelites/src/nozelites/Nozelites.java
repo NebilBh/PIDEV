@@ -46,13 +46,6 @@ public class Nozelites extends Application {
 
 
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ChasseurTeteAcceuilInterface.fxml"));
-
-
-
-
-        
-        
-
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());
         stage.setScene(scene);
@@ -70,11 +63,6 @@ public class Nozelites extends Application {
         Session s = new Session();
         
         System.out.println("id Session main"+s.getIdSession());
-        
-        //ServicesOffre srv = new ServicesOffre();
-        
-        //srv.afficherTopDomaine("Audiovisuel, Cinéma");
-        //srv.afficherTopMois("-02-");
         
         
 
