@@ -47,43 +47,43 @@ public class InterfaceMembreInboxController implements Initializable {
 
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
     @FXML
     private void profil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
     @FXML
     private void portfolio(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
     @FXML
     private void groupes(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
     @FXML
     private void inbox(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
     @FXML
     private void deconnexion(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
