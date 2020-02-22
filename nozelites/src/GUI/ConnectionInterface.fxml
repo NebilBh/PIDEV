@@ -53,6 +53,7 @@
             <Image url="@images/logo.jpg" />
          </image>
       </ImageView>
+      <HBox fx:id="listLabel" layoutX="37.0" layoutY="431.0" prefHeight="47.0" prefWidth="378.0" spacing="5.0" />
    </children>
 
 </AnchorPane>
