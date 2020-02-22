@@ -20,12 +20,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import services.ServicesMessage;
 
@@ -35,6 +39,55 @@ import services.ServicesMessage;
  * @author Wael Berrachid
  */
 public class InterfaceMembreInboxController implements Initializable {
+
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorMessageEnvoyes.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorMessageEnvoyes.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorMessageEnvoyes.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorMessageEnvoyes.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorMessageEnvoyes.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorMessageEnvoyes.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorMessageEnvoyes.getChildren().setAll(pane);
+    }
+
+    
     
     private class ButtonCell extends TableCell<Record, Boolean> {
         final Button cellButton = new Button("Vraiment ?");
