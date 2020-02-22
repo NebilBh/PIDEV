@@ -6,6 +6,7 @@
 package GUI;
 
 import entities.Diplome;
+import entities.Formation;
 import entities.Membre;
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +21,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
@@ -30,9 +33,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import services.ServiceDiplome;
+import services.ServiceFormation;
 import services.ServiceMembre;
 import utils.Session;
 
@@ -48,14 +53,11 @@ public class MembreProfilInterfaceController implements Initializable {
     private Label labelDip1;
     private Label labelDip2;
     private Label labelDip3;
-    @FXML
     private Label labelForm;
     @FXML
     private Label labelMail;
     @FXML
     private Label labelExp;
-    @FXML
-    private Button btnOffre;
     @FXML
     private Circle circle;
     @FXML
@@ -80,6 +82,12 @@ public class MembreProfilInterfaceController implements Initializable {
     private TableColumn<Diplome, Diplome> col_supp;
     @FXML
     private TableColumn<Diplome, String> col_id;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
+    private HBox listFormation;
     
 
     /**
@@ -93,11 +101,13 @@ public class MembreProfilInterfaceController implements Initializable {
         Session s = new Session();
         System.out.println("id Session : "+s.getIdSession());
         Membre m = new Membre();
+        Formation f = new Formation();
         ServiceMembre srvm = new ServiceMembre();
         ServiceDiplome srvD = new ServiceDiplome();
+        ServiceFormation srvF = new ServiceFormation();
         
-                    col_id.setVisible(false);
-       
+        col_id.setVisible(false);
+       // ----affichage des diplomes ----
         try {
             ResultSet listD = srvD.afficherDiplomeUser(s.getIdSession());
             while(listD.next()){
@@ -107,6 +117,7 @@ public class MembreProfilInterfaceController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         col_id.setCellValueFactory(new PropertyValueFactory<>("id_diplome"));
         col_domaine.setCellValueFactory(new PropertyValueFactory<>("domaine"));
         col_org.setCellValueFactory(new PropertyValueFactory<>("organisation"));
@@ -131,16 +142,12 @@ public class MembreProfilInterfaceController implements Initializable {
                         });
             }
         });
-        
-        
-        
-        
         tableDip.setItems(null);
         tableDip.setItems(data);
-            
+         
+        // ---affichage information User----
         try {
             m.setId(s.getIdSession());
-            
             ResultSet res = srvm.afficherUsr(m);
             res.next();
             path = res.getString(12);
@@ -148,7 +155,6 @@ public class MembreProfilInterfaceController implements Initializable {
             m.setPrenom(res.getString("prenom"));
             m.setTel(res.getInt("tel"));
             m.setAge(res.getInt("age"));
-            m.setFormation(res.getString("Formation"));
             m.setExp(res.getString("Experience"));
             m.setMail(res.getString("mail"));
         } catch (SQLException ex) {
@@ -156,14 +162,38 @@ public class MembreProfilInterfaceController implements Initializable {
         }
         labelProfil.setText(m.getNom()+" "+m.getPrenom()+" "+m.getAge()+" ans");
         labelMail.setText(m.getMail());
-        labelForm.setText(m.getFormation());
         labelExp.setText(m.getExp());
         labelTel.setText(Integer.toString(m.getTel()));
+        //--- affichage photo de profil -----
         System.out.println(path);
         Image img = new Image("file:///"+path);
         //imgProfil.setImage(img);
         ImagePattern pattern = new ImagePattern(img);
         circle.setFill(pattern);
+        // ----afficahge des formations
+        
+        ResultSet rs;
+        try {
+            listFormation.setSpacing(5);
+            rs = srvF.afficherFormationUser(s.getIdSession());
+            
+            while (rs.next()) {
+                Label formation = new Label(rs.getString("titre"));
+                formation.setPadding(new Insets(0,5,0,5));
+                formation.setAlignment(Pos.CENTER);
+                formation.setStyle("-fx-background-color : #e1ecf4 ;"
+                        + "-fx-text-fill: #3973ab; -fx-border-radius : 5px");
+
+                listFormation.getChildren().addAll(formation); 
+           
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
         
     }    
 
@@ -190,6 +220,34 @@ public class MembreProfilInterfaceController implements Initializable {
     private void modifier(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ModifierMembreInterface.fxml"));
         profilMembre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) {
+    }
+
+    @FXML
+    private void profil(MouseEvent event) {
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) {
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) {
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) {
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) {
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) {
     }
     
 }

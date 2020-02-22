@@ -5,15 +5,84 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="profilMembre" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembreProfilInterfaceController">
    <children>
-       <HBox layoutY="-2.0" prefHeight="70.0" prefWidth="740.0" style="-fx-background-color: white;" />
+       <HBox fx:id="btn_deconnection" alignment="CENTER_LEFT" layoutY="4.0" prefHeight="60.0" prefWidth="740.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+            <Label alignment="CENTER" onMouseClicked="#acceuil" prefHeight="60.0" prefWidth="86.0" text="Acceuil" textAlignment="CENTER" textFill="#c41011">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#profil" prefHeight="60.0" prefWidth="68.0" text="Profil" textFill="#c41011">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" minWidth="90.0" onMouseClicked="#portfolio" prefHeight="60.0" prefWidth="90.0" text="Portfolio" textFill="#c41011">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" onMouseClicked="#groupes" prefHeight="60.0" prefWidth="86.0" text="Groupes" textFill="#c41011">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" onMouseClicked="#evenements" prefHeight="60.0" prefWidth="91.0" text="Evenements" textFill="#c41011">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" onMouseClicked="#inbox" prefHeight="60.0" prefWidth="73.0" text="Inbox" textFill="#c41011">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <ImageView fx:id="notifications" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            <Button mnemonicParsing="false" onMouseClicked="#deconnexion" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #c41011;" text="Deconnexion" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+       
       <HBox layoutX="52.0" layoutY="91.0" prefHeight="70.0" prefWidth="542.0">
          <children>
             <Circle fx:id="circle" fill="#1f93ff00" radius="57.0" stroke="TRANSPARENT" strokeType="INSIDE" />
@@ -29,53 +98,16 @@
       </HBox>
       <Pane layoutY="247.0" prefHeight="254.0" prefWidth="740.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <Label layoutX="67.0" layoutY="39.0" prefHeight="42.0" prefWidth="154.0" text="Formation" textFill="#c41011">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
             <Label layoutX="320.0" layoutY="14.0" prefHeight="26.0" prefWidth="114.0" text="Diplomes" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="labelForm" layoutX="208.0" layoutY="47.0" prefHeight="26.0" prefWidth="114.0" text="Label">
+            <Button fx:id="btnAjouter" alignment="CENTER" contentDisplay="CENTER" layoutX="383.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#ajoutDiplome" prefHeight="29.0" prefWidth="30.0" style="-fx-background-color: #c41011;" text="+" textFill="WHITE">
                <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label layoutX="67.0" layoutY="95.0" text="Email " textFill="#c41011">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="labelMail" layoutX="208.0" layoutY="95.0" prefHeight="26.0" prefWidth="193.0" text="Label">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label layoutX="66.0" layoutY="141.0" prefHeight="26.0" prefWidth="88.0" text="Experience" textFill="#c41011">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="labelExp" layoutX="204.0" layoutY="141.0" prefHeight="26.0" prefWidth="173.0" text="Label">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnAjouter" layoutX="350.0" layoutY="178.0" mnemonicParsing="false" onMouseClicked="#ajoutDiplome" prefHeight="6.0" prefWidth="69.0" text="ajouter" />
-            <Label layoutX="67.0" layoutY="183.0" prefHeight="42.0" prefWidth="154.0" text="Téléphone" textFill="#c41011">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="labelTel" layoutX="204.0" layoutY="191.0" prefHeight="26.0" prefWidth="126.0" text="Label">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <TableView fx:id="tableDip" layoutX="427.0" layoutY="21.0" prefHeight="200.0" prefWidth="304.0">
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <TableView fx:id="tableDip" layoutX="422.0" layoutY="15.0" prefHeight="200.0" prefWidth="304.0">
               <columns>
                 <TableColumn fx:id="col_domaine" prefWidth="88.7999267578125" text="domaine" />
                 <TableColumn fx:id="col_org" prefWidth="98.39996337890625" text="Organisation" />
@@ -83,9 +115,67 @@
                   <TableColumn fx:id="col_id" prefWidth="57.60009765625" text="Column X" />
               </columns>
             </TableView>
+            <HBox fx:id="listFormation" layoutX="35.0" layoutY="201.0" prefHeight="29.0" prefWidth="377.0" />
+            <VBox layoutX="38.0" layoutY="32.0" prefHeight="135.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="120.0" text="Email " textFill="#c41011">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="139.0" text="Experience" textFill="#c41011">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="125.0" text="Téléphone" textFill="#c41011">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="106.0" text="Formations : " textFill="#c41011">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="174.0" layoutY="16.0" prefHeight="136.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <Label fx:id="labelMail" prefHeight="25.0" prefWidth="193.0" text="Label">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelExp" prefHeight="25.0" prefWidth="173.0" text="Label">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelTel" prefHeight="33.0" prefWidth="100.0" text="Label">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
          </children></Pane>
-      <Button fx:id="btnOffre" layoutX="562.0" layoutY="185.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="164.0" text="Envoyer une Offre" />
-      <Button fx:id="btnModifier" layoutX="26.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="26.0" prefWidth="88.0" text="Modifier" />
-      <Button fx:id="btnSupp" layoutX="576.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#suppCompte" text="Supprimer Compte" />
+      <Button fx:id="btnModifier" layoutX="26.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #c41011;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btnSupp" layoutX="594.0" layoutY="91.0" mnemonicParsing="false" onMouseClicked="#suppCompte" style="-fx-background-color: #c41011;" text="Desactiver Compte" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>
