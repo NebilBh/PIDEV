@@ -241,7 +241,8 @@ CREATE TABLE `message` (
   `objet` varchar(255) NOT NULL,
   `texte` varchar(255) NOT NULL,
   `id_destinataire` int(11) NOT NULL,
-  `id_emeteur` int(11) NOT NULL
+  `id_emeteur` int(11) NOT NULL,
+  `date` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -260,7 +261,9 @@ CREATE TABLE `offre` (
   `Poste` varchar(100) NOT NULL,
   `Requis` varchar(250) NOT NULL,
   `Description` varchar(250) NOT NULL,
-  `Date` date NOT NULL
+  `Date` varchar(30) NOT NULL,
+  `Etat` varchar(30) NOT NULL
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -546,6 +549,20 @@ ALTER TABLE `formation`
 ALTER TABLE `groupe_membre`
   ADD CONSTRAINT `FK_idG` FOREIGN KEY (`id_groupe`) REFERENCES `groupe` (`id_groupe`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_idM` FOREIGN KEY (`id_membre`) REFERENCES `membre` (`idUsr`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `fk_destinataire` FOREIGN KEY (`id_destinataire`) REFERENCES `membre` (`idUsr`),
+  ADD CONSTRAINT `fk_emetteur` FOREIGN KEY (`id_emeteur`) REFERENCES `membre` (`idUsr`);
+
+--
+-- Contraintes pour la table `offre`
+--
+ALTER TABLE `offre`
+  ADD CONSTRAINT `FK_idEmetteur` FOREIGN KEY (`IdEmetteur`) REFERENCES `chasseur_talent` (`idUsr`),
+  ADD CONSTRAINT `Fk_idRecepteur` FOREIGN KEY (`IdRecepteur`) REFERENCES `membre` (`idUsr`);
 
 --
 -- Contraintes pour la table `listediplome`
