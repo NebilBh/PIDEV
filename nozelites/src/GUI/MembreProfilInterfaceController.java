@@ -88,6 +88,8 @@ public class MembreProfilInterfaceController implements Initializable {
     private ImageView notifications;
     @FXML
     private HBox listFormation;
+    @FXML
+    private Label labellogin;
     
 
     /**
@@ -151,6 +153,7 @@ public class MembreProfilInterfaceController implements Initializable {
             ResultSet res = srvm.afficherUsr(m);
             res.next();
             path = res.getString(12);
+            m.setLogin(res.getString("login"));
             m.setNom(res.getString("nom"));
             m.setPrenom(res.getString("prenom"));
             m.setTel(res.getInt("tel"));
@@ -160,6 +163,7 @@ public class MembreProfilInterfaceController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        labellogin.setText("#"+m.getLogin());
         labelProfil.setText(m.getNom()+" "+m.getPrenom()+" "+m.getAge()+" ans");
         labelMail.setText(m.getMail());
         labelExp.setText(m.getExp());
@@ -170,7 +174,7 @@ public class MembreProfilInterfaceController implements Initializable {
         //imgProfil.setImage(img);
         ImagePattern pattern = new ImagePattern(img);
         circle.setFill(pattern);
-        // ----afficahge des formations
+        // ----affichage des formations
         
         ResultSet rs;
         try {
