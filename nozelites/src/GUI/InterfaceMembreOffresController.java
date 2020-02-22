@@ -53,7 +53,7 @@ public class InterfaceMembreOffresController implements Initializable {
                         srv.accepterOffre(currentOffre);
                         
                         tabOffres.getItems().clear();
-                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(4)); //Id du membre connecté
+                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(5)); //Id du membre connecté
                         tabOffres.getItems().addAll(olist);
                 }
             });
@@ -88,7 +88,7 @@ public class InterfaceMembreOffresController implements Initializable {
                         srv.refuserOffre(currentOffre);
                         
                         tabOffres.getItems().clear();
-                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(4)); //Id du membre connecté
+                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(5)); //Id du membre connecté
                         tabOffres.getItems().addAll(olist);
                 }
             });
@@ -124,7 +124,7 @@ public class InterfaceMembreOffresController implements Initializable {
     private TextField chercherOffre;
     
     ServicesOffre srv = new ServicesOffre();
-    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(4)); //Id du membre connecté
+    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(5)); //Id du membre connecté
     
 
     /**
@@ -133,6 +133,22 @@ public class InterfaceMembreOffresController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        chercherOffre.textProperty().addListener((observable, oldValue, newValue) -> {
+        //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+        olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(5)); //Id du chasseur connecté
+        ObservableList<OffreForGUI> olistRech = FXCollections.observableArrayList();
+        olistRech.clear();
+
+        for (int i=0;i<olist.size();i++){
+            if(olist.get(i).getType().contains(newValue) || olist.get(i).getEntreprise().contains(newValue) || olist.get(i).getDomaine().contains(newValue) || olist.get(i).getPoste().contains(newValue) || olist.get(i).getRequis().contains(newValue) || olist.get(i).getDescription().contains(newValue) || olist.get(i).getDate().contains(newValue) || olist.get(i).getEtat().contains(newValue) || olist.get(i).getNom().contains(newValue) || olist.get(i).getPrenom().contains(newValue))
+            {
+                olistRech.add(olist.get(i));
+            }
+        }
+  
+        tabOffres.setItems(olistRech);
+        }); 
+        
         TableColumn<OffreForGUI, String> idCol //
               = new TableColumn<OffreForGUI, String>("Id");
         
@@ -209,7 +225,7 @@ public class InterfaceMembreOffresController implements Initializable {
             }
         });
         
-        idCol.setMinWidth(50);
+        idCol.setVisible(false);
         typeCol.setMinWidth(100);
         entrepriseCol.setMinWidth(100);
         domaineCol.setMinWidth(100);

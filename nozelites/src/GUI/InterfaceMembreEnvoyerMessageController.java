@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import entities.Message;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import services.ServicesMessage;
+import services.ServicesOffre;
 
 /**
  * FXML Controller class
@@ -43,12 +46,15 @@ public class InterfaceMembreEnvoyerMessageController implements Initializable {
     @FXML
     private Button submitMessage;
 
+    ServicesOffre srvO = new ServicesOffre();
+    ServicesMessage srv = new ServicesMessage();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //emailField.setText(emailDuMembreSelectionné);
     }    
 
     @FXML
@@ -77,6 +83,18 @@ public class InterfaceMembreEnvoyerMessageController implements Initializable {
 
     @FXML
     private void submitLeMessage(ActionEvent event) {
+        
+        int idEmetteur = 5; //Id du membre connecté
+        int idRecepteur = srvO.getIdMembre(emailField.getText());
+        String objet = objetField.getText();
+        String description = messageField.getText();
+        
+        Message m = new Message(objet, description, idEmetteur, idRecepteur);
+        srv.envoyerMessage(m);
+        
+        emailField.setText("");
+        objetField.setText("");
+        messageField.setText("");
     }
     
 }
