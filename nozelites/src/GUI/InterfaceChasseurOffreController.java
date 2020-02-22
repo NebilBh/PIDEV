@@ -11,6 +11,7 @@ import entities.OffreForGUI;
 import java.awt.Insets;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
@@ -101,6 +102,22 @@ public class InterfaceChasseurOffreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        rechercherOffre.textProperty().addListener((observable, oldValue, newValue) -> {
+        //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+        olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(3)); //Id du chasseur connecté
+        ObservableList<OffreForGUI> olistRech = FXCollections.observableArrayList();
+        olistRech.clear();
+
+        for (int i=0;i<olist.size();i++){
+            if(olist.get(i).getType().contains(newValue) || olist.get(i).getEntreprise().contains(newValue) || olist.get(i).getDomaine().contains(newValue) || olist.get(i).getPoste().contains(newValue) || olist.get(i).getRequis().contains(newValue) || olist.get(i).getDescription().contains(newValue) || olist.get(i).getDate().contains(newValue) || olist.get(i).getEtat().contains(newValue) || olist.get(i).getNom().contains(newValue) || olist.get(i).getPrenom().contains(newValue))
+            {
+                olistRech.add(olist.get(i));
+            }
+        }
+  
+        tabOffres.setItems(olistRech);
+        });
+        
         tabOffres.setEditable(true);
         
         TableColumn<OffreForGUI, String> idCol //
@@ -165,7 +182,7 @@ public class InterfaceChasseurOffreController implements Initializable {
             }
         });
         
-        idCol.setMinWidth(50);
+        idCol.setVisible(false);
         typeCol.setMinWidth(100);
         entrepriseCol.setMinWidth(100);
         domaineCol.setMinWidth(100);

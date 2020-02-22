@@ -94,6 +94,22 @@ public class InterfaceMembreInboxController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        rechercherMessage.textProperty().addListener((observable, oldValue, newValue) -> {
+        //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+        olist = FXCollections.observableArrayList(srv.afficherLesMessagesEnvoyes(5)); //Id du membre connecté
+        ObservableList<MessageForGUI> olistRech = FXCollections.observableArrayList();
+        olistRech.clear();
+
+        for (int i=0;i<olist.size();i++){
+            if(olist.get(i).getObjet().contains(newValue) || olist.get(i).getTexte().contains(newValue) || olist.get(i).getNom().contains(newValue) || olist.get(i).getPrenom().contains(newValue) || olist.get(i).getDate().contains(newValue))
+            {
+                olistRech.add(olist.get(i));
+            }
+        }
+                
+        tabMessages.setItems(olistRech);
+        });
+                
         TableColumn<MessageForGUI, String> idCol //
               = new TableColumn<MessageForGUI, String>("Id");
         
@@ -135,14 +151,15 @@ public class InterfaceMembreInboxController implements Initializable {
             }
         });
         
-        idCol.setMinWidth(50);
-        objetCol.setMinWidth(50);
+        idCol.setVisible(false);
+        objetCol.setMinWidth(100);
         texteCol.setMinWidth(200);
         nomCol.setMinWidth(100);
         prenomCol.setMinWidth(100);
         actionCol.setMinWidth(150);
+        dateCol.setMinWidth(100);
         
-        tabMessages.getColumns().addAll(idCol,objetCol,texteCol,aCol,actionCol);
+        tabMessages.getColumns().addAll(idCol,objetCol,texteCol,aCol,dateCol,actionCol);
         
         tabMessages.setItems(olist);
         

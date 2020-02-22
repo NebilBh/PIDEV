@@ -2,20 +2,33 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="anchorOffre" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InterfaceChasseurOffreController">
    <children>
-      <Label layoutX="245.0" layoutY="75.0" prefHeight="51.0" prefWidth="251.0" text="Offres Envoyées">
+      <Label layoutX="239.0" layoutY="14.0" prefHeight="36.0" prefWidth="207.0" text="Offres Envoyées" textFill="#c41011">
          <font>
-            <Font size="35.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TableView fx:id="tabOffres" layoutX="86.0" layoutY="174.0" prefHeight="200.0" prefWidth="569.0" />
-      <TextField fx:id="rechercherOffre" layoutX="86.0" layoutY="139.0" prefHeight="17.0" prefWidth="149.0" promptText="Chercher.." />
-      <Button fx:id="envoyerOffre" layoutX="529.0" layoutY="385.0" mnemonicParsing="false" onAction="#envoyerUneOffre" prefHeight="31.0" prefWidth="126.0" text="Envoyer une offre" />
+      <TableView fx:id="tabOffres" layoutX="239.0" layoutY="143.0" prefHeight="202.0" prefWidth="462.0" />
+      <TextField fx:id="rechercherOffre" layoutX="239.0" layoutY="112.0" prefHeight="25.0" prefWidth="149.0" promptText="Chercher.." />
+      <Button fx:id="envoyerOffre" layoutX="575.0" layoutY="355.0" mnemonicParsing="false" onAction="#envoyerUneOffre" prefHeight="31.0" prefWidth="126.0" text="Envoyer une offre" />
+      <Pane layoutY="1.0" prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #c41011;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Separator layoutX="239.0" layoutY="55.0" prefHeight="9.0" prefWidth="462.0" />
    </children>
 </AnchorPane>
