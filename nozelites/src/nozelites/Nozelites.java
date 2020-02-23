@@ -5,6 +5,7 @@
  */
 package nozelites;
 
+import GUI.ParametresParDefaut;
 import entities.Membre;
 import entities.Message;
 import entities.Offre;
@@ -26,25 +27,46 @@ import services.ServicePortfolio;
 import services.ServicesMessage;
 
 import services.ServicesOffre;
+
+import utils.Session;
+
 import services.ServicesReclamation;
+
 import utils.JavaMail;
 import doryan.windowsnotificationapi.fr.Notification;
+
+
+
 /**
  *
  * @author Nebil
  */
 public class Nozelites extends Application {
     
+    ParametresParDefaut p = new ParametresParDefaut();
+    
     @Override
     public void start(Stage stage) throws Exception {
 
-        //Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
+
+    
+       
+       
+
+
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
    // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
    // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));
-    Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationEvent.fxml"));
-       
-        Scene scene = new Scene(root);
+    //Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationEvent.fxml"));
+
+
+
+
         
+      
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -54,10 +76,23 @@ public class Nozelites extends Application {
      */
     public static void main(String[] args) throws Exception {
         launch(args);
-               ServicesReclamation srv = new ServicesReclamation();
+
+              // ServicesReclamation srv = new ServicesReclamation();
               // Reclamation p = new Reclamation(2,3,"aaaa","groupe");
          //JavaMail.sendMailReclamation("mohamedkheireddine.bairam@esprit.tn");
          
         // srv.afficherGroupeReclamation();
+
+
+        
+
+        Session s = new Session();
+        
+        System.out.println("id Session main"+s.getIdSession());
+
+        
+        
+
+
     }
 }

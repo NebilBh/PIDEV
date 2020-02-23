@@ -6,6 +6,7 @@
 package GUI;
 
 import com.sun.prism.impl.Disposer;
+import entities.ReclamationForGUI;
 import entities.ReclamationForGroupe;
 import entities.ReclamationForGroupe;
 import java.net.URL;
@@ -78,7 +79,50 @@ public class ReclamationGROUPEController implements Initializable {
 
         //Display button if the row is not empty
      
+      ButtonCell1(){
+            
+        	//Action when the button is pressed
+            cellButton1.setOnAction(new EventHandler<ActionEvent>(){
+
+                @Override
+                public void handle(ActionEvent t) {
+                    	ReclamationForGroupe currentOffre = (ReclamationForGroupe) ButtonCell1.this.getTableView().getItems().get(ButtonCell1.this.getIndex());
+                //currentOffre.getEtat();
+             //currentOffre.setEtat("1");
+             srv.traiterReclamation(currentOffre.getId());
+             reclg.getItems().clear();
+             ObservableList<ReclamationForGroupe> olist = FXCollections.observableArrayList(srv.afficherGroupeReclamation());
+             reclg.getItems().addAll(olist);
+             
+             
+               
+               /* 	
+                  //      currentOffre.getMail();
+                    try {
+                      
+                        JavaMail.sendMailReclamation(currentOffre.getMail());
+                    } catch (Exception ex) {
+                        Logger.getLogger(Afficher_reclamationController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                */
+                }
+            });
+        }
+
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+            setGraphic(cellButton1);
+            }
+            else{
+            setGraphic(null);
+            }
+        }
     }
+    
+    
 @FXML
     private TableView<ReclamationForGroupe> reclg = new TableView<ReclamationForGroupe>();
     

@@ -6,12 +6,16 @@
 package services;
 
 import entities.Message;
+import entities.MessageForGUI;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ConnexionDB;
@@ -38,7 +42,7 @@ public class ServicesMessage {
         }
     }
     
-    public void supprimerMessage(Message m){   
+    public void supprimerMessage(MessageForGUI m){   
         try 
         {
             PreparedStatement pt = c.prepareStatement("delete from message where idMessage=?");
@@ -51,40 +55,54 @@ public class ServicesMessage {
         }
     }
     
-    public void afficherLesMessagesRecus(int idRecepteur){
+    public List<MessageForGUI> afficherLesMessagesRecus(int idRecepteur){
+       
+        List<MessageForGUI> list = new ArrayList<MessageForGUI>();
+        
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select objet, texte, nom, prenom, date from message INNER JOIN membre ON message.id_emeteur=membre.idUsr where id_destinataire=?");
+            PreparedStatement pt = c.prepareStatement("select idMessage, objet, texte, nom, prenom, message.date from message INNER JOIN membre ON message.id_emeteur=membre.idUsr where id_destinataire=?");
             pt.setInt(1, idRecepteur);
             ResultSet rs = pt.executeQuery();
             
             while(rs.next())
             {
-                System.out.println("Message : \nObjet : "+rs.getString(1)+"\nMessage : "+rs.getString(2)+"\nDe : "+rs.getString(3)+" "+rs.getString(4)+"\nLe : "+rs.getString(5)+"\n"); //ordre fel table
+                //System.out.println("Message : \nObjet : "+rs.getString(2)+"\nMessage : "+rs.getString(3)+"\nDe : "+rs.getString(4)+" "+rs.getString(5)+"\nLe : "+rs.getString(6)+"\n"); //ordre fel table
+                MessageForGUI m = new MessageForGUI(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));
+                list.add(m);
             }
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(ServicesMessage.class.getName()).log(Level.SEVERE, null, ex);
         }  
+        
+        return list;
     }
     
-    public void afficherLesMessagesEnvoyes(int idEmetteur){
+    public List<MessageForGUI> afficherLesMessagesEnvoyes(int idEmetteur){
+        
+        List<MessageForGUI> list = new ArrayList<MessageForGUI>();
+        
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select objet, texte, nom, prenom, date from message INNER JOIN membre ON message.id_destinataire=membre.idUsr where id_emeteur=?");
+            PreparedStatement pt = c.prepareStatement("select idMessage, objet, texte, nom, prenom, message.date from message INNER JOIN membre ON message.id_destinataire=membre.idUsr where id_emeteur=?");
             pt.setInt(1, idEmetteur);
             ResultSet rs = pt.executeQuery();
             
             while(rs.next())
             {
-                System.out.println("Message : \nObjet : "+rs.getString(1)+"\nMessage : "+rs.getString(2)+"\nA : "+rs.getString(3)+" "+rs.getString(4)+"\nLe : "+rs.getString(5)+"\n"); //ordre fel table
+                //System.out.println("Message : \nObjet : "+rs.getString(2)+"\nMessage : "+rs.getString(3)+"\nDe : "+rs.getString(4)+" "+rs.getString(5)+"\nLe : "+rs.getString(6)+"\n"); //ordre fel table
+                MessageForGUI m = new MessageForGUI(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));
+                list.add(m);
             }
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(ServicesMessage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return list;
     }
     
 }

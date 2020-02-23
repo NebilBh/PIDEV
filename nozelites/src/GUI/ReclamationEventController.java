@@ -7,6 +7,7 @@ package GUI;
 
 import com.sun.prism.impl.Disposer;
 import entities.ReclamationForEvent;
+import entities.ReclamationForGUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -71,7 +72,50 @@ public class ReclamationEventController implements Initializable {
 
         //Display button if the row is not empty
      
+      ButtonCell1(){
+            
+        	//Action when the button is pressed
+            cellButton1.setOnAction(new EventHandler<ActionEvent>(){
+
+                @Override
+                public void handle(ActionEvent t) {
+                    	ReclamationForEvent currentOffre = (ReclamationForEvent) ButtonCell1.this.getTableView().getItems().get(ButtonCell1.this.getIndex());
+                //currentOffre.getEtat();
+             //currentOffre.setEtat("1");
+             srv.traiterReclamation(currentOffre.getId());
+             recle.getItems().clear();
+             ObservableList<ReclamationForEvent> olist = FXCollections.observableArrayList(srv.afficherEventReclamation());
+             recle.getItems().addAll(olist);
+             
+             
+               
+               /* 	
+                  //      currentOffre.getMail();
+                    try {
+                      
+                        JavaMail.sendMailReclamation(currentOffre.getMail());
+                    } catch (Exception ex) {
+                        Logger.getLogger(Afficher_reclamationController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                */
+                }
+            });
+        }
+
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+            setGraphic(cellButton1);
+            }
+            else{
+            setGraphic(null);
+            }
+        }
     }
+    
+    
 @FXML
     private TableView<ReclamationForEvent> recle = new TableView<ReclamationForEvent>();
     

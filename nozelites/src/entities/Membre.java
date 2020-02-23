@@ -15,7 +15,9 @@ public class Membre extends Utilisateur{
     private String exp;
     private String formation ;
     int type;
-    
+    public Membre(){
+        
+    }
     public Membre(String nom, String prenom, String mail, String login, String mdp, String Exp, String Formation, int age, int tel,int type,String image) {
          
          
@@ -36,6 +38,8 @@ public class Membre extends Utilisateur{
         this.type = type;
          
      }
+    
+    
     public int getType(){
         return type;
     }
@@ -130,6 +134,10 @@ public class Membre extends Utilisateur{
     @Override
     public void setNom(String nom) {
         super.setNom(nom); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void setId(int id){
+        super.setId(id);
     }
      
      

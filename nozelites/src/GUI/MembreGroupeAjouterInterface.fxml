@@ -16,9 +16,14 @@
       <RadioButton fx:id="groupe_ferme" layoutX="205.0" layoutY="195.0" mnemonicParsing="false" text="Fermé" />
       <Button fx:id="btn_ajouter" layoutX="205.0" layoutY="225.0" mnemonicParsing="false" onAction="#ajouter_groupe" prefHeight="25.0" prefWidth="74.0" text="Enregistrer" />
       <Button fx:id="btn_retour" layoutX="131.0" layoutY="225.0" mnemonicParsing="false" onAction="#retour_groupe" prefHeight="25.0" prefWidth="68.0" text="Retour" />
-      <TableView fx:id="table_membres" layoutX="349.0" layoutY="114.0" prefHeight="351.0" prefWidth="367.0" />
-      <TextField layoutX="349.0" layoutY="75.0" promptText="Trouver membre" />
-      <Label layoutX="461.0" layoutY="28.0" text="Inviter Membres">
+      <TableView fx:id="table_membres" layoutX="349.0" layoutY="125.0" prefHeight="351.0" prefWidth="367.0" />
+      <TextField layoutX="349.0" layoutY="87.0" promptText="Trouver membre" />
+      <Label layoutX="481.0" layoutY="49.0" text="Inviter Membres">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="274.0" layoutY="28.0" text="Ajouter un groupe">
          <font>
             <Font size="23.0" />
          </font>

@@ -189,20 +189,20 @@ public class Afficher_reclamationController implements Initializable {
         tab_recl.setItems(olist);*/
       
 
-      TableColumn<ReclamationForGUI, Integer> idCol //
-              = new TableColumn<ReclamationForGUI, Integer>("Id");
+      //TableColumn<ReclamationForGUI, Integer> idCol //
+             // = new TableColumn<ReclamationForGUI, Integer>("Id");
         
         
-        TableColumn<ReclamationForGUI, String> nomCol //
-              = new TableColumn<ReclamationForGUI, String>("nom");
+       // TableColumn<ReclamationForGUI, String> nomCol //
+          //    = new TableColumn<ReclamationForGUI, String>("nom");
         
         
-        TableColumn<ReclamationForGUI, String> prenomCol //
-              = new TableColumn<ReclamationForGUI, String>("prenom");
+      //  TableColumn<ReclamationForGUI, String> prenomCol //
+            //  = new TableColumn<ReclamationForGUI, String>("prenom");
         
         
-        TableColumn<ReclamationForGUI, String> mailCol //
-              = new TableColumn<ReclamationForGUI, String>("mail");
+       // TableColumn<ReclamationForGUI, String> mailCol //
+           //   = new TableColumn<ReclamationForGUI, String>("mail");
         
         TableColumn<ReclamationForGUI, String> descriptionCol //
               = new TableColumn<ReclamationForGUI, String>("description");
@@ -221,10 +221,10 @@ public class Afficher_reclamationController implements Initializable {
             
             
         
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
+       // idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+       // nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+       // prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+       // mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
         selectCol.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
@@ -249,10 +249,10 @@ public class Afficher_reclamationController implements Initializable {
             }});
         
         
-        idCol.setMinWidth(50);
-        nomCol.setMinWidth(100);
-        prenomCol.setMinWidth(100);
-        mailCol.setMinWidth(100);
+        //idCol.setMinWidth(50);
+      //  nomCol.setMinWidth(100);
+       // prenomCol.setMinWidth(100);
+       // mailCol.setMinWidth(100);
         descriptionCol.setMinWidth(100);
         etatCol.setMinWidth(100);
         selectCol.setMinWidth(100);
@@ -260,7 +260,7 @@ public class Afficher_reclamationController implements Initializable {
         actionCol.setMinWidth(100);
      
         
-        tab_recl.getColumns().addAll(idCol,nomCol,prenomCol,mailCol,descriptionCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
+        tab_recl.getColumns().addAll(descriptionCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
         
      //aaaaaaaaa//   ServicesReclamation srv = new ServicesReclamation();
       // aaaa/// ObservableList<ReclamationForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(2));
@@ -315,10 +315,10 @@ public class Afficher_reclamationController implements Initializable {
             public void chercher(ActionEvent event)
                     {
               
-                   idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
+                   //idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+       // nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+       // prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+       // mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
         selectCol.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
@@ -347,10 +347,10 @@ public class Afficher_reclamationController implements Initializable {
             public void chercher(ActionEvent event)
                     {
               
-                   idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
+                  // idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+      //  nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+       // prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+       // mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
         selectCol.setCellValueFactory(new PropertyValueFactory<>("selecteur"));

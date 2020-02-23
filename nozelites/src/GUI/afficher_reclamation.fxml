@@ -10,7 +10,7 @@
 <AnchorPane id="AnchorPane" fx:id="afficher" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Afficher_reclamationController">
    <children>
       <TableView fx:id="tab_recl" layoutX="241.0" layoutY="103.0" prefHeight="350.0" prefWidth="492.0" />
-      <Label layoutX="307.0" layoutY="27.0" prefHeight="17.0" prefWidth="255.0" text="Les Reclamation" textFill="#cd0909">
+      <Label layoutX="307.0" layoutY="27.0" prefHeight="17.0" prefWidth="255.0" text="Mes Réclamations" textFill="#cd0909">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
