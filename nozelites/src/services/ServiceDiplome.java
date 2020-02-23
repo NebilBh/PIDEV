@@ -32,7 +32,7 @@ public void ajouter(Diplome d,int id_membre){
             
             state = db.createStatement();
             
-            String qry ="insert into listediplome values("+0+",'"+d.getOrganisation()+"','"+d.getDomaine()+"',"+id_membre+")";
+            String qry ="insert into listediplome values("+0+",'"+d.getOrganisation()+"','"+d.getDomaine()+"',"+id_membre+",'"+LocalDate.now()+"')";
             
             state.executeUpdate(qry);
             

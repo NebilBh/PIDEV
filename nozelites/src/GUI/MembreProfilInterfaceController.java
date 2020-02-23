@@ -77,7 +77,7 @@ public class MembreProfilInterfaceController implements Initializable {
     @FXML
     private TableColumn<Diplome, String> col_org;
     
-    private ObservableList<Diplome>data;
+   
     @FXML
     private TableColumn<Diplome, Diplome> col_supp;
     @FXML
@@ -97,6 +97,7 @@ public class MembreProfilInterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ObservableList<Diplome>data;
         data = FXCollections.observableArrayList();
         
         String path = "";
@@ -113,6 +114,7 @@ public class MembreProfilInterfaceController implements Initializable {
         try {
             ResultSet listD = srvD.afficherDiplomeUser(s.getIdSession());
             while(listD.next()){
+                
                 data.add(new Diplome(listD.getInt("id_diplome"),listD.getString("domaine"), listD.getString("organisation"))); 
             }
             
