@@ -32,9 +32,14 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
+                        <Button mnemonicParsing="false" onMouseClicked="#recherche" text="OK">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
                         <Label prefHeight="34.0" prefWidth="276.0" text="Quel domaine vous cherchez ?" textFill="#292929">
                            <HBox.margin>
-                              <Insets left="50.0" />
+                              <Insets left="10.0" />
                            </HBox.margin>
                            <font>
                               <Font name="System Bold" size="17.0" />
@@ -54,11 +59,6 @@
                               <Insets />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onMouseClicked="#recherche" text="OK">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutY="117.0" prefHeight="30.0" prefWidth="726.0">

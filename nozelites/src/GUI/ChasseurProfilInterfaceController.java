@@ -54,11 +54,17 @@ public class ChasseurProfilInterfaceController implements Initializable {
     @FXML
     private Button btnModif;
     @FXML
-    private HBox btn_deconnection;
-    @FXML
-    private ImageView notifications;
-    @FXML
     private Label labelLogin;
+    @FXML
+    private Label BoutonAcceuil;
+    @FXML
+    private Label BoutonProfil;
+    @FXML
+    private Label BoutonElites;
+    @FXML
+    private Label BoutonOffre;
+    @FXML
+    private Button BoutonDeco;
 
     /**
      * Initializes the controller class.
@@ -121,34 +127,31 @@ public class ChasseurProfilInterfaceController implements Initializable {
         profilChass.getChildren().setAll(pane);
     }
 
-    @FXML
     private void acceuil(MouseEvent event) throws IOException {
+        
+    }
+
+    @FXML
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurTeteAcceuilInterface.fxml"));
         profilChass.getChildren().setAll(pane);
     }
 
     @FXML
-    private void profil(MouseEvent event) {
+    private void BoutonProfilGo(MouseEvent event) {
     }
 
     @FXML
-    private void portfolio(MouseEvent event) {
+    private void BoutonElitesGo(MouseEvent event) {
     }
 
     @FXML
-    private void groupes(MouseEvent event) {
+    private void BoutonOffreGo(MouseEvent event) {
     }
 
     @FXML
-    private void evenements(MouseEvent event) {
+    private void BoutonDecoGo(MouseEvent event) {
     }
 
-    @FXML
-    private void inbox(MouseEvent event) {
-    }
-
-    @FXML
-    private void deconnexion(MouseEvent event) {
-    }
     
 }

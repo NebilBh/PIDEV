@@ -106,7 +106,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
         // TODO
-       // NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+        //NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
         //NbrOffres.setText(srvOffres.nbrOffres());
         
         LocalDate localDate = LocalDate.now();
