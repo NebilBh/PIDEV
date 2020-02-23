@@ -7,7 +7,12 @@ package GUI;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import doryan.windowsnotificationapi.fr.Notification;
 import entities.Reclamation;
+import java.awt.AWTException;
+import java.awt.TrayIcon;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,11 +22,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import services.ServicesReclamation;
 
 import utils.ConnexionDB;
@@ -36,35 +43,41 @@ public class MembreReclamationController implements Initializable {
      @FXML
     private TextArea txtdescr;
 
-    @FXML
-    private TextField txtselect;
-
     
+    @FXML
+    private ComboBox txtselect;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+        txtselect.getItems().addAll("groupe","membre","evenement","publication");
         // TODO
     }  
     
+   
+    
         @FXML
-     void ajouter(ActionEvent event) {
+     void ajouter(ActionEvent event) throws AWTException, MalformedURLException {
 
     
        
      // txtselect.getItems().addAll("membre","groupe","evenement","publication");
         String description = txtdescr.getText();
-          String selecteur = txtselect.getText();
+          String selecteur = txtselect.getSelectionModel().getSelectedItem().toString();
        
     
        // String typee = type.getSelectionModel().getSelectedItem().toString();
         
         
         ServicesReclamation srv  = new ServicesReclamation();
-        Reclamation r = new Reclamation(25,2,3,description,selecteur);
+        //Reclamation r = new Reclamation(1,2,3,description,selecteur);
+        Reclamation r =new Reclamation(3,3,description,selecteur);
         srv.ajouterReclamation(r);
+        Notification.sendNotification("Admin vous avez recu une reclamation", "RECLAMATION ",TrayIcon.MessageType.INFO);
         
     }
      

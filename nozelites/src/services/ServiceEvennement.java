@@ -228,7 +228,7 @@ public class ServiceEvennement {
                     e.setNbPlace(e.getNbPlace()-1);
                     this.modifierEvennement(e);
                     try {
-                        JavaMail.sendMailEvenement(m.getMail());
+                      //  JavaMail.sendMailEvenement(m.getMail());
                     } catch (Exception ex) {
                         Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
                     }

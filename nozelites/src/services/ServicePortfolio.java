@@ -49,7 +49,7 @@ public class ServicePortfolio {
         }
     }
     
-     public void modifierPortfolio(Portfolio p, String titre,String description,String lien){
+     /*public void modifierPortfolio(Portfolio p, String titre,String description,String lien){
         try 
         {
             PreparedStatement pt = db.prepareStatement("update portfolio set titre=?,description=?,lien=?  where id_port=?");
@@ -61,7 +61,24 @@ public class ServicePortfolio {
         catch (SQLException ex) 
         {
             Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        */
+    
+      public void modifierPortfolio(Portfolio o){
+        try 
+        {
+            PreparedStatement pt = db.prepareStatement("update portfolio set titre=?,description=?,lien=? where id_port=?");
+             pt.setString(1,o.getTitre());
+               pt.setString(2,o.getDescription());
+               pt.setString(3,o.getLien());
+            
+            pt.setInt(4,o.getId_port());
+            pt.executeUpdate();  
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
     
     public void supprimer(Portfolio p){
@@ -78,7 +95,7 @@ public class ServicePortfolio {
     }
     
     public List<Portfolio> afficher(){
-        List<Portfolio> myList = new ArrayList<>();
+        List<Portfolio> myList = new ArrayList<Portfolio>();
         String qry ="select * from portfolio";
         
         try {

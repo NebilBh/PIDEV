@@ -4,17 +4,45 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembrePortfolioAjouter_interfaceController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembrePortfolioAjouter_interfaceController">
    <children>
-      <Label layoutX="241.0" layoutY="29.0" prefHeight="17.0" prefWidth="96.0" text="Portfolio" />
-      <Label layoutX="52.0" layoutY="112.0" prefHeight="17.0" prefWidth="63.0" text="Titre" />
-      <Label layoutX="52.0" layoutY="183.0" prefHeight="17.0" prefWidth="86.0" text="Description" />
-      <TextField fx:id="txttitre" alignment="TOP_CENTER" layoutX="188.0" layoutY="108.0" />
-      <TextArea fx:id="txtdescr" layoutX="186.0" layoutY="149.0" prefHeight="103.0" prefWidth="352.0" />
-      <Label layoutX="52.0" layoutY="286.0" text="lien" />
-      <TextField fx:id="txtlien" layoutX="188.0" layoutY="282.0" />
-      <Button layoutX="468.0" layoutY="303.0" mnemonicParsing="false" onAction="#ajouter" text="Enregistrer" textFill="#c30f10" />
+      <Label layoutX="329.0" layoutY="31.0" prefHeight="49.0" prefWidth="278.0" text="Portfolio" textFill="#e81212">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label layoutX="279.0" layoutY="112.0" prefHeight="17.0" prefWidth="63.0" text="Titre">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Label layoutX="261.0" layoutY="199.0" prefHeight="17.0" prefWidth="80.0" text="Description">
+         <font>
+            <Font name="Arial Bold Italic" size="14.0" />
+         </font></Label>
+      <TextField fx:id="txttitre" alignment="TOP_CENTER" layoutX="358.0" layoutY="108.0" />
+      <TextArea fx:id="txtdescr" layoutX="359.0" layoutY="156.0" prefHeight="103.0" prefWidth="365.0" />
+      <Label layoutX="269.0" layoutY="286.0" prefHeight="17.0" prefWidth="63.0" text="Lien">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtlien" layoutX="358.0" layoutY="282.0" />
+      <Button layoutX="578.0" layoutY="374.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="34.0" prefWidth="137.0" text="Enregistrer" textFill="#c30f10">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Pane prefHeight="500.0" prefWidth="234.0" style="-fx-background-color: #c41011;">
+         <children>
+            <ImageView fitHeight="156.0" fitWidth="234.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

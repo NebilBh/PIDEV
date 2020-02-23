@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembreReclamationController">
+<AnchorPane id="AnchorPane" fx:id="menuR" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembreReclamationController">
    <children>
       <Button layoutX="469.0" layoutY="301.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="#f5f2f2">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Label layoutX="216.0" layoutY="127.0" prefHeight="17.0" prefWidth="115.0" text="Selecteur" textFill="#320101">
+      <Label layoutX="304.0" layoutY="127.0" prefHeight="17.0" prefWidth="115.0" text="Selecteur" textFill="#320101">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="205.0" layoutY="209.0" prefHeight="25.0" prefWidth="91.0" text="Expliquez nous" textFill="#790a0a">
+      <Label layoutX="297.0" layoutY="210.0" prefHeight="25.0" prefWidth="91.0" text="Expliquez nous" textFill="#790a0a">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <TextArea fx:id="txtdescr" layoutX="300.0" layoutY="165.0" prefHeight="104.0" prefWidth="270.0" />
-      <Label layoutX="310.0" layoutY="36.0" prefHeight="17.0" prefWidth="181.0" text="Réclamation">
+      <TextArea fx:id="txtdescr" layoutX="407.0" layoutY="171.0" prefHeight="104.0" prefWidth="270.0" />
+      <Label layoutX="310.0" layoutY="36.0" prefHeight="17.0" prefWidth="181.0" text="Réclamation" textFill="#f80e0e">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font></Label>
-      <TextField fx:id="txtselect" layoutX="331.0" layoutY="123.0" />
-      <Pane layoutX="-10.0" layoutY="-3.0" prefHeight="409.0" prefWidth="214.0" style="-fx-background-color: #c41011;" />
+      <ComboBox fx:id="txtselect" layoutX="462.0" layoutY="128.0" prefHeight="25.0" prefWidth="161.0" />
+      <Pane layoutY="-3.0" prefHeight="506.0" prefWidth="270.0" style="-fx-background-color: #c41011;">
+         <children>
+            <ImageView fitHeight="127.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
