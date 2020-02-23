@@ -84,13 +84,13 @@ public class ConnectionInterfaceController implements Initializable {
                 System.out.println("id cnx: "+session.getIdSession());
                 System.out.println("Connexion 1");
                 
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
                 authen.getChildren().setAll(pane);   
             }
             else if(hasResultC){
                 session.setSession(resultatChass.getInt(1)); 
                 System.out.println("Connexion 2");
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurProfilInterface.fxml"));
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurTeteAcceuilInterface.fxml"));
                 authen.getChildren().setAll(pane);   
             
             }

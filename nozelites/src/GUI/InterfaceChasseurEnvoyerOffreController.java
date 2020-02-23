@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import services.ServicesOffre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -52,6 +53,7 @@ public class InterfaceChasseurEnvoyerOffreController implements Initializable {
     private TextArea descriptionField;
     
     ServicesOffre srv = new ServicesOffre();
+    Session session = new Session();
 
     /**
      * Initializes the controller class.
@@ -68,7 +70,7 @@ public class InterfaceChasseurEnvoyerOffreController implements Initializable {
     private void submitOneOffre(ActionEvent event) throws IOException {
         
         String type = typeField.getSelectionModel().getSelectedItem().toString();
-        int idEmetteur = 3; //Id du chasseur connecté
+        int idEmetteur = session.getIdSession(); //Id du chasseur connecté
         int idRecepteur = srv.getIdMembre(emailField.getText());
         String entreprise = entrepriseField.getText();
         String domaine = domaineField.getSelectionModel().getSelectedItem().toString();

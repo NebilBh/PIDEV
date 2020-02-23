@@ -70,6 +70,7 @@ public class Nozelites extends Application {
         Session s = new Session();
         
         System.out.println("id Session main"+s.getIdSession());
+
         
         
 

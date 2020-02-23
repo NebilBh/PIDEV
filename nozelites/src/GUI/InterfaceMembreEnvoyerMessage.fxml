@@ -26,9 +26,9 @@
       <TextField fx:id="emailField" layoutX="179.0" layoutY="170.0" prefHeight="25.0" prefWidth="538.0" promptText="Destinataire: exemple@email.com" />
       <TextField fx:id="objetField" layoutX="179.0" layoutY="220.0" prefHeight="25.0" prefWidth="231.0" promptText="Objet" />
       <TextArea fx:id="messageField" layoutX="179.0" layoutY="250.0" prefHeight="199.0" prefWidth="538.0" promptText="Votre message ici.." />
-      <Button fx:id="submitMessage" layoutX="646.0" layoutY="458.0" mnemonicParsing="false" onAction="#submitLeMessage" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="WHITE">
+      <Button fx:id="submitMessage" layoutX="638.0" layoutY="458.0" mnemonicParsing="false" onAction="#submitLeMessage" prefHeight="30.0" prefWidth="79.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Button>
       <VBox layoutX="-31.0" layoutY="182.0" prefHeight="209.0" prefWidth="263.0">
@@ -135,7 +135,7 @@
             </ImageView>
             <Button mnemonicParsing="false" onMouseClicked="#deconnexion" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #c41011;" text="Déconnexion" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
                <HBox.margin>
                   <Insets right="10.0" />

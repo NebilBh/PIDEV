@@ -37,6 +37,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import services.ServicesOffre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -64,7 +65,7 @@ public class InterfaceChasseurOffreController implements Initializable {
 
     @FXML
     private void BoutonAcceuilGo(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurTeteAcceuilInterface.fxml"));
         anchorOffre.getChildren().setAll(pane);
     }
 
@@ -129,7 +130,8 @@ public class InterfaceChasseurOffreController implements Initializable {
     private Button envoyerOffre;
     
     ServicesOffre srv = new ServicesOffre();
-    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(3)); //Id du chasseur connecté
+    Session session = new Session();
+    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(session.getIdSession())); //Id du chasseur connecté
     
     
     
@@ -147,7 +149,7 @@ public class InterfaceChasseurOffreController implements Initializable {
         // TODO
         rechercherOffre.textProperty().addListener((observable, oldValue, newValue) -> {
         //System.out.println("textfield changed from " + oldValue + " to " + newValue);
-        olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(3)); //Id du chasseur connecté
+        olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(session.getIdSession())); //Id du chasseur connecté
         ObservableList<OffreForGUI> olistRech = FXCollections.observableArrayList();
         olistRech.clear();
 

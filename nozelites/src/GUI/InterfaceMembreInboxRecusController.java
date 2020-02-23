@@ -25,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import services.ServicesMessage;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -49,7 +50,8 @@ public class InterfaceMembreInboxRecusController implements Initializable {
     private TableView<MessageForGUI> tabMessages = new TableView<MessageForGUI>();
     
     ServicesMessage srv = new ServicesMessage();
-    ObservableList<MessageForGUI> olist = FXCollections.observableArrayList(srv.afficherLesMessagesRecus(5)); //Id du membre connecté
+    Session session = new Session();
+    ObservableList<MessageForGUI> olist = FXCollections.observableArrayList(srv.afficherLesMessagesRecus(session.getIdSession())); //Id du membre connecté
     @FXML
     private HBox btn_deconnection;
     @FXML
@@ -64,7 +66,7 @@ public class InterfaceMembreInboxRecusController implements Initializable {
         // TODO
         rechercherMessage.textProperty().addListener((observable, oldValue, newValue) -> {
         //System.out.println("textfield changed from " + oldValue + " to " + newValue);
-        olist = FXCollections.observableArrayList(srv.afficherLesMessagesRecus(5)); //Id du membre connecté
+        olist = FXCollections.observableArrayList(srv.afficherLesMessagesRecus(session.getIdSession())); //Id du membre connecté
         ObservableList<MessageForGUI> olistRech = FXCollections.observableArrayList();
         olistRech.clear();
 

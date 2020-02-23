@@ -32,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import services.ServicesOffre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -44,6 +45,8 @@ public class InterfaceMembreOffresController implements Initializable {
     private HBox btn_deconnection;
     @FXML
     private ImageView notifications;
+    
+    Session session = new Session();
 
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
@@ -103,7 +106,7 @@ public class InterfaceMembreOffresController implements Initializable {
                         srv.accepterOffre(currentOffre);
                         
                         tabOffres.getItems().clear();
-                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(5)); //Id du membre connecté
+                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(session.getIdSession())); //Id du membre connecté
                         tabOffres.getItems().addAll(olist);
                 }
             });
@@ -138,7 +141,7 @@ public class InterfaceMembreOffresController implements Initializable {
                         srv.refuserOffre(currentOffre);
                         
                         tabOffres.getItems().clear();
-                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(5)); //Id du membre connecté
+                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(session.getIdSession())); //Id du membre connecté
                         tabOffres.getItems().addAll(olist);
                 }
             });
@@ -174,7 +177,7 @@ public class InterfaceMembreOffresController implements Initializable {
     private TextField chercherOffre;
     
     ServicesOffre srv = new ServicesOffre();
-    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(5)); //Id du membre connecté
+    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(session.getIdSession())); //Id du membre connecté
     
 
     /**
@@ -185,7 +188,7 @@ public class InterfaceMembreOffresController implements Initializable {
         // TODO
         chercherOffre.textProperty().addListener((observable, oldValue, newValue) -> {
         //System.out.println("textfield changed from " + oldValue + " to " + newValue);
-        olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(5)); //Id du chasseur connecté
+        olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(session.getIdSession())); //Id du chasseur connecté
         ObservableList<OffreForGUI> olistRech = FXCollections.observableArrayList();
         olistRech.clear();
 

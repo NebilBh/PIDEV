@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import services.ServicesOffre;
 
 /**
  * FXML Controller class
@@ -35,6 +36,12 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
     private Button BoutonDeco;
     @FXML
     private AnchorPane root;
+    @FXML
+    private Label NbrOffresAcceptees;
+    @FXML
+    private Label NbrOffres;
+    
+    ServicesOffre srvOffres = new ServicesOffre();
 
     /**
      * Initializes the controller class.
@@ -42,6 +49,8 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+        NbrOffres.setText(srvOffres.nbrOffres());
     }    
 
     @FXML
@@ -52,7 +61,7 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void BoutonAcceuilGo(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurTeteAcceuilInterface.fxml"));
         root.getChildren().setAll(pane);
     }
 

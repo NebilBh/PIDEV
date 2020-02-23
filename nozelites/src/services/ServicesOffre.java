@@ -59,7 +59,7 @@ public class ServicesOffre {
             
             int i = 1;
             
-            while(rs.next() && i!=6 )
+            while(rs.next() && i!=4 )
             {   
                 System.out.println(i+" Nombre d'offres : "+rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)); //ordre fel table
                 i++;
@@ -81,7 +81,7 @@ public class ServicesOffre {
             
             int i = 1;
             
-            while(rs.next() && i!=6 )
+            while(rs.next() && i!=4 )
             {   
                 System.out.println(i+" Nombre d'offres : "+rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)); //ordre fel table
                 i++;
@@ -122,13 +122,56 @@ public class ServicesOffre {
         }
     }
     
+    public String nbrOffres(){
+        String s = "";
+        
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("select count(*) from offre");
+            ResultSet rs = pt.executeQuery();
+            
+            while(rs.next())
+            {
+                s = rs.getString(1);
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        return s;
+    }
+    
+    public String nbrOffresAcceptees(){
+        String s = "";
+        
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("select count(*) from offre WHERE Etat=?");
+            pt.setString(1, "Acceptée");
+            ResultSet rs = pt.executeQuery();
+            
+            while(rs.next())
+            {
+                s = rs.getString(1);
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        return s;
+    }
+    
     public List<OffreForGUI> afficherLesOffresRecus(int idRecepteur){
         
         List<OffreForGUI> list = new ArrayList<OffreForGUI>();
         
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select id, Type, offre.Entreprise, Domaine, Poste, Requis, Description, Date, Etat, nom, prenom from offre INNER JOIN chasseur_talent ON offre.IdEmetteur=chasseur_talent.idUsr where IdRecepteur=?");
+            PreparedStatement pt = c.prepareStatement("select id, offre.Type, offre.Entreprise, Domaine, Poste, Requis, Description, offre.Date, Etat, nom, prenom from offre INNER JOIN chasseur_talent ON offre.IdEmetteur=chasseur_talent.idUsr where IdRecepteur=?");
             pt.setInt(1, idRecepteur);
             ResultSet rs = pt.executeQuery();
             
@@ -153,7 +196,7 @@ public class ServicesOffre {
         
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select id, Type, Entreprise, Domaine, Poste, Requis, Description, Date, Etat, nom, prenom from offre INNER JOIN membre ON offre.IdRecepteur=membre.idUsr where IdEmetteur=?");
+            PreparedStatement pt = c.prepareStatement("select id, offre.Type, Entreprise, Domaine, Poste, Requis, Description, offre.Date, Etat, nom, prenom from offre INNER JOIN membre ON offre.IdRecepteur=membre.idUsr where IdEmetteur=?");
             pt.setInt(1, idEmetteur);
             ResultSet rs = pt.executeQuery();
             
