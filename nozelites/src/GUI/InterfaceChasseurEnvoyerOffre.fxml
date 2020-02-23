@@ -16,14 +16,14 @@
 
 <AnchorPane id="AnchorPane" fx:id="anchorEnvoyerOffre" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InterfaceChasseurEnvoyerOffreController">
    <children>
-      <Button fx:id="submitOffre" layoutX="607.0" layoutY="450.0" mnemonicParsing="false" onAction="#submitOneOffre" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="WHITE">
+      <Button fx:id="submitOffre" layoutX="598.0" layoutY="450.0" mnemonicParsing="false" onAction="#submitOneOffre" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancelOffre" layoutX="527.0" layoutY="450.0" mnemonicParsing="false" onAction="#cancelOneOffre" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #c41011;" text="Annuler" textFill="WHITE">
+      <Button fx:id="cancelOffre" layoutX="511.0" layoutY="450.0" mnemonicParsing="false" onAction="#cancelOneOffre" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #c41011;" text="Annuler" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Button>
       <TextField fx:id="entrepriseField" layoutX="218.0" layoutY="171.0" prefHeight="40.0" prefWidth="206.0" promptText="Entreprise">

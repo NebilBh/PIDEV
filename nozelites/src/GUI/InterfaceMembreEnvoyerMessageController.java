@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import services.ServicesMessage;
 import services.ServicesOffre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -51,6 +52,8 @@ public class InterfaceMembreEnvoyerMessageController implements Initializable {
 
     ServicesOffre srvO = new ServicesOffre();
     ServicesMessage srv = new ServicesMessage();
+    Session session = new Session();
+    
     @FXML
     private HBox btn_deconnection;
     @FXML
@@ -91,7 +94,7 @@ public class InterfaceMembreEnvoyerMessageController implements Initializable {
     @FXML
     private void submitLeMessage(ActionEvent event) {
         
-        int idEmetteur = 5; //Id du membre connecté
+        int idEmetteur = session.getIdSession(); //Id du membre connecté
         int idRecepteur = srvO.getIdMembre(emailField.getText());
         String objet = objetField.getText();
         String description = messageField.getText();
@@ -142,7 +145,7 @@ public class InterfaceMembreEnvoyerMessageController implements Initializable {
 
     @FXML
     private void deconnexion(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
         anchorEnvoyerMessage.getChildren().setAll(pane);
     }
     

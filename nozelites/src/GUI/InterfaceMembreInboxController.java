@@ -32,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import services.ServicesMessage;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -83,7 +84,7 @@ public class InterfaceMembreInboxController implements Initializable {
 
     @FXML
     private void deconnexion(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
@@ -138,7 +139,8 @@ public class InterfaceMembreInboxController implements Initializable {
     private TableView<MessageForGUI> tabMessages = new TableView<MessageForGUI>();
     
     ServicesMessage srv = new ServicesMessage();
-    ObservableList<MessageForGUI> olist = FXCollections.observableArrayList(srv.afficherLesMessagesEnvoyes(5)); //Id du membre connecté
+    Session session = new Session();
+    ObservableList<MessageForGUI> olist = FXCollections.observableArrayList(srv.afficherLesMessagesEnvoyes(session.getIdSession())); //Id du membre connecté
     
 
     /**
@@ -149,7 +151,7 @@ public class InterfaceMembreInboxController implements Initializable {
         // TODO
         rechercherMessage.textProperty().addListener((observable, oldValue, newValue) -> {
         //System.out.println("textfield changed from " + oldValue + " to " + newValue);
-        olist = FXCollections.observableArrayList(srv.afficherLesMessagesEnvoyes(5)); //Id du membre connecté
+        olist = FXCollections.observableArrayList(srv.afficherLesMessagesEnvoyes(session.getIdSession())); //Id du membre connecté
         ObservableList<MessageForGUI> olistRech = FXCollections.observableArrayList();
         olistRech.clear();
 

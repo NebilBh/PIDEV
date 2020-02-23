@@ -90,7 +90,7 @@
             </ImageView>
             <Button mnemonicParsing="false" onMouseClicked="#deconnexion" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #c41011;" text="Déconnexion" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
                <HBox.margin>
                   <Insets right="10.0" />
