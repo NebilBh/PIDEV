@@ -102,14 +102,19 @@ public class ResultatRechercheInterfaceController implements Initializable {
                 Button consulter = new Button("Consulter");
                 HBox.setMargin(consulter,new Insets(0,0,0,20));
                 Session s = new Session();
-                int id = listUsr.getInt("idUsr");
+               
                 
+                
+                consulter.setId(Integer.toString(listUsr.getInt("idUsr")));
                 consulter.setOnAction(actionEvent ->  {
                      AnchorPane pane;
                     try {
+                        Button clicked = (Button)actionEvent.getSource();
+                        s.setId_select(Integer.parseInt(clicked.getId()));
+                        System.out.println(clicked.getId());
                         pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
                         root.getChildren().setAll(pane); 
-                        s.setId_select(id);
+                        
                         
                     } catch (IOException ex) {
                         Logger.getLogger(ResultatRechercheInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
@@ -152,7 +157,10 @@ public class ResultatRechercheInterfaceController implements Initializable {
     }    
 
     @FXML
-    private void acceuil(MouseEvent event) {
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+                root.getChildren().setAll(pane); 
+        
     }
 
     @FXML

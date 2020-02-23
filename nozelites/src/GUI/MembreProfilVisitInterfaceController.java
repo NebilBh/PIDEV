@@ -61,14 +61,6 @@ public class MembreProfilVisitInterfaceController implements Initializable {
     @FXML
     private Circle circle;
     @FXML
-    private Button btnAjouter;
-    @FXML
-    private AnchorPane profilMembre;
-    @FXML
-    private Button btnSupp;
-    @FXML
-    private Button btnModifier;
-    @FXML
     private Label labelTel;
     @FXML
     private TableView<Diplome> tableDip;
@@ -90,6 +82,8 @@ public class MembreProfilVisitInterfaceController implements Initializable {
     private HBox listFormation;
     @FXML
     private Label labellogin;
+    @FXML
+    private AnchorPane root;
     
 
     /**
@@ -209,7 +203,7 @@ public class MembreProfilVisitInterfaceController implements Initializable {
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
-              profilMembre.getChildren().setAll(pane);  
+                root.getChildren().setAll(pane);  
     }
 
     @FXML
