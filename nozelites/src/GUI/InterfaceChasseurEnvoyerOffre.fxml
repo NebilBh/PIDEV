@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,61 +10,70 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="anchorEnvoyerOffre" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InterfaceChasseurEnvoyerOffreController">
    <children>
-      <Button fx:id="submitOffre" layoutX="630.0" layoutY="450.0" mnemonicParsing="false" onAction="#submitOneOffre" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="WHITE">
+      <Button fx:id="submitOffre" layoutX="607.0" layoutY="450.0" mnemonicParsing="false" onAction="#submitOneOffre" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="cancelOffre" layoutX="550.0" layoutY="450.0" mnemonicParsing="false" onAction="#cancelOneOffre" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #c41011;" text="Annuler" textFill="WHITE">
+      <Button fx:id="cancelOffre" layoutX="527.0" layoutY="450.0" mnemonicParsing="false" onAction="#cancelOneOffre" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #c41011;" text="Annuler" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Pane prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #c41011;">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/logo.jpg" />
-               </image>
-            </ImageView>
-         </children></Pane>
-      <TextField fx:id="entrepriseField" layoutX="241.0" layoutY="171.0" prefHeight="40.0" prefWidth="206.0" promptText="Entreprise">
+      <TextField fx:id="entrepriseField" layoutX="218.0" layoutY="171.0" prefHeight="40.0" prefWidth="206.0" promptText="Entreprise">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="emailField" layoutX="241.0" layoutY="77.0" prefHeight="40.0" prefWidth="206.0" promptText="Elite: exemple@email.com">
+      <TextField fx:id="emailField" layoutX="218.0" layoutY="77.0" prefHeight="40.0" prefWidth="206.0" promptText="Elite: exemple@email.com">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="posteField" layoutX="241.0" layoutY="262.0" prefHeight="40.0" prefWidth="206.0" promptText="Poste">
+      <TextField fx:id="posteField" layoutX="218.0" layoutY="262.0" prefHeight="40.0" prefWidth="206.0" promptText="Poste">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="typeField" layoutX="495.0" layoutY="77.0" prefHeight="40.0" prefWidth="206.0" promptText="Type" />
-      <ComboBox fx:id="domaineField" layoutX="495.0" layoutY="171.0" prefHeight="40.0" prefWidth="206.0" promptText="Domaine" />
-      <TextField fx:id="requisField" layoutX="495.0" layoutY="262.0" prefHeight="40.0" prefWidth="206.0" promptText="Requis">
+      <ComboBox fx:id="typeField" layoutX="472.0" layoutY="77.0" prefHeight="40.0" prefWidth="206.0" promptText="Type" />
+      <ComboBox fx:id="domaineField" layoutX="472.0" layoutY="171.0" prefHeight="40.0" prefWidth="206.0" promptText="Domaine" />
+      <TextField fx:id="requisField" layoutX="472.0" layoutY="262.0" prefHeight="40.0" prefWidth="206.0" promptText="Requis">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextArea fx:id="descriptionField" layoutX="239.0" layoutY="350.0" prefHeight="85.0" prefWidth="462.0" promptText="Description..">
+      <TextArea fx:id="descriptionField" layoutX="216.0" layoutY="350.0" prefHeight="85.0" prefWidth="462.0" promptText="Description..">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
-      <Label layoutX="239.0" layoutY="14.0" prefHeight="40.0" prefWidth="152.0" text="Votre Offre" textFill="#c41011">
+      <Label layoutX="179.0" layoutY="14.0" prefHeight="40.0" prefWidth="152.0" text="Votre Offre" textFill="#c41011">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Separator layoutX="239.0" layoutY="55.0" prefHeight="9.0" prefWidth="462.0" />
+      <Separator layoutX="178.0" layoutY="50.0" prefHeight="9.0" prefWidth="538.0" />
+      <Pane prefHeight="500.0" prefWidth="150.0" style="-fx-background-color: #c41011;">
+         <children>
+            <HBox prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: WHITE;">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/logo.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="9.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

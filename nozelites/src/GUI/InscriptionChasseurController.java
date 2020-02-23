@@ -104,7 +104,7 @@ public class InscriptionChasseurController implements Initializable {
         
         final FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(//
-               //
+              
               new FileChooser.ExtensionFilter("JPG", "*.jpg"), 
               new FileChooser.ExtensionFilter("PNG", "*.png"));
         

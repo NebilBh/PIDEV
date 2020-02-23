@@ -52,9 +52,7 @@ public class Nozelites extends Application {
 
 
         
-        
-
-
+      
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());
         stage.setScene(scene);

@@ -16,7 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import services.ServicesMessage;
 import services.ServicesOffre;
 
@@ -48,6 +51,10 @@ public class InterfaceMembreEnvoyerMessageController implements Initializable {
 
     ServicesOffre srvO = new ServicesOffre();
     ServicesMessage srv = new ServicesMessage();
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
     /**
      * Initializes the controller class.
      */
@@ -95,6 +102,48 @@ public class InterfaceMembreEnvoyerMessageController implements Initializable {
         emailField.setText("");
         objetField.setText("");
         messageField.setText("");
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        anchorEnvoyerMessage.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        anchorEnvoyerMessage.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        anchorEnvoyerMessage.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        anchorEnvoyerMessage.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        anchorEnvoyerMessage.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        anchorEnvoyerMessage.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        anchorEnvoyerMessage.getChildren().setAll(pane);
     }
     
 }

@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
@@ -31,6 +32,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
@@ -42,6 +44,47 @@ import services.ServicesOffre;
  * @author Wael Berrachid
  */
 public class InterfaceChasseurOffreController implements Initializable {
+
+    @FXML
+    private Label BoutonOffre;
+    @FXML
+    private Label BoutonAcceuil;
+    @FXML
+    private Label BoutonProfil;
+    @FXML
+    private Label BoutonElites;
+    @FXML
+    private Button BoutonDeco;
+
+    @FXML
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonProfilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonElitesGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
     
     private class ButtonCell extends TableCell<Record, Boolean> {
         final Button cellButton = new Button("Vraiment ?");

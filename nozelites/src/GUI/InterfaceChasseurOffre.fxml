@@ -35,58 +35,47 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </ImageView>
-            <Label alignment="CENTER" prefHeight="60.0" prefWidth="70.0" text="Acceuil" textAlignment="CENTER" textFill="#c41011">
+            <Label fx:id="BoutonAcceuil" alignment="CENTER" onMouseClicked="#BoutonAcceuilGo" prefHeight="60.0" prefWidth="70.0" text="Acceuil" textAlignment="CENTER" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="70.0" text="Profil" textAlignment="CENTER" textFill="#c41011">
+            <Label fx:id="BoutonProfil" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#BoutonProfilGo" prefHeight="60.0" prefWidth="70.0" text="Profil" textAlignment="CENTER" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="70.0" text="Elites" textAlignment="CENTER" textFill="#c41011">
+            <Label fx:id="BoutonElites" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#BoutonElitesGo" prefHeight="60.0" prefWidth="70.0" text="Elites" textAlignment="CENTER" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="70.0" text="Offres" textAlignment="CENTER" textFill="#c41011">
+            <Label fx:id="BoutonOffre" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#BoutonOffreGo" prefHeight="60.0" prefWidth="70.0" text="Offres" textAlignment="CENTER" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="30.0" />
                </HBox.margin>
-            </Label>
-            <Label alignment="CENTER" prefHeight="60.0" prefWidth="70.0" text="Inbox" textAlignment="CENTER" textFill="#c41011">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
             </Label>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/bell.png" />
                </image>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #c41011;" text="Déconnexion" textFill="WHITE">
+            <Button fx:id="BoutonDeco" mnemonicParsing="false" onMouseClicked="#BoutonDecoGo" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #c41011;" text="Déconnexion" textFill="WHITE">
                <HBox.margin>
                   <Insets left="30.0" right="10.0" />
                </HBox.margin>
