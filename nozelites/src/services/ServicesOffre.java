@@ -6,6 +6,7 @@
 
 package services;
 
+import entities.Membre;
 import entities.Offre;
 import entities.OffreForGUI;
 import java.sql.Connection;
@@ -71,19 +72,24 @@ public class ServicesOffre {
         }
     }
     
-    public void afficherTopMois(String Mois){ //Mois must be like -08-
+    public List<Membre> afficherTopMois(String Mois){ //Mois must be like -08-
+        
+        List<Membre> list = new ArrayList<Membre>();
+        
         try 
         {
-            PreparedStatement pt = c.prepareStatement("SELECT count(*), nom, prenom, mail\n" +
+            PreparedStatement pt = c.prepareStatement("SELECT idUsr, count(*), nom, prenom, mail, Experience, age, tel, image\n" +
                                                         " FROM offre INNER JOIN membre ON offre.IdRecepteur=membre.idUsr\n" +
-                                                        " WHERE Date LIKE '%"+Mois+"%' GROUP BY IdRecepteur ORDER BY count(*) DESC");
+                                                        " WHERE offre.Date LIKE '%"+Mois+"%' GROUP BY IdRecepteur ORDER BY count(*) DESC");
             ResultSet rs = pt.executeQuery();
             
             int i = 1;
             
             while(rs.next() && i!=4 )
             {   
-                System.out.println(i+" Nombre d'offres : "+rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)); //ordre fel table
+                //System.out.println(i+" Nombre d'offres : "+rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)); //ordre fel table
+                Membre m = new Membre(rs.getString(3),rs.getString(4),rs.getString(5),"","",rs.getString(6),"",rs.getInt(7),rs.getInt(8),rs.getInt(1),rs.getInt(2),rs.getString(9));
+                list.add(m);
                 i++;
             }
         } 
@@ -91,6 +97,8 @@ public class ServicesOffre {
         {
             Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return list;
         
     }
     

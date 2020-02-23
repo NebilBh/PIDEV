@@ -83,7 +83,7 @@ public class InterfaceChasseurOffreController implements Initializable {
 
     @FXML
     private void BoutonDecoGo(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
         anchorOffre.getChildren().setAll(pane);
     }
     

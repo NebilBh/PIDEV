@@ -84,7 +84,7 @@ public class InterfaceMembreInboxController implements Initializable {
 
     @FXML
     private void deconnexion(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 
