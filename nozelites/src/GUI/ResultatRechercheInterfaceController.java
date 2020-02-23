@@ -5,13 +5,18 @@
  */
 package GUI;
 
+import java.awt.Desktop.Action;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,12 +25,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import services.ServiceFormation;
 import services.ServiceMembre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -41,6 +48,8 @@ public class ResultatRechercheInterfaceController implements Initializable {
     private VBox listUsr;
     @FXML
     private VBox vboxUsr;
+    @FXML
+    private AnchorPane root;
 
     /**
      * Initializes the controller class.
@@ -75,16 +84,38 @@ public class ResultatRechercheInterfaceController implements Initializable {
                 VBox.setMargin(hboxUsr, new Insets(10,0,0,0));
                 
                 Label nomPrenom = new Label(listUsr.getString("prenom")+" "+listUsr.getString("nom")+", "+listUsr.getString("age"));
-                nomPrenom.setStyle("-fx-font:bold 15pt 'System';");
+                nomPrenom.setStyle("-fx-font:bold 12pt 'System';");
                 
-                Label formation = new Label("Formation");
+                Label formation = new Label("Formations : ");
+                formation.setStyle("-fx-font:bold 11px 'System';"
+                        + "-fx-text-fill : #c41011");
+                
+                VBox mailExp = new VBox();
+                mailExp.setSpacing(20);
+                mailExp.setPrefWidth(120);
+                mailExp.setAlignment(Pos.CENTER_LEFT);
                 Label mail = new Label (listUsr.getString("mail"));
-                mail.setPrefWidth(120);
-                Label Tel = new Label(Integer.toString(listUsr.getInt("tel")));
+                Label exp = new Label("Expérience "+listUsr.getString("Experience"));
+                mailExp.getChildren().addAll(mail,exp);
+                Label Tel = new Label("Tél : "+Integer.toString(listUsr.getInt("tel")));
                 Tel.setPrefWidth(100);
                 Button consulter = new Button("Consulter");
                 HBox.setMargin(consulter,new Insets(0,0,0,20));
+                Session s = new Session();
+                int id = listUsr.getInt("idUsr");
                 
+                consulter.setOnAction(actionEvent ->  {
+                     AnchorPane pane;
+                    try {
+                        pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
+                        root.getChildren().setAll(pane); 
+                        s.setId_select(id);
+                        
+                    } catch (IOException ex) {
+                        Logger.getLogger(ResultatRechercheInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                        
+                });
                 
                 ResultSet rs = srvF.afficherFormationUser(listUsr.getInt("idUsr"));
             
@@ -109,13 +140,15 @@ public class ResultatRechercheInterfaceController implements Initializable {
                 cercle.setFill(pattern);
                 
                 midBox.getChildren().addAll(nomPrenom,formation,Hformation);
-                hboxUsr.getChildren().addAll(cercle,midBox,mail,Tel,consulter);
+                hboxUsr.getChildren().addAll(cercle,midBox,mailExp,Tel,consulter);
                 vboxUsr.getChildren().addAll(hboxUsr);
                 
             }
         } catch (SQLException ex) {
             Logger.getLogger(ResultatRechercheInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+            
     }    
 
     @FXML
@@ -145,5 +178,5 @@ public class ResultatRechercheInterfaceController implements Initializable {
     @FXML
     private void deconnexion(MouseEvent event) {
     }
-    
-}
+   
+    }

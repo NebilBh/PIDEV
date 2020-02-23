@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ResultatRechercheInterfaceController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ResultatRechercheInterfaceController">
    <children>
       <HBox fx:id="btn_deconnection" alignment="CENTER_LEFT" layoutX="5.0" prefHeight="60.0" prefWidth="740.0" style="-fx-background-color: white;">
          <children>

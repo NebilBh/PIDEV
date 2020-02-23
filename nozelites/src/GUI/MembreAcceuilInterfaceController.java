@@ -11,12 +11,14 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import services.ServiceMembre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -35,12 +37,17 @@ public class MembreAcceuilInterfaceController implements Initializable {
     private TextField searchField;
     @FXML
     private TextField searchDomaine;
+    @FXML
+    private Label nbProfil;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ServiceMembre srvM = new ServiceMembre();
+        int count = srvM.nbrMembre();
+        nbProfil.setText(Integer.toString(count));
         // TODO
     }    
 
@@ -82,8 +89,10 @@ public class MembreAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void deconnexion(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreEnvoyerMessage.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
         root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
     }
 
     @FXML

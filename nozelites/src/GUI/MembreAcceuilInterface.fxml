@@ -95,7 +95,7 @@
                <children>
                   <HBox alignment="BOTTOM_LEFT" layoutY="50.0" prefHeight="30.0" prefWidth="723.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="130.0" text="Localisation" textFill="#292929">
+                        <Label prefHeight="30.0" prefWidth="130.0" text="Membre" textFill="#292929">
                            <HBox.margin>
                               <Insets left="30.0" right="80.0" />
                            </HBox.margin>
@@ -115,7 +115,7 @@
                   </HBox>
                   <HBox layoutY="82.0" prefHeight="66.0" prefWidth="724.0">
                      <children>
-                        <TextField fx:id="searchField" prefHeight="27.0" prefWidth="249.0" promptText="Chercher par localisation" style="-fx-background-color: transparent; -fx-border-color: B3B3B3; -fx-border-radius: 2px;">
+                        <TextField fx:id="searchField" prefHeight="27.0" prefWidth="249.0" promptText="Chercher un membre" style="-fx-background-color: transparent; -fx-border-color: B3B3B3; -fx-border-radius: 2px;">
                            <HBox.margin>
                               <Insets left="30.0" right="10.0" />
                            </HBox.margin>
@@ -134,7 +134,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutY="117.0" prefHeight="30.0" prefWidth="726.0">
                      <children>
-                        <Label prefHeight="40.0" prefWidth="76.0" text="5650" textFill="#292929">
+                        <Label fx:id="nbProfil" prefHeight="40.0" prefWidth="76.0" text="5650" textFill="#292929">
                            <HBox.margin>
                               <Insets left="30.0" right="50.0" />
                            </HBox.margin>

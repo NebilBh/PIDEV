@@ -36,7 +36,23 @@ public class ServiceMembre {
         ServiceMembre.recherche = recherche;
     }
 
-   
+   public int nbrMembre(){
+       try {
+            
+       
+            String qry ="Select Count(*) from membre";
+            
+            PreparedStatement stmt= db.prepareStatement(qry);
+            ResultSet usrList = stmt.executeQuery();
+            usrList.next();
+            return usrList.getInt(1);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       return 0;
+   }
     
     public void ajouter(Membre user){
         try {
