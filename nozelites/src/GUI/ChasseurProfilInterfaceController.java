@@ -20,8 +20,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import services.ServiceChasseur;
@@ -51,6 +53,12 @@ public class ChasseurProfilInterfaceController implements Initializable {
     private Label labelTel;
     @FXML
     private Button btnModif;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
+    private Label labelLogin;
 
     /**
      * Initializes the controller class.
@@ -78,7 +86,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
             m.setTel(res.getInt("tel"));
             m.setAge(res.getInt("age"));
             m.setEntreprise(res.getString("entreprise"));
-            
+            m.setLogin(res.getString("login"));
             m.setMail(res.getString("mail"));
         } catch (SQLException ex) {
             Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +94,8 @@ public class ChasseurProfilInterfaceController implements Initializable {
         labelProfil.setText(m.getNom()+" "+m.getPrenom()+" "+m.getAge()+" ans");
         labelMail.setText(m.getMail());
         labelEnt.setText(m.getEntreprise());
-        
+        labelLogin.setText("#"+m.getLogin());
+        labelTel.setText(Integer.toString(m.getTel()));
         Image img = new Image("file:///"+path);
         //imgProfil.setImage(img);
         ImagePattern pattern = new ImagePattern(img);
@@ -110,6 +119,36 @@ public class ChasseurProfilInterfaceController implements Initializable {
     private void modifier(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ModifierChasseurInterface.fxml"));
         profilChass.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurTeteAcceuilInterface.fxml"));
+        profilChass.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) {
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) {
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) {
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) {
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) {
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) {
     }
     
 }

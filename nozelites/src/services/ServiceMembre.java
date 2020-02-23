@@ -26,6 +26,17 @@ import utils.JavaMail;
  */
 public class ServiceMembre {
     Connection db = ConnexionDB.getInstance().getCnx();
+    private static String recherche;
+
+    public static String getRecherche() {
+        return recherche;
+    }
+
+    public static void setRecherche(String recherche) {
+        ServiceMembre.recherche = recherche;
+    }
+
+   
     
     public void ajouter(Membre user){
         try {
@@ -90,7 +101,38 @@ public class ServiceMembre {
     }
    
     
-    
+    public ResultSet RechercheNom(String recherche){
+                String qry ="Select * from membre where nom LIKE ? OR prenom LIKE ? ";
+        
+        try {
+            PreparedStatement stmt= db.prepareStatement(qry);
+            stmt.setString(1,"%"+recherche+"%");
+            stmt.setString(2,"%"+recherche+"%");
+            ResultSet usrList = stmt.executeQuery();
+            return usrList;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
+    }
+    public ResultSet RecherchePrenom(String recherche){
+        
+                String qry ="Select * from membre where prenom LIKE ? ";
+        
+        try {
+            PreparedStatement stmt= db.prepareStatement(qry);
+            stmt.setString(1,"%"+recherche+"%");
+            ResultSet usrList = stmt.executeQuery();
+            return usrList;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+  
+    }
     public ResultSet authen(String login ,String mdp){
         String qry = "Select * from membre where login = ? AND mdp = ?";
          

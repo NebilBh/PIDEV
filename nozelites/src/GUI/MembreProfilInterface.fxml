@@ -90,8 +90,8 @@
                </font></Button>
             <TableView fx:id="tableDip" layoutX="422.0" layoutY="40.0" prefHeight="200.0" prefWidth="304.0">
               <columns>
-                <TableColumn fx:id="col_domaine" prefWidth="88.7999267578125" text="domaine" />
-                <TableColumn fx:id="col_org" prefWidth="98.39996337890625" text="Organisation" />
+                <TableColumn fx:id="col_domaine" prefWidth="88.7999267578125" text="Organisation" />
+                <TableColumn fx:id="col_org" prefWidth="98.39996337890625" text="Domaine" />
                   <TableColumn fx:id="col_supp" prefWidth="121.5999755859375" text="Supprimer" />
                   <TableColumn fx:id="col_id" prefWidth="57.60009765625" text="Column X" />
               </columns>
@@ -165,13 +165,13 @@
              
             <HBox layoutX="88.0" layoutY="33.0" prefHeight="114.0" prefWidth="511.0" style="-fx-background-color: white;">
                <children>
-                  <Circle fx:id="circle" fill="#1f93ff00" radius="52.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                  <Circle fx:id="circle" fill="#1f93ff00" radius="47.0" stroke="TRANSPARENT" strokeType="INSIDE">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin></Circle>
                   <Label fx:id="labelProfil" alignment="CENTER" prefHeight="114.0" prefWidth="245.0" text="Label">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="5.0" right="10.0" />

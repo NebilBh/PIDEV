@@ -111,6 +111,8 @@ public class MembreProfilInterfaceController implements Initializable {
         
         col_id.setVisible(false);
        // ----affichage des diplomes ----
+       
+        
         try {
             ResultSet listD = srvD.afficherDiplomeUser(s.getIdSession());
             while(listD.next()){
@@ -126,10 +128,13 @@ public class MembreProfilInterfaceController implements Initializable {
         col_domaine.setCellValueFactory(new PropertyValueFactory<>("domaine"));
         col_org.setCellValueFactory(new PropertyValueFactory<>("organisation"));
         col_supp.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-            
+        
         col_supp.setCellFactory(param -> new TableCell<Diplome, Diplome>() {
-            private final Button deleteButton = new Button("Supprimer");
-
+     
+            Button deleteButton = new Button("Supprimer");
+            
+            
+            
             @Override
             protected void updateItem(Diplome diplome, boolean empty) {
                 super.updateItem(diplome, empty);
@@ -229,7 +234,9 @@ public class MembreProfilInterfaceController implements Initializable {
     }
 
     @FXML
-    private void acceuil(MouseEvent event) {
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+                profilMembre.getChildren().setAll(pane);  
     }
 
     @FXML
