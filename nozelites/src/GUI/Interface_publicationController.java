@@ -31,7 +31,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import utils.ConnexionBD;
+import utils.ConnexionDB;
 
 /**
  * FXML Controller class
@@ -88,7 +88,7 @@ public class Interface_publicationController implements Initializable {
         //String pathh = pathimage;
         String colii;
         Publication_services srv  = new Publication_services();
-        Publication_entities p = new Publication_entities(titre,description,0,pathimage,5,1);
+        Publication_entities p = new Publication_entities(titre,description,0,pathimage,1,4);
         srv.ajouterPublication(p);
         
       

@@ -16,14 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.ConnexionBD;
+import utils.ConnexionDB;
 
 /**
  *
  * @author salon2
  */
 public class Favoris_services {
-        Connection c = ConnexionBD.getInstance().getCon();
+        Connection c = ConnexionDB.getInstance().getCnx();
 
      public void ajouterfavoris(Favoris_entities f){
         try 
