@@ -32,9 +32,8 @@ import java.util.List;
 import static java.util.Spliterators.iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.ConnexionBD;
+import utils.ConnexionDB;
 import utils.JavaMail;
-import com.teknikindustries.bulksms.SMS;
 import static utils.JavaMail.sendMail;
 
 /**
@@ -43,7 +42,7 @@ import static utils.JavaMail.sendMail;
  */
 
 public class ServiceEvennement{
-    Connection c=ConnexionBD.getinstance().getCnx(); 
+    Connection c=ConnexionDB.getInstance().getCnx(); 
     public void pdf() throws FileNotFoundException
     {
         try {
@@ -136,7 +135,7 @@ public class ServiceEvennement{
                     Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ConnexionDB.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         } catch (ParseException ex) {
@@ -435,7 +434,7 @@ public class ServiceEvennement{
         } 
         return e;
      } catch (SQLException ex) {
-            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnexionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     return null;

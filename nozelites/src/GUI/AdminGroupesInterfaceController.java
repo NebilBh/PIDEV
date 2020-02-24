@@ -231,7 +231,7 @@ public class AdminGroupesInterfaceController implements Initializable {
         //add value
         lss= FXCollections.observableArrayList(list_g);
         table_groupes.setItems( lss);
-        table_groupes.getColumns().addAll(colVoir,colId, colTitre, colDescription, colEtat,colsupprimer);
+        table_groupes.getColumns().addAll(colVoir, colTitre, colDescription, colEtat,colsupprimer);
         
       // trie
       colId.setSortType(TableColumn.SortType.DESCENDING);

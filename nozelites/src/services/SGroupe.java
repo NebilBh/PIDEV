@@ -153,7 +153,7 @@ public class SGroupe {
     public boolean inviter_membre(int id_groupe,int id_membre,int id_invite)
     {
         SGroupeMembre s_gm = new SGroupeMembre();
-        if(s_gm.chercher_groupe_membre(id_groupe, id_membre)!=-1)//tester si le membre n'appartient pas au groupe
+        if(s_gm.chercher_groupe_membre(id_groupe, id_membre)!=null)//tester si le membre n'appartient pas au groupe
         {
             GroupeMembre gm1 = new GroupeMembre(5,id_groupe,id_membre,id_invite,"invitation");
             s_gm.ajouter_groupe_membre(gm1);
@@ -165,16 +165,16 @@ public class SGroupe {
     public void accepter_invitation(int id_groupe,int id_membre)
     {
         SGroupeMembre s_gm = new SGroupeMembre();
-        int id_gm = s_gm.chercher_groupe_membre(id_groupe, id_membre);
-        GroupeMembre gm1 = new GroupeMembre(id_gm,1,1,2,"standard");
+        GroupeMembre id_gm = s_gm.chercher_groupe_membre(id_groupe, id_membre);
+        GroupeMembre gm1 = new GroupeMembre(id_gm.getId(),1,1,2,"standard");
         s_gm.modifier_groupe_membre(gm1);
     }
     
     public void retirer_membre(int id_groupe,int id_membre)
     {
         SGroupeMembre s_gm = new SGroupeMembre();
-        int id_gm = s_gm.chercher_groupe_membre(id_groupe, id_membre);
-        GroupeMembre gm1 = new GroupeMembre(id_gm,1,1,2,"bloqué");
+        GroupeMembre id_gm = s_gm.chercher_groupe_membre(id_groupe, id_membre);
+        GroupeMembre gm1 = new GroupeMembre(id_gm.getId(),1,1,2,"bloqué");
         s_gm.modifier_groupe_membre(gm1);
     }
     public void ajouter_admin(int id_groupe,int id_membre)
@@ -182,16 +182,16 @@ public class SGroupe {
         SGroupeMembre s_gm = new SGroupeMembre();
         if(!s_gm.membre_est_fondateur(id_groupe, id_membre))//tester si le membre n'est pas le fondateur
         {
-            int id_gm = s_gm.chercher_groupe_membre(id_groupe, id_membre);
-            GroupeMembre gm1 = new GroupeMembre(id_gm,1,1,2,"administrateur");
+            GroupeMembre id_gm = s_gm.chercher_groupe_membre(id_groupe, id_membre);
+            GroupeMembre gm1 = new GroupeMembre(id_gm.getId(),1,1,2,"administrateur");
             s_gm.modifier_groupe_membre(gm1); 
         }
     }
     public void retirer_admin(int id_groupe,int id_membre)
     {
         SGroupeMembre s_gm = new SGroupeMembre();
-        int id_gm = s_gm.chercher_groupe_membre(id_groupe, id_membre);
-        GroupeMembre gm1 = new GroupeMembre(id_gm,1,1,2,"standard");
+        GroupeMembre id_gm = s_gm.chercher_groupe_membre(id_groupe, id_membre);
+        GroupeMembre gm1 = new GroupeMembre(id_gm.getId(),1,1,2,"standard");
         if(!s_gm.membre_est_fondateur(id_groupe, id_membre))//tester si le membre n'est pas le fondateur
             s_gm.modifier_groupe_membre(gm1);
         

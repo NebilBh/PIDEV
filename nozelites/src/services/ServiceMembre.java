@@ -239,7 +239,7 @@ public class ServiceMembre {
         } 
         return e;
      } catch (SQLException ex) {
-            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnexionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     return null;

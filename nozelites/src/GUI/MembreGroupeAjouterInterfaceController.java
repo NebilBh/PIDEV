@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import static GUI.MembreGroupeInterfaceController.gr;
 import javafx.util.Callback;
 import com.sun.prism.impl.Disposer;
 import com.sun.prism.impl.Disposer.Record;
@@ -181,7 +180,7 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
         
         lss= FXCollections.observableArrayList(list_m);
         table_membres.setItems(lss);
-        table_membres.getColumns().addAll(colId, colNom, colPrenom, colbloquer);
+        table_membres.getColumns().addAll( colNom, colPrenom, colbloquer);
     }    
 
     @FXML

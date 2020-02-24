@@ -39,14 +39,14 @@ import services.ServicesReclamation;
  */
 public class Nozelites extends Application {
     
-    ParametresParDefaut p = new ParametresParDefaut();
+    
     
     @Override
     public void start(Stage stage) throws Exception {
 
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/InterfaceEvenement.fxml"));
        // Parent root = FXMLLoader.load(getClass().getResource("/GUI/ResultatRechercheInterface.fxml"));
 
 
