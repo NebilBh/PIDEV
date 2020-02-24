@@ -70,7 +70,6 @@ public class MembreProfilVisitInterfaceController implements Initializable {
     private TableColumn<Diplome, String> col_org;
     
    
-    @FXML
     private TableColumn<Diplome, Diplome> col_supp;
     @FXML
     private TableColumn<Diplome, String> col_id;
@@ -121,30 +120,10 @@ public class MembreProfilVisitInterfaceController implements Initializable {
         col_id.setCellValueFactory(new PropertyValueFactory<>("id_diplome"));
         col_domaine.setCellValueFactory(new PropertyValueFactory<>("domaine"));
         col_org.setCellValueFactory(new PropertyValueFactory<>("organisation"));
-        col_supp.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         
-        col_supp.setCellFactory(param -> new TableCell<Diplome, Diplome>() {
-     
-            Button deleteButton = new Button("Supprimer");
-            
-            
-            
-            @Override
-            protected void updateItem(Diplome diplome, boolean empty) {
-                super.updateItem(diplome, empty);
-
-                if (diplome == null) {
-                    setGraphic(null);
-                    return;
-                }
-
-                setGraphic(deleteButton);
-                deleteButton.setOnAction(event -> {
-                    data.remove(diplome);
-                    srvD.supprimer(diplome);
-                        });
-            }
-        });
+        
+        
+        
         tableDip.setItems(null);
         tableDip.setItems(data);
          
