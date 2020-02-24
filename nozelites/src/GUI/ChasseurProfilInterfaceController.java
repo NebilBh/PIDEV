@@ -20,8 +20,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import services.ServiceChasseur;
@@ -51,6 +53,18 @@ public class ChasseurProfilInterfaceController implements Initializable {
     private Label labelTel;
     @FXML
     private Button btnModif;
+    @FXML
+    private Label labelLogin;
+    @FXML
+    private Label BoutonAcceuil;
+    @FXML
+    private Label BoutonProfil;
+    @FXML
+    private Label BoutonElites;
+    @FXML
+    private Label BoutonOffre;
+    @FXML
+    private Button BoutonDeco;
 
     /**
      * Initializes the controller class.
@@ -68,7 +82,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
             // TODO
             
             
-            m.setId(s.getIdSession());
+            m.setUsrId(s.getIdSession());
             
             ResultSet res = srvC.afficherUsr(m);
             res.next();
@@ -78,7 +92,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
             m.setTel(res.getInt("tel"));
             m.setAge(res.getInt("age"));
             m.setEntreprise(res.getString("entreprise"));
-            
+            m.setLogin(res.getString("login"));
             m.setMail(res.getString("mail"));
         } catch (SQLException ex) {
             Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +100,8 @@ public class ChasseurProfilInterfaceController implements Initializable {
         labelProfil.setText(m.getNom()+" "+m.getPrenom()+" "+m.getAge()+" ans");
         labelMail.setText(m.getMail());
         labelEnt.setText(m.getEntreprise());
-        
+        labelLogin.setText("#"+m.getLogin());
+        labelTel.setText(Integer.toString(m.getTel()));
         Image img = new Image("file:///"+path);
         //imgProfil.setImage(img);
         ImagePattern pattern = new ImagePattern(img);
@@ -99,7 +114,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
         chasseurTalent m  = new chasseurTalent();
         Session s = new Session();
         
-        m.setId(s.getIdSession());
+        m.setUsrId(s.getIdSession());
         
         srvM.supprimer(m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
@@ -111,5 +126,32 @@ public class ChasseurProfilInterfaceController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ModifierChasseurInterface.fxml"));
         profilChass.getChildren().setAll(pane);
     }
+
+    private void acceuil(MouseEvent event) throws IOException {
+        
+    }
+
+    @FXML
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurTeteAcceuilInterface.fxml"));
+        profilChass.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonProfilGo(MouseEvent event) {
+    }
+
+    @FXML
+    private void BoutonElitesGo(MouseEvent event) {
+    }
+
+    @FXML
+    private void BoutonOffreGo(MouseEvent event) {
+    }
+
+    @FXML
+    private void BoutonDecoGo(MouseEvent event) {
+    }
+
     
 }

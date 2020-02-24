@@ -86,8 +86,8 @@ public class AdminGroupeInterfaceController implements Initializable {
                         //bloquer membre
                         GroupeMembre gm = new GroupeMembre(0,2,1,3,"bloqué");
                         SGroupeMembre s_gm = new SGroupeMembre();
-                        int id_gm = s_gm.chercher_groupe_membre(gr.getId(),currentmembre.getId());
-                        gm.setId(id_gm);
+                        GroupeMembre id_gm = s_gm.chercher_groupe_membre(gr.getId(),currentmembre.getUsrId());
+                        gm.setId(id_gm.getId());
                         s_gm.modifier_groupe_membre(gm);
                         //srv.supprimerOffre(currentOffre);
                 }
@@ -219,7 +219,7 @@ public class AdminGroupeInterfaceController implements Initializable {
         
         lss= FXCollections.observableArrayList(list_m);
         table_invitation.setItems(lss);
-        table_invitation.getColumns().addAll(colId, colNom, colPrenom,coletat, colbloquer);*/
+        table_invitation.getColumns().addAll( colNom, colPrenom,coletat, colbloquer);*/
         
         
         
@@ -293,7 +293,8 @@ public class AdminGroupeInterfaceController implements Initializable {
         
         lss_i= FXCollections.observableArrayList(list_mb);
         table_membres.setItems(lss_i);
-        table_membres.getColumns().addAll(colId_i, colNom_i, colPrenom_i,colEtat_i, colbloquer_i);
+        table_membres.getColumns().addAll( colId_i,colNom_i, colPrenom_i,colEtat_i, colbloquer_i);
+        colId_i.setVisible(false);
         
     }    
 

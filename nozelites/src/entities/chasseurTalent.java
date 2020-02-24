@@ -26,8 +26,8 @@ public class chasseurTalent extends Utilisateur{
     }
 
     @Override
-    public int getId() {
-        return super.getId(); //To change body of generated methods, choose Tools | Templates.
+    public int getUsrId() {
+        return super.getUsrId(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

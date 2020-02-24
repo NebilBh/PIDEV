@@ -43,6 +43,7 @@ import services.SGroupeMembre;
 import services.ServiceMembre;
 import com.sun.prism.impl.Disposer.Record;
 import javafx.geometry.Pos;
+import javafx.scene.control.ComboBox;
 import javafx.scene.input.InputMethodEvent;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
@@ -65,6 +66,8 @@ public class MembreGroupesInterfaceController implements Initializable {
     @FXML
     private TableView<entities.GroupeMembreInvite> table_invitations;
     ObservableList<entities.GroupeMembreInvite> ls_invitations;//membre(nom,prenom) + groupe(titre,description)
+    @FXML
+    private ComboBox<?> combobox_recherche;
 
     @FXML
     private void ajouter_groupe(ActionEvent event) throws IOException {
@@ -98,10 +101,32 @@ public class MembreGroupesInterfaceController implements Initializable {
                     // get Selected Item
                 	Groupe currentgroupe = (Groupe) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
                 	//remove selected item from the table list
-                	lss.remove(currentgroupe);
-                        //remove from DB
-                        SGroupe s_g = new SGroupe();
-                        s_g.supprimer_groupe(currentgroupe);
+                        SGroupeMembre s_gm = new SGroupeMembre();
+                        GroupeMembre gm = s_gm.chercher_groupe_membre(currentgroupe.getId(), id_membre);
+                        if(gm!=null && gm.getEtat().equals("administrateur"))
+                        {
+                            lss.remove(currentgroupe);
+                            //remove from DB
+                            SGroupe s_g = new SGroupe();
+                            s_g.supprimer_groupe(currentgroupe);
+                        }
+                        else 
+                        {
+                            Notifications notification = Notifications.create()
+                            .title("erreur")
+                            .text("Membre standard ne peut pas supprimer un groupe")
+                            .graphic(null)
+                            .hideAfter(Duration.seconds(10))
+                            .position(Pos.TOP_RIGHT);
+                            notification.showConfirm();
+                        }
+                        try {
+                            AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupeSInterface.fxml"));
+                            root.getChildren().setAll(pane);
+                        } catch (IOException ex) {
+                            Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                	
                         //srv.supprimerOffre(currentOffre);
                 }
             });
@@ -141,6 +166,12 @@ public class MembreGroupesInterfaceController implements Initializable {
                         GroupeMembre gm = new GroupeMembre(currentgroupe.getId_gmi(),0,0,0,"membre");
                         s_gm.modifier_groupe_membre(gm);
                         //srv.supprimerOffre(currentOffre);
+                        try {
+                            AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupeSInterface.fxml"));
+                            root.getChildren().setAll(pane);
+                        } catch (IOException ex) {
+                            Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                 }
             });
             
@@ -181,6 +212,12 @@ public class MembreGroupesInterfaceController implements Initializable {
                         GroupeMembre gm = new GroupeMembre(currentgroupe.getId_gmi(),0,0,0,"membre");
                         s_gm.supprimer_groupe_membre(gm);
                         //srv.supprimerOffre(currentOffre);
+                        try {
+                            AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupeSInterface.fxml"));
+                            root.getChildren().setAll(pane);
+                        } catch (IOException ex) {
+                            Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                 }
             });
             
@@ -217,8 +254,8 @@ public class MembreGroupesInterfaceController implements Initializable {
                 	//remove selected item from the table list
                 	
                     try {
-                        AdminGroupeInterfaceController.gr = currentgroupe;
-                        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupeInterface.fxml"));
+                        MembreGroupeInterfaceController.gr = currentgroupe;
+                        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreGroupeInterface.fxml"));
                         root.getChildren().setAll(pane);
                     } catch (IOException ex) {
                         Logger.getLogger(AdminGroupesInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
@@ -300,7 +337,7 @@ public class MembreGroupesInterfaceController implements Initializable {
         colEtat.setCellValueFactory(
                 new PropertyValueFactory<entities.Groupe, String>("etat"));
         TableColumn colsupprimer = new TableColumn("Supprimer");
-        colEtat.setMinWidth(100);
+        colsupprimer.setMinWidth(100);
         colsupprimer.setCellValueFactory(
                 new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
                 ObservableValue<Boolean>>() {
@@ -314,7 +351,7 @@ public class MembreGroupesInterfaceController implements Initializable {
         lss= FXCollections.observableArrayList(list_g);
         table_groupes.setItems( lss);
         table_groupes.getColumns().addAll(colVoir,colId, colTitre, colDescription, colEtat,colsupprimer);
-        
+        colId.setVisible(false);
       // trie
       colId.setSortType(TableColumn.SortType.DESCENDING);
       colTitre.setSortType(TableColumn.SortType.DESCENDING);
@@ -405,7 +442,7 @@ public class MembreGroupesInterfaceController implements Initializable {
                 return new SimpleBooleanProperty(p.getValue() != null);
             }
         });
-        TableColumn colIrefuser = new TableColumn("Accepter");
+        TableColumn colIrefuser = new TableColumn("Refuser");
         colIrefuser.setMinWidth(100);
         colIrefuser.setCellValueFactory(
                 new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
@@ -453,7 +490,7 @@ public class MembreGroupesInterfaceController implements Initializable {
         //--------------------------------------------------------------------------------------
         ls_invitations= FXCollections.observableArrayList(list_i);
         table_invitations.setItems(ls_invitations);
-        table_invitations.getColumns().addAll(colIid,colInom,colIpprenom, colItitre, colIdescription, colIaccepter,colIrefuser);
+        table_invitations.getColumns().addAll(colInom,colIpprenom, colItitre, colIdescription, colIaccepter,colIrefuser);
         
         colIaccepter.setCellFactory(
                 new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
@@ -481,7 +518,28 @@ public class MembreGroupesInterfaceController implements Initializable {
         
         
         
+        inpuitChercher.textProperty().addListener((observable, oldValue, newValue) -> 
+        {
+            //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+            list_g.clear();
         
+            List<entities.GroupeMembre> list2 = sgm.chercher_groupes_membre_par_id(id_membre);
+            for(entities.GroupeMembre gm : list2)
+            {
+                List<entities.Groupe> lsg = sg.chercher_groupe_par_id(gm.getId_groupe());
+                for(entities.Groupe g : lsg)
+                {
+                    if(!gm.getEtat().equals("invitation")&&!gm.getEtat().equals("bloqué"))
+                        if(g.getTitre().contains(inpuitChercher.getText())||
+                                inpuitChercher.getText().equals(""))
+                        list_g.add(g);
+                }
+            }
+
+            lss.removeAll();
+            lss= FXCollections.observableArrayList(list_g);
+            table_groupes.setItems( lss);
+        });
         
         
         

@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import static GUI.MembreGroupeInterfaceController.gr;
 import javafx.util.Callback;
 import com.sun.prism.impl.Disposer;
 import com.sun.prism.impl.Disposer.Record;
@@ -90,7 +89,7 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
                 	//remove selected item from the table list
                 	//lss.remove(currentmembre);
                         cellButton.setVisible(false);
-                        membres_invite.add(currentmembre.getId());
+                        membres_invite.add(currentmembre.getUsrId());
                         //bloquer membre
                         /*for(Membre m : lss)
                             System.out.println(m.getId());*/
@@ -181,7 +180,7 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
         
         lss= FXCollections.observableArrayList(list_m);
         table_membres.setItems(lss);
-        table_membres.getColumns().addAll(colId, colNom, colPrenom, colbloquer);
+        table_membres.getColumns().addAll( colId,colNom, colPrenom, colbloquer);
     }    
 
     @FXML

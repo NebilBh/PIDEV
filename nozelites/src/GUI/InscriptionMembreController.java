@@ -52,10 +52,6 @@ public class InscriptionMembreController implements Initializable {
     @FXML
     private TextField labelExp;
     @FXML
-    private TextField labelImg;
-    @FXML
-    private TextField labelForm;
-    @FXML
     private Button btnCreate;
     @FXML
     private TextField labelTel;
@@ -91,7 +87,7 @@ public class InscriptionMembreController implements Initializable {
     @FXML
     private void createCompte(MouseEvent event) throws IOException {
         Membre m = new Membre(labelNom.getText(), labelPrenom.getText(), labelMail.getText(), labelNdc.getText(), labelMdp.getText(),
-                labelExp.getText(), labelForm.getText(),Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()), 0, lienImg);
+                labelExp.getText(), "0",Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()), 0, lienImg);
          ServiceMembre srvM = new ServiceMembre();
          
          srvM.ajouter(m);

@@ -5,16 +5,13 @@
  */
 package GUI;
 
-import com.sun.prism.impl.Disposer;
-import com.sun.prism.impl.Disposer.Record;
+import entities.Publication_entities;
 import entities.Groupe;
 import entities.GroupeMembre;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.TreeSet;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -32,7 +29,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
-import services.SGroupe;
 import services.SGroupeMembre;
 import entities.Membre;
 import java.sql.ResultSet;
@@ -40,32 +36,41 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import services.ServiceMembre;
+import com.sun.prism.impl.Disposer;
+import com.sun.prism.impl.Disposer.Record;
+import java.io.IOException;
+import services.SGroupe;
 
 /**
  * FXML Controller class
  *
- * @author nadhir
+ * @author AFRIC OPTIC
  */
 public class MembreGroupeInterfaceController implements Initializable {
 
+    @FXML
+    private AnchorPane root;
     @FXML
     private Label titre;
     @FXML
     private Label description;
     @FXML
     private Label etat;
-    
-    public static Groupe gr ;
-    public static int id_groupe = 1;
-    @FXML
-    private AnchorPane root;
-    
-    
-    ObservableList<Membre> lss;
     @FXML
     private TableView<Membre> table_membres;
     @FXML
-    private TableView<entities.Publication_entities> tables_publications;
+    private TableView<Publication_entities> tables_publications;
+    @FXML
+    private TableView<Membre> table_invitation;
+    
+    public static Groupe gr ;
+    public static int id_membre = 1;
+    ObservableList<Membre> lss;
+    ObservableList<Membre> lss_i;
+
+    /**
+     * Initializes the controller class.
+     */
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
         final Button cellButton = new Button("Bloquer");
@@ -82,11 +87,17 @@ public class MembreGroupeInterfaceController implements Initializable {
                 	//remove selected item from the table list
                 	lss.remove(currentmembre);
                         //bloquer membre
-                        GroupeMembre gm = new GroupeMembre(id_groupe,2,1,3,"bloqué");
+                        GroupeMembre gm = new GroupeMembre(gr.getId(),2,1,3,"bloqué");
                         SGroupeMembre s_gm = new SGroupeMembre();
-                        int id_gm = s_gm.chercher_groupe_membre(gm.getId(),currentmembre.getId());
+                        GroupeMembre id_gm = s_gm.chercher_groupe_membre(gm.getId(),currentmembre.getUsrId());
                         s_gm.modifier_groupe_membre(gm);
                         //srv.supprimerOffre(currentOffre);
+                        try {
+                            AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupeInterface.fxml"));
+                            root.getChildren().setAll(pane);
+                        } catch (IOException ex) {
+                            Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                 }
             });
         }
@@ -104,10 +115,50 @@ public class MembreGroupeInterfaceController implements Initializable {
             }
         }
     }
-
-    /**
-     * Initializes the controller class.
-     */
+    
+    private class ButtonCell2 extends TableCell<Disposer.Record, Boolean> {
+        final Button cellButton = new Button("Inviter");
+        
+        ButtonCell2()
+        {
+            //Action when the button is pressed
+            cellButton.setOnAction(new EventHandler<ActionEvent>(){
+                @Override
+                public void handle(ActionEvent t)
+                {
+                    // get Selected Item
+                	Membre currentmembre = (Membre) ButtonCell2.this.getTableView().getItems().get(ButtonCell2.this.getIndex());
+                	//remove selected item from the table list
+                	//lss.remove(currentmembre);
+                        cellButton.setVisible(false);
+                        SGroupeMembre s_gm = new SGroupeMembre();
+                        GroupeMembre gm = new GroupeMembre(1,gr.getId(),currentmembre.getUsrId(),id_membre,"invitation");
+                        s_gm.ajouter_groupe_membre(gm);
+                        try {
+                            AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupeInterface.fxml"));
+                            root.getChildren().setAll(pane);
+                        } catch (IOException ex) {
+                            Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        
+                }
+            });
+        }
+        
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) 
+        {
+            super.updateItem(t, empty);
+            if(!empty){
+            setGraphic(cellButton);
+            }
+            else{
+            setGraphic(null);
+            }
+        }
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -154,6 +205,7 @@ public class MembreGroupeInterfaceController implements Initializable {
         
         });
         
+        
         List<entities.Membre> list_m = new ArrayList<>();
         SGroupeMembre s_gm = new SGroupeMembre();
         List<entities.GroupeMembre> list_gm = new ArrayList<>();
@@ -167,9 +219,11 @@ public class MembreGroupeInterfaceController implements Initializable {
                 lsss.next();
                 String nom_membre = lsss.getString(2);
                 String prenom_membre = lsss.getString(3);
+                if(gmi.getEtat().equals("administrateur")||gmi.getEtat().equals("membre"))
                 list_m.add(new Membre(lsss.getString(2),lsss.getString(3),gmi.getEtat(),
                         lsss.getString(6),lsss.getString(7),lsss.getString(10),lsss.getString(9)
                         ,lsss.getInt(8),lsss.getInt(4),lsss.getInt(1),lsss.getInt(11),lsss.getString(12)));
+                
             } catch (SQLException ex) {
                 Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -178,14 +232,89 @@ public class MembreGroupeInterfaceController implements Initializable {
         lss= FXCollections.observableArrayList(list_m);
         table_membres.setItems(lss);
         table_membres.getColumns().addAll(colId, colNom, colPrenom,coletat, colbloquer);
+        colId.setVisible(false);
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        List<entities.Membre> list_i = new ArrayList<>();
+        TableColumn colId_i = new TableColumn("id");
+        colId_i.setMinWidth(100);
+        colId_i.setCellValueFactory(
+                new PropertyValueFactory<Membre, String>("id"));
+        TableColumn colNom_i = new TableColumn("Nom");
+        colNom_i.setMinWidth(100);
+        colNom_i.setCellValueFactory(
+                new PropertyValueFactory<Membre, String>("nom"));
+        TableColumn colPrenom_i = new TableColumn("Prenom");
+        colPrenom_i.setMinWidth(100);
+        colPrenom_i.setCellValueFactory(
+                new PropertyValueFactory<Membre, String>("prenom"));
+        TableColumn colInviter = new TableColumn("Inviter");
+        colInviter.setMinWidth(100);
+        colInviter.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
+                ObservableValue<Boolean>>() {
+
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+        colInviter.setCellFactory(
+                new Callback<TableColumn<Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
+                return new MembreGroupeInterfaceController.ButtonCell2();
+            }
+        
+        });
+        
+        
+        
+            ServiceMembre s_mb = new ServiceMembre();
+            ResultSet lsss = s_mb.afficher();
+            
+            try {
+                while(lsss.next())
+                {
+                    boolean existe = true;
+                    for(Membre mii : list_m)
+                        if(lsss.getInt(1)==mii.getUsrId())existe=false;
+                    if(existe)
+                        list_i.add(new Membre(lsss.getString(2),lsss.getString(3),lsss.getString(5),
+                        lsss.getString(6),lsss.getString(7),lsss.getString(10),lsss.getString(9)
+                        ,lsss.getInt(8),lsss.getInt(4),lsss.getInt(1),lsss.getInt(11),lsss.getString(12)));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(MembreGroupeInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        
+        lss_i= FXCollections.observableArrayList(list_i);
+        table_invitation.setItems(lss_i);
+        table_invitation.getColumns().addAll(colId_i, colNom_i, colPrenom_i, colInviter);
     }    
 
     @FXML
     private void retour(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));        
-        root.getChildren().setAll(pane);    
+        root.getChildren().setAll(pane);
     }
-    
     
 }

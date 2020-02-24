@@ -77,7 +77,7 @@ public class MembreProfilInterfaceController implements Initializable {
     @FXML
     private TableColumn<Diplome, String> col_org;
     
-    private ObservableList<Diplome>data;
+   
     @FXML
     private TableColumn<Diplome, Diplome> col_supp;
     @FXML
@@ -97,6 +97,7 @@ public class MembreProfilInterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ObservableList<Diplome>data;
         data = FXCollections.observableArrayList();
         
         String path = "";
@@ -110,9 +111,12 @@ public class MembreProfilInterfaceController implements Initializable {
         
         col_id.setVisible(false);
        // ----affichage des diplomes ----
+       
+        
         try {
             ResultSet listD = srvD.afficherDiplomeUser(s.getIdSession());
             while(listD.next()){
+                
                 data.add(new Diplome(listD.getInt("id_diplome"),listD.getString("domaine"), listD.getString("organisation"))); 
             }
             
@@ -124,10 +128,13 @@ public class MembreProfilInterfaceController implements Initializable {
         col_domaine.setCellValueFactory(new PropertyValueFactory<>("domaine"));
         col_org.setCellValueFactory(new PropertyValueFactory<>("organisation"));
         col_supp.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-            
+        
         col_supp.setCellFactory(param -> new TableCell<Diplome, Diplome>() {
-            private final Button deleteButton = new Button("Supprimer");
-
+     
+            Button deleteButton = new Button("Supprimer");
+            
+            
+            
             @Override
             protected void updateItem(Diplome diplome, boolean empty) {
                 super.updateItem(diplome, empty);
@@ -149,7 +156,7 @@ public class MembreProfilInterfaceController implements Initializable {
          
         // ---affichage information User----
         try {
-            m.setId(s.getIdSession());
+            m.setUsrId(s.getIdSession());
             ResultSet res = srvm.afficherUsr(m);
             res.next();
             path = res.getString(12);
@@ -213,7 +220,7 @@ public class MembreProfilInterfaceController implements Initializable {
         Membre m  = new Membre();
         Session s = new Session();
         
-        m.setId(s.getIdSession());
+        m.setUsrId(s.getIdSession());
         
         srvM.supprimer(m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
@@ -227,7 +234,9 @@ public class MembreProfilInterfaceController implements Initializable {
     }
 
     @FXML
-    private void acceuil(MouseEvent event) {
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+                profilMembre.getChildren().setAll(pane);  
     }
 
     @FXML

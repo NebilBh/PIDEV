@@ -15,14 +15,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+
+import javafx.scene.control.TextField;
+
 import javafx.scene.image.Image;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+
+import services.ServiceMembre;
+import utils.Session;
+
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import services.ServicesOffre;
+
 
 /**
  * FXML Controller class
@@ -38,9 +47,18 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @FXML
     private ImageView notifications;
     @FXML
+
+    private TextField searchField;
+    @FXML
+    private TextField searchDomaine;
+    @FXML
+    private Label nbProfil;
+
+    @FXML
     private Label NbrOffresAcceptees;
     @FXML
     private Label NbrOffres;
+
 
     ServicesOffre srvOffres = new ServicesOffre();
     @FXML
@@ -80,14 +98,19 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @FXML
     private Label TelephoneTop3;
     
+    private int topUn,topDeux,topTrois;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ServiceMembre srvM = new ServiceMembre();
+        int count = srvM.nbrMembre();
+        nbProfil.setText(Integer.toString(count));
         // TODO
-        NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
-        NbrOffres.setText(srvOffres.nbrOffres());
+        //NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+        //NbrOffres.setText(srvOffres.nbrOffres());
         
         LocalDate localDate = LocalDate.now();
         List<Membre> topOfTheMonth = srvOffres.afficherTopMois(localDate.toString().substring(4,4));
@@ -106,6 +129,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         EmailTop1.maxWidth(200);
         TelephoneTop1.setText(""+topOfTheMonth.get(0).getTel());
         TelephoneTop1.maxWidth(200);
+        topUn = topOfTheMonth.get(0).getUsrId();
         
         Image img1 = new Image("file:///"+topOfTheMonth.get(1).getImage());
         ImagePattern pattern1 = new ImagePattern(img1);
@@ -120,6 +144,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         EmailTop2.maxWidth(200);
         TelephoneTop2.setText(""+topOfTheMonth.get(1).getTel());
         TelephoneTop2.maxWidth(200);
+        topDeux = topOfTheMonth.get(1).getUsrId();
         
         Image img2 = new Image("file:///"+topOfTheMonth.get(2).getImage());
         ImagePattern pattern2 = new ImagePattern(img2);
@@ -134,6 +159,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         EmailTop3.maxWidth(200);
         TelephoneTop3.setText(""+topOfTheMonth.get(2).getTel());
         TelephoneTop3.maxWidth(200);
+        topTrois = topOfTheMonth.get(2).getUsrId();
     }    
 
     @FXML
@@ -175,7 +201,46 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @FXML
     private void deconnexion(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
         root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
+
+    @FXML
+    private void recherche(MouseEvent event) throws IOException {
+        ServiceMembre srvM = new ServiceMembre();
+        srvM.setRecherche(searchField.getText());
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ResultatRechercheInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void ConsulterUn(MouseEvent event) throws IOException {
+        Session s = new Session();
+        
+        s.setId_select(topUn);
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
+                        root.getChildren().setAll(pane); 
+    }
+
+    @FXML
+    private void ConsulterDeux(MouseEvent event) throws IOException {
+        Session s = new Session();
+        
+        s.setId_select(topDeux);
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
+                        root.getChildren().setAll(pane); 
+    }
+
+    @FXML
+    private void consulterTrois(MouseEvent event) throws IOException {
+        Session s = new Session();
+        
+        s.setId_select(topTrois);
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
+                        root.getChildren().setAll(pane); 
     }
     
 }

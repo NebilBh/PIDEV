@@ -26,6 +26,33 @@ import utils.JavaMail;
  */
 public class ServiceMembre {
     Connection db = ConnexionDB.getInstance().getCnx();
+    private static String recherche;
+
+    public static String getRecherche() {
+        return recherche;
+    }
+
+    public static void setRecherche(String recherche) {
+        ServiceMembre.recherche = recherche;
+    }
+
+   public int nbrMembre(){
+       try {
+            
+       
+            String qry ="Select Count(*) from membre";
+            
+            PreparedStatement stmt= db.prepareStatement(qry);
+            ResultSet usrList = stmt.executeQuery();
+            usrList.next();
+            return usrList.getInt(1);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       return 0;
+   }
     
     public void ajouter(Membre user){
         try {
@@ -50,7 +77,7 @@ public class ServiceMembre {
         try {
             
             pstmt = db.prepareStatement(qry);
-            pstmt.setInt(1,user.getId());
+            pstmt.setInt(1,user.getUsrId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,7 +106,7 @@ public class ServiceMembre {
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
-            stmt.setInt(1,usr.getId());
+            stmt.setInt(1,usr.getUsrId());
             ResultSet usrList = stmt.executeQuery();
             return usrList;
             
@@ -90,7 +117,38 @@ public class ServiceMembre {
     }
    
     
-    
+    public ResultSet RechercheNom(String recherche){
+                String qry ="Select * from membre where nom LIKE ? OR prenom LIKE ? ";
+        
+        try {
+            PreparedStatement stmt= db.prepareStatement(qry);
+            stmt.setString(1,"%"+recherche+"%");
+            stmt.setString(2,"%"+recherche+"%");
+            ResultSet usrList = stmt.executeQuery();
+            return usrList;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
+    }
+    public ResultSet RecherchePrenom(String recherche){
+        
+                String qry ="Select * from membre where prenom LIKE ? ";
+        
+        try {
+            PreparedStatement stmt= db.prepareStatement(qry);
+            stmt.setString(1,"%"+recherche+"%");
+            ResultSet usrList = stmt.executeQuery();
+            return usrList;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+  
+    }
     public ResultSet authen(String login ,String mdp){
         String qry = "Select * from membre where login = ? AND mdp = ?";
          
@@ -127,7 +185,7 @@ public class ServiceMembre {
             stmt.setString(9,newM.getFormation());
             stmt.setInt(10,newM.getType());
             stmt.setString(11,newM.getImage());
-            stmt.setInt(12,user.getId());
+            stmt.setInt(12,user.getUsrId());
             stmt.executeUpdate();
             System.out.println("succes");
         } catch (SQLException ex) {
@@ -146,5 +204,44 @@ public class ServiceMembre {
     public void statisqueAnnee(String annee){
         
     }
+    public List<Membre> afficher2(){
+       List<Membre> arr=new ArrayList<>();
+        String qry ="Select * from membre";
+        
+        try {
+           Statement ste=db.createStatement();
+            ResultSet rs=ste.executeQuery(qry);
+           
+            while(rs.next()) {
+                
+                String nom=rs.getString(2);
+                String prenom=rs.getString(3);
+                Membre e=new Membre(nom,prenom);
+                arr.add(e);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arr;
+    }
+    public Membre rechercherM(int id){
+    Membre e=new Membre();
+        try{ 
+        
+        String requete="select * from Membre where idUsr="+id+" ";
+        PreparedStatement pst=db.prepareStatement(requete);
+         ResultSet rs=pst.executeQuery();
+         
+       
+        while(rs.next()){
+            e=new Membre(rs.getString(2),rs.getString(3),rs.getString(5));
+                //System.out.println(A);
+        } 
+        return e;
+     } catch (SQLException ex) {
+            Logger.getLogger(ConnexionDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
+    return null;
+}
 }

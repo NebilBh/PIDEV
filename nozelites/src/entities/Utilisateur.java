@@ -19,7 +19,23 @@ public class Utilisateur {
     
     public Utilisateur() {
     }
+public Utilisateur(String nom, String prenom, String mail, int usrId) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.usrId = usrId;
+    }
 
+    public Utilisateur(String nom, String prenom,String mail) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail=mail;
+    }
+     public Utilisateur(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+ 
+    }
     public Utilisateur(String nom, String prenom, String mail, String login, String mdp, int age, int tel, int id,String image) {
         this.nom = nom;
         this.prenom = prenom;
@@ -79,9 +95,19 @@ public class Utilisateur {
         this.tel = tel;
     }
 
-    public void setId(int id){
-        this.usrId = id;
+    public void setUsrId(int usrId) {
+        this.usrId = usrId;
     }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getUsrId() {
+        return usrId;
+    }
+
+   
     //---Getters ---
     
     public String getNom() {
@@ -117,9 +143,7 @@ public class Utilisateur {
         return tel;
     }
 
-    public int getId() {
-        return usrId;
-    }
+    
     
     
 }

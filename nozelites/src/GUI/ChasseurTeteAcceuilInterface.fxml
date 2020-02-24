@@ -21,7 +21,7 @@
                <children>
                   <HBox alignment="BOTTOM_LEFT" layoutY="50.0" prefHeight="30.0" prefWidth="723.0">
                      <children>
-                        <Label prefHeight="30.0" prefWidth="130.0" text="Localisation" textFill="#292929">
+                        <Label prefHeight="30.0" prefWidth="130.0" text="Membre" textFill="#292929">
                            <HBox.margin>
                               <Insets left="30.0" right="80.0" />
                            </HBox.margin>
@@ -29,19 +29,29 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
+                        <Button mnemonicParsing="false" onMouseClicked="#recherche" text="OK">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
                         <Label prefHeight="34.0" prefWidth="276.0" text="Quel domaine vous cherchez ?" textFill="#292929">
                            <HBox.margin>
-                              <Insets left="50.0" />
+                              <Insets left="15.0" />
                            </HBox.margin>
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
+                        <Button mnemonicParsing="false" onMouseClicked="#rechercheDomaine" text="OK">
+                           <HBox.margin>
+                              <Insets left="60.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox layoutY="82.0" prefHeight="66.0" prefWidth="724.0">
                      <children>
-                        <TextField prefHeight="27.0" prefWidth="249.0" promptText="Chercher par localisation" style="-fx-background-color: transparent; -fx-border-color: B3B3B3; -fx-border-radius: 2px;">
+                        <TextField fx:id="searchField" prefHeight="27.0" prefWidth="249.0" promptText="Chercher un Membre" style="-fx-background-color: transparent; -fx-border-color: B3B3B3; -fx-border-radius: 2px;">
                            <HBox.margin>
                               <Insets left="30.0" right="10.0" />
                            </HBox.margin>
@@ -55,7 +65,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutY="117.0" prefHeight="30.0" prefWidth="726.0">
                      <children>
-                        <Label prefHeight="40.0" prefWidth="76.0" text="5650" textFill="#292929">
+                        <Label fx:id="nbProfil" prefHeight="40.0" prefWidth="76.0" text="5650" textFill="#292929">
                            <HBox.margin>
                               <Insets left="30.0" right="50.0" />
                            </HBox.margin>
@@ -127,7 +137,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <HBox layoutX="160.0" layoutY="210.0" prefHeight="4.0" prefWidth="350.0" style="-fx-background-color: B3B3B3;" />
+                  <HBox layoutX="186.0" layoutY="210.0" prefHeight="4.0" prefWidth="350.0" style="-fx-background-color: B3B3B3;" />
                   <HBox alignment="CENTER_LEFT" layoutX="-1.0" layoutY="295.0" prefHeight="30.0" prefWidth="728.0">
                      <children>
                         <Label prefHeight="50.0" prefWidth="31.0" text="502">
@@ -200,17 +210,17 @@
                         <Insets left="50.0" />
                      </padding>
                   </HBox>
-                  <HBox layoutX="160.0" layoutY="387.0" prefHeight="4.0" prefWidth="350.0" style="-fx-background-color: B3B3B3;" />
-                  <HBox layoutX="-8.0" layoutY="403.0" prefHeight="314.0" prefWidth="742.0">
+                  <HBox layoutX="188.0" layoutY="387.0" prefHeight="4.0" prefWidth="350.0" style="-fx-background-color: B3B3B3;" />
+                  <HBox layoutX="-2.0" layoutY="403.0" prefHeight="314.0" prefWidth="726.0" spacing="5.0" style="-fx-background-color: B3B3B3;">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 2px;">
                            <children>
                               <Circle fx:id="ImageTop1" fill="#1f93ff00" radius="38.0" stroke="BLACK" strokeType="INSIDE">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="-40.0" />
                                  </VBox.margin>
                               </Circle>
-                              <Label fx:id="NomPrenomAgeTop1" prefHeight="18.0" prefWidth="105.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
+                              <Label fx:id="NomPrenomAgeTop1" alignment="CENTER" prefHeight="18.0" prefWidth="242.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
                               <Label fx:id="ExperienceTop1" text="PHP + J2E" />
                               <HBox prefHeight="36.0" prefWidth="204.0">
                                  <children>
@@ -252,15 +262,18 @@
                                  </font>
                               </Button>
                            </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white; -fx-border-radius: 2px;">
                            <children>
                               <Circle fx:id="ImageTop2" fill="#1f93ff00" radius="38.0" stroke="BLACK" strokeType="INSIDE">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="-40.0" />
                                  </VBox.margin>
                               </Circle>
-                              <Label fx:id="NomPrenomAgeTop2" prefHeight="18.0" prefWidth="105.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
+                              <Label fx:id="NomPrenomAgeTop2" alignment="CENTER" prefHeight="18.0" prefWidth="251.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
                               <Label fx:id="ExperienceTop2" text="PHP + J2E" />
                               <HBox prefHeight="36.0" prefWidth="204.0">
                                  <children>
@@ -302,15 +315,18 @@
                                  </font>
                               </Button>
                            </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 2px;">
                            <children>
                               <Circle fx:id="ImageTop3" fill="#1f93ff00" radius="38.0" stroke="BLACK" strokeType="INSIDE">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="-40.0" />
                                  </VBox.margin>
                               </Circle>
-                              <Label fx:id="NomPrenomAgeTop3" prefHeight="18.0" prefWidth="105.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
+                              <Label fx:id="NomPrenomAgeTop3" alignment="CENTER" prefHeight="18.0" prefWidth="258.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
                               <Label fx:id="ExperienceTop3" text="PHP + J2E" />
                               <HBox prefHeight="36.0" prefWidth="204.0">
                                  <children>
@@ -352,6 +368,9 @@
                                  </font>
                               </Button>
                            </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
                         </VBox>
                      </children>
                   </HBox>

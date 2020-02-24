@@ -16,11 +16,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import services.ServiceMembre;
 import services.ServicesOffre;
 
 /**
@@ -84,6 +86,10 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
     private Label EmailTop3;
     @FXML
     private Label TelephoneTop3;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Label nbProfil;
 
     /**
      * Initializes the controller class.
@@ -91,8 +97,11 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
-        NbrOffres.setText(srvOffres.nbrOffres());
+        ServiceMembre srvM = new ServiceMembre();
+        int count = srvM.nbrMembre();
+        nbProfil.setText(Integer.toString(count));
+        //NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+        //NbrOffres.setText(srvOffres.nbrOffres());
         
         LocalDate localDate = LocalDate.now();
         List<Membre> topOfTheMonth = srvOffres.afficherTopMois(localDate.toString().substring(4,4));
@@ -141,6 +150,8 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
         TelephoneTop3.maxWidth(200);
         
         
+        
+        
     }    
 
     @FXML
@@ -157,7 +168,7 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void BoutonProfilGo(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurProfilInterface.fxml"));
         root.getChildren().setAll(pane);
     }
 
@@ -171,6 +182,19 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
     private void BoutonDecoGo(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
         root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void recherche(MouseEvent event) throws IOException {
+        ServiceMembre srvM = new ServiceMembre();
+        srvM.setRecherche(searchField.getText());
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ResultatRechercheChassInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void rechercheDomaine(MouseEvent event) {
     }
     
 }

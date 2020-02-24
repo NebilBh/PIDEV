@@ -84,14 +84,14 @@
       </HBox>
       <Pane layoutY="247.0" prefHeight="254.0" prefWidth="740.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <Button fx:id="btnAjouter" alignment="CENTER" contentDisplay="CENTER" layoutX="690.0" layoutY="217.0" mnemonicParsing="false" onMouseClicked="#ajoutDiplome" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: #c41011; -fx-border-radius: 5px;" text="+" textFill="#c41011">
+            <Button fx:id="btnAjouter" alignment="CENTER" contentDisplay="CENTER" layoutX="692.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#ajoutDiplome" prefHeight="23.0" prefWidth="23.0" style="-fx-background-color: transparent; -fx-border-color: #c41011; -fx-border-radius: 5px;" text="+" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <TableView fx:id="tableDip" layoutX="422.0" layoutY="15.0" prefHeight="200.0" prefWidth="304.0">
+            <TableView fx:id="tableDip" layoutX="422.0" layoutY="40.0" prefHeight="200.0" prefWidth="304.0">
               <columns>
-                <TableColumn fx:id="col_domaine" prefWidth="88.7999267578125" text="domaine" />
-                <TableColumn fx:id="col_org" prefWidth="98.39996337890625" text="Organisation" />
+                <TableColumn fx:id="col_domaine" prefWidth="88.7999267578125" text="Organisation" />
+                <TableColumn fx:id="col_org" prefWidth="98.39996337890625" text="Domaine" />
                   <TableColumn fx:id="col_supp" prefWidth="121.5999755859375" text="Supprimer" />
                   <TableColumn fx:id="col_id" prefWidth="57.60009765625" text="Column X" />
               </columns>
@@ -149,26 +149,29 @@
                   </Label>
                </children>
             </VBox>
-         </children></Pane>
-      <Pane layoutX="-4.0" layoutY="64.0" prefHeight="181.0" prefWidth="746.0" style="-fx-background-color: #e9e9e9;">
-         <children>
-            <Label layoutX="420.0" layoutY="147.0" prefHeight="26.0" prefWidth="114.0" text="Diplomes" textFill="#c41011">
+            <Label layoutX="423.0" layoutY="11.0" prefHeight="26.0" prefWidth="114.0" text="Diplomes" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="btnSupp" layoutX="630.0" layoutY="3.0" mnemonicParsing="false" onMouseClicked="#suppCompte" style="-fx-background-color: #c41011;" text="Desactiver Compte" textFill="WHITE">
+         </children></Pane>
+      <Pane layoutX="-4.0" layoutY="64.0" prefHeight="181.0" prefWidth="746.0" style="-fx-background-color: #e9e9e9;">
+         <children>
+            <Button fx:id="btnSupp" layoutX="607.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#suppCompte" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #c41011;" text="Desactiver Compte" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="10.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Button>
              
-            <HBox layoutX="88.0" layoutY="33.0" prefHeight="70.0" prefWidth="542.0">
+            <HBox layoutX="88.0" layoutY="33.0" prefHeight="114.0" prefWidth="511.0" style="-fx-background-color: white;">
                <children>
-                  <Circle fx:id="circle" fill="#1f93ff00" radius="57.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                  <Label fx:id="labelProfil" alignment="CENTER" prefHeight="114.0" prefWidth="279.0" text="Label">
+                  <Circle fx:id="circle" fill="#1f93ff00" radius="47.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin></Circle>
+                  <Label fx:id="labelProfil" alignment="CENTER" prefHeight="114.0" prefWidth="245.0" text="Label">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="5.0" right="10.0" />
