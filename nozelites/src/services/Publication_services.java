@@ -6,6 +6,7 @@
 
 package services;
 import entities.Publication_entities;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,14 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.ConnexionDB;
+import utils.ConnexionBD;
 
 /**
  *
  * @author salon2
  */
 public class Publication_services {
-    Connection c = ConnexionDB.getInstance().getCnx();
+    Connection c = ConnexionBD.getInstance().getCon();
     public void ajouterPublication(Publication_entities p){
         try 
         {
@@ -53,6 +54,19 @@ public class Publication_services {
         {
                 PreparedStatement pt = c.prepareStatement("update publication set titre=? where id=?");
             pt.setString(1, description); //ordre fel requete
+            pt.setInt(2,p.getId());
+            pt.executeUpdate();  
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(Publication_services.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+         public void modifierPublication3(Publication_entities p){
+        try 
+        {
+                PreparedStatement pt = c.prepareStatement("update publication set titre=? where id=?");
+            pt.setString(1, p.getTitre()); //ordre fel requete
             pt.setInt(2,p.getId());
             pt.executeUpdate();  
         } 
@@ -137,6 +151,59 @@ public class Publication_services {
             System.out.println(e);
         }
 
+    }
+      public List<Publication_entities> rechercher5 (String auteur){
+        
+        String requete="select * FROM publication where (titre LIKE ? )";
+      
+        String ch="%"+auteur+"%";
+        ArrayList<Publication_entities> myList = new ArrayList();
+        try {
+            
+             PreparedStatement pst = c.prepareStatement(requete);
+             pst.setString(1,ch);
+              
+            
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                Publication_entities e=new Publication_entities(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6));
+           
+                myList.add(e);
+                
+                
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return myList;
+    }
+      public List<Publication_entities> affichertout()
+    {
+        List<Publication_entities> arr=new ArrayList<>();
+        try {
+            
+             
+        PreparedStatement ste=c.prepareStatement("select * from publication ");
+         ResultSet rs=ste.executeQuery();
+        
+            while (rs.next()) {
+                
+                String titre=rs.getString(1);
+                String description=rs.getString(2);
+                String image=rs.getString(4);
+                int id = rs.getInt(3);
+                Publication_entities e=new Publication_entities(titre,description,id,image,5,1);
+                arr.add(e);
+               
+            }
+            return arr;
+               
+        } catch (SQLException ex) {
+            Logger.getLogger(Publication_services.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+         return arr;
     }
       
 }

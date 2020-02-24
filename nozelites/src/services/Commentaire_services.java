@@ -11,14 +11,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.ConnexionDB;
+import utils.ConnexionBD;
 
 /**
  *
  * @author salon2
  */
 public class Commentaire_services {
-    Connection c = ConnexionDB.getInstance().getCnx();
+    Connection c = ConnexionBD.getInstance().getCon();
     
     public void ajoutercommentaire(Commentaire_entities k){
         try 
