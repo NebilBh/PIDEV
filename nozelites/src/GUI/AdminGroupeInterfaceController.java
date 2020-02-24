@@ -293,7 +293,8 @@ public class AdminGroupeInterfaceController implements Initializable {
         
         lss_i= FXCollections.observableArrayList(list_mb);
         table_membres.setItems(lss_i);
-        table_membres.getColumns().addAll( colNom_i, colPrenom_i,colEtat_i, colbloquer_i);
+        table_membres.getColumns().addAll( colId_i,colNom_i, colPrenom_i,colEtat_i, colbloquer_i);
+        colId_i.setVisible(false);
         
     }    
 

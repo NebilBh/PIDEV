@@ -166,7 +166,7 @@ public class AddEvenementController implements Initializable {
        // java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
        //if(!nom.getText().equals("") && !lieu.getText().equals("") && !hh.getText().equals("") && !siteweb.getText().equals("") && !description.getText().equals("") && !nbplace.getText().equals("")){
        if(hh.getText().length()==2 && mm.getText().length()==2){
-        Evennement e=new Evennement(25, name, lie, dat, heure, desc, site, 0, nbp, pathh);
+        Evennement e=new Evennement(4, name, lie, dat, heure, desc, site, 0, nbp, pathh);
         ServiceEvennement srv=new ServiceEvennement();
         srv.ajouterEvennement(e);
        }else {
