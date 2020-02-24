@@ -106,6 +106,7 @@ public class ResultatRechercheInterfaceController implements Initializable {
                 
                 
                 consulter.setId(Integer.toString(listUsr.getInt("idUsr")));
+                
                 consulter.setOnAction(actionEvent ->  {
                      AnchorPane pane;
                     try {

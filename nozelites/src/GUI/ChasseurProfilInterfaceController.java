@@ -82,7 +82,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
             // TODO
             
             
-            m.setId(s.getIdSession());
+            m.setUsrId(s.getIdSession());
             
             ResultSet res = srvC.afficherUsr(m);
             res.next();
@@ -114,7 +114,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
         chasseurTalent m  = new chasseurTalent();
         Session s = new Session();
         
-        m.setId(s.getIdSession());
+        m.setUsrId(s.getIdSession());
         
         srvM.supprimer(m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));

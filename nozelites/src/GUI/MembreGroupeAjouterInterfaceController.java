@@ -89,7 +89,7 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
                 	//remove selected item from the table list
                 	//lss.remove(currentmembre);
                         cellButton.setVisible(false);
-                        membres_invite.add(currentmembre.getId());
+                        membres_invite.add(currentmembre.getUsrId());
                         //bloquer membre
                         /*for(Membre m : lss)
                             System.out.println(m.getId());*/

@@ -86,7 +86,7 @@ public class AdminGroupeInterfaceController implements Initializable {
                         //bloquer membre
                         GroupeMembre gm = new GroupeMembre(0,2,1,3,"bloqué");
                         SGroupeMembre s_gm = new SGroupeMembre();
-                        GroupeMembre id_gm = s_gm.chercher_groupe_membre(gr.getId(),currentmembre.getId());
+                        GroupeMembre id_gm = s_gm.chercher_groupe_membre(gr.getId(),currentmembre.getUsrId());
                         gm.setId(id_gm.getId());
                         s_gm.modifier_groupe_membre(gm);
                         //srv.supprimerOffre(currentOffre);

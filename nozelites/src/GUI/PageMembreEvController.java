@@ -96,13 +96,13 @@ public class PageMembreEvController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        id=ModifierEvenementController.obsl.get(i).getId();
+        id=ModifierEvenementController.obsl.get(i).getUsrId();
         //id=ModifierEvenementController.idm;
          labelProfil.setText(ModifierEvenementController.obsl.get(i).getNom()+" "+ModifierEvenementController.obsl.get(i).getPrenom());
          labelMail.setText(ModifierEvenementController.obsl.get(i).getMail());
          labelForm.setText(ModifierEvenementController.obsl.get(i).getFormation());
          labelExp.setText(ModifierEvenementController.obsl.get(i).getExp());
-         t=ModifierEvenementController.obsl.get(i).getId();
+         t=ModifierEvenementController.obsl.get(i).getUsrId();
          e=ModifierEvenementController.obsl.get(i);
         /* Image img = new Image("file:///"+//path);
         //imgProfil.setImage(img);
