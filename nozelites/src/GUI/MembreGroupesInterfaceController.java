@@ -350,7 +350,7 @@ public class MembreGroupesInterfaceController implements Initializable {
         //add value
         lss= FXCollections.observableArrayList(list_g);
         table_groupes.setItems( lss);
-        table_groupes.getColumns().addAll(colVoir,colId, colTitre, colDescription, colEtat,colsupprimer);
+        table_groupes.getColumns().addAll(colVoir, colTitre, colDescription, colEtat,colsupprimer);
         
       // trie
       colId.setSortType(TableColumn.SortType.DESCENDING);
@@ -490,7 +490,7 @@ public class MembreGroupesInterfaceController implements Initializable {
         //--------------------------------------------------------------------------------------
         ls_invitations= FXCollections.observableArrayList(list_i);
         table_invitations.setItems(ls_invitations);
-        table_invitations.getColumns().addAll(colIid,colInom,colIpprenom, colItitre, colIdescription, colIaccepter,colIrefuser);
+        table_invitations.getColumns().addAll(colInom,colIpprenom, colItitre, colIdescription, colIaccepter,colIrefuser);
         
         colIaccepter.setCellFactory(
                 new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
@@ -530,7 +530,7 @@ public class MembreGroupesInterfaceController implements Initializable {
                 for(entities.Groupe g : lsg)
                 {
                     if(!gm.getEtat().equals("invitation")&&!gm.getEtat().equals("bloqué"))
-                        if(inpuitChercher.getText().contains(g.getTitre())||
+                        if(g.getTitre().contains(inpuitChercher.getText())||
                                 inpuitChercher.getText().equals(""))
                         list_g.add(g);
                 }

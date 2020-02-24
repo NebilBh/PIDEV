@@ -9,11 +9,11 @@ package GUI;
  *
  * @author nadhir
  */
-import com.restfb.Facebook;
+//import com.restfb.Facebook;
  
 public class CustomUser {
  
-    @Facebook("first_name")
+    /*@Facebook("first_name")
     private String firstName;
  
     @Facebook("last_name")
@@ -56,5 +56,5 @@ public class CustomUser {
     public void setEmail(String email) {
         this.email = email;
     }
- 
+ */
 }

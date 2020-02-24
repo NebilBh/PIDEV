@@ -231,7 +231,7 @@ public class MembreGroupeInterfaceController implements Initializable {
         
         lss= FXCollections.observableArrayList(list_m);
         table_membres.setItems(lss);
-        table_membres.getColumns().addAll(colId, colNom, colPrenom,coletat, colbloquer);
+        table_membres.getColumns().addAll( colNom, colPrenom,coletat, colbloquer);
         
         
         

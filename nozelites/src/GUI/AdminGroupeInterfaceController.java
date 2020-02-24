@@ -219,7 +219,7 @@ public class AdminGroupeInterfaceController implements Initializable {
         
         lss= FXCollections.observableArrayList(list_m);
         table_invitation.setItems(lss);
-        table_invitation.getColumns().addAll(colId, colNom, colPrenom,coletat, colbloquer);*/
+        table_invitation.getColumns().addAll( colNom, colPrenom,coletat, colbloquer);*/
         
         
         
@@ -293,7 +293,7 @@ public class AdminGroupeInterfaceController implements Initializable {
         
         lss_i= FXCollections.observableArrayList(list_mb);
         table_membres.setItems(lss_i);
-        table_membres.getColumns().addAll(colId_i, colNom_i, colPrenom_i,colEtat_i, colbloquer_i);
+        table_membres.getColumns().addAll( colNom_i, colPrenom_i,colEtat_i, colbloquer_i);
         
     }    
 
