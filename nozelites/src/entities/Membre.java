@@ -15,6 +15,22 @@ public class Membre extends Utilisateur{
     private String exp;
     private String formation ;
     int type;
+    public Membre(String exp, String formation, String nom, String prenom, String mail, int usrId) {
+        super(nom, prenom, mail, usrId);
+        this.exp = exp;
+        this.formation = formation;
+    }
+
+   
+
+    public Membre(String nom, String prenom,String mail) {
+        super(nom, prenom,mail);
+    }
+     public Membre(String nom, String prenom) {
+        super(nom, prenom);
+    }
+
+    
     public Membre(){
         
     }
@@ -59,10 +75,8 @@ public class Membre extends Utilisateur{
         this.formation = formation;
     }
 
-    @Override
-    public int getId() {
-        return super.getId(); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+   
 
     @Override
     public int getTel() {
@@ -135,10 +149,16 @@ public class Membre extends Utilisateur{
     public void setNom(String nom) {
         super.setNom(nom); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public void setId(int id){
-        super.setId(id);
+
+    public int getUsrId() {
+        return usrId;
     }
+
+    public void setUsrId(int usrId) {
+        this.usrId = usrId;
+    }
+    
+   
      
      
 }

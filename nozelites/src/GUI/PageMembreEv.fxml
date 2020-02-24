@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="435.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PageMembreEvController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="profilMembre" layoutY="1.0" prefHeight="434.0" prefWidth="401.0">
+         <children>
+            <HBox layoutX="5.0" prefHeight="114.0" prefWidth="346.0">
+               <children>
+                  <Circle fx:id="circle" fill="#1f93ff00" radius="57.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <Label fx:id="labelProfil" prefHeight="114.0" prefWidth="210.0" text="Label">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Pane layoutX="5.0" layoutY="184.0" prefHeight="243.0" prefWidth="346.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="23.0" layoutY="34.0" prefHeight="42.0" prefWidth="88.0" text="Formation" textFill="#c41011">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelForm" layoutX="120.0" layoutY="42.0" prefHeight="26.0" prefWidth="114.0" text="Label">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="23.0" layoutY="90.0" text="Email " textFill="#c41011">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelMail" layoutX="127.0" layoutY="90.0" prefHeight="26.0" prefWidth="193.0" text="Label">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="22.0" layoutY="136.0" prefHeight="26.0" prefWidth="88.0" text="Experience" textFill="#c41011">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelExp" layoutX="125.0" layoutY="136.0" prefHeight="26.0" prefWidth="173.0" text="Label">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button fx:id="accepter" layoutX="245.0" layoutY="134.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="105.0" style="-fx-background-color: red;" text="accepter" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="refuser" layoutX="138.0" layoutY="134.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="106.0" style="-fx-background-color: red;" text="refuser" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

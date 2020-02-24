@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="407.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PageEvenementController">
+   <children>
+      <VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="408.0" style="-fx-border-insets: 5; -fx-background-color: white; -fx-border-width: 3;">
+         <children>
+            <Label fx:id="id_annonce" text="5" />
+            <ImageView fx:id="img_annoce" fitHeight="150.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets left="57.0" />
+               </VBox.margin>
+            </ImageView>
+            <Separator prefWidth="200.0" />
+            <VBox prefHeight="115.0" prefWidth="300.0">
+               <children>
+                  <GridPane prefHeight="106.0" prefWidth="282.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="263.99998474121094" minWidth="10.0" prefWidth="166.200048828125" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.5999755859375" minWidth="10.0" prefWidth="133.39995117187502" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="lbl_titre" prefHeight="50.0" prefWidth="134.0" text="Titre">
+                           <GridPane.margin>
+                              <Insets left="17.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="details" mnemonicParsing="false" prefHeight="39.0" prefWidth="137.0" style="-fx-background-color: red;" text="Details" textFill="WHITE" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="3.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Label fx:id="lbl_prix" prefHeight="50.0" prefWidth="134.0" text="Prix" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="44.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="lbl_id" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lbl_date" prefHeight="18.0" prefWidth="90.0" text="date" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0" />
+            <HBox prefHeight="118.0" prefWidth="300.0">
+               <padding>
+                  <Insets left="35.0" right="28.0" top="26.0" />
+               </padding>
+               <children>
+                  <Button fx:id="rejoindre" mnemonicParsing="false" prefHeight="40.0" prefWidth="101.0" style="-fx-background-color: red;" text="Rejoindre" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="disjoindre" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: red;" text="disjoindre" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="demande" mnemonicParsing="false" prefHeight="46.0" prefWidth="142.0" style="-fx-background-color: red;" text="annuler la demande" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

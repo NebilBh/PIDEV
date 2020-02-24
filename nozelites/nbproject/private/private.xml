@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembrePortfolioAjouter_interfaceController.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/ConnectionInterfaceController.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/utils/ConnexionDB.java</file>
@@ -16,6 +17,9 @@
             <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/ReclamationDesMembresController.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembrePortfolioAfficher_interfaceController.java</file>
             <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/ReclamationDesMembres.fxml</file>
+=======
+            <file>file:/C:/Users/Wael%20Berrachid/Desktop/3eme/Projet/PIDEV/nozelites/src/services/ServicesOffre.java</file>
+>>>>>>> 64063f71f7659bbbf44e2eb4cda11b7368aa3ff3
         </group>
     </open-files>
 </project-private>

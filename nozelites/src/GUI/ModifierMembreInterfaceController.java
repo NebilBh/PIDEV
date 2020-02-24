@@ -110,7 +110,7 @@ public class ModifierMembreInterfaceController implements Initializable {
         try {
             
             // TODO  
-            m.setId(s.getIdSession());
+            m.setUsrId(s.getIdSession());
             
             ResultSet res = srvm.afficherUsr(m);
             res.next();
@@ -220,7 +220,7 @@ public class ModifierMembreInterfaceController implements Initializable {
         Membre oldMembre = new Membre();
         Membre m = new Membre(labelNom.getText(), labelPrenom.getText(), fieldMail.getText(),this.ndc,this.mdp,
                 fieldExp.getText(),"0",Integer.parseInt(fieldAge.getText()),Integer.parseInt(fieldTel.getText()), 0, this.lienImg);  
-        oldMembre.setId(this.s.getIdSession());
+        oldMembre.setUsrId(this.s.getIdSession());
         srvM.modifier(oldMembre, m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
         modifWindow.getChildren().setAll(pane);

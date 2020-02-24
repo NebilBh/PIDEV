@@ -43,7 +43,7 @@ import doryan.windowsnotificationapi.fr.Notification;
  */
 public class Nozelites extends Application {
     
-    ParametresParDefaut p = new ParametresParDefaut();
+    
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -54,12 +54,16 @@ public class Nozelites extends Application {
        
 
 
+<<<<<<< HEAD
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
 
 //Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
    // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
    // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));
     //Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
+=======
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+>>>>>>> 64063f71f7659bbbf44e2eb4cda11b7368aa3ff3
 
        // Parent root = FXMLLoader.load(getClass().getResource("/GUI/ResultatRechercheInterface.fxml"));
 
