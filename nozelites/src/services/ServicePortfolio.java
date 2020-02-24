@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
@@ -49,7 +50,7 @@ public class ServicePortfolio {
         }
     }
     
-     public void modifierPortfolio(Portfolio p, String titre,String description,String lien){
+     /*public void modifierPortfolio(Portfolio p, String titre,String description,String lien){
         try 
         {
             PreparedStatement pt = db.prepareStatement("update portfolio set titre=?,description=?,lien=?  where id_port=?");
@@ -61,7 +62,23 @@ public class ServicePortfolio {
         catch (SQLException ex) 
         {
             Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        */
+    
+      public void modifierPortfolio(Portfolio o){
+        try 
+        {
+            PreparedStatement pt = db.prepareStatement("update portfolio set titre=?,description=?,lien=? where id_port=?");
+             pt.setString(1,o.getTitre());
+               pt.setString(2,o.getDescription());
+               pt.setString(3,o.getLien());
+            pt.setInt(4,o.getId_port());
+            pt.executeUpdate();  
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
     
     public void supprimer(Portfolio p){
@@ -77,8 +94,8 @@ public class ServicePortfolio {
             
     }
     
-    public List<Portfolio> afficher(){
-        List<Portfolio> myList = new ArrayList<>();
+  /*  public List<Portfolio> afficher(){
+        List<Portfolio> myList = new ArrayList<Portfolio>();
         String qry ="select * from portfolio";
         
         try {
@@ -101,5 +118,34 @@ public class ServicePortfolio {
       
     return myList;
     
+    }*/
+    
+    public List<Portfolio> afficher(){
+           List<Portfolio> list = new ArrayList<Portfolio>();
+
+        
+        try 
+        {
+            PreparedStatement pt = db.prepareStatement("select * from portfolio");
+                                                                                                           
+           // pt.setInt(1, id_Emetteur);
+            ResultSet rs = pt.executeQuery();
+            
+            while(rs.next())
+            {
+                //System.out.println("Offre : \nType : "+rs.getString(2)+"\nEntreprise : "+rs.getString(3)+"\nDomaine : "+rs.getString(4)+"\nPoste : "+rs.getString(5)+"\nRequis : "+rs.getString(6)+"\nDescription : "+rs.getString(7)+"\nLe : "+rs.getString(8)+"\nEtat : "+rs.getString(9)+"\nA : "+rs.getString(10)+" "+rs.getString(11)+"\n"); //ordre fel table
+                Portfolio o = new Portfolio(rs.getString(3),rs.getString(4),rs.getInt(1),rs.getInt(2),rs.getString(5));
+                list.add(o);
+            }
+           
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        
+        return list;
     }
+    
+    
 }

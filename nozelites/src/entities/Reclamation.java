@@ -26,10 +26,10 @@ public class Reclamation {
     public Reclamation() {
     }
 
-    public Reclamation(int idRecl, int id_emeteur, int id_cible, String description,  String selecteur) {
+    public Reclamation( int id_emeteur, int id_cible, String description,  String selecteur) {
         this.description = description;
         
-        this.idRecl = idRecl;
+       // this.idRecl = idRecl;
         this.id_emeteur = id_emeteur;
         this.id_cible = id_cible;
         this.selecteur = selecteur;

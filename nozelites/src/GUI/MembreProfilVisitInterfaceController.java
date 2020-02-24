@@ -194,10 +194,18 @@ public class MembreProfilVisitInterfaceController implements Initializable {
 
 
     @FXML
+
     private void groupes(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreGroupesInterface.fxml"));
         profilMembre.getChildren().setAll(pane);
     }
+        @FXML
+    private void portfolio(MouseEvent event) {
+    
+    }
+        
+
+    
 
 
     @FXML
@@ -212,15 +220,23 @@ public class MembreProfilVisitInterfaceController implements Initializable {
         profilMembre.getChildren().setAll(pane);
     }
 
-    @FXML
-    private void portfolio(MouseEvent event) {
-    }
 
     @FXML
     private void evenements(MouseEvent event) {
     }
 
 
-    
+    @FXML
+    private void reclamer(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
+                profilMembre.getChildren().setAll(pane); 
+    }
+
+    @FXML
+    private void voirPortfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+                profilMembre.getChildren().setAll(pane); 
+    }
+
     
 }

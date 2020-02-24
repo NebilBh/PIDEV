@@ -49,10 +49,13 @@ public class ServicesOffre {
         return id;
     }
     
-    public void afficherTopDomaine(String Domaine){
+    public List<Membre> afficherTopDomaine(String Domaine){
+        
+        List<Membre> list = new ArrayList<Membre>();
+        
         try 
         {
-            PreparedStatement pt = c.prepareStatement("SELECT count(*), nom, prenom, mail\n" +
+            PreparedStatement pt = c.prepareStatement("SELECT count(*), mail, Formation, Experience\n" +
                                                         " FROM offre INNER JOIN membre ON offre.IdRecepteur=membre.idUsr\n" +
                                                         " WHERE Domaine=? GROUP BY IdRecepteur ORDER BY count(*) DESC");
             pt.setString(1, Domaine);
@@ -62,7 +65,9 @@ public class ServicesOffre {
             
             while(rs.next() && i!=4 )
             {   
-                System.out.println(i+" Nombre d'offres : "+rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)); //ordre fel table
+                //System.out.println(i+" Nombre d'offres : "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)); //ordre fel table
+                Membre m = new Membre("","",rs.getString(2),"","",rs.getString(4),rs.getString(3),0,0,0,rs.getInt(1),"");
+                list.add(m);
                 i++;
             }
         } 
@@ -70,6 +75,8 @@ public class ServicesOffre {
         {
             Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return list;
     }
     
     public List<Membre> afficherTopMois(String Mois){ //Mois must be like -08-

@@ -32,6 +32,10 @@ import utils.Session;
 
 import services.ServicesReclamation;
 
+import utils.JavaMail;
+import doryan.windowsnotificationapi.fr.Notification;
+
+
 
 /**
  *
@@ -45,10 +49,31 @@ public class Nozelites extends Application {
     public void start(Stage stage) throws Exception {
 
 
+    
+       
+       
+
+
 
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
+   // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
+   // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));
+    //Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
+       // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+
+
+        
           //Parent root = FXMLLoader.load(getClass().getResource("/GUI/AdminAcceuilInterface.fxml"));
+
        // Parent root = FXMLLoader.load(getClass().getResource("/GUI/ResultatRechercheInterface.fxml"));
+
+//RECLAMATION TESTE
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/afficher_reclamation.fxml"));
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationPublication.fxml"));
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationEvent.fxml"));
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
 
 
 
@@ -64,18 +89,25 @@ public class Nozelites extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         launch(args);
 
+              // ServicesReclamation srv = new ServicesReclamation();
+              // Reclamation p = new Reclamation(2,3,"aaaa","groupe");
+         //JavaMail.sendMailReclamation("mohamedkheireddine.bairam@esprit.tn");
+         
+        // srv.afficherGroupeReclamation();
+
+
         
 
-        Session s = new Session();
+       // Session s = new Session();
         
-        System.out.println("id Session main"+s.getIdSession());
+      //  System.out.println("id Session main"+s.getIdSession());
 
         
         
+
 
     }
-    
 }
