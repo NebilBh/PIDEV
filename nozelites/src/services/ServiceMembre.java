@@ -204,5 +204,44 @@ public class ServiceMembre {
     public void statisqueAnnee(String annee){
         
     }
+    public List<Membre> afficher2(){
+       List<Membre> arr=new ArrayList<>();
+        String qry ="Select * from membre";
+        
+        try {
+           Statement ste=db.createStatement();
+            ResultSet rs=ste.executeQuery(qry);
+           
+            while(rs.next()) {
+                
+                String nom=rs.getString(2);
+                String prenom=rs.getString(3);
+                Membre e=new Membre(nom,prenom);
+                arr.add(e);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arr;
+    }
+    public Membre rechercherM(int id){
+    Membre e=new Membre();
+        try{ 
+        
+        String requete="select * from Membre where idUsr="+id+" ";
+        PreparedStatement pst=db.prepareStatement(requete);
+         ResultSet rs=pst.executeQuery();
+         
+       
+        while(rs.next()){
+            e=new Membre(rs.getString(2),rs.getString(3),rs.getString(5));
+                //System.out.println(A);
+        } 
+        return e;
+     } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
+    return null;
+}
 }

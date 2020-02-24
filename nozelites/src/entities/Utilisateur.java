@@ -19,7 +19,23 @@ public class Utilisateur {
     
     public Utilisateur() {
     }
+public Utilisateur(String nom, String prenom, String mail, int usrId) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.usrId = usrId;
+    }
 
+    public Utilisateur(String nom, String prenom,String mail) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail=mail;
+    }
+     public Utilisateur(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+ 
+    }
     public Utilisateur(String nom, String prenom, String mail, String login, String mdp, int age, int tel, int id,String image) {
         this.nom = nom;
         this.prenom = prenom;

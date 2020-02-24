@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InterfaceEvenementController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="231.0" style="-fx-background-color: #db1d0f;">
+         <children>
+            <ImageView fitHeight="59.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image></ImageView>
+            <Button fx:id="mesev" mnemonicParsing="false" onAction="#MesE" prefHeight="146.0" prefWidth="241.0" style="-fx-background-color: db1d0f;" text="Mes evenements" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="listeev" mnemonicParsing="false" onAction="#ListeE" prefHeight="144.0" prefWidth="231.0" style="-fx-background-color: db1d0f;" text="Liste des evenement" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="ajouterev" mnemonicParsing="false" onAction="#AjouterE" prefHeight="143.0" prefWidth="231.0" style="-fx-background-color: db1d0f;" text="Créer un evenement" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

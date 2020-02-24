@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import com.lynden.gmapsfx.*?>
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AllEvenementsController">
+   <children>
+      <BorderPane fx:id="container" layoutX="232.0" layoutY="206.0" prefHeight="304.0" prefWidth="502.0">
+         <center>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="244.0" prefWidth="502.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" styleClass="mainFxmlClass" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <content>
+                  <VBox prefHeight="66.0" prefWidth="1134.0" style="-fx-background-color: #F0F1F7;">
+                     <children>
+                        <Separator prefWidth="200.0">
+                           <opaqueInsets>
+                              <Insets top="10.0" />
+                           </opaqueInsets>
+                        </Separator>
+                        <Label prefHeight="39.0" prefWidth="219.0" text="Tout les Evenements">
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="Century Gothic" size="15.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="10.0" layoutY="110.0" prefWidth="200.0">
+                           <opaqueInsets>
+                              <Insets bottom="10.0" />
+                           </opaqueInsets>
+                        </Separator>
+                        <FlowPane fx:id="flow" alignment="CENTER_LEFT" hgap="20.0" prefWrapLength="1700.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" vgap="10.0">
+                           <padding>
+                              <Insets left="10.0" top="20.0" />
+                           </padding>
+                        </FlowPane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </center>
+         <top>
+            <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="502.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <effect>
+                  <DropShadow color="#000000bb" height="40.07" radius="14.7675" spread="0.23" />
+               </effect>
+               <padding>
+                  <Insets right="70.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+      </BorderPane>
+      <VBox layoutY="-5.0" prefHeight="518.0" prefWidth="231.0" style="-fx-background-color: #db1d0f;">
+         <children>
+            <ImageView fitHeight="59.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="mesev" mnemonicParsing="false" onAction="#MesE" prefHeight="146.0" prefWidth="241.0" style="-fx-background-color: db1d0f;" text="Mes evenements" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="listeev" mnemonicParsing="false" onAction="#ListeE" prefHeight="144.0" prefWidth="231.0" style="-fx-background-color: db1d0f;" text="Liste des evenement" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="ajouterev" mnemonicParsing="false" onAction="#AjouterE" prefHeight="146.0" prefWidth="231.0" style="-fx-background-color: db1d0f;" text="Créer un evenement" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

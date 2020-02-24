@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierEvenementController">
+   <children>
+      <TableView fx:id="table" layoutX="215.0" layoutY="98.0" prefHeight="184.0" prefWidth="525.0" />
+      <VBox layoutY="3.0" prefHeight="500.0" prefWidth="216.0" style="-fx-background-color: #db1d0f;">
+         <children>
+            <ImageView fitHeight="59.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="mesev" mnemonicParsing="false" onAction="#MesE" prefHeight="146.0" prefWidth="241.0" style="-fx-background-color: db1d0f;" text="Mes evenements" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="listeev" mnemonicParsing="false" onAction="#ListeE" prefHeight="144.0" prefWidth="231.0" style="-fx-background-color: db1d0f;" text="Liste des evenement" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="ajouterev" mnemonicParsing="false" onAction="#AjouterE" prefHeight="143.0" prefWidth="231.0" style="-fx-background-color: db1d0f;" text="Créer un evenement" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <TextField fx:id="rechercher" layoutX="577.0" layoutY="65.0" onAction="#recher" promptText="rechercher" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="222.0" layoutY="282.0" prefHeight="218.0" prefWidth="517.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" styleClass="mainFxmlClass" vbarPolicy="ALWAYS">
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+         <content>
+            <VBox prefHeight="66.0" prefWidth="1134.0" style="-fx-background-color: #F0F1F7;">
+               <children>
+                  <Separator prefWidth="200.0">
+                     <opaqueInsets>
+                        <Insets top="10.0" />
+                     </opaqueInsets>
+                  </Separator>
+                  <Label prefHeight="28.0" prefWidth="219.0" text="Les demandes">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Century Gothic" size="15.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="10.0" layoutY="110.0" prefWidth="200.0">
+                     <opaqueInsets>
+                        <Insets bottom="10.0" />
+                     </opaqueInsets>
+                  </Separator>
+                  <FlowPane fx:id="flow" alignment="CENTER_LEFT" hgap="20.0" prefWrapLength="1700.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" vgap="10.0">
+                     <padding>
+                        <Insets left="10.0" top="20.0" />
+                     </padding>
+                  </FlowPane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

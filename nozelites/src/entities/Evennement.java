@@ -16,15 +16,59 @@ public class Evennement {
     private int idE;
     private String nom;
     private String lieu;
-    private Date date;
+    private String date;
     private String heure;
     private String desciption;
     private String siteWeb;
     private int NbParticipant;
     private int NbPlace;
     private String image;
+    private int etat;
 
-    public Evennement(int idc, int idE, String nom, String lieu, Date date, String heure, String desciption, String siteWeb, int NbParticipant, int NbPlace, String image) {
+    
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
+    }
+
+    
+
+    public Evennement(int idE, String nom, String lieu, String date, String heure, String desciption, String siteWeb, int NbParticipant, int NbPlace) {
+        this.idE = idE;
+        this.nom = nom;
+        this.lieu = lieu;
+        this.date = date;
+        this.heure = heure;
+        this.desciption = desciption;
+        this.siteWeb = siteWeb;
+        this.NbParticipant = NbParticipant;
+        this.NbPlace = NbPlace;
+        this.etat=0;
+    }
+    
+    public Evennement(String nom, String lieu) {
+        this.nom = nom;
+        this.lieu = lieu;
+    }
+    
+
+    public Evennement(String nom, String lieu, String date, String heure, String desciption, String siteWeb, int NbParticipant, int NbPlace) {
+        this.nom = nom;
+        this.lieu = lieu;
+        this.date = date;
+        this.heure = heure;
+        this.desciption = desciption;
+        this.siteWeb = siteWeb;
+        this.NbParticipant = NbParticipant;
+        this.NbPlace = NbPlace;
+         
+    }
+
+    public Evennement(int idc, int idE, String nom, String lieu, String date, String heure, String desciption, String siteWeb, int NbParticipant, int NbPlace, String image) {
         this.idc = idc;
         this.idE = idE;
         this.nom = nom;
@@ -36,9 +80,23 @@ public class Evennement {
         this.NbParticipant = NbParticipant;
         this.NbPlace = NbPlace;
         this.image = image;
+           
     }
 
-    public Evennement(int idc, String nom, String lieu, Date date, String heure, String desciption, String siteWeb, int NbParticipant, int NbPlace, String image) {
+    public Evennement(int idc, int idE, String nom, String lieu, String date, String heure, String desciption, String siteWeb, int NbParticipant, int NbPlace) {
+        this.idc = idc;
+        this.idE = idE;
+        this.nom = nom;
+        this.lieu = lieu;
+        this.date = date;
+        this.heure = heure;
+        this.desciption = desciption;
+        this.siteWeb = siteWeb;
+        this.NbParticipant = NbParticipant;
+        this.NbPlace = NbPlace;
+    }
+
+    public Evennement(int idc, String nom, String lieu, String date, String heure, String desciption, String siteWeb, int NbParticipant, int NbPlace, String image) {
         this.idc = idc;
         this.nom = nom;
         this.lieu = lieu;
@@ -49,6 +107,7 @@ public class Evennement {
         this.NbParticipant = NbParticipant;
         this.NbPlace = NbPlace;
         this.image = image;
+        
     }
 
     public String getImage() {
@@ -127,11 +186,11 @@ public class Evennement {
         this.lieu = lieu;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

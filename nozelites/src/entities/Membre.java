@@ -15,6 +15,22 @@ public class Membre extends Utilisateur{
     private String exp;
     private String formation ;
     int type;
+    public Membre(String exp, String formation, String nom, String prenom, String mail, int usrId) {
+        super(nom, prenom, mail, usrId);
+        this.exp = exp;
+        this.formation = formation;
+    }
+
+   
+
+    public Membre(String nom, String prenom,String mail) {
+        super(nom, prenom,mail);
+    }
+     public Membre(String nom, String prenom) {
+        super(nom, prenom);
+    }
+
+    
     public Membre(){
         
     }
