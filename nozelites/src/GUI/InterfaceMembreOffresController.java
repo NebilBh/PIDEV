@@ -26,9 +26,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import services.ServicesOffre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -36,6 +40,55 @@ import services.ServicesOffre;
  * @author Wael Berrachid
  */
 public class InterfaceMembreOffresController implements Initializable {
+
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    
+    Session session = new Session();
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
         final Button cellButton = new Button("Go For It!");
@@ -53,7 +106,7 @@ public class InterfaceMembreOffresController implements Initializable {
                         srv.accepterOffre(currentOffre);
                         
                         tabOffres.getItems().clear();
-                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(4)); //Id du membre connecté
+                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(session.getIdSession())); //Id du membre connecté
                         tabOffres.getItems().addAll(olist);
                 }
             });
@@ -88,7 +141,7 @@ public class InterfaceMembreOffresController implements Initializable {
                         srv.refuserOffre(currentOffre);
                         
                         tabOffres.getItems().clear();
-                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(4)); //Id du membre connecté
+                        ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(session.getIdSession())); //Id du membre connecté
                         tabOffres.getItems().addAll(olist);
                 }
             });
@@ -124,7 +177,7 @@ public class InterfaceMembreOffresController implements Initializable {
     private TextField chercherOffre;
     
     ServicesOffre srv = new ServicesOffre();
-    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(4)); //Id du membre connecté
+    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(session.getIdSession())); //Id du membre connecté
     
 
     /**
@@ -133,6 +186,22 @@ public class InterfaceMembreOffresController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        chercherOffre.textProperty().addListener((observable, oldValue, newValue) -> {
+        //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+        olist = FXCollections.observableArrayList(srv.afficherLesOffresRecus(session.getIdSession())); //Id du chasseur connecté
+        ObservableList<OffreForGUI> olistRech = FXCollections.observableArrayList();
+        olistRech.clear();
+
+        for (int i=0;i<olist.size();i++){
+            if(olist.get(i).getType().contains(newValue) || olist.get(i).getEntreprise().contains(newValue) || olist.get(i).getDomaine().contains(newValue) || olist.get(i).getPoste().contains(newValue) || olist.get(i).getRequis().contains(newValue) || olist.get(i).getDescription().contains(newValue) || olist.get(i).getDate().contains(newValue) || olist.get(i).getEtat().contains(newValue) || olist.get(i).getNom().contains(newValue) || olist.get(i).getPrenom().contains(newValue))
+            {
+                olistRech.add(olist.get(i));
+            }
+        }
+  
+        tabOffres.setItems(olistRech);
+        }); 
+        
         TableColumn<OffreForGUI, String> idCol //
               = new TableColumn<OffreForGUI, String>("Id");
         
@@ -209,7 +278,7 @@ public class InterfaceMembreOffresController implements Initializable {
             }
         });
         
-        idCol.setMinWidth(50);
+        idCol.setVisible(false);
         typeCol.setMinWidth(100);
         entrepriseCol.setMinWidth(100);
         domaineCol.setMinWidth(100);

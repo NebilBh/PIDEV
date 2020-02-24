@@ -14,51 +14,41 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
 import javafx.scene.control.TextField;
-
 import javafx.scene.image.Image;
-
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-
-import services.ServiceMembre;
-import utils.Session;
-
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import services.ServiceMembre;
 import services.ServicesOffre;
-
 
 /**
  * FXML Controller class
  *
- * @author nadhir
+ * @author Wael Berrachid
  */
-public class MembreAcceuilInterfaceController implements Initializable {
+public class ChasseurTeteAcceuilInterfaceController implements Initializable {
 
+    @FXML
+    private Label BoutonAcceuil;
+    @FXML
+    private Label BoutonProfil;
+    @FXML
+    private Label BoutonElites;
+    @FXML
+    private Label BoutonOffre;
+    @FXML
+    private Button BoutonDeco;
     @FXML
     private AnchorPane root;
     @FXML
-    private HBox btn_deconnection;
-    @FXML
-    private ImageView notifications;
-    @FXML
-
-    private TextField searchField;
-    @FXML
-    private TextField searchDomaine;
-    @FXML
-    private Label nbProfil;
-
     private Label NbrOffresAcceptees;
     @FXML
     private Label NbrOffres;
-
-
+    
     ServicesOffre srvOffres = new ServicesOffre();
     @FXML
     private Circle ImageTop1;
@@ -96,16 +86,20 @@ public class MembreAcceuilInterfaceController implements Initializable {
     private Label EmailTop3;
     @FXML
     private Label TelephoneTop3;
-    
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Label nbProfil;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         ServiceMembre srvM = new ServiceMembre();
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
-        // TODO
         //NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
         //NbrOffres.setText(srvOffres.nbrOffres());
         
@@ -154,60 +148,53 @@ public class MembreAcceuilInterfaceController implements Initializable {
         EmailTop3.maxWidth(200);
         TelephoneTop3.setText(""+topOfTheMonth.get(2).getTel());
         TelephoneTop3.maxWidth(200);
+        
+        
+        
+        
     }    
 
     @FXML
-    private void acceuil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
         root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void profil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurTeteAcceuilInterface.fxml"));
         root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void portfolio(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+    private void BoutonProfilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurProfilInterface.fxml"));
         root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void groupes(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+    private void BoutonElitesGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
         root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void evenements(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);*/
-    }
-
-    @FXML
-    private void inbox(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
-        root.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void deconnexion(MouseEvent event) throws IOException {
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
-
         root.getChildren().setAll(pane);
-        Session s = new Session();
-        s.setSession(0);
     }
 
     @FXML
     private void recherche(MouseEvent event) throws IOException {
         ServiceMembre srvM = new ServiceMembre();
         srvM.setRecherche(searchField.getText());
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ResultatRechercheInterface.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ResultatRechercheChassInterface.fxml"));
 
         root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void rechercheDomaine(MouseEvent event) {
     }
     
 }

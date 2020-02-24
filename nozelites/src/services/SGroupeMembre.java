@@ -131,19 +131,19 @@ public class SGroupeMembre {
         return list;
     }
     
-    public int chercher_groupe_membre(int id_groupe,int id_membre)
+    public GroupeMembre chercher_groupe_membre(int id_groupe,int id_membre)
     {
         try {
             PreparedStatement pt = c.prepareStatement("select * from Groupe_Membre where id_membre = "+id_membre+" and id_groupe = "+id_groupe);
             ResultSet rs = pt.executeQuery();
             while(rs.next())
             {
-                return rs.getInt(1);
+                return new GroupeMembre(rs.getInt(1),rs.getInt(2),rs.getInt(3),+rs.getInt(4),rs.getString(5));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SGroupeMembre.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return -1;
+        return new GroupeMembre();
     }
     
     public boolean membre_est_fondateur(int id_groupe, int id_membre)

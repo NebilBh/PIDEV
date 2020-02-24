@@ -5,14 +5,12 @@
  */
 package services;
 
-import entities.Diplome;
-import entities.chasseurTalent;
+import entities.Formation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ConnexionDB;
@@ -21,58 +19,58 @@ import utils.ConnexionDB;
  *
  * @author Nebil
  */
-public class ServiceDiplome {
+public class ServiceFormation {
      Connection db = ConnexionDB.getInstance().getCnx();
      
 
 
-public void ajouter(Diplome d,int id_membre){
+public void ajouter(Formation d,int id_membre){
         try {
             Statement state;
             
             state = db.createStatement();
             
-            String qry ="insert into listediplome values("+0+",'"+d.getOrganisation()+"','"+d.getDomaine()+"',"+id_membre+",'"+LocalDate.now()+"')";
+            String qry ="insert into formation values("+0+",'"+d.getTitre()+"',"+id_membre+")";
             
             state.executeUpdate(qry);
             
-            System.out.println("Ajout Diplome effectué ");
+            System.out.println("Ajout Formation effectué ");
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceChasseur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceFormation.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
 
 
-public ResultSet afficher(Diplome d){
-    String qry ="Select * from listediplome";
+public ResultSet afficher(Formation d){
+    String qry ="Select * from formation";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
             ResultSet usrList = stmt.executeQuery();
             return usrList;
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceChasseur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceFormation.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return null;
 }
 
-public void supprimer(Diplome d){
+public void supprimer(Formation d){
     PreparedStatement pstmt ;
-        String qry = "delete from listediplome where id_diplome = ?";
+        String qry = "delete from formation where id_formation = ?";
         try {
             
             pstmt = db.prepareStatement(qry);
-            pstmt.setInt(1,d.getId_diplome());
+            pstmt.setInt(1,d.getId_formation());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceChasseur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceFormation.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
-public ResultSet afficherDiplomeUser(int id_membre) throws SQLException{
-    String qry ="Select listediplome.id_diplome, listediplome.domaine, listediplome.organisation FROM listediplome INNER JOIN membre ON"
-            + " listediplome.id_membre = membre.idUsr where membre.idUsr = ?";
+public ResultSet afficherFormationUser(int id_membre) throws SQLException{
+    String qry ="Select formation.id_formation, formation.titre FROM formation INNER JOIN membre ON"
+            + " formation.id_membre = membre.idUsr where membre.idUsr = ?";
     PreparedStatement stmt= db.prepareStatement(qry);
     stmt.setInt(1,id_membre);
     ResultSet usrList = stmt.executeQuery();

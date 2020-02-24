@@ -46,7 +46,7 @@ import utils.Session;
  *
  * @author Nebil
  */
-public class MembreProfilInterfaceController implements Initializable {
+public class MembreProfilVisitInterfaceController implements Initializable {
 
     @FXML
     private Label labelProfil;
@@ -60,14 +60,6 @@ public class MembreProfilInterfaceController implements Initializable {
     private Label labelExp;
     @FXML
     private Circle circle;
-    @FXML
-    private Button btnAjouter;
-    @FXML
-    private AnchorPane profilMembre;
-    @FXML
-    private Button btnSupp;
-    @FXML
-    private Button btnModifier;
     @FXML
     private Label labelTel;
     @FXML
@@ -90,6 +82,8 @@ public class MembreProfilInterfaceController implements Initializable {
     private HBox listFormation;
     @FXML
     private Label labellogin;
+    @FXML
+    private AnchorPane root;
     
 
     /**
@@ -102,7 +96,7 @@ public class MembreProfilInterfaceController implements Initializable {
         
         String path = "";
         Session s = new Session();
-        System.out.println("id Session : "+s.getIdSession());
+        System.out.println("id Session : "+s.getId_select());
         Membre m = new Membre();
         Formation f = new Formation();
         ServiceMembre srvm = new ServiceMembre();
@@ -114,7 +108,7 @@ public class MembreProfilInterfaceController implements Initializable {
        
         
         try {
-            ResultSet listD = srvD.afficherDiplomeUser(s.getIdSession());
+            ResultSet listD = srvD.afficherDiplomeUser(s.getId_select());
             while(listD.next()){
                 
                 data.add(new Diplome(listD.getInt("id_diplome"),listD.getString("domaine"), listD.getString("organisation"))); 
@@ -156,7 +150,7 @@ public class MembreProfilInterfaceController implements Initializable {
          
         // ---affichage information User----
         try {
-            m.setId(s.getIdSession());
+            m.setId(s.getId_select());
             ResultSet res = srvm.afficherUsr(m);
             res.next();
             path = res.getString(12);
@@ -186,7 +180,7 @@ public class MembreProfilInterfaceController implements Initializable {
         ResultSet rs;
         try {
             listFormation.setSpacing(5);
-            rs = srvF.afficherFormationUser(s.getIdSession());
+            rs = srvF.afficherFormationUser(s.getId_select());
             
             while (rs.next()) {
                 Label formation = new Label(rs.getString("titre"));
@@ -203,40 +197,13 @@ public class MembreProfilInterfaceController implements Initializable {
         }
         
         
-        
-        
-        
     }    
 
-    @FXML
-    private void ajoutDiplome(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/AjouterDiplomeInterface.fxml"));
-                profilMembre.getChildren().setAll(pane);   
-    }
-
-    @FXML
-    private void suppCompte(MouseEvent event) throws IOException {
-        ServiceMembre srvM = new ServiceMembre();
-        Membre m  = new Membre();
-        Session s = new Session();
-        
-        m.setId(s.getIdSession());
-        
-        srvM.supprimer(m);
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
-        profilMembre.getChildren().setAll(pane);  
-    }
-
-    @FXML
-    private void modifier(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ModifierMembreInterface.fxml"));
-        profilMembre.getChildren().setAll(pane);
-    }
-
+    
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
-                profilMembre.getChildren().setAll(pane);  
+                root.getChildren().setAll(pane);  
     }
 
     @FXML

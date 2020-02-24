@@ -12,6 +12,15 @@ package utils;
 public class Session {
     
     private static int idSession;
+    private static int id_select;
+
+    public static void setId_select(int id_select) {
+        Session.id_select = id_select;
+    }
+
+    public static int getId_select() {
+        return id_select;
+    }
     
     public Session (){
     }

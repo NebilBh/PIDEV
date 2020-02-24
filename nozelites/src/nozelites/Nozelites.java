@@ -45,14 +45,15 @@ public class Nozelites extends Application {
     public void start(Stage stage) throws Exception {
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembreGroupesInterface.fxml"));
+
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+       // Parent root = FXMLLoader.load(getClass().getResource("/GUI/ResultatRechercheInterface.fxml"));
 
 
 
 
         
-        
-
+      
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Nozelites.class.getResource("/GUI/css/ChartGraphique.css").toExternalForm());
         stage.setScene(scene);
@@ -64,13 +65,13 @@ public class Nozelites extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
         
 
         Session s = new Session();
         
         System.out.println("id Session main"+s.getIdSession());
-        
-        //srv1.afficherLesMessagesEnvoyes(4);
+
         
         
 

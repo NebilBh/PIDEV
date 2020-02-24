@@ -3,32 +3,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorOffre" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InterfaceChasseurOffreController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ResultatRechercheChassInterfaceController">
    <children>
-      <Label layoutX="179.0" layoutY="98.0" prefHeight="36.0" prefWidth="207.0" text="Offres Envoyées" textFill="#c41011">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tabOffres" layoutX="179.0" layoutY="220.0" prefHeight="202.0" prefWidth="538.0" />
-      <TextField fx:id="rechercherOffre" layoutX="179.0" layoutY="188.0" prefHeight="25.0" prefWidth="149.0" promptText="Chercher.." />
-      <Button fx:id="envoyerOffre" layoutX="591.0" layoutY="431.0" mnemonicParsing="false" onAction="#envoyerUneOffre" prefHeight="31.0" prefWidth="126.0" text="Envoyer une offre">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Pane layoutY="1.0" prefHeight="500.0" prefWidth="150.0" style="-fx-background-color: #c41011;" />
-      <Separator layoutX="179.0" layoutY="134.0" prefHeight="9.0" prefWidth="538.0" />
-      <HBox alignment="CENTER_LEFT" layoutY="1.0" prefHeight="60.0" prefWidth="745.0" style="-fx-background-color: WHITE;">
+      <VBox fx:id="vboxUsr" alignment="TOP_CENTER" layoutY="60.0" prefHeight="440.0" prefWidth="745.0" spacing="5.0" style="-fx-background-color: white;" />
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="745.0" style="-fx-background-color: WHITE;">
          <children>
             <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>

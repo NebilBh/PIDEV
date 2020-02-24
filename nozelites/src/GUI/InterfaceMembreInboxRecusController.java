@@ -20,8 +20,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import services.ServicesMessage;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -46,7 +50,12 @@ public class InterfaceMembreInboxRecusController implements Initializable {
     private TableView<MessageForGUI> tabMessages = new TableView<MessageForGUI>();
     
     ServicesMessage srv = new ServicesMessage();
-    ObservableList<MessageForGUI> olist = FXCollections.observableArrayList(srv.afficherLesMessagesRecus(5)); //Id du membre connecté
+    Session session = new Session();
+    ObservableList<MessageForGUI> olist = FXCollections.observableArrayList(srv.afficherLesMessagesRecus(session.getIdSession())); //Id du membre connecté
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
     
 
     /**
@@ -55,6 +64,22 @@ public class InterfaceMembreInboxRecusController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        rechercherMessage.textProperty().addListener((observable, oldValue, newValue) -> {
+        //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+        olist = FXCollections.observableArrayList(srv.afficherLesMessagesRecus(session.getIdSession())); //Id du membre connecté
+        ObservableList<MessageForGUI> olistRech = FXCollections.observableArrayList();
+        olistRech.clear();
+
+        for (int i=0;i<olist.size();i++){
+            if(olist.get(i).getObjet().contains(newValue) || olist.get(i).getTexte().contains(newValue) || olist.get(i).getNom().contains(newValue) || olist.get(i).getPrenom().contains(newValue) || olist.get(i).getDate().contains(newValue))
+            {
+                olistRech.add(olist.get(i));
+            }
+        }
+                
+        tabMessages.setItems(olistRech);
+        });
+        
         TableColumn<MessageForGUI, String> idCol //
               = new TableColumn<MessageForGUI, String>("Id");
         
@@ -85,13 +110,14 @@ public class InterfaceMembreInboxRecusController implements Initializable {
         prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         
-        idCol.setMinWidth(50);
-        objetCol.setMinWidth(50);
+        idCol.setVisible(false);
+        objetCol.setMinWidth(100);
         texteCol.setMinWidth(200);
         nomCol.setMinWidth(100);
         prenomCol.setMinWidth(100);
+        dateCol.setMinWidth(100);
         
-        tabMessages.getColumns().addAll(idCol,objetCol,texteCol,deCol);
+        tabMessages.getColumns().addAll(idCol,objetCol,texteCol,deCol,dateCol);
         
         tabMessages.setItems(olist);
     }    
@@ -117,6 +143,48 @@ public class InterfaceMembreInboxRecusController implements Initializable {
     @FXML
     private void sendAmessage(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreEnvoyerMessage.fxml"));
+        anchorMessageRecus.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        anchorMessageRecus.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        anchorMessageRecus.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        anchorMessageRecus.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        anchorMessageRecus.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        anchorMessageRecus.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        anchorMessageRecus.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
         anchorMessageRecus.getChildren().setAll(pane);
     }
     

@@ -11,6 +11,7 @@ import entities.OffreForGUI;
 import java.awt.Insets;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
@@ -22,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
@@ -30,10 +32,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import services.ServicesOffre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -41,6 +45,47 @@ import services.ServicesOffre;
  * @author Wael Berrachid
  */
 public class InterfaceChasseurOffreController implements Initializable {
+
+    @FXML
+    private Label BoutonOffre;
+    @FXML
+    private Label BoutonAcceuil;
+    @FXML
+    private Label BoutonProfil;
+    @FXML
+    private Label BoutonElites;
+    @FXML
+    private Button BoutonDeco;
+
+    @FXML
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurTeteAcceuilInterface.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonProfilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonElitesGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+        anchorOffre.getChildren().setAll(pane);
+    }
     
     private class ButtonCell extends TableCell<Record, Boolean> {
         final Button cellButton = new Button("Vraiment ?");
@@ -85,7 +130,8 @@ public class InterfaceChasseurOffreController implements Initializable {
     private Button envoyerOffre;
     
     ServicesOffre srv = new ServicesOffre();
-    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(3)); //Id du chasseur connecté
+    Session session = new Session();
+    ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(session.getIdSession())); //Id du chasseur connecté
     
     
     
@@ -101,6 +147,22 @@ public class InterfaceChasseurOffreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        rechercherOffre.textProperty().addListener((observable, oldValue, newValue) -> {
+        //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+        olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(session.getIdSession())); //Id du chasseur connecté
+        ObservableList<OffreForGUI> olistRech = FXCollections.observableArrayList();
+        olistRech.clear();
+
+        for (int i=0;i<olist.size();i++){
+            if(olist.get(i).getType().contains(newValue) || olist.get(i).getEntreprise().contains(newValue) || olist.get(i).getDomaine().contains(newValue) || olist.get(i).getPoste().contains(newValue) || olist.get(i).getRequis().contains(newValue) || olist.get(i).getDescription().contains(newValue) || olist.get(i).getDate().contains(newValue) || olist.get(i).getEtat().contains(newValue) || olist.get(i).getNom().contains(newValue) || olist.get(i).getPrenom().contains(newValue))
+            {
+                olistRech.add(olist.get(i));
+            }
+        }
+  
+        tabOffres.setItems(olistRech);
+        });
+        
         tabOffres.setEditable(true);
         
         TableColumn<OffreForGUI, String> idCol //
@@ -165,7 +227,7 @@ public class InterfaceChasseurOffreController implements Initializable {
             }
         });
         
-        idCol.setMinWidth(50);
+        idCol.setVisible(false);
         typeCol.setMinWidth(100);
         entrepriseCol.setMinWidth(100);
         domaineCol.setMinWidth(100);

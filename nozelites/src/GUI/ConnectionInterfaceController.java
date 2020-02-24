@@ -15,13 +15,17 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import services.ServiceChasseur;
 import services.ServiceMembre;
@@ -46,6 +50,8 @@ public class ConnectionInterfaceController implements Initializable {
     private Button btnElite;
     @FXML
     private Button createChasseur;
+    @FXML
+    private HBox listLabel;
 
     @FXML
     private void connect(MouseEvent event) throws IOException, SQLException {
@@ -78,13 +84,13 @@ public class ConnectionInterfaceController implements Initializable {
                 System.out.println("id cnx: "+session.getIdSession());
                 System.out.println("Connexion 1");
                 
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
                 authen.getChildren().setAll(pane);   
             }
             else if(hasResultC){
                 session.setSession(resultatChass.getInt(1)); 
                 System.out.println("Connexion 2");
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurProfilInterface.fxml"));
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurTeteAcceuilInterface.fxml"));
                 authen.getChildren().setAll(pane);   
             
             }
@@ -102,6 +108,12 @@ public class ConnectionInterfaceController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+        
+        
+        
+        
         // TODO
     }    
 

@@ -61,7 +61,7 @@ public class ServicesMessage {
         
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select idMessage, objet, texte, nom, prenom, date from message INNER JOIN membre ON message.id_emeteur=membre.idUsr where id_destinataire=?");
+            PreparedStatement pt = c.prepareStatement("select idMessage, objet, texte, nom, prenom, message.date from message INNER JOIN membre ON message.id_emeteur=membre.idUsr where id_destinataire=?");
             pt.setInt(1, idRecepteur);
             ResultSet rs = pt.executeQuery();
             
@@ -86,7 +86,7 @@ public class ServicesMessage {
         
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select idMessage, objet, texte, nom, prenom, date from message INNER JOIN membre ON message.id_destinataire=membre.idUsr where id_emeteur=?");
+            PreparedStatement pt = c.prepareStatement("select idMessage, objet, texte, nom, prenom, message.date from message INNER JOIN membre ON message.id_destinataire=membre.idUsr where id_emeteur=?");
             pt.setInt(1, idEmetteur);
             ResultSet rs = pt.executeQuery();
             

@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import services.ServicesOffre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -52,6 +53,7 @@ public class InterfaceChasseurEnvoyerOffreController implements Initializable {
     private TextArea descriptionField;
     
     ServicesOffre srv = new ServicesOffre();
+    Session session = new Session();
 
     /**
      * Initializes the controller class.
@@ -61,13 +63,14 @@ public class InterfaceChasseurEnvoyerOffreController implements Initializable {
         // TODO
         typeField.getItems().addAll("Offre de stage","Offre de travail");
         domaineField.getItems().addAll("Aéronautique Et Espace","Agriculture - Agroalimentaire","Artisanat","Audiovisuel, Cinéma", "Audit, Comptabilité, Gestion", "Automobile", "Banque, Assurance","Bâtiment, Travaux Publics","Biologie, Chimie, Pharmacie","Commerce, Distribution", "Communication", "Création, Métiers D'art", "Culture, Patrimoine", "Défense, Sécurité, Armée", "Documentation, Bibliothèque", "Droit", "Edition, Livre", "Enseignement", "Environnement", "Ferroviaire", "Foires, Salons Et Congrès", "Fonction Publique", "Hôtellerie, Restauration", "Humanitaire", "Immobilier", "Industrie", "Informatique, Télécoms, Web", "Journalisme", "Langues", "Marketing, Publicité", "Médical", "Mode-Textile", "Paramédical", "Propreté Et Services Associés", "Psychologie", "Ressources Humaines", "Sciences Humaines Et Sociales", "Secrétariat", "Social", "Spectacle - Métiers De La Scène", "Sport", "Tourisme", "Transport-Logistique");
+        //emailField.setText(emailDuMembreSelectionné);
     }    
 
     @FXML
     private void submitOneOffre(ActionEvent event) throws IOException {
         
         String type = typeField.getSelectionModel().getSelectedItem().toString();
-        int idEmetteur = 3; //Id du chasseur connecté
+        int idEmetteur = session.getIdSession(); //Id du chasseur connecté
         int idRecepteur = srv.getIdMembre(emailField.getText());
         String entreprise = entrepriseField.getText();
         String domaine = domaineField.getSelectionModel().getSelectedItem().toString();

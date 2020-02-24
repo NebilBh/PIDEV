@@ -6,11 +6,11 @@
 package GUI;
 
 
-import com.restfb.Connection;
+/*import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
-import com.restfb.types.Album;
+import com.restfb.types.Album;*/
 
 import java.net.URL;
 import java.util.ResourceBundle;
