@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 24 fév. 2020 à 21:22
+-- Généré le :  lun. 24 fév. 2020 à 21:31
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  5.6.40
 
@@ -293,7 +293,8 @@ CREATE TABLE `publication` (
   `id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `id_groupe` int(11) NOT NULL,
-  `id_publicateur` int(11) NOT NULL
+  `id_publicateur` int(11) NOT NULL,
+  `nb_jaime` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -307,10 +308,9 @@ CREATE TABLE `reclamation` (
   `id_emeteur` int(11) NOT NULL,
   `id_cible` int(11) NOT NULL,
   `description` varchar(256) NOT NULL,
-  `etat` int(20) NOT NULL,
+  `etat` tinyint(1) NOT NULL,
   `selecteur` varchar(255) NOT NULL,
-  `date` datetime NOT NULL,
-  `nb_jaime` int(11) NOT NULL
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
