@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : Dim 23 fév. 2020 à 15:30
--- Version du serveur :  10.4.11-MariaDB
--- Version de PHP : 7.4.2
+-- Généré le :  lun. 24 fév. 2020 à 21:22
+-- Version du serveur :  10.1.38-MariaDB
+-- Version de PHP :  5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `nozelites`
+-- Base de données :  `nozelites`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +29,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `idUsr` int(11) NOT NULL
+  `idUsr` int(11) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `mdp` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -89,7 +91,8 @@ CREATE TABLE `evenement` (
   `siteWeb` varchar(255) NOT NULL,
   `NbParticipant` int(11) NOT NULL,
   `NbPlace` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `etat` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,15 +118,6 @@ CREATE TABLE `formation` (
   `titre` varchar(255) NOT NULL,
   `id_membre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `formation`
---
-
-INSERT INTO `formation` (`id_formation`, `titre`, `id_membre`) VALUES
-(1, 'php', 4),
-(2, 'java', 4),
-(3, 'c++', 5);
 
 -- --------------------------------------------------------
 
@@ -173,11 +167,18 @@ CREATE TABLE `groupe_membre` (
 
 CREATE TABLE `listediplome` (
   `id_diplome` int(11) NOT NULL,
-  `organisation` int(11) NOT NULL,
-  `domaine` int(11) NOT NULL,
+  `organisation` varchar(11) NOT NULL,
+  `domaine` varchar(11) NOT NULL,
   `id_membre` int(11) NOT NULL,
   `date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `listediplome`
+--
+
+INSERT INTO `listediplome` (`id_diplome`, `organisation`, `domaine`, `id_membre`, `date`) VALUES
+(0, 'harvard', 'BI', 7, '2020-02-24');
 
 -- --------------------------------------------------------
 
@@ -187,7 +188,8 @@ CREATE TABLE `listediplome` (
 
 CREATE TABLE `listparticipant` (
   `idE` int(11) NOT NULL,
-  `idm` int(11) NOT NULL
+  `idm` int(11) NOT NULL,
+  `etatp` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -207,7 +209,7 @@ CREATE TABLE `membre` (
   `age` int(11) NOT NULL,
   `Formation` varchar(255) NOT NULL,
   `Experience` varchar(255) NOT NULL,
-  `Type` int(11) NOT NULL DEFAULT 0,
+  `Type` int(11) NOT NULL DEFAULT '0',
   `image` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -217,9 +219,9 @@ CREATE TABLE `membre` (
 --
 
 INSERT INTO `membre` (`idUsr`, `nom`, `prenom`, `tel`, `mail`, `login`, `mdp`, `age`, `Formation`, `Experience`, `Type`, `image`, `date`) VALUES
-(4, 'Nebil', 'bh', '25426985', 'Nebil.bh@gmail.com', 'nebil95', '123654', 25, '0', '3 ans ', 0, 'C:/Users/Nebil/Desktop/Annotation 2020-02-02 202038.png', '2020-02-22'),
-(5, 'Bouhaouala', 'Nadhir', '22365478', 'nadhir@yahoo.com', 'Nadhir94', '123', 24, '0', '5 ans', 0, 'C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/bell.png', '2020-02-23'),
-(6, 'firas', 'belhiba', '22365478', 'firasbel@live.fr', 'firas123', '123', 22, '0', '3 mois', 0, 'C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/logo.jpg', '2020-02-23');
+(7, 'Ben Hamouda', 'Nebil', '22145654', 'nebilbh@esprit.tn', 'nebil98', '123654', 21, '0', '10 ans', 0, 'C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/Annotation 2020-02-02 202038.png', '2020-02-24'),
+(8, 'lasaad', 'Mornag', '98123456', 'lasaad@mornag.com', 'lasaad63', '123', 20, '0', '40 ans', 0, 'C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/default.png', '2020-02-24'),
+(9, 'torkhani', 'raif', '22123589', 'bentelma3mel@gmail.com', 'torkhani69', '123', 60, '0', '30 ans', 0, 'C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/default.png', '2020-02-24');
 
 -- --------------------------------------------------------
 
@@ -261,9 +263,9 @@ CREATE TABLE `offre` (
 --
 
 INSERT INTO `offre` (`Id`, `Type`, `IdEmetteur`, `IdRecepteur`, `Entreprise`, `Domaine`, `Poste`, `Requis`, `Description`, `Date`, `Etat`) VALUES
-(1, 'Stage', 1, 5, 'Microsoft', 'azezeaz', 'azeazezae', 'zaeazezaea', 'azeazezaea', '2020-02-23', 'Attente'),
-(2, 'emploi', 1, 6, 'Microsoft', 'mpmpo', 'mpolol', 'lopp', 'iuuhi', '2020-02-23', 'accepte'),
-(3, 'emploi', 1, 4, 'Microsoft', 'azeaz', 'azeaz', 'aeae', 'azeaz', '2020-02-12', 'accepte');
+(4, 'emploi', 1, 7, 'Microsoft', 'azea', 'aze', 'zae', 'aze', 'aze', 'Acceptée'),
+(5, 'azeza', 1, 8, 'aze', 'aze', 'aze', 'aze', 'aze', 'aza', 'Acceptée'),
+(6, 'azeaz', 1, 9, 'zae', 'aze', 'aze', 'aze', 'azea', 'azeaz', 'Acceptée');
 
 -- --------------------------------------------------------
 
@@ -273,9 +275,10 @@ INSERT INTO `offre` (`Id`, `Type`, `IdEmetteur`, `IdRecepteur`, `Entreprise`, `D
 
 CREATE TABLE `portfolio` (
   `id_port` int(11) NOT NULL,
-  `images` int(11) NOT NULL,
-  `projets` int(11) NOT NULL,
-  `id_membre` int(11) NOT NULL
+  `id_membre` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `lien` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -305,7 +308,9 @@ CREATE TABLE `reclamation` (
   `id_cible` int(11) NOT NULL,
   `description` varchar(256) NOT NULL,
   `etat` int(20) NOT NULL,
-  `selecteur` varchar(255) NOT NULL
+  `selecteur` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
+  `nb_jaime` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -316,7 +321,8 @@ CREATE TABLE `reclamation` (
 -- Index pour la table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`idUsr`);
+  ADD PRIMARY KEY (`idUsr`),
+  ADD UNIQUE KEY `CK_UNIQUE` (`login`);
 
 --
 -- Index pour la table `chasseur_talent`
@@ -336,6 +342,7 @@ ALTER TABLE `commentaire`
 --
 ALTER TABLE `evenement`
   ADD PRIMARY KEY (`idE`),
+  ADD UNIQUE KEY `nom` (`nom`),
   ADD KEY `FK_idCreateur` (`idc`);
 
 --
@@ -481,7 +488,7 @@ ALTER TABLE `groupe_membre`
 -- AUTO_INCREMENT pour la table `membre`
 --
 ALTER TABLE `membre`
-  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `message`
@@ -493,7 +500,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT pour la table `offre`
 --
 ALTER TABLE `offre`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `portfolio`
@@ -566,8 +573,8 @@ ALTER TABLE `message`
 -- Contraintes pour la table `offre`
 --
 ALTER TABLE `offre`
-  ADD CONSTRAINT `FK_idEmetteur` FOREIGN KEY (`IdEmetteur`) REFERENCES `chasseur_talent` (`idUsr`),
-  ADD CONSTRAINT `Fk_idRecepteur` FOREIGN KEY (`IdRecepteur`) REFERENCES `membre` (`idUsr`);
+  ADD CONSTRAINT `FK_idEmetteur` FOREIGN KEY (`IdEmetteur`) REFERENCES `chasseur_talent` (`idUsr`) ON DELETE CASCADE,
+  ADD CONSTRAINT `Fk_idRecepteur` FOREIGN KEY (`IdRecepteur`) REFERENCES `membre` (`idUsr`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
