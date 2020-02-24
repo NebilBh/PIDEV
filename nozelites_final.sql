@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : Dim 23 fév. 2020 à 15:30
--- Version du serveur :  10.4.11-MariaDB
--- Version de PHP : 7.4.2
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  lun. 24 fév. 2020 à 12:39
+-- Version du serveur :  5.7.24
+-- Version de PHP :  7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `nozelites`
+-- Base de données :  `nozelites`
 --
 
 -- --------------------------------------------------------
@@ -28,8 +28,10 @@ SET time_zone = "+00:00";
 -- Structure de la table `admin`
 --
 
-CREATE TABLE `admin` (
-  `idUsr` int(11) NOT NULL
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `idUsr` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`idUsr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -38,8 +40,9 @@ CREATE TABLE `admin` (
 -- Structure de la table `chasseur_talent`
 --
 
-CREATE TABLE `chasseur_talent` (
-  `idUsr` int(11) NOT NULL,
+DROP TABLE IF EXISTS `chasseur_talent`;
+CREATE TABLE IF NOT EXISTS `chasseur_talent` (
+  `idUsr` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
@@ -49,8 +52,9 @@ CREATE TABLE `chasseur_talent` (
   `age` int(11) NOT NULL,
   `entreprise` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` varchar(255) NOT NULL,
+  PRIMARY KEY (`idUsr`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `chasseur_talent`
@@ -65,11 +69,14 @@ INSERT INTO `chasseur_talent` (`idUsr`, `nom`, `prenom`, `tel`, `mail`, `login`,
 -- Structure de la table `commentaire`
 --
 
-CREATE TABLE `commentaire` (
-  `id_commentaire` int(11) NOT NULL,
+DROP TABLE IF EXISTS `commentaire`;
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  `id_commentaire` int(11) NOT NULL AUTO_INCREMENT,
   `id_membre` int(11) NOT NULL,
   `id_publication` int(11) NOT NULL,
-  `commentaire` varchar(255) NOT NULL
+  `commentaire` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_commentaire`),
+  KEY `FK_comm_membre` (`id_membre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -78,9 +85,10 @@ CREATE TABLE `commentaire` (
 -- Structure de la table `evenement`
 --
 
-CREATE TABLE `evenement` (
+DROP TABLE IF EXISTS `evenement`;
+CREATE TABLE IF NOT EXISTS `evenement` (
   `idc` int(11) NOT NULL,
-  `idE` int(11) NOT NULL,
+  `idE` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `lieu` varchar(255) NOT NULL,
   `date` date NOT NULL,
@@ -89,7 +97,11 @@ CREATE TABLE `evenement` (
   `siteWeb` varchar(255) NOT NULL,
   `NbParticipant` int(11) NOT NULL,
   `NbPlace` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `etat` int(30) NOT NULL,
+  PRIMARY KEY (`idE`),
+  UNIQUE KEY `nom` (`nom`),
+  KEY `FK_idCreateur` (`idc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -98,10 +110,14 @@ CREATE TABLE `evenement` (
 -- Structure de la table `favoris`
 --
 
-CREATE TABLE `favoris` (
-  `id_fav` int(11) NOT NULL,
+DROP TABLE IF EXISTS `favoris`;
+CREATE TABLE IF NOT EXISTS `favoris` (
+  `id_fav` int(11) NOT NULL AUTO_INCREMENT,
   `id_pub` int(11) NOT NULL,
-  `id_membre` int(11) NOT NULL
+  `id_membre` int(11) NOT NULL,
+  PRIMARY KEY (`id_fav`),
+  KEY `FK_FAV_MEMBRE` (`id_membre`),
+  KEY `FK_FAV_PUBLC` (`id_pub`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -110,11 +126,14 @@ CREATE TABLE `favoris` (
 -- Structure de la table `formation`
 --
 
-CREATE TABLE `formation` (
-  `id_formation` int(11) NOT NULL,
+DROP TABLE IF EXISTS `formation`;
+CREATE TABLE IF NOT EXISTS `formation` (
+  `id_formation` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) NOT NULL,
-  `id_membre` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_membre` int(11) NOT NULL,
+  PRIMARY KEY (`id_formation`),
+  KEY `fk_formation_id_membre` (`id_membre`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `formation`
@@ -131,12 +150,14 @@ INSERT INTO `formation` (`id_formation`, `titre`, `id_membre`) VALUES
 -- Structure de la table `groupe`
 --
 
-CREATE TABLE `groupe` (
-  `id_groupe` int(11) NOT NULL,
+DROP TABLE IF EXISTS `groupe`;
+CREATE TABLE IF NOT EXISTS `groupe` (
+  `id_groupe` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `autorisation` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `autorisation` int(11) NOT NULL,
+  PRIMARY KEY (`id_groupe`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `groupe`
@@ -157,13 +178,17 @@ INSERT INTO `groupe` (`id_groupe`, `titre`, `description`, `autorisation`) VALUE
 -- Structure de la table `groupe_membre`
 --
 
-CREATE TABLE `groupe_membre` (
-  `id_gm` int(11) NOT NULL,
+DROP TABLE IF EXISTS `groupe_membre`;
+CREATE TABLE IF NOT EXISTS `groupe_membre` (
+  `id_gm` int(11) NOT NULL AUTO_INCREMENT,
   `id_groupe` int(11) NOT NULL,
   `id_membre` int(11) NOT NULL,
   `id_invite` int(11) NOT NULL,
-  `etat` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `etat` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_gm`),
+  KEY `FK_idG` (`id_groupe`),
+  KEY `FK_idM` (`id_membre`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -171,12 +196,15 @@ CREATE TABLE `groupe_membre` (
 -- Structure de la table `listediplome`
 --
 
-CREATE TABLE `listediplome` (
+DROP TABLE IF EXISTS `listediplome`;
+CREATE TABLE IF NOT EXISTS `listediplome` (
   `id_diplome` int(11) NOT NULL,
   `organisation` int(11) NOT NULL,
   `domaine` int(11) NOT NULL,
   `id_membre` int(11) NOT NULL,
-  `date` varchar(255) NOT NULL
+  `date` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_diplome`),
+  KEY `FK_id_membre` (`id_membre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -185,9 +213,13 @@ CREATE TABLE `listediplome` (
 -- Structure de la table `listparticipant`
 --
 
-CREATE TABLE `listparticipant` (
+DROP TABLE IF EXISTS `listparticipant`;
+CREATE TABLE IF NOT EXISTS `listparticipant` (
   `idE` int(11) NOT NULL,
-  `idm` int(11) NOT NULL
+  `idm` int(11) NOT NULL,
+  `etatp` int(30) NOT NULL,
+  KEY `fk_ide` (`idE`),
+  KEY `id_m` (`idm`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -196,8 +228,9 @@ CREATE TABLE `listparticipant` (
 -- Structure de la table `membre`
 --
 
-CREATE TABLE `membre` (
-  `idUsr` int(11) NOT NULL,
+DROP TABLE IF EXISTS `membre`;
+CREATE TABLE IF NOT EXISTS `membre` (
+  `idUsr` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
@@ -207,10 +240,11 @@ CREATE TABLE `membre` (
   `age` int(11) NOT NULL,
   `Formation` varchar(255) NOT NULL,
   `Experience` varchar(255) NOT NULL,
-  `Type` int(11) NOT NULL DEFAULT 0,
+  `Type` int(11) NOT NULL DEFAULT '0',
   `image` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` varchar(255) NOT NULL,
+  PRIMARY KEY (`idUsr`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `membre`
@@ -227,13 +261,17 @@ INSERT INTO `membre` (`idUsr`, `nom`, `prenom`, `tel`, `mail`, `login`, `mdp`, `
 -- Structure de la table `message`
 --
 
-CREATE TABLE `message` (
-  `idMessage` int(11) NOT NULL,
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `idMessage` int(11) NOT NULL AUTO_INCREMENT,
   `objet` varchar(255) NOT NULL,
   `texte` varchar(255) NOT NULL,
   `id_destinataire` int(11) NOT NULL,
   `id_emeteur` int(11) NOT NULL,
-  `date` varchar(30) NOT NULL
+  `date` varchar(30) NOT NULL,
+  PRIMARY KEY (`idMessage`),
+  KEY `fk_destinataire` (`id_destinataire`),
+  KEY `fk_emetteur` (`id_emeteur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -242,8 +280,9 @@ CREATE TABLE `message` (
 -- Structure de la table `offre`
 --
 
-CREATE TABLE `offre` (
-  `Id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `offre`;
+CREATE TABLE IF NOT EXISTS `offre` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Type` varchar(30) NOT NULL,
   `IdEmetteur` int(11) NOT NULL,
   `IdRecepteur` int(11) NOT NULL,
@@ -253,8 +292,11 @@ CREATE TABLE `offre` (
   `Requis` varchar(250) NOT NULL,
   `Description` varchar(250) NOT NULL,
   `Date` varchar(30) NOT NULL,
-  `Etat` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Etat` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `FK_idEmetteur` (`IdEmetteur`),
+  KEY `Fk_idRecepteur` (`IdRecepteur`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `offre`
@@ -271,11 +313,14 @@ INSERT INTO `offre` (`Id`, `Type`, `IdEmetteur`, `IdRecepteur`, `Entreprise`, `D
 -- Structure de la table `portfolio`
 --
 
-CREATE TABLE `portfolio` (
-  `id_port` int(11) NOT NULL,
+DROP TABLE IF EXISTS `portfolio`;
+CREATE TABLE IF NOT EXISTS `portfolio` (
+  `id_port` int(11) NOT NULL AUTO_INCREMENT,
   `images` int(11) NOT NULL,
   `projets` int(11) NOT NULL,
-  `id_membre` int(11) NOT NULL
+  `id_membre` int(11) NOT NULL,
+  PRIMARY KEY (`id_port`),
+  KEY `Fk_membre` (`id_membre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -284,13 +329,17 @@ CREATE TABLE `portfolio` (
 -- Structure de la table `publication`
 --
 
-CREATE TABLE `publication` (
+DROP TABLE IF EXISTS `publication`;
+CREATE TABLE IF NOT EXISTS `publication` (
   `titre` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(255) NOT NULL,
   `id_groupe` int(11) NOT NULL,
-  `id_publicateur` int(11) NOT NULL
+  `id_publicateur` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_groupe` (`id_groupe`),
+  KEY `FK_idpublicateur` (`id_publicateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -299,219 +348,17 @@ CREATE TABLE `publication` (
 -- Structure de la table `reclamation`
 --
 
-CREATE TABLE `reclamation` (
-  `idRecl` int(11) NOT NULL,
+DROP TABLE IF EXISTS `reclamation`;
+CREATE TABLE IF NOT EXISTS `reclamation` (
+  `idRecl` int(11) NOT NULL AUTO_INCREMENT,
   `id_emeteur` int(11) NOT NULL,
   `id_cible` int(11) NOT NULL,
   `description` varchar(256) NOT NULL,
   `etat` int(20) NOT NULL,
-  `selecteur` varchar(255) NOT NULL
+  `selecteur` varchar(255) NOT NULL,
+  PRIMARY KEY (`idRecl`),
+  KEY `fk_id_emeteur` (`id_emeteur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`idUsr`);
-
---
--- Index pour la table `chasseur_talent`
---
-ALTER TABLE `chasseur_talent`
-  ADD PRIMARY KEY (`idUsr`);
-
---
--- Index pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  ADD PRIMARY KEY (`id_commentaire`),
-  ADD KEY `FK_comm_membre` (`id_membre`);
-
---
--- Index pour la table `evenement`
---
-ALTER TABLE `evenement`
-  ADD PRIMARY KEY (`idE`),
-  ADD KEY `FK_idCreateur` (`idc`);
-
---
--- Index pour la table `favoris`
---
-ALTER TABLE `favoris`
-  ADD PRIMARY KEY (`id_fav`),
-  ADD KEY `FK_FAV_MEMBRE` (`id_membre`),
-  ADD KEY `FK_FAV_PUBLC` (`id_pub`);
-
---
--- Index pour la table `formation`
---
-ALTER TABLE `formation`
-  ADD PRIMARY KEY (`id_formation`),
-  ADD KEY `fk_formation_id_membre` (`id_membre`);
-
---
--- Index pour la table `groupe`
---
-ALTER TABLE `groupe`
-  ADD PRIMARY KEY (`id_groupe`);
-
---
--- Index pour la table `groupe_membre`
---
-ALTER TABLE `groupe_membre`
-  ADD PRIMARY KEY (`id_gm`),
-  ADD KEY `FK_idG` (`id_groupe`),
-  ADD KEY `FK_idM` (`id_membre`);
-
---
--- Index pour la table `listediplome`
---
-ALTER TABLE `listediplome`
-  ADD PRIMARY KEY (`id_diplome`),
-  ADD KEY `FK_id_membre` (`id_membre`);
-
---
--- Index pour la table `listparticipant`
---
-ALTER TABLE `listparticipant`
-  ADD KEY `fk_ide` (`idE`),
-  ADD KEY `id_m` (`idm`);
-
---
--- Index pour la table `membre`
---
-ALTER TABLE `membre`
-  ADD PRIMARY KEY (`idUsr`);
-
---
--- Index pour la table `message`
---
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`idMessage`),
-  ADD KEY `fk_destinataire` (`id_destinataire`),
-  ADD KEY `fk_emetteur` (`id_emeteur`);
-
---
--- Index pour la table `offre`
---
-ALTER TABLE `offre`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `FK_idEmetteur` (`IdEmetteur`),
-  ADD KEY `Fk_idRecepteur` (`IdRecepteur`);
-
---
--- Index pour la table `portfolio`
---
-ALTER TABLE `portfolio`
-  ADD PRIMARY KEY (`id_port`),
-  ADD KEY `Fk_membre` (`id_membre`);
-
---
--- Index pour la table `publication`
---
-ALTER TABLE `publication`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_groupe` (`id_groupe`),
-  ADD KEY `FK_idpublicateur` (`id_publicateur`);
-
---
--- Index pour la table `reclamation`
---
-ALTER TABLE `reclamation`
-  ADD PRIMARY KEY (`idRecl`),
-  ADD KEY `fk_id_emeteur` (`id_emeteur`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `chasseur_talent`
---
-ALTER TABLE `chasseur_talent`
-  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `evenement`
---
-ALTER TABLE `evenement`
-  MODIFY `idE` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `favoris`
---
-ALTER TABLE `favoris`
-  MODIFY `id_fav` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `formation`
---
-ALTER TABLE `formation`
-  MODIFY `id_formation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT pour la table `groupe`
---
-ALTER TABLE `groupe`
-  MODIFY `id_groupe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `groupe_membre`
---
-ALTER TABLE `groupe_membre`
-  MODIFY `id_gm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT pour la table `membre`
---
-ALTER TABLE `membre`
-  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT pour la table `message`
---
-ALTER TABLE `message`
-  MODIFY `idMessage` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `offre`
---
-ALTER TABLE `offre`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT pour la table `portfolio`
---
-ALTER TABLE `portfolio`
-  MODIFY `id_port` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `publication`
---
-ALTER TABLE `publication`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `reclamation`
---
-ALTER TABLE `reclamation`
-  MODIFY `idRecl` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
