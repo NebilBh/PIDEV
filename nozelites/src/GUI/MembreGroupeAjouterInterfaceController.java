@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import static GUI.MembreGroupeInterfaceController.gr;
 import javafx.util.Callback;
 import com.sun.prism.impl.Disposer;
 import com.sun.prism.impl.Disposer.Record;

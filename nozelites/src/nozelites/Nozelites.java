@@ -39,7 +39,7 @@ import services.ServicesReclamation;
  */
 public class Nozelites extends Application {
     
-    ParametresParDefaut p = new ParametresParDefaut();
+    
     
     @Override
     public void start(Stage stage) throws Exception {
