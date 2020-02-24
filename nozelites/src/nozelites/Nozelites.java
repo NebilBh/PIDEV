@@ -46,7 +46,7 @@ public class Nozelites extends Application {
 
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/InterfaceEvenement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Menu.fxml"));
        // Parent root = FXMLLoader.load(getClass().getResource("/GUI/ResultatRechercheInterface.fxml"));
 
 
