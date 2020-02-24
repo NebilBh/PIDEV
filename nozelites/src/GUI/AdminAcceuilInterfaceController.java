@@ -70,8 +70,8 @@ public class AdminAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void offres(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceAdminOffre.fxml"));
+        root.getChildren().setAll(pane);
     }
     
 }
