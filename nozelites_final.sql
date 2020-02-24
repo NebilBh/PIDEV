@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 24 fév. 2020 à 12:39
+-- Généré le :  lun. 24 fév. 2020 à 12:57
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -316,9 +316,10 @@ INSERT INTO `offre` (`Id`, `Type`, `IdEmetteur`, `IdRecepteur`, `Entreprise`, `D
 DROP TABLE IF EXISTS `portfolio`;
 CREATE TABLE IF NOT EXISTS `portfolio` (
   `id_port` int(11) NOT NULL AUTO_INCREMENT,
-  `images` int(11) NOT NULL,
-  `projets` int(11) NOT NULL,
   `id_membre` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `lien` varchar(255) NOT NULL,
   PRIMARY KEY (`id_port`),
   KEY `Fk_membre` (`id_membre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -356,6 +357,7 @@ CREATE TABLE IF NOT EXISTS `reclamation` (
   `description` varchar(256) NOT NULL,
   `etat` int(20) NOT NULL,
   `selecteur` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
   PRIMARY KEY (`idRecl`),
   KEY `fk_id_emeteur` (`id_emeteur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
