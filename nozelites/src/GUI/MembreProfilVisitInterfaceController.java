@@ -129,7 +129,7 @@ public class MembreProfilVisitInterfaceController implements Initializable {
          
         // ---affichage information User----
         try {
-            m.setId(s.getId_select());
+            m.setUsrId(s.getId_select());
             ResultSet res = srvm.afficherUsr(m);
             res.next();
             path = res.getString(12);

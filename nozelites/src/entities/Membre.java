@@ -75,10 +75,8 @@ public class Membre extends Utilisateur{
         this.formation = formation;
     }
 
-    @Override
-    public int getId() {
-        return super.getId(); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+   
 
     @Override
     public int getTel() {
@@ -151,10 +149,16 @@ public class Membre extends Utilisateur{
     public void setNom(String nom) {
         super.setNom(nom); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public void setId(int id){
-        super.setId(id);
+
+    public int getUsrId() {
+        return usrId;
     }
+
+    public void setUsrId(int usrId) {
+        this.usrId = usrId;
+    }
+    
+   
      
      
 }

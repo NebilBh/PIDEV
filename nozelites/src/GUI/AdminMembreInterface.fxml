@@ -1,11 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminMembreInterfaceController">
+   <children>
+      <TableView fx:id="tableMembre" layoutX="250.0" layoutY="64.0" prefHeight="435.0" prefWidth="490.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="75.0" text="idUsr" />
+          <TableColumn fx:id="col_nom" prefWidth="100.0" text="Nom" />
+            <TableColumn fx:id="col_prenom" prefWidth="100.0" text="Prenom" />
+            <TableColumn fx:id="colMail" prefWidth="100.0" text="Mail" />
+            <TableColumn fx:id="col_tel" prefWidth="100.0" text="Téléphone" />
+            <TableColumn fx:id="col_log" prefWidth="75.0" text="Login" />
+            <TableColumn fx:id="col_age" prefWidth="100.0" text="Age" />
+            <TableColumn fx:id="col_exp" prefWidth="100.0" text="Experience" />
+            <TableColumn fx:id="col_etat" prefWidth="100.0" text="Etat" />
+            <TableColumn fx:id="col_bloq" prefWidth="100.0" text="Bloquer" />
+            <TableColumn fx:id="col_deb" prefWidth="100.0" text="Debloquer" />
+        </columns>
+      </TableView>
+      <VBox prefHeight="500.0" prefWidth="250.0" style="-fx-background-color: #c41011;">
+         <children>
+            <ImageView fitHeight="61.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="70.0" left="35.0" top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label onMouseClicked="#acceuil" text="Acceuil" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#reclamations" text="Reclamations" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#groupes" text="Groupes" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#membres" text="Membres" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#chasseurs" text="Chasseurs de têtes" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#evenements" text="Evenements" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#offres" text="Offres" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <TextField fx:id="fieldSearch" layoutX="258.0" layoutY="23.0" promptText="Recherche" />
+   </children>
 </AnchorPane>

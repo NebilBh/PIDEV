@@ -129,7 +129,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         EmailTop1.maxWidth(200);
         TelephoneTop1.setText(""+topOfTheMonth.get(0).getTel());
         TelephoneTop1.maxWidth(200);
-        topUn = topOfTheMonth.get(0).getId();
+        topUn = topOfTheMonth.get(0).getUsrId();
         
         Image img1 = new Image("file:///"+topOfTheMonth.get(1).getImage());
         ImagePattern pattern1 = new ImagePattern(img1);
@@ -144,7 +144,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         EmailTop2.maxWidth(200);
         TelephoneTop2.setText(""+topOfTheMonth.get(1).getTel());
         TelephoneTop2.maxWidth(200);
-        topDeux = topOfTheMonth.get(1).getId();
+        topDeux = topOfTheMonth.get(1).getUsrId();
         
         Image img2 = new Image("file:///"+topOfTheMonth.get(2).getImage());
         ImagePattern pattern2 = new ImagePattern(img2);
@@ -159,7 +159,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         EmailTop3.maxWidth(200);
         TelephoneTop3.setText(""+topOfTheMonth.get(2).getTel());
         TelephoneTop3.maxWidth(200);
-        topTrois = topOfTheMonth.get(2).getId();
+        topTrois = topOfTheMonth.get(2).getUsrId();
     }    
 
     @FXML

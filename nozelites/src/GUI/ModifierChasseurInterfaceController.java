@@ -80,7 +80,7 @@ public class ModifierChasseurInterfaceController implements Initializable {
             // TODO
             
             
-            m.setId(s.getIdSession());
+            m.setUsrId(s.getIdSession());
             
             ResultSet res = srvm.afficherUsr(m);
             res.next();
@@ -143,7 +143,7 @@ public class ModifierChasseurInterfaceController implements Initializable {
                 Integer.parseInt(fieldAge.getText()), Integer.parseInt(fieldTel.getText()), fieldEnt.getText(), lienImg);
         chasseurTalent oldchasseur = new chasseurTalent();
         
-        oldchasseur.setId(s.getIdSession());
+        oldchasseur.setUsrId(s.getIdSession());
         srvM.modifier(oldchasseur, c);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurProfilInterface.fxml"));
         modifWindow.getChildren().setAll(pane);

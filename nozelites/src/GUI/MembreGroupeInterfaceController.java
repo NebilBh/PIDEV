@@ -89,7 +89,7 @@ public class MembreGroupeInterfaceController implements Initializable {
                         //bloquer membre
                         GroupeMembre gm = new GroupeMembre(gr.getId(),2,1,3,"bloqué");
                         SGroupeMembre s_gm = new SGroupeMembre();
-                        GroupeMembre id_gm = s_gm.chercher_groupe_membre(gm.getId(),currentmembre.getId());
+                        GroupeMembre id_gm = s_gm.chercher_groupe_membre(gm.getId(),currentmembre.getUsrId());
                         s_gm.modifier_groupe_membre(gm);
                         //srv.supprimerOffre(currentOffre);
                         try {
@@ -132,7 +132,7 @@ public class MembreGroupeInterfaceController implements Initializable {
                 	//lss.remove(currentmembre);
                         cellButton.setVisible(false);
                         SGroupeMembre s_gm = new SGroupeMembre();
-                        GroupeMembre gm = new GroupeMembre(1,gr.getId(),currentmembre.getId(),id_membre,"invitation");
+                        GroupeMembre gm = new GroupeMembre(1,gr.getId(),currentmembre.getUsrId(),id_membre,"invitation");
                         s_gm.ajouter_groupe_membre(gm);
                         try {
                             AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupeInterface.fxml"));
@@ -294,7 +294,7 @@ public class MembreGroupeInterfaceController implements Initializable {
                 {
                     boolean existe = true;
                     for(Membre mii : list_m)
-                        if(lsss.getInt(1)==mii.getId())existe=false;
+                        if(lsss.getInt(1)==mii.getUsrId())existe=false;
                     if(existe)
                         list_i.add(new Membre(lsss.getString(2),lsss.getString(3),lsss.getString(5),
                         lsss.getString(6),lsss.getString(7),lsss.getString(10),lsss.getString(9)

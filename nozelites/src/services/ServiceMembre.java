@@ -77,7 +77,7 @@ public class ServiceMembre {
         try {
             
             pstmt = db.prepareStatement(qry);
-            pstmt.setInt(1,user.getId());
+            pstmt.setInt(1,user.getUsrId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +106,7 @@ public class ServiceMembre {
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
-            stmt.setInt(1,usr.getId());
+            stmt.setInt(1,usr.getUsrId());
             ResultSet usrList = stmt.executeQuery();
             return usrList;
             
@@ -185,7 +185,7 @@ public class ServiceMembre {
             stmt.setString(9,newM.getFormation());
             stmt.setInt(10,newM.getType());
             stmt.setString(11,newM.getImage());
-            stmt.setInt(12,user.getId());
+            stmt.setInt(12,user.getUsrId());
             stmt.executeUpdate();
             System.out.println("succes");
         } catch (SQLException ex) {

@@ -156,7 +156,7 @@ public class MembreProfilInterfaceController implements Initializable {
          
         // ---affichage information User----
         try {
-            m.setId(s.getIdSession());
+            m.setUsrId(s.getIdSession());
             ResultSet res = srvm.afficherUsr(m);
             res.next();
             path = res.getString(12);
@@ -220,7 +220,7 @@ public class MembreProfilInterfaceController implements Initializable {
         Membre m  = new Membre();
         Session s = new Session();
         
-        m.setId(s.getIdSession());
+        m.setUsrId(s.getIdSession());
         
         srvM.supprimer(m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
