@@ -25,11 +25,11 @@ public class Portfolio {
    
    
 
-    public Portfolio(int id_port,int id_membre,String titre, String description,String lien ) {
+    public Portfolio(int id_membre,String titre, String description,String lien ) {
         this.titre = titre;
         this.id_membre=id_membre;
         this.description = description;
-        this.id_port = id_port;
+       // this.id_port = id_port;
         this.lien=lien;
         
     }
@@ -81,6 +81,14 @@ public class Portfolio {
     @Override
     public String toString() {
         return "Portfolio{" + "titre=" + titre + ", description=" + description + ", id_port=" + id_port + ", id_membre=" + id_membre + ", lien=" + lien + '}';
+    }
+
+    public Portfolio(String titre, String description, int id_port, int id_membre, String lien) {
+        this.titre = titre;
+        this.description = description;
+        this.id_port = id_port;
+        this.id_membre = id_membre;
+        this.lien = lien;
     }
     
     

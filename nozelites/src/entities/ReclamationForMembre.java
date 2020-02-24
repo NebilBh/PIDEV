@@ -11,10 +11,10 @@ package entities;
  */
 public class ReclamationForMembre {
     
-    int id;
+   private int id;
     private String nom,prenom,mail,nomc,prenomc,etat,selecteur,description,date;
 
-    public ReclamationForMembre(int id, String nom, String prenom, String mail, String nomc, String prenomc, String etat, String selecteur, String description, String date) {
+    public ReclamationForMembre(int id, String nom, String prenom, String mail, String nomc, String prenomc,String description,String etat,String selecteur, String date) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -25,6 +25,46 @@ public class ReclamationForMembre {
         this.selecteur = selecteur;
         this.description = description;
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public String getNomc() {
+        return nomc;
+    }
+
+    public String getPrenomc() {
+        return prenomc;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public String getSelecteur() {
+        return selecteur;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getDate() {
+        return date;
     }
     
     

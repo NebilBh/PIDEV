@@ -11,9 +11,11 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.TextField;
@@ -54,6 +56,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @FXML
     private Label nbProfil;
 
+    @FXML
     private Label NbrOffresAcceptees;
     @FXML
     private Label NbrOffres;
@@ -96,6 +99,8 @@ public class MembreAcceuilInterfaceController implements Initializable {
     private Label EmailTop3;
     @FXML
     private Label TelephoneTop3;
+    @FXML
+    private Button signaler;
     
     /**
      * Initializes the controller class.
@@ -208,6 +213,13 @@ public class MembreAcceuilInterfaceController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ResultatRechercheInterface.fxml"));
 
         root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void signaler(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationInterface.fxml"));
+        root.getChildren().setAll(pane);
+        
     }
     
 }

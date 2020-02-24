@@ -140,7 +140,7 @@ public class Afficher_reclamationController implements Initializable {
     
     
      ServicesReclamation srv = new ServicesReclamation();
-        ObservableList<ReclamationForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(2));
+        ObservableList<ReclamationForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(3));
 
     /**
      * Initializes the controller class.
@@ -189,8 +189,8 @@ public class Afficher_reclamationController implements Initializable {
         tab_recl.setItems(olist);*/
       
 
-      //TableColumn<ReclamationForGUI, Integer> idCol //
-             // = new TableColumn<ReclamationForGUI, Integer>("Id");
+      TableColumn<ReclamationForGUI, Integer> idCol //
+              = new TableColumn<ReclamationForGUI, Integer>("Id");
         
         
        // TableColumn<ReclamationForGUI, String> nomCol //
@@ -221,7 +221,7 @@ public class Afficher_reclamationController implements Initializable {
             
             
         
-       // idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
        // nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
        // prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
        // mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
@@ -249,7 +249,7 @@ public class Afficher_reclamationController implements Initializable {
             }});
         
         
-        //idCol.setMinWidth(50);
+        idCol.setVisible(false);
       //  nomCol.setMinWidth(100);
        // prenomCol.setMinWidth(100);
        // mailCol.setMinWidth(100);
@@ -260,7 +260,7 @@ public class Afficher_reclamationController implements Initializable {
         actionCol.setMinWidth(100);
      
         
-        tab_recl.getColumns().addAll(descriptionCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
+        tab_recl.getColumns().addAll(idCol,descriptionCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
         
      //aaaaaaaaa//   ServicesReclamation srv = new ServicesReclamation();
       // aaaa/// ObservableList<ReclamationForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(2));

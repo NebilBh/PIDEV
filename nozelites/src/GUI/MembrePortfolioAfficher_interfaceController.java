@@ -9,6 +9,7 @@ import com.sun.prism.impl.Disposer;
 import com.sun.prism.impl.Disposer.Record;
 import entities.Portfolio;
 import entities.ReclamationForGUI;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -18,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -26,7 +28,10 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import services.ServicePortfolio;
 
@@ -36,6 +41,61 @@ import services.ServicePortfolio;
  * @author KHAIRI
  */
 public class MembrePortfolioAfficher_interfaceController implements Initializable {
+
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
+    private AnchorPane root;
+    
+    
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+                root.getChildren().setAll(pane);    
+    }
+
+    @FXML
+    private void profil(MouseEvent event) {
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+         root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) {
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) {
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) {
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) {
+    }
+
+    @FXML
+    private void ajouter(ActionEvent event) throws IOException {
+        
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
+                root.getChildren().setAll(pane); 
+    }
+
+    @FXML
+    private void voirportfolio(ActionEvent event) throws IOException {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));
+                root.getChildren().setAll(pane); 
+    }
 
    
    
@@ -76,8 +136,6 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
     
  @FXML
     private TableView<Portfolio> tabPorte = new TableView<Portfolio>();
- @FXML
-     private AnchorPane afficher;
     
     ServicePortfolio srv = new ServicePortfolio();
         ObservableList<Portfolio> olist = FXCollections.observableArrayList(srv.afficher());
@@ -90,15 +148,15 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
           tabPorte.setEditable(true);
-        TableColumn<Portfolio, Integer> idCol //
-              = new TableColumn<Portfolio, Integer>("Id");
+           TableColumn<Portfolio, Integer> idCol //
+             = new TableColumn<Portfolio, Integer>("Id");
         
         
-        TableColumn<Portfolio, Integer> idmembreCol //
-              = new TableColumn<Portfolio, Integer>("Id Membre");
+       TableColumn<Portfolio, Integer> idmembreCol //
+             = new TableColumn<Portfolio, Integer>("Id Membre");
         
         
-        TableColumn<Portfolio, String> titreCol //
+       TableColumn<Portfolio, String> titreCol //
               = new TableColumn<Portfolio, String>("Titre");
         
         
@@ -128,8 +186,8 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
         });
         
         
-        idCol.setMinWidth(50);
-        idmembreCol.setMinWidth(100);
+       idCol.setVisible(false);
+       idmembreCol.setVisible(false);
         titreCol.setMinWidth(100);
         descriptionCol.setMinWidth(100);
         lienCol.setMinWidth(100);
@@ -140,6 +198,7 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
         
         
         tabPorte.setItems(olist);
+        
             titreCol.setCellFactory(TextFieldTableCell.<Portfolio> forTableColumn());
         titreCol.setOnEditCommit((TableColumn.CellEditEvent<Portfolio, String> event) -> {
             TablePosition<Portfolio, String> pos = event.getTablePosition();
@@ -149,7 +208,7 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
             int row = pos.getRow();
             Portfolio o = event.getTableView().getItems().get(row);
  
-            o.setDescription(newTitre);
+            o.setTitre(newTitre);
             
             srv.modifierPortfolio(o);
         }); 
@@ -176,7 +235,7 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
             int row = pos.getRow();
             Portfolio o = event.getTableView().getItems().get(row);
  
-            o.setDescription(newLien);
+            o.setLien(newLien);
             
             srv.modifierPortfolio(o);
         }); 

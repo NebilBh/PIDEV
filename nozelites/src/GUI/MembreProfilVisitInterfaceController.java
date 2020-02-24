@@ -212,6 +212,7 @@ public class MembreProfilVisitInterfaceController implements Initializable {
 
     @FXML
     private void portfolio(MouseEvent event) {
+        
     }
 
     @FXML
@@ -228,6 +229,18 @@ public class MembreProfilVisitInterfaceController implements Initializable {
 
     @FXML
     private void deconnexion(MouseEvent event) {
+    }
+
+    @FXML
+    private void reclamer(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
+                root.getChildren().setAll(pane); 
+    }
+
+    @FXML
+    private void voirPortfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+                root.getChildren().setAll(pane); 
     }
     
 }

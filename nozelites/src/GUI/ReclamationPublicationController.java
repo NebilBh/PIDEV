@@ -135,7 +135,8 @@ public class ReclamationPublicationController implements Initializable {
          reclp.setEditable(true);
         
       
-       
+        TableColumn<ReclamationForPub, Integer> idCol //
+              = new TableColumn<ReclamationForPub, Integer>("id");
         
         TableColumn<ReclamationForPub, String> nomCol //
               = new TableColumn<ReclamationForPub, String>("nom");
@@ -169,7 +170,7 @@ public class ReclamationPublicationController implements Initializable {
             TableColumn actionCol = new TableColumn<>("Supprimer");
             TableColumn traiterCol = new TableColumn<>("Traiter");
          
-        
+         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
@@ -200,7 +201,7 @@ public class ReclamationPublicationController implements Initializable {
             }});
         
         
-       
+        idCol.setVisible(false);
         nomCol.setMinWidth(100);
         prenomCol.setMinWidth(100);
         mailCol.setMinWidth(100);

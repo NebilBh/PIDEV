@@ -32,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import services.ServicesReclamation;
 
 import utils.ConnexionDB;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -75,7 +76,8 @@ public class MembreReclamationController implements Initializable {
         
         ServicesReclamation srv  = new ServicesReclamation();
         //Reclamation r = new Reclamation(1,2,3,description,selecteur);
-        Reclamation r =new Reclamation(3,3,description,selecteur);
+        Session session = new Session();
+        Reclamation r =new Reclamation(session.getIdSession(),3,description,selecteur);
         srv.ajouterReclamation(r);
         Notification.sendNotification("Admin vous avez recu une reclamation", "RECLAMATION ",TrayIcon.MessageType.INFO);
         

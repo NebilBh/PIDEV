@@ -59,10 +59,15 @@ public class Nozelites extends Application {
 //Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
    // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
    // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));
-    //Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationEvent.fxml"));
+    //Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
 
        // Parent root = FXMLLoader.load(getClass().getResource("/GUI/ResultatRechercheInterface.fxml"));
 
+//RECLAMATION TESTE
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/afficher_reclamation.fxml"));
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationPublication.fxml"));
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationEvent.fxml"));
+//Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
 
 
 
@@ -90,9 +95,9 @@ public class Nozelites extends Application {
 
         
 
-        Session s = new Session();
+       // Session s = new Session();
         
-        System.out.println("id Session main"+s.getIdSession());
+      //  System.out.println("id Session main"+s.getIdSession());
 
         
         

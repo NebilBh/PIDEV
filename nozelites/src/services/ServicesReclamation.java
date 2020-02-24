@@ -11,6 +11,7 @@ import entities.Reclamation;
 import entities.ReclamationForEvent;
 import entities.ReclamationForGUI;
 import entities.ReclamationForGroupe;
+import entities.ReclamationForMembre;
 import entities.ReclamationForPub;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -249,6 +250,19 @@ public class ServicesReclamation {
             Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+         public void supprimerReclamationM(ReclamationForMembre o){   
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("delete from reclamation where idRecl=?");
+            pt.setInt(1,o.getId());
+            pt.executeUpdate();     
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
         
       public List<ReclamationForGroupe> afficherGroupeReclamation()  
       {
@@ -276,6 +290,56 @@ public class ServicesReclamation {
                          {
                             // System.out.println("reclamation :  "+ff.getInt(1)+" "+ff.getString(2)+" "+ff.getString(3)+" "+ff.getString(4)+" "+ff.getString(5));
                              ReclamationForGroupe o = new ReclamationForGroupe(ff.getInt(1),ff.getString(2),ff.getString(3),ff.getString(4),ff.getString(5),ff.getString(6),ff.getString(7),ff.getString(8),ff.getString(9),ff.getString(10));
+                             list.add(o);
+                             
+                         }
+                             
+                        
+                    }
+                        
+            }
+        }
+        
+         
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
+    
+        }
+        
+   
+        
+   return list; 
+          
+      }
+      public List<ReclamationForMembre> afficherMembreReclamation()  
+      {
+          
+        List<ReclamationForMembre> list = new ArrayList<ReclamationForMembre>();
+     //PreparedStatement pt = c.prepareStatement("select reclamation.idRecl, membre.nom, membre.prenom, membre.mail, groupe.titre, reclamation.description, groupe.descriptiong, reclamation.etat, reclamation.selecteur, reclamation.date from reclamation inner join groupe on groupe.idGroupe =reclamation.id_cible inner join membre on membre.idUsr =reclamation.id_emeteur ");
+            
+           try 
+        {
+            PreparedStatement pt = c.prepareStatement("select * from reclamation ");
+            ResultSet rs = pt.executeQuery();
+            
+            while(rs.next())
+            {
+             
+                    String selecteur = rs.getString(6);
+                    int id_cible = rs.getInt(3);
+                    int id_membre = rs.getInt(2);
+                    if(selecteur.equals("membre"))
+                    {
+                         PreparedStatement tt = c.prepareStatement("select reclamation.idRecl,mb1.nom,mb1.prenom,mb1.mail,mb2.nom,mb2.prenom,description,etat,selecteur,date from reclamation "+
+                                         " inner join membre as mb1 on mb1.idUsr="+id_membre+
+                                         " inner join membre as mb2 on mb2.idUsr="+id_cible+"  where reclamation.idRecl="+rs.getInt(1) );
+                         ResultSet ff = tt.executeQuery();
+                         
+                         while(ff.next())
+                         {
+                            // System.out.println("reclamation :  "+ff.getInt(1)+" "+ff.getString(2)+" "+ff.getString(3)+" "+ff.getString(4)+" "+ff.getString(5));
+                             ReclamationForMembre o = new ReclamationForMembre(ff.getInt(1),ff.getString(2),ff.getString(3),ff.getString(4),ff.getString(5),ff.getString(6),ff.getString(7),ff.getString(8),ff.getString(9),ff.getString(10));
                              list.add(o);
                              
                          }

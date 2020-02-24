@@ -6,9 +6,7 @@
 package GUI;
 
 import com.sun.prism.impl.Disposer;
-import entities.ReclamationForGUI;
-import entities.ReclamationForGroupe;
-import entities.ReclamationForGroupe;
+import entities.ReclamationForMembre;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -22,25 +20,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import services.ServicesReclamation;
+
 /**
  * FXML Controller class
  *
  * @author KHAIRI
  */
-public class ReclamationGROUPEController implements Initializable {
+public class ReclamationDesMembresController implements Initializable {
 
-    //@FXML
-   // private TableView<?> reclg;
-
-   
-    private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
+  private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
         final Button cellButton = new Button("Supprimer ?");
        
         ButtonCell(){
@@ -51,12 +43,12 @@ public class ReclamationGROUPEController implements Initializable {
                 @Override
                 public void handle(ActionEvent t) {
                     // get Selected Item
-                	ReclamationForGroupe currentOffre = (ReclamationForGroupe) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+                	ReclamationForMembre currentOffre = (ReclamationForMembre) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
                 	//remove selected item from the table list
                 	olist.remove(currentOffre);
                         
                         //remove from DB
-                        srv.supprimerReclamationG(currentOffre);
+                        srv.supprimerReclamationM(currentOffre);
                 }
             });
         }
@@ -86,13 +78,13 @@ public class ReclamationGROUPEController implements Initializable {
 
                 @Override
                 public void handle(ActionEvent t) {
-                    	ReclamationForGroupe currentOffre = (ReclamationForGroupe) ButtonCell1.this.getTableView().getItems().get(ButtonCell1.this.getIndex());
+                    	ReclamationForMembre currentOffre = (ReclamationForMembre) ButtonCell1.this.getTableView().getItems().get(ButtonCell1.this.getIndex());
                 //currentOffre.getEtat();
              //currentOffre.setEtat("1");
              srv.traiterReclamation(currentOffre.getId());
-             reclg.getItems().clear();
-             ObservableList<ReclamationForGroupe> olist = FXCollections.observableArrayList(srv.afficherGroupeReclamation());
-             reclg.getItems().addAll(olist);
+             reclm.getItems().clear();
+             ObservableList<ReclamationForMembre> olist = FXCollections.observableArrayList(srv.afficherMembreReclamation());
+             reclm.getItems().addAll(olist);
              
              
                
@@ -124,12 +116,12 @@ public class ReclamationGROUPEController implements Initializable {
     
     
 @FXML
-    private TableView<ReclamationForGroupe> reclg = new TableView<ReclamationForGroupe>();
+    private TableView<ReclamationForMembre> reclm = new TableView<ReclamationForMembre>();
     
   //Id du chasseur connecté
   
      ServicesReclamation srv = new ServicesReclamation();
-        ObservableList<ReclamationForGroupe> olist = FXCollections.observableArrayList(srv.afficherGroupeReclamation());
+        ObservableList<ReclamationForMembre> olist = FXCollections.observableArrayList(srv.afficherMembreReclamation());
 
     /**
      * Initializes the controller class.
@@ -138,51 +130,51 @@ public class ReclamationGROUPEController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         reclg.setEditable(true);
+         reclm.setEditable(true);
         
       
-       TableColumn<ReclamationForGroupe, Integer> idCol //
-              = new TableColumn<ReclamationForGroupe, Integer>("id"); 
+       TableColumn<ReclamationForMembre, Integer> idCol //
+              = new TableColumn<ReclamationForMembre, Integer>("id");
         
-        TableColumn<ReclamationForGroupe, String> nomCol //
-              = new TableColumn<ReclamationForGroupe, String>("nom");
-        
-        
-        TableColumn<ReclamationForGroupe, String> prenomCol //
-              = new TableColumn<ReclamationForGroupe, String>("prenom");
+        TableColumn<ReclamationForMembre, String> nomCol //
+              = new TableColumn<ReclamationForMembre, String>("nom");
         
         
-        TableColumn<ReclamationForGroupe, String> mailCol //
-              = new TableColumn<ReclamationForGroupe, String>("mail");
+        TableColumn<ReclamationForMembre, String> prenomCol //
+              = new TableColumn<ReclamationForMembre, String>("prenom");
         
-         TableColumn<ReclamationForGroupe, String> titreCol //
-              = new TableColumn<ReclamationForGroupe, String>("titre groupe");
+        
+        TableColumn<ReclamationForMembre, String> mailCol //
+              = new TableColumn<ReclamationForMembre, String>("mail");
+        
+         TableColumn<ReclamationForMembre, String> titreCol //
+              = new TableColumn<ReclamationForMembre, String>("nom de la cible");
          
-        TableColumn<ReclamationForGroupe, String> descriptionCol //
-              = new TableColumn<ReclamationForGroupe, String>("description");
+        TableColumn<ReclamationForMembre, String> descriptionCol //
+              = new TableColumn<ReclamationForMembre, String>("prenom de la cible");
         
-        TableColumn<ReclamationForGroupe, String> descriptiongCol //
-              = new TableColumn<ReclamationForGroupe, String>("description groupe");
+        TableColumn<ReclamationForMembre, String> descriptiongCol //
+              = new TableColumn<ReclamationForMembre, String>("description");
         
-          TableColumn<ReclamationForGroupe, String> etatCol //
-              = new TableColumn<ReclamationForGroupe, String>("etat");
+          TableColumn<ReclamationForMembre, String> etatCol //
+              = new TableColumn<ReclamationForMembre, String>("etat");
           
-            TableColumn<ReclamationForGroupe, String> selectCol //
-              = new TableColumn<ReclamationForGroupe, String>("selecteur");
+            TableColumn<ReclamationForMembre, String> selectCol //
+              = new TableColumn<ReclamationForMembre, String>("selecteur");
             
-            TableColumn<ReclamationForGroupe, String> dateCol //
-              = new TableColumn<ReclamationForGroupe, String>("date");
+            TableColumn<ReclamationForMembre, String> dateCol //
+              = new TableColumn<ReclamationForMembre, String>("date");
             
             TableColumn actionCol = new TableColumn<>("Supprimer");
             TableColumn traiterCol = new TableColumn<>("Traiter");
          
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
-        titreCol.setCellValueFactory(new PropertyValueFactory<>("titre"));
-        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-        descriptiongCol.setCellValueFactory(new PropertyValueFactory<>("descriptiong"));
+        titreCol.setCellValueFactory(new PropertyValueFactory<>("nomc"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("prenomc"));
+        descriptiongCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
         selectCol.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -207,8 +199,7 @@ public class ReclamationGROUPEController implements Initializable {
             }});
         
         
-    
-        idCol.setVisible(false);
+       idCol.setVisible(false);
         nomCol.setMinWidth(100);
         prenomCol.setMinWidth(100);
         mailCol.setMinWidth(100);
@@ -221,9 +212,9 @@ public class ReclamationGROUPEController implements Initializable {
         actionCol.setMinWidth(100);
      
         
-        reclg.getColumns().addAll(idCol,nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
+        reclm.getColumns().addAll(idCol,nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
         
-        reclg.setItems(olist);
+        reclm.setItems(olist);
                //Adding the Button to the cell
         actionCol.setCellFactory(
                 new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
@@ -257,6 +248,5 @@ public class ReclamationGROUPEController implements Initializable {
            
     
     }
-
 
 

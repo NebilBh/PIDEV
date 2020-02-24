@@ -363,6 +363,11 @@
                         </VBox>
                      </children>
                   </HBox>
+                  <Button fx:id="signaler" layoutX="591.0" layoutY="20.0" mnemonicParsing="false" onAction="#signaler" onMouseClicked="#deconnexion" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #c41011;" text="Signaler" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
         </content>

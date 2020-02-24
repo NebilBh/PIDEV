@@ -133,9 +133,10 @@ public class ReclamationEventController implements Initializable {
         // TODO
          recle.setEditable(true);
         
-      
-       
+      TableColumn<ReclamationForEvent, Integer> idCol //
+              = new TableColumn<ReclamationForEvent, Integer>("id");
         
+       
         TableColumn<ReclamationForEvent, String> nomCol //
               = new TableColumn<ReclamationForEvent, String>("nom");
         
@@ -171,7 +172,7 @@ public class ReclamationEventController implements Initializable {
             TableColumn actionCol = new TableColumn<>("Supprimer");
             TableColumn traiterCol = new TableColumn<>("Traiter");
          
-        
+        idCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
@@ -202,7 +203,7 @@ public class ReclamationEventController implements Initializable {
             }});
         
         
-       
+        idCol.setVisible(false);
         nomCol.setMinWidth(100);
         prenomCol.setMinWidth(100);
         mailCol.setMinWidth(100);
@@ -215,7 +216,7 @@ public class ReclamationEventController implements Initializable {
         actionCol.setMinWidth(100);
      
         
-        recle.getColumns().addAll(nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,lieuCol,actionCol,traiterCol);
+        recle.getColumns().addAll(idCol,nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,lieuCol,actionCol,traiterCol);
         
         recle.setItems(olist);
                //Adding the Button to the cell
