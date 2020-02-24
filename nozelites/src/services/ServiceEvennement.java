@@ -484,7 +484,7 @@ public class ServiceEvennement{
                 
                 if(!rs.next())
                 {
-<<<<<<< HEAD
+
                     int x=e.getNbParticipant()+1;
                     e.setNbParticipant(x);
                     e.setNbPlace(e.getNbPlace()-1);
@@ -493,14 +493,12 @@ public class ServiceEvennement{
 
                       //  JavaMail.sendMailEvenement(m.getMail());
 
-                        JavaMail.sendMail(m.getMail(),"Bienvenue a"+e.getNom(),"Bienvenue azueaz_eh");
+                      //  JavaMail.sendMail(m.getMail(),"Bienvenue a"+e.getNom(),"Bienvenue azueaz_eh");
 
                     } catch (Exception ex) {
                         Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
                     }
-=======
-                   
->>>>>>> 64063f71f7659bbbf44e2eb4cda11b7368aa3ff3
+
                     try {
                         
                         PreparedStatement pt=c.prepareStatement("insert into listparticipant (idE,idm,etatp) values (?,?,?)");

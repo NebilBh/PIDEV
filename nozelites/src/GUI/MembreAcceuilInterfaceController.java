@@ -221,12 +221,12 @@ public class MembreAcceuilInterfaceController implements Initializable {
     }
 
     @FXML
-<<<<<<< HEAD
+
     private void signaler(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationInterface.fxml"));
         root.getChildren().setAll(pane);
-        
-=======
+    }
+    @FXML
     private void ConsulterUn(MouseEvent event) throws IOException {
         Session s = new Session();
         
@@ -251,7 +251,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         s.setId_select(topTrois);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
                         root.getChildren().setAll(pane); 
->>>>>>> 64063f71f7659bbbf44e2eb4cda11b7368aa3ff3
+
     }
     
 }
