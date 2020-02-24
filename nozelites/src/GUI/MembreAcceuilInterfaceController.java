@@ -15,14 +15,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+
+import javafx.scene.control.TextField;
+
 import javafx.scene.image.Image;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+
+import services.ServiceMembre;
+import utils.Session;
+
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import services.ServicesOffre;
+
 
 /**
  * FXML Controller class
@@ -38,9 +47,17 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @FXML
     private ImageView notifications;
     @FXML
+
+    private TextField searchField;
+    @FXML
+    private TextField searchDomaine;
+    @FXML
+    private Label nbProfil;
+
     private Label NbrOffresAcceptees;
     @FXML
     private Label NbrOffres;
+
 
     ServicesOffre srvOffres = new ServicesOffre();
     @FXML
@@ -85,9 +102,12 @@ public class MembreAcceuilInterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ServiceMembre srvM = new ServiceMembre();
+        int count = srvM.nbrMembre();
+        nbProfil.setText(Integer.toString(count));
         // TODO
-        NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
-        NbrOffres.setText(srvOffres.nbrOffres());
+        //NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+        //NbrOffres.setText(srvOffres.nbrOffres());
         
         LocalDate localDate = LocalDate.now();
         List<Membre> topOfTheMonth = srvOffres.afficherTopMois(localDate.toString().substring(4,4));
@@ -175,6 +195,18 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @FXML
     private void deconnexion(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
+
+    @FXML
+    private void recherche(MouseEvent event) throws IOException {
+        ServiceMembre srvM = new ServiceMembre();
+        srvM.setRecherche(searchField.getText());
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ResultatRechercheInterface.fxml"));
+
         root.getChildren().setAll(pane);
     }
     

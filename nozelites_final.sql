@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 22 fév. 2020 à 19:54
+-- Généré le : Dim 23 fév. 2020 à 15:30
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.2
 
@@ -51,6 +51,13 @@ CREATE TABLE `chasseur_talent` (
   `image` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `chasseur_talent`
+--
+
+INSERT INTO `chasseur_talent` (`idUsr`, `nom`, `prenom`, `tel`, `mail`, `login`, `mdp`, `age`, `entreprise`, `image`, `date`) VALUES
+(1, 'Recrutement', 'Imed', '98753165', 'ImedR@outlook.com', 'Imed68', '123', 45, 'Microsoft', 'C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/trash.png', '2020-02-23');
 
 -- --------------------------------------------------------
 
@@ -115,7 +122,8 @@ CREATE TABLE `formation` (
 
 INSERT INTO `formation` (`id_formation`, `titre`, `id_membre`) VALUES
 (1, 'php', 4),
-(2, 'java', 4);
+(2, 'java', 4),
+(3, 'c++', 5);
 
 -- --------------------------------------------------------
 
@@ -156,22 +164,6 @@ CREATE TABLE `groupe_membre` (
   `id_invite` int(11) NOT NULL,
   `etat` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `groupe_membre`
---
-
-INSERT INTO `groupe_membre` (`id_gm`, `id_groupe`, `id_membre`, `id_invite`, `etat`) VALUES
-(1, 1, 1, -1, 'bloqué'),
-(2, 2, 2, -1, 'administrateur'),
-(3, 3, 1, -1, 'administrateur'),
-(7, 5, 2, -1, 'administrateur'),
-(9, 6, 2, -1, 'administrateur'),
-(10, 6, 1, 2, 'membre'),
-(11, 1, 2, 1, 'standard'),
-(12, 7, 2, -1, 'administrateur'),
-(13, 8, 1, -1, 'administrateur'),
-(14, 8, 2, 1, 'invitation');
 
 -- --------------------------------------------------------
 
@@ -225,10 +217,9 @@ CREATE TABLE `membre` (
 --
 
 INSERT INTO `membre` (`idUsr`, `nom`, `prenom`, `tel`, `mail`, `login`, `mdp`, `age`, `Formation`, `Experience`, `Type`, `image`, `date`) VALUES
-(1, 'fathi', 'alalou', '25153658', 'fathi@gmail.com', 'fathialalou', '1234', 53, 'technicien', '20ans', 0, '', ''),
-(2, 'fathi', 'l3ouni', '55152455', 'thj', 'fathi', '1234', 54, 'jannen', '40ans', 0, '', ''),
-(3, 'firas', 'belhiba', '23586542', 'firas@gmail.com', 'firasbelhiba', '1234', 22, 'esprit', '3ans', 0, '', ''),
-(4, 'Nebil', 'bh', '25426985', 'Nebil.bh@gmail.com', 'nebil95', '123654', 25, '0', '3 ans ', 0, 'C:/Users/Nebil/Desktop/Annotation 2020-02-02 202038.png', '2020-02-22');
+(4, 'Nebil', 'bh', '25426985', 'Nebil.bh@gmail.com', 'nebil95', '123654', 25, '0', '3 ans ', 0, 'C:/Users/Nebil/Desktop/Annotation 2020-02-02 202038.png', '2020-02-22'),
+(5, 'Bouhaouala', 'Nadhir', '22365478', 'nadhir@yahoo.com', 'Nadhir94', '123', 24, '0', '5 ans', 0, 'C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/bell.png', '2020-02-23'),
+(6, 'firas', 'belhiba', '22365478', 'firasbel@live.fr', 'firas123', '123', 22, '0', '3 mois', 0, 'C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/images/logo.jpg', '2020-02-23');
 
 -- --------------------------------------------------------
 
@@ -263,8 +254,16 @@ CREATE TABLE `offre` (
   `Description` varchar(250) NOT NULL,
   `Date` varchar(30) NOT NULL,
   `Etat` varchar(30) NOT NULL
-  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `offre`
+--
+
+INSERT INTO `offre` (`Id`, `Type`, `IdEmetteur`, `IdRecepteur`, `Entreprise`, `Domaine`, `Poste`, `Requis`, `Description`, `Date`, `Etat`) VALUES
+(1, 'Stage', 1, 5, 'Microsoft', 'azezeaz', 'azeazezae', 'zaeazezaea', 'azeazezaea', '2020-02-23', 'Attente'),
+(2, 'emploi', 1, 6, 'Microsoft', 'mpmpo', 'mpolol', 'lopp', 'iuuhi', '2020-02-23', 'accepte'),
+(3, 'emploi', 1, 4, 'Microsoft', 'azeaz', 'azeaz', 'aeae', 'azeaz', '2020-02-12', 'accepte');
 
 -- --------------------------------------------------------
 
@@ -440,7 +439,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT pour la table `chasseur_talent`
 --
 ALTER TABLE `chasseur_talent`
-  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `commentaire`
@@ -464,7 +463,7 @@ ALTER TABLE `favoris`
 -- AUTO_INCREMENT pour la table `formation`
 --
 ALTER TABLE `formation`
-  MODIFY `id_formation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_formation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `groupe`
@@ -482,7 +481,7 @@ ALTER TABLE `groupe_membre`
 -- AUTO_INCREMENT pour la table `membre`
 --
 ALTER TABLE `membre`
-  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUsr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `message`
@@ -494,7 +493,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT pour la table `offre`
 --
 ALTER TABLE `offre`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `portfolio`
@@ -551,6 +550,12 @@ ALTER TABLE `groupe_membre`
   ADD CONSTRAINT `FK_idM` FOREIGN KEY (`id_membre`) REFERENCES `membre` (`idUsr`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Contraintes pour la table `listediplome`
+--
+ALTER TABLE `listediplome`
+  ADD CONSTRAINT `FK_id_membre` FOREIGN KEY (`id_membre`) REFERENCES `membre` (`idUsr`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `message`
 --
 ALTER TABLE `message`
@@ -563,12 +568,6 @@ ALTER TABLE `message`
 ALTER TABLE `offre`
   ADD CONSTRAINT `FK_idEmetteur` FOREIGN KEY (`IdEmetteur`) REFERENCES `chasseur_talent` (`idUsr`),
   ADD CONSTRAINT `Fk_idRecepteur` FOREIGN KEY (`IdRecepteur`) REFERENCES `membre` (`idUsr`);
-
---
--- Contraintes pour la table `listediplome`
---
-ALTER TABLE `listediplome`
-  ADD CONSTRAINT `FK_id_membre` FOREIGN KEY (`id_membre`) REFERENCES `membre` (`idUsr`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

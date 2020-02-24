@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -37,9 +38,9 @@ public class ModifierChasseurInterfaceController implements Initializable {
     @FXML
     private Circle circle;
     @FXML
-    private TextField fieldNom;
+    private Label fieldNom;
     @FXML
-    private TextField fieldPrenom;
+    private Label fieldPrenom;
     @FXML
     private TextField fieldAge;
     @FXML
