@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.AdminAcceuilInterfaceController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminAcceuilInterfaceController">
    <children>
       <VBox prefHeight="500.0" prefWidth="250.0" style="-fx-background-color: #c41011;">
          <children>
@@ -79,5 +81,13 @@
             </Label>
          </children>
       </VBox>
+      <BarChart fx:id="StatOffres" layoutX="261.0" layoutY="14.0" prefHeight="271.0" prefWidth="460.0" title="Nombre d'offres par mois">
+        <xAxis>
+          <CategoryAxis label="Mois" side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" label="Offres" side="LEFT" />
+        </yAxis>
+      </BarChart>
    </children>
 </AnchorPane>
