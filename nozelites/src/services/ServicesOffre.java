@@ -49,6 +49,26 @@ public class ServicesOffre {
         return id;
     }
     
+     public String getMailMembre(int id){
+        String r = "";
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("select mail from membre WHERE idUsr=?");
+            pt.setInt(1, id);
+            ResultSet rs = pt.executeQuery();
+            
+            while(rs.next())
+            {
+                r = rs.getString(1);
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
+    }
+    
     public List<Membre> afficherTopDomaine(String Domaine){
         
         List<Membre> list = new ArrayList<Membre>();

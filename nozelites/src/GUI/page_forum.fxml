@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Page_forumController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Page_forumController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="407.0" prefWidth="583.0">
+      <AnchorPane id="AnchorPane" fx:id="root" layoutX="10.0" layoutY="10.0" prefHeight="407.0" prefWidth="583.0">
          <children>
             <VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="408.0" style="-fx-border-insets: 5; -fx-background-color: white; -fx-border-width: 3;">
                <children>
@@ -72,6 +72,8 @@
                      </VBox.margin>
                      <children>
                         <Button fx:id="commenter" mnemonicParsing="false" onAction="#commenter" prefHeight="25.0" prefWidth="103.0" text="commenter" />
+                        <Button fx:id="button_jaime" mnemonicParsing="false" text="jaime " />
+                        <Button fx:id="signaler" mnemonicParsing="false" onAction="#signaler" text="Signaler" />
                      </children>
                   </HBox>
                </children>

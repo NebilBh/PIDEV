@@ -5,8 +5,6 @@
  */
 package GUI;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import doryan.windowsnotificationapi.fr.Notification;
 import entities.Reclamation;
 import java.awt.AWTException;
@@ -14,24 +12,20 @@ import java.awt.TrayIcon;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import services.ServicesReclamation;
 
-import utils.ConnexionDB;
 import utils.Session;
 
 /**
@@ -47,6 +41,17 @@ public class MembreReclamationController implements Initializable {
     
     @FXML
     private ComboBox txtselect;
+    private AnchorPane menuR;
+    @FXML
+    private Button goRECL;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
+    private Button goToReclamation;
+    @FXML
+    private AnchorPane root;
     
     /**
      * Initializes the controller class.
@@ -55,7 +60,7 @@ public class MembreReclamationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         
-        txtselect.getItems().addAll("groupe","membre","evenement","publication");
+        txtselect.getItems().addAll("membre");
         // TODO
     }  
     
@@ -77,7 +82,7 @@ public class MembreReclamationController implements Initializable {
         ServicesReclamation srv  = new ServicesReclamation();
         //Reclamation r = new Reclamation(1,2,3,description,selecteur);
         Session session = new Session();
-        Reclamation r =new Reclamation(session.getIdSession(),3,description,selecteur);
+        Reclamation r =new Reclamation(session.getIdSession(),session.getId_select(),description,selecteur);
         srv.ajouterReclamation(r);
         Notification.sendNotification("Admin vous avez recu une reclamation", "RECLAMATION ",TrayIcon.MessageType.INFO);
         
@@ -106,5 +111,63 @@ public class MembreReclamationController implements Initializable {
          Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }*/
+
+    @FXML
+    private void goRECL(ActionEvent event) throws IOException {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("afficher_reclamation.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
+    @FXML
+    private void goToRecl(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreReclamation.fxml"));
+        root.getChildren().setAll(pane);
+        
+        
+    }
     
 }

@@ -107,8 +107,8 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
         ServiceMembre srvM = new ServiceMembre();
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
-        //NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
-        //NbrOffres.setText(srvOffres.nbrOffres());
+        NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+        NbrOffres.setText(srvOffres.nbrOffres());
         
         LocalDate localDate = LocalDate.now();
         List<Membre> topOfTheMonth = srvOffres.afficherTopMois(localDate.toString().substring(4,4));

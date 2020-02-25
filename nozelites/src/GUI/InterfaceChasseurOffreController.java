@@ -126,20 +126,10 @@ public class InterfaceChasseurOffreController implements Initializable {
     private TableView<OffreForGUI> tabOffres = new TableView<OffreForGUI>();
     @FXML
     private TextField rechercherOffre;
-    @FXML
-    private Button envoyerOffre;
     
     ServicesOffre srv = new ServicesOffre();
     Session session = new Session();
     ObservableList<OffreForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(session.getIdSession())); //Id du chasseur connecté
-    
-    
-    
-    @FXML
-    private void envoyerUneOffre(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurEnvoyerOffre.fxml"));
-        anchorOffre.getChildren().setAll(pane);
-    }
     
     /**
      * Initializes the controller class.

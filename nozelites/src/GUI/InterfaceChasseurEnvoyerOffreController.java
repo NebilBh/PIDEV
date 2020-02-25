@@ -92,7 +92,7 @@ public class InterfaceChasseurEnvoyerOffreController implements Initializable {
         // TODO
         typeField.getItems().addAll("Offre de stage","Offre de travail");
         domaineField.getItems().addAll("Aéronautique Et Espace","Agriculture - Agroalimentaire","Artisanat","Audiovisuel, Cinéma", "Audit, Comptabilité, Gestion", "Automobile", "Banque, Assurance","Bâtiment, Travaux Publics","Biologie, Chimie, Pharmacie","Commerce, Distribution", "Communication", "Création, Métiers D'art", "Culture, Patrimoine", "Défense, Sécurité, Armée", "Documentation, Bibliothèque", "Droit", "Edition, Livre", "Enseignement", "Environnement", "Ferroviaire", "Foires, Salons Et Congrès", "Fonction Publique", "Hôtellerie, Restauration", "Humanitaire", "Immobilier", "Industrie", "Informatique, Télécoms, Web", "Journalisme", "Langues", "Marketing, Publicité", "Médical", "Mode-Textile", "Paramédical", "Propreté Et Services Associés", "Psychologie", "Ressources Humaines", "Sciences Humaines Et Sociales", "Secrétariat", "Social", "Spectacle - Métiers De La Scène", "Sport", "Tourisme", "Transport-Logistique");
-        //emailField.setText(emailDuMembreSelectionné);
+        emailField.setText(srv.getMailMembre(session.getId_select()));
         
         boolean isMyComboBoxEmpty = (domaineField.getValue() == null);
         if(isMyComboBoxEmpty)

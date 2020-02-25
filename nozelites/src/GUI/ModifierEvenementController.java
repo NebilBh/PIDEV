@@ -38,12 +38,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import services.ServiceEvennement;
 import services.ServiceMembre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -52,9 +56,18 @@ import services.ServiceMembre;
  */
 public class ModifierEvenementController implements Initializable {
 
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+     Session session = new Session();
+
     /**
      * Initializes the controller class.
      */
+    @FXML
     public void recher(ActionEvent event) {
          
          idE.setCellValueFactory(new PropertyValueFactory<>("idE"));
@@ -85,6 +98,52 @@ public class ModifierEvenementController implements Initializable {
         
    
 }
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+    
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
     private class ButtonCell extends TableCell<Record, Boolean> {
         final Button cellButton = new Button("Supprimer");
         
@@ -127,36 +186,26 @@ public class ModifierEvenementController implements Initializable {
   
  
       // Create column UserName (Data type of String).
-    @FXML
-      TableColumn<Evennement, Integer> idE //
+    TableColumn<Evennement, Integer> idE //
               = new TableColumn<Evennement, Integer>("idE");
-    @FXML
-      TableColumn<Evennement, String> nom //
+    TableColumn<Evennement, String> nom //
               = new TableColumn<Evennement, String>("nom");
     
-    @FXML
-      TableColumn<Evennement, String> lieu //
+    TableColumn<Evennement, String> lieu //
               = new TableColumn<Evennement, String>("lieu");
-     @FXML
-      TableColumn<Evennement, String> date //
+     TableColumn<Evennement, String> date //
               = new TableColumn<Evennement, String>("date");
-      @FXML
       TableColumn<Evennement, String> heure //
               = new TableColumn<Evennement, String>("heure");
-      @FXML
       TableColumn<Evennement, String> desciption //
               = new TableColumn<Evennement, String>("desciption");
-      @FXML
       TableColumn<Evennement, String> siteWeb //
               = new TableColumn<Evennement, String>("siteWeb");
-      @FXML
       TableColumn<Evennement, Integer> NbParticipant //
               = new TableColumn<Evennement, Integer>("NbParticipant");
-       @FXML
-      TableColumn<Evennement, Integer> NbPlace //
+       TableColumn<Evennement, Integer> NbPlace //
               = new TableColumn<Evennement, Integer>("NbPlace");
-       @FXML
-      TableColumn actionCol = new TableColumn<>("Supprimer");
+       TableColumn actionCol = new TableColumn<>("Supprimer");
        @FXML
         private Button mesev;
     @FXML
@@ -182,6 +231,7 @@ public class ModifierEvenementController implements Initializable {
             Logger.getLogger(InterfaceEvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
+    @FXML
      public void ListeE(ActionEvent event){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("AllEvenements.fxml"));
@@ -193,6 +243,7 @@ public class ModifierEvenementController implements Initializable {
             Logger.getLogger(InterfaceEvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
+    @FXML
       public void AjouterE(ActionEvent event){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("AddEvenement.fxml"));
@@ -207,7 +258,7 @@ public class ModifierEvenementController implements Initializable {
     
         ServiceEvennement srv  = new ServiceEvennement();
 
-    public ObservableList<Evennement > list = FXCollections.observableArrayList(srv.afficherMesEvenements(25));
+    public ObservableList<Evennement > list = FXCollections.observableArrayList(srv.afficherMesEvenements(Session.getIdSession()));
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -34,6 +34,10 @@ import services.ServiceEvennement;
 import com.sbix.jnotify.NPosition;
 import com.sbix.jnotify.NoticeWindow;
 import com.sbix.jnotify.NoticeType;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -45,7 +49,8 @@ public class AddEvenementController implements Initializable {
     /**
      * Initializes the controller class.
      */
-  
+    @FXML
+    private AnchorPane root;
     @FXML
     private TextField nom;
     @FXML
@@ -64,8 +69,6 @@ public class AddEvenementController implements Initializable {
     private TextField description;
     @FXML
     private TextField nbplace;
-    @FXML
-    private ImageView image;
     @FXML 
     private Button ajouter;
     @FXML
@@ -74,17 +77,17 @@ public class AddEvenementController implements Initializable {
         private Button listeev;
     @FXML
         private Button ajouterev;
-    @FXML
-    private ImageView img_annonce;
-    @FXML
-    private Text label_photo;
-    @FXML
-    private Button filechoose;
     @FXML 
     private ImageView imgv;
     public String pathh;
     
     private String absolutePathPhotoAnnonce;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+     Session session = new Session();
+    
      @FXML 
     private void importer(ActionEvent event) {
         //file = fileChooser.showOpenDialog();
@@ -128,6 +131,7 @@ public class AddEvenementController implements Initializable {
             Logger.getLogger(InterfaceEvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
+    @FXML
      public void ListeE(ActionEvent event){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("AllEvenements.fxml"));
@@ -139,6 +143,7 @@ public class AddEvenementController implements Initializable {
             Logger.getLogger(InterfaceEvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
+    @FXML
       public void AjouterE(ActionEvent event){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("AddEvenement.fxml"));
@@ -166,7 +171,7 @@ public class AddEvenementController implements Initializable {
        // java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
        //if(!nom.getText().equals("") && !lieu.getText().equals("") && !hh.getText().equals("") && !siteweb.getText().equals("") && !description.getText().equals("") && !nbplace.getText().equals("")){
        if(hh.getText().length()==2 && mm.getText().length()==2){
-        Evennement e=new Evennement(4, name, lie, dat, heure, desc, site, 0, nbp, pathh);
+        Evennement e=new Evennement(Session.getIdSession(), name, lie, dat, heure, desc, site, 0, nbp, pathh);
         ServiceEvennement srv=new ServiceEvennement();
         srv.ajouterEvennement(e);
        }else {
@@ -181,5 +186,50 @@ public class AddEvenementController implements Initializable {
         // TODO
      
     }    
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
     
 }

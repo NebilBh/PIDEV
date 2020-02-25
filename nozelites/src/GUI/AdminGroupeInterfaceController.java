@@ -37,6 +37,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import services.ServiceMembre;
 
 /**
@@ -65,9 +67,58 @@ public class AdminGroupeInterfaceController implements Initializable {
     @FXML
     private TableView<Membre> table_membres;
     @FXML
-    private TableView<entities.Publication_entities> tables_publications;
+    private VBox menu;
     @FXML
-    private TableView<Membre> table_invitation;
+    private Button pub;
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void reclamations(MouseEvent event) throws IOException {
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);*/
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void membres(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminMembreInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void chasseurs(MouseEvent event) throws IOException {
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);*/
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("BackEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void offres(MouseEvent event) throws IOException {
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceAminOffre.fxml"));
+        root.getChildren().setAll(pane);*/
+    }
+
+    @FXML
+    private void pub(ActionEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminPublicationInterface.fxml"));
+                            root.getChildren().setAll(pane);
+    }
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
         final Button cellButton = new Button("Bloquer");

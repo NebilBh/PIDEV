@@ -119,7 +119,9 @@ public class MembreAcceuilInterfaceController implements Initializable {
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
         // TODO
+
         NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+
         NbrOffres.setText(srvOffres.nbrOffres());
         
         LocalDate localDate = LocalDate.now();
@@ -229,7 +231,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @FXML
 
     private void signaler(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationInterface.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
         root.getChildren().setAll(pane);
     }
     @FXML

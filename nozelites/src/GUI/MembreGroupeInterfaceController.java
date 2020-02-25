@@ -39,7 +39,11 @@ import services.ServiceMembre;
 import com.sun.prism.impl.Disposer;
 import com.sun.prism.impl.Disposer.Record;
 import java.io.IOException;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import services.SGroupe;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -64,9 +68,77 @@ public class MembreGroupeInterfaceController implements Initializable {
     private TableView<Membre> table_invitation;
     
     public static Groupe gr ;
-    public static int id_membre = 1;
+    public static int id_membre = Session.getIdSession();
     ObservableList<Membre> lss;
     ObservableList<Membre> lss_i;
+    @FXML
+
+    private Button pub;
+
+    @FXML
+    private void pub(ActionEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+                            root.getChildren().setAll(pane);
+    }
+                            
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
+    private Button reclamer_btn;
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+
+    }
+
+    @FXML
+    private void reclamation(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Membre_Reclamation_GRP.fxml"));        
+        root.getChildren().setAll(pane);
+    }
 
     /**
      * Initializes the controller class.
@@ -289,13 +361,14 @@ public class MembreGroupeInterfaceController implements Initializable {
         
             ServiceMembre s_mb = new ServiceMembre();
             ResultSet lsss = s_mb.afficher();
+            SGroupeMembre sgm = new SGroupeMembre();
             
             try {
                 while(lsss.next())
                 {
                     boolean existe = true;
                     for(Membre mii : list_m)
-                        if(lsss.getInt(1)==mii.getUsrId())existe=false;
+                        if(lsss.getInt(1)==mii.getUsrId() || sgm.chercher_groupe_membre(gr.getId(),lsss.getInt(1))!=null)existe=false;
                     if(existe)
                         list_i.add(new Membre(lsss.getString(2),lsss.getString(3),lsss.getString(5),
                         lsss.getString(6),lsss.getString(7),lsss.getString(10),lsss.getString(9)
