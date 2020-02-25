@@ -73,11 +73,26 @@ public class ServiceMembre {
     }
     public void supprimer(Membre user){
         PreparedStatement pstmt ;
-        String qry = "update membre set type = ?where idUsr = ?";
+        String qry = "update membre set type = ? where idUsr = ?";
         try {
             
             pstmt = db.prepareStatement(qry);
             pstmt.setInt(1,0);
+            pstmt.setInt(2,user.getUsrId());
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void activer(Membre user){
+        PreparedStatement pstmt ;
+        String qry = "update membre set type = ? where idUsr = ?";
+        try {
+            
+            pstmt = db.prepareStatement(qry);
+            pstmt.setInt(1,1);
             pstmt.setInt(2,user.getUsrId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {

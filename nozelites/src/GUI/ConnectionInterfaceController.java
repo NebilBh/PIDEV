@@ -79,7 +79,7 @@ public class ConnectionInterfaceController implements Initializable {
             hasResultM = resultatMembre.next();
             hasResultC = resultatChass.next();
             
-            if(hasResultM){
+            if(hasResultM && resultatMembre.getInt("type")!= 0){
                 
                 session.setSession(resultatMembre.getInt(1)); 
                 System.out.println("id cnx: "+session.getIdSession());

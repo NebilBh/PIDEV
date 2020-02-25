@@ -111,7 +111,7 @@ public class AdminMembreInterfaceController implements Initializable {
             Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        col_etat.setCellValueFactory(new PropertyValueFactory<>("type"));
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         colMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
@@ -141,8 +141,33 @@ public class AdminMembreInterfaceController implements Initializable {
 
                 setGraphic(deleteButton);
                 deleteButton.setOnAction(event -> {
-                    data.remove(m);
+                    
                     srvD.supprimer(m);
+                    
+                        });
+            }
+        });
+        
+        col_deb.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        col_deb.setCellFactory(param -> new TableCell<Membre, Membre>() {
+     
+            Button deleteButton = new Button("débloquer");
+            
+            
+            
+            @Override
+            protected void updateItem(Membre m, boolean empty) {
+                super.updateItem(m, empty);
+
+                if (m == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                setGraphic(deleteButton);
+                deleteButton.setOnAction(event -> {
+                    
+                    srvD.activer(m);
                     
                         });
             }
