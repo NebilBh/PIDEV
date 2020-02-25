@@ -1,28 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminGroupeInterfaceController">
    <children>
-      <Label fx:id="titre" layoutX="37.0" layoutY="63.0" text="Titre :" />
-      <Label fx:id="description" layoutX="34.0" layoutY="94.0" text="Description :" />
-      <Label fx:id="etat" layoutX="38.0" layoutY="122.0" text="Etat :" />
-      <TableView fx:id="table_membres" layoutX="471.0" layoutY="177.0" prefHeight="306.0" prefWidth="241.0" style="-fx-padding: -7;" />
-      <TableView fx:id="tables_publications" layoutX="28.0" layoutY="177.0" prefHeight="306.0" prefWidth="427.0" />
-      <Label layoutX="193.0" layoutY="139.0" text="Publications">
+      <Label fx:id="titre" layoutX="278.0" layoutY="12.0" text="Titre :" />
+      <Label fx:id="description" layoutX="279.0" layoutY="35.0" text="Description :" />
+      <Label fx:id="etat" layoutX="279.0" layoutY="60.0" text="Etat :" />
+      <TableView fx:id="table_membres" layoutX="506.0" layoutY="129.0" prefHeight="350.0" prefWidth="220.0" style="-fx-padding: -7;" />
+      <TableView fx:id="tables_publications" layoutX="260.0" layoutY="129.0" prefHeight="350.0" prefWidth="228.0" />
+      <Label layoutX="328.0" layoutY="90.0" text="Publications">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="570.0" layoutY="139.0" text="Membres">
+      <Label layoutX="580.0" layoutY="90.0" text="Membres">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
       <Button layoutX="650.0" layoutY="451.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
+      <VBox fx:id="menu" prefHeight="500.0" prefWidth="250.0" style="-fx-background-color: #c41011;">
+         <children>
+            <ImageView fitHeight="61.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="70.0" left="35.0" top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label onMouseClicked="#acceuil" text="Acceuil" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#reclamations" text="Reclamations" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#groupes" text="Groupes" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#membres" text="Membres" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#chasseurs" text="Chasseurs de têtes" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#evenements" text="Evenements" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#offres" text="Offres" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      
    </children>
 </AnchorPane>
