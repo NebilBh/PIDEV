@@ -113,8 +113,8 @@ public class MembreAcceuilInterfaceController implements Initializable {
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
         // TODO
-        //NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
-        //NbrOffres.setText(srvOffres.nbrOffres());
+        NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+        NbrOffres.setText(srvOffres.nbrOffres());
         
         LocalDate localDate = LocalDate.now();
         List<Membre> topOfTheMonth = srvOffres.afficherTopMois(localDate.toString().substring(4,4));

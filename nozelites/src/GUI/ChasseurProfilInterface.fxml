@@ -76,27 +76,6 @@
                </children>
             </HBox>
          </children></HBox>
-      <HBox layoutX="99.0" layoutY="91.0" prefHeight="108.0" prefWidth="542.0" style="-fx-background-color: white;">
-         <children>
-            <Circle fx:id="circle" fill="#1f93ff00" radius="47.0" stroke="TRANSPARENT" strokeType="INSIDE">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" top="10.0" />
-               </HBox.margin></Circle>
-            <Label fx:id="labelProfil" prefHeight="108.0" prefWidth="265.0" text="Label">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="20.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="labelLogin" prefHeight="108.0" prefWidth="101.0" text="Label" textFill="#838383">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
       <Pane layoutY="247.0" prefHeight="254.0" prefWidth="740.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="67.0" layoutY="39.0" prefHeight="42.0" prefWidth="154.0" text="Entreprise" textFill="#c41011">
@@ -139,5 +118,31 @@
                </font>
             </Button>
          </children></Pane>
+      <Pane layoutX="-1.0" layoutY="68.0" prefHeight="178.0" prefWidth="740.0">
+         <children>
+            <HBox layoutX="99.0" layoutY="31.0" prefHeight="108.0" prefWidth="542.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Circle fx:id="circle" fill="#1f93ff00" radius="47.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Circle>
+                  <Label fx:id="labelProfil" prefHeight="108.0" prefWidth="265.0" text="Label">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="labelLogin" prefHeight="108.0" prefWidth="101.0" text="Label" textFill="#838383">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

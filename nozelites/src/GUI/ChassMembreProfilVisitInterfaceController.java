@@ -47,30 +47,9 @@ import utils.Session;
  *
  * @author Nebil
  */
-public class MembreProfilInterfaceController implements Initializable {
+public class ChassMembreProfilVisitInterfaceController implements Initializable {
 
-    @FXML
-    private Label labelProfil;
-    private Label labelDip1;
-    private Label labelDip2;
-    private Label labelDip3;
-    private Label labelForm;
-    @FXML
-    private Label labelMail;
-    @FXML
-    private Label labelExp;
-    @FXML
-    private Circle circle;
-    @FXML
-    private Button btnAjouter;
-    @FXML
-    private AnchorPane profilMembre;
-    @FXML
-    private Button btnSupp;
-    @FXML
-    private Button btnModifier;
-    @FXML
-    private Label labelTel;
+    
     @FXML
     private TableView<Diplome> tableDip;
     @FXML
@@ -79,31 +58,48 @@ public class MembreProfilInterfaceController implements Initializable {
     private TableColumn<Diplome, String> col_org;
     
    
-    @FXML
     private TableColumn<Diplome, Diplome> col_supp;
     @FXML
     private TableColumn<Diplome, String> col_id;
     @FXML
-    private HBox btn_deconnection;
-    @FXML
-    private ImageView notifications;
-    @FXML
     private HBox listFormation;
     @FXML
+    private Label labelMail;
+    @FXML
+    private Label labelExp;
+    @FXML
+    private Label labelTel;
+    @FXML
+    private Circle circle;
+    @FXML
+    private Label labelProfil;
+    @FXML
     private Label labellogin;
-    
+    @FXML
+    private Label BoutonAcceuil;
+    @FXML
+    private Label BoutonProfil;
+    @FXML
+    private Label BoutonElites;
+    @FXML
+    private Label BoutonOffre;
+    @FXML
+    private Button BoutonDeco;
+    @FXML
+    private AnchorPane root;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         ObservableList<Diplome>data;
         data = FXCollections.observableArrayList();
         
         String path = "";
         Session s = new Session();
-        System.out.println("id Session : "+s.getIdSession());
+        System.out.println("id Session : "+s.getId_select());
         Membre m = new Membre();
         Formation f = new Formation();
         ServiceMembre srvm = new ServiceMembre();
@@ -115,7 +111,7 @@ public class MembreProfilInterfaceController implements Initializable {
        
         
         try {
-            ResultSet listD = srvD.afficherDiplomeUser(s.getIdSession());
+            ResultSet listD = srvD.afficherDiplomeUser(s.getId_select());
             while(listD.next()){
                 
                 data.add(new Diplome(listD.getInt("id_diplome"),listD.getString("domaine"), listD.getString("organisation"))); 
@@ -128,36 +124,16 @@ public class MembreProfilInterfaceController implements Initializable {
         col_id.setCellValueFactory(new PropertyValueFactory<>("id_diplome"));
         col_domaine.setCellValueFactory(new PropertyValueFactory<>("domaine"));
         col_org.setCellValueFactory(new PropertyValueFactory<>("organisation"));
-        col_supp.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         
-        col_supp.setCellFactory(param -> new TableCell<Diplome, Diplome>() {
-     
-            Button deleteButton = new Button("Supprimer");
-            
-            
-            
-            @Override
-            protected void updateItem(Diplome diplome, boolean empty) {
-                super.updateItem(diplome, empty);
-
-                if (diplome == null) {
-                    setGraphic(null);
-                    return;
-                }
-
-                setGraphic(deleteButton);
-                deleteButton.setOnAction(event -> {
-                    data.remove(diplome);
-                    srvD.supprimer(diplome);
-                        });
-            }
-        });
+        
+        
+        
         tableDip.setItems(null);
         tableDip.setItems(data);
          
         // ---affichage information User----
         try {
-            m.setUsrId(s.getIdSession());
+            m.setUsrId(s.getId_select());
             ResultSet res = srvm.afficherUsr(m);
             res.next();
             path = res.getString(12);
@@ -187,7 +163,7 @@ public class MembreProfilInterfaceController implements Initializable {
         ResultSet rs;
         try {
             listFormation.setSpacing(5);
-            rs = srvF.afficherFormationUser(s.getIdSession());
+            rs = srvF.afficherFormationUser(s.getId_select());
             
             while (rs.next()) {
                 Label formation = new Label(rs.getString("titre"));
@@ -203,73 +179,42 @@ public class MembreProfilInterfaceController implements Initializable {
             Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        
-        
-        
     }    
 
     @FXML
-    private void ajoutDiplome(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/AjouterDiplomeInterface.fxml"));
-                profilMembre.getChildren().setAll(pane);   
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void suppCompte(MouseEvent event) throws IOException {
-        ServiceMembre srvM = new ServiceMembre();
-        Membre m  = new Membre();
-        Session s = new Session();
-        
-        m.setUsrId(s.getIdSession());
-        
-        srvM.supprimer(m);
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
-        profilMembre.getChildren().setAll(pane);  
-    }
-
-    
-
-    @FXML
-    private void acceuil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
-                profilMembre.getChildren().setAll(pane);  
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurTeteAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void profil(MouseEvent event) {
+    private void BoutonProfilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void portfolio(MouseEvent event) {
+    private void BoutonElitesGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void groupes(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreGroupesInterface.fxml"));
-        profilMembre.getChildren().setAll(pane);
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void evenements(MouseEvent event) {
-    }
-
-    @FXML
-    private void inbox(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
-        profilMembre.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void deconnexion(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
-        profilMembre.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void modifierMembre(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ModifierMembreInterface.fxml"));
-        profilMembre.getChildren().setAll(pane);
+    private void envoyerOffre(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurEnvoyerOffre.fxml"));
+        root.getChildren().setAll(pane);
     }
     
 }
