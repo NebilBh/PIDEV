@@ -42,6 +42,7 @@ public class PageEvenementController implements Initializable {
     public  Evennement e;
     public  static Evennement ev;
      public  int id;
+     public static int idrec;
     @FXML
     private ImageView img_annoce;
     @FXML
@@ -49,16 +50,7 @@ public class PageEvenementController implements Initializable {
     @FXML
     private Label id_annonce;
     @FXML
-
-    private Button consulter;
-    @FXML
     private Label lbl_prix;
-    @FXML
-    private Button likes;
-    @FXML
-    private Button signaler;
-    @FXML
-    private Button panier;
     @FXML
     private VBox vbox;
     @FXML
@@ -81,6 +73,8 @@ public class PageEvenementController implements Initializable {
     @FXML
     private Label lbl_date;
      Session session = new Session();
+    @FXML
+    private Button signale;
     
    
 
@@ -90,7 +84,7 @@ public class PageEvenementController implements Initializable {
          id_annonce.setVisible(false);
         // TODO
       //  lignecommandeService = new LigneCommandeService();
-       
+       int rec=AllEvenementsController.obsl.get(i).getIdE();
 
                 lbl_titre.setText(AllEvenementsController.obsl.get(i).getNom());
                 lbl_prix.setText(AllEvenementsController.obsl.get(i).getLieu());
@@ -158,7 +152,18 @@ public class PageEvenementController implements Initializable {
             Logger.getLogger(InterfaceEvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
                 });
-        
+                   signale.setOnAction((e)->{
+                       idrec=rec;
+                     try {
+            Parent root = FXMLLoader.load(getClass().getResource("Membre_Reclamation_EVENT.fxml"));        
+            Scene scene = new Scene(root);        
+            Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();        
+            app_stage.setScene(scene);        
+            app_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(InterfaceEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                   });
                 i++;
     }    
     

@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.Membre_Reclamation_EVENTController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Membre_Reclamation_EVENTController">
    <children>
       <Button layoutX="479.0" layoutY="311.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="#f5f2f2">
          <font>
@@ -119,7 +118,7 @@
             </Button>
          </children>
       </HBox>
-      <Button fx:id="goToReclamation" layoutX="19.0" layoutY="119.0" mnemonicParsing="false" onAction="#goToRecl" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="Envoyer une reclamation" textFill="#f8f5f5">
+      <Button fx:id="goToReclamation" layoutX="-4.0" layoutY="119.0" mnemonicParsing="false" onAction="#goToRecl" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="Envoyer une reclamation" textFill="#f8f5f5">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

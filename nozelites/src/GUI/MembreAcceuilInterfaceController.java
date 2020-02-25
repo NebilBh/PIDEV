@@ -222,12 +222,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         root.getChildren().setAll(pane);
     }
 
-    @FXML
-
-    private void signaler(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
-        root.getChildren().setAll(pane);
-    }
+    
     @FXML
     private void ConsulterUn(MouseEvent event) throws IOException {
         Session s = new Session();
