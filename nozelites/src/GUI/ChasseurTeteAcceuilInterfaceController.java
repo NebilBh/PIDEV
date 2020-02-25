@@ -184,7 +184,7 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void BoutonElitesGo(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AfficherElitesInterface.fxml"));
         root.getChildren().setAll(pane);
     }
 
