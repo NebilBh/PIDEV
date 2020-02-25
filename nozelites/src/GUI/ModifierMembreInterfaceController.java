@@ -29,8 +29,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
@@ -72,7 +74,6 @@ public class ModifierMembreInterfaceController implements Initializable {
     private String ndc;
     private String mdp;
     Session s = new Session();
-    @FXML
     private AnchorPane modifWindow;
     @FXML
     private Label labelPrenom;
@@ -90,6 +91,12 @@ public class ModifierMembreInterfaceController implements Initializable {
     private ObservableList<Formation>data;
     @FXML
     private TableColumn<Formation, Formation> col_supp;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
+    private AnchorPane root;
    
     /**
      * Initializes the controller class.
@@ -110,7 +117,7 @@ public class ModifierMembreInterfaceController implements Initializable {
         try {
             
             // TODO  
-            m.setId(s.getIdSession());
+            m.setUsrId(s.getIdSession());
             
             ResultSet res = srvm.afficherUsr(m);
             res.next();
@@ -220,7 +227,7 @@ public class ModifierMembreInterfaceController implements Initializable {
         Membre oldMembre = new Membre();
         Membre m = new Membre(labelNom.getText(), labelPrenom.getText(), fieldMail.getText(),this.ndc,this.mdp,
                 fieldExp.getText(),"0",Integer.parseInt(fieldAge.getText()),Integer.parseInt(fieldTel.getText()), 0, this.lienImg);  
-        oldMembre.setId(this.s.getIdSession());
+        oldMembre.setUsrId(this.s.getIdSession());
         srvM.modifier(oldMembre, m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
         modifWindow.getChildren().setAll(pane);
@@ -247,6 +254,51 @@ public class ModifierMembreInterfaceController implements Initializable {
        
         tableForm.setItems(null);
         tableForm.setItems(data);
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);*/
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
     }
 
     

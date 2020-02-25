@@ -30,7 +30,7 @@ public class ServiceChasseur {
             
             state = db.createStatement();
             
-            String qry ="insert into chasseur_talent values("+user.getId()+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
+            String qry ="insert into chasseur_talent values("+user.getUsrId()+",'"+user.getNom()+"','"+user.getPrenom()+"',"+user.getTel()+",'"+user.getMail()+"',"
                     + "'"+user.getLogin()+"','"+user.getMdp()+"',"+user.getAge()+",'"+user.getEntreprise()+"','"+user.getImage()+"','"+LocalDate.now()+"')";
             state.executeUpdate(qry);
             
@@ -66,7 +66,7 @@ public class ServiceChasseur {
         try {
             
             pstmt = db.prepareStatement(qry);
-            pstmt.setInt(1,user.getId());
+            pstmt.setInt(1,user.getUsrId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceChasseur.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,7 +93,7 @@ public class ServiceChasseur {
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
-            stmt.setInt(1,usr.getId());
+            stmt.setInt(1,usr.getUsrId());
             ResultSet usrList = stmt.executeQuery();
             return usrList;
         } catch (SQLException ex) {
@@ -118,7 +118,7 @@ public class ServiceChasseur {
             stmt.setInt(7,newM.getAge());
             stmt.setString(8,newM.getEntreprise());
             stmt.setString(9,newM.getImage());
-            stmt.setInt(10,user.getId());
+            stmt.setInt(10,user.getUsrId());
             stmt.executeUpdate();
             System.out.println("succes");
         } catch (SQLException ex) {

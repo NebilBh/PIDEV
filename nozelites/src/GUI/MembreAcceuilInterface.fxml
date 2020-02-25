@@ -17,7 +17,7 @@
    <children>
 
       
-      <ScrollPane layoutY="60.0" prefHeight="439.0" prefWidth="740.0">
+      <ScrollPane layoutY="60.0" prefHeight="443.0" prefWidth="740.0">
 
        <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="730.0" prefWidth="740.0" style="-fx-background-color: White;">
@@ -32,10 +32,13 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" onMouseClicked="#recherche" text="OK">
+                        <Button mnemonicParsing="false" onMouseClicked="#recherche" prefHeight="21.0" prefWidth="35.0" text="Ok" HBox.hgrow="NEVER">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="10.0" />
+                           </font>
                         </Button>
                         <Label prefHeight="34.0" prefWidth="276.0" text="Quel domaine vous cherchez ?" textFill="#292929">
                            <HBox.margin>
@@ -130,12 +133,12 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label layoutX="264.0" layoutY="244.0" prefHeight="26.0" prefWidth="196.0" text="Catégories populaires" textFill="#292929">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="264.0" layoutY="244.0" prefHeight="26.0" prefWidth="196.0" text="Catégories populaires" textFill="#292929">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <HBox layoutX="160.0" layoutY="210.0" prefHeight="4.0" prefWidth="350.0" style="-fx-background-color: B3B3B3;" />
+                  <HBox layoutX="188.0" layoutY="210.0" prefHeight="2.0" prefWidth="350.0" style="-fx-background-color: B3B3B3;" />
                   <HBox alignment="CENTER_LEFT" layoutX="-1.0" layoutY="295.0" prefHeight="30.0" prefWidth="728.0">
                      <children>
                         <Label prefHeight="50.0" prefWidth="31.0" text="502">
@@ -208,17 +211,16 @@
                         <Insets left="50.0" />
                      </padding>
                   </HBox>
-                  <HBox layoutX="160.0" layoutY="387.0" prefHeight="4.0" prefWidth="350.0" style="-fx-background-color: B3B3B3;" />
-                  <HBox layoutX="-8.0" layoutY="403.0" prefHeight="314.0" prefWidth="742.0">
+                  <HBox layoutY="401.0" prefHeight="314.0" prefWidth="726.0" spacing="1.0" style="-fx-background-color: B3B3B3;">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 2px;">
                            <children>
                               <Circle fx:id="ImageTop1" fill="#1f93ff00" radius="38.0" stroke="BLACK" strokeType="INSIDE">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="-40.0" />
                                  </VBox.margin>
                               </Circle>
-                              <Label fx:id="NomPrenomAgeTop1" prefHeight="18.0" prefWidth="105.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
+                              <Label fx:id="NomPrenomAgeTop1" alignment="CENTER" prefHeight="18.0" prefWidth="242.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
                               <Label fx:id="ExperienceTop1" text="PHP + J2E" />
                               <HBox prefHeight="36.0" prefWidth="204.0">
                                  <children>
@@ -251,7 +253,7 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </HBox>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #c41011;" text="Consulter" textFill="WHITE">
+                              <Button mnemonicParsing="false" onMouseClicked="#ConsulterUn" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #c41011;" text="Consulter" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="35.0" />
                                  </VBox.margin>
@@ -260,15 +262,18 @@
                                  </font>
                               </Button>
                            </children>
+                           <HBox.margin>
+                              <Insets bottom="1.0" left="1.0" top="1.0" />
+                           </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white; -fx-border-radius: 2px;">
                            <children>
                               <Circle fx:id="ImageTop2" fill="#1f93ff00" radius="38.0" stroke="BLACK" strokeType="INSIDE">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="-40.0" />
                                  </VBox.margin>
                               </Circle>
-                              <Label fx:id="NomPrenomAgeTop2" prefHeight="18.0" prefWidth="105.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
+                              <Label fx:id="NomPrenomAgeTop2" alignment="CENTER" prefHeight="18.0" prefWidth="251.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
                               <Label fx:id="ExperienceTop2" text="PHP + J2E" />
                               <HBox prefHeight="36.0" prefWidth="204.0">
                                  <children>
@@ -301,7 +306,7 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </HBox>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #c41011;" text="Consulter" textFill="WHITE">
+                              <Button mnemonicParsing="false" onMouseClicked="#ConsulterDeux" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #c41011;" text="Consulter" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="35.0" />
                                  </VBox.margin>
@@ -310,15 +315,18 @@
                                  </font>
                               </Button>
                            </children>
+                           <HBox.margin>
+                              <Insets bottom="1.0" top="1.0" />
+                           </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="314.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 2px;">
                            <children>
                               <Circle fx:id="ImageTop3" fill="#1f93ff00" radius="38.0" stroke="BLACK" strokeType="INSIDE">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="-40.0" />
                                  </VBox.margin>
                               </Circle>
-                              <Label fx:id="NomPrenomAgeTop3" prefHeight="18.0" prefWidth="105.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
+                              <Label fx:id="NomPrenomAgeTop3" alignment="CENTER" prefHeight="18.0" prefWidth="258.0" text="Nadhir Bouhaouala 26 ans" textAlignment="CENTER" />
                               <Label fx:id="ExperienceTop3" text="PHP + J2E" />
                               <HBox prefHeight="36.0" prefWidth="204.0">
                                  <children>
@@ -351,7 +359,7 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </HBox>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #c41011;" text="Consulter" textFill="WHITE">
+                              <Button mnemonicParsing="false" onMouseClicked="#consulterTrois" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: #c41011;" text="Consulter" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="35.0" />
                                  </VBox.margin>
@@ -360,9 +368,17 @@
                                  </font>
                               </Button>
                            </children>
+                           <HBox.margin>
+                              <Insets bottom="1.0" right="1.0" top="1.0" />
+                           </HBox.margin>
                         </VBox>
                      </children>
                   </HBox>
+                  <Button fx:id="signaler" layoutX="591.0" layoutY="20.0" mnemonicParsing="false" onAction="#signaler" onMouseClicked="#deconnexion" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #c41011;" text="Signaler" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
         </content>

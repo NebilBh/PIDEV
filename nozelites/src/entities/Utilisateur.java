@@ -95,9 +95,19 @@ public Utilisateur(String nom, String prenom, String mail, int usrId) {
         this.tel = tel;
     }
 
-    public void setId(int id){
-        this.usrId = id;
+    public void setUsrId(int usrId) {
+        this.usrId = usrId;
     }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getUsrId() {
+        return usrId;
+    }
+
+   
     //---Getters ---
     
     public String getNom() {
@@ -133,9 +143,7 @@ public Utilisateur(String nom, String prenom, String mail, int usrId) {
         return tel;
     }
 
-    public int getId() {
-        return usrId;
-    }
+    
     
     
 }

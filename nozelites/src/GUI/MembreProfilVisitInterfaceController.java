@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -70,20 +71,19 @@ public class MembreProfilVisitInterfaceController implements Initializable {
     private TableColumn<Diplome, String> col_org;
     
    
-    @FXML
     private TableColumn<Diplome, Diplome> col_supp;
     @FXML
     private TableColumn<Diplome, String> col_id;
-    @FXML
-    private HBox btn_deconnection;
-    @FXML
-    private ImageView notifications;
     @FXML
     private HBox listFormation;
     @FXML
     private Label labellogin;
     @FXML
-    private AnchorPane root;
+    private AnchorPane profilMembre;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
     
 
     /**
@@ -121,36 +121,16 @@ public class MembreProfilVisitInterfaceController implements Initializable {
         col_id.setCellValueFactory(new PropertyValueFactory<>("id_diplome"));
         col_domaine.setCellValueFactory(new PropertyValueFactory<>("domaine"));
         col_org.setCellValueFactory(new PropertyValueFactory<>("organisation"));
-        col_supp.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         
-        col_supp.setCellFactory(param -> new TableCell<Diplome, Diplome>() {
-     
-            Button deleteButton = new Button("Supprimer");
-            
-            
-            
-            @Override
-            protected void updateItem(Diplome diplome, boolean empty) {
-                super.updateItem(diplome, empty);
-
-                if (diplome == null) {
-                    setGraphic(null);
-                    return;
-                }
-
-                setGraphic(deleteButton);
-                deleteButton.setOnAction(event -> {
-                    data.remove(diplome);
-                    srvD.supprimer(diplome);
-                        });
-            }
-        });
+        
+        
+        
         tableDip.setItems(null);
         tableDip.setItems(data);
          
         // ---affichage information User----
         try {
-            m.setId(s.getId_select());
+            m.setUsrId(s.getId_select());
             ResultSet res = srvm.afficherUsr(m);
             res.next();
             path = res.getString(12);
@@ -203,31 +183,62 @@ public class MembreProfilVisitInterfaceController implements Initializable {
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
-                root.getChildren().setAll(pane);  
+                profilMembre.getChildren().setAll(pane);  
     }
 
     @FXML
-    private void profil(MouseEvent event) {
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
+                profilMembre.getChildren().setAll(pane); 
     }
 
+
     @FXML
+
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreGroupesInterface.fxml"));
+        profilMembre.getChildren().setAll(pane);
+    }
+        @FXML
     private void portfolio(MouseEvent event) {
+    
+    }
+        
+
+    
+
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        profilMembre.getChildren().setAll(pane);
     }
 
     @FXML
-    private void groupes(MouseEvent event) {
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+        profilMembre.getChildren().setAll(pane);
     }
+
 
     @FXML
     private void evenements(MouseEvent event) {
     }
 
+
     @FXML
-    private void inbox(MouseEvent event) {
+    private void reclamer(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
+
+                profilMembre.getChildren().setAll(pane); 
+
     }
 
     @FXML
-    private void deconnexion(MouseEvent event) {
+    private void voirPortfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+                profilMembre.getChildren().setAll(pane); 
     }
+
     
 }

@@ -82,7 +82,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
             // TODO
             
             
-            m.setId(s.getIdSession());
+            m.setUsrId(s.getIdSession());
             
             ResultSet res = srvC.afficherUsr(m);
             res.next();
@@ -114,7 +114,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
         chasseurTalent m  = new chasseurTalent();
         Session s = new Session();
         
-        m.setId(s.getIdSession());
+        m.setUsrId(s.getIdSession());
         
         srvM.supprimer(m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
@@ -128,6 +128,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
     }
 
     private void acceuil(MouseEvent event) throws IOException {
+        
         
     }
 
@@ -146,11 +147,16 @@ public class ChasseurProfilInterfaceController implements Initializable {
     }
 
     @FXML
-    private void BoutonOffreGo(MouseEvent event) {
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        profilChass.getChildren().setAll(pane);
+        
     }
 
     @FXML
-    private void BoutonDecoGo(MouseEvent event) {
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+        profilChass.getChildren().setAll(pane);
     }
 
     

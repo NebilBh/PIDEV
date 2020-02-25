@@ -37,6 +37,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import services.ServiceMembre;
 
 /**
@@ -67,7 +69,49 @@ public class AdminGroupeInterfaceController implements Initializable {
     @FXML
     private TableView<entities.Publication_entities> tables_publications;
     @FXML
-    private TableView<Membre> table_invitation;
+    private VBox menu;
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void reclamations(MouseEvent event) throws IOException {
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);*/
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void membres(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminMembreInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void chasseurs(MouseEvent event) throws IOException {
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);*/
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("BackEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void offres(MouseEvent event) throws IOException {
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceAminOffre.fxml"));
+        root.getChildren().setAll(pane);*/
+    }
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
         final Button cellButton = new Button("Bloquer");
@@ -86,7 +130,7 @@ public class AdminGroupeInterfaceController implements Initializable {
                         //bloquer membre
                         GroupeMembre gm = new GroupeMembre(0,2,1,3,"bloqué");
                         SGroupeMembre s_gm = new SGroupeMembre();
-                        GroupeMembre id_gm = s_gm.chercher_groupe_membre(gr.getId(),currentmembre.getId());
+                        GroupeMembre id_gm = s_gm.chercher_groupe_membre(gr.getId(),currentmembre.getUsrId());
                         gm.setId(id_gm.getId());
                         s_gm.modifier_groupe_membre(gm);
                         //srv.supprimerOffre(currentOffre);
@@ -293,7 +337,8 @@ public class AdminGroupeInterfaceController implements Initializable {
         
         lss_i= FXCollections.observableArrayList(list_mb);
         table_membres.setItems(lss_i);
-        table_membres.getColumns().addAll( colNom_i, colPrenom_i,colEtat_i, colbloquer_i);
+        table_membres.getColumns().addAll( colId_i,colNom_i, colPrenom_i,colEtat_i, colbloquer_i);
+        colId_i.setVisible(false);
         
     }    
 

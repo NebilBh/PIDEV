@@ -14,24 +14,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import com.lynden.gmapsfx.*?>
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AllEvenementsController">
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="100" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AllEvenementsController">
    <children>
-      <BorderPane fx:id="container" layoutX="232.0" layoutY="206.0" prefHeight="304.0" prefWidth="502.0">
+       <GoogleMapView fx:id="mapView" prefHeight="750.0" prefWidth="761.0" AnchorPane.bottomAnchor="-185.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-441.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane fx:id="container" layoutX="232.0" layoutY="272.0" prefHeight="238.0" prefWidth="502.0">
          <center>
             <ScrollPane hbarPolicy="NEVER" prefHeight="244.0" prefWidth="502.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" styleClass="mainFxmlClass" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                <padding>
                   <Insets left="30.0" />
                </padding>
                <content>
-                  <VBox prefHeight="66.0" prefWidth="1134.0" style="-fx-background-color: #F0F1F7;">
+                  <VBox prefHeight="51.0" prefWidth="1129.0" style="-fx-background-color: #F0F1F7;">
                      <children>
                         <Separator prefWidth="200.0">
                            <opaqueInsets>
                               <Insets top="10.0" />
                            </opaqueInsets>
                         </Separator>
-                        <Label prefHeight="39.0" prefWidth="219.0" text="Tout les Evenements">
+                        <Label prefHeight="20.0" prefWidth="219.0" text="Tout les Evenements">
                            <padding>
                               <Insets bottom="10.0" top="10.0" />
                            </padding>
