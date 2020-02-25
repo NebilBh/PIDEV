@@ -117,10 +117,9 @@
                  </Button>
               </children>
            </HBox>
-<<<<<<< HEAD
-      <Button fx:id="reclamer_btn" layoutX="577.0" layoutY="450.0" mnemonicParsing="false" onAction="#reclamation" text="Reclamer" />
-=======
 
->>>>>>> 8e98a366c4353fe23b7512ce277d2f236567faa6
+      <Button fx:id="reclamer_btn" layoutX="577.0" layoutY="450.0" mnemonicParsing="false" onAction="#reclamation" text="Reclamer" />
+
+
    </children>
 </AnchorPane>

@@ -99,38 +99,7 @@ public class PORTFOLIO_DU_PROFILController implements Initializable {
     }
 
    
-     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
-        final Button cellButton = new Button("Supprimer ?");
-        
-        ButtonCell(){
-            
-        	//Action when the button is pressed
-            cellButton.setOnAction(new EventHandler<ActionEvent>(){
-
-                @Override
-                public void handle(ActionEvent t) {
-                    // get Selected Item
-                	PortfolioForGUI currentOffre = (PortfolioForGUI) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
-                	//remove selected item from the table list
-                	olist.remove(currentOffre);
-                        //remove from DB
-                        srv.supprimerReclamationPort(currentOffre);
-                }
-            });
-        }
-
-        //Display button if the row is not empty
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if(!empty){
-            setGraphic(cellButton);
-            }
-            else{
-            setGraphic(null);
-            }
-        }
-    }
+    
     
     
     
@@ -177,15 +146,7 @@ public class PORTFOLIO_DU_PROFILController implements Initializable {
         titreCol.setCellValueFactory(new PropertyValueFactory<>("titre"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         lienCol.setCellValueFactory(new PropertyValueFactory<>("lien"));
-        actionCol.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
-                ObservableValue<Boolean>>() {
-
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue() != null);
-            }
-        });
+        
         
         
        idCol.setVisible(false);
@@ -193,22 +154,12 @@ public class PORTFOLIO_DU_PROFILController implements Initializable {
         titreCol.setMinWidth(100);
         descriptionCol.setMinWidth(100);
         lienCol.setMinWidth(100);
-         actionCol.setMinWidth(100);
+         actionCol.setVisible(false);
       
      
         projet.getColumns().addAll(idCol,titreCol,descriptionCol,lienCol,actionCol);
         
         
         projet.setItems(olist);
-          actionCol.setCellFactory(
-                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
-
-            @Override
-            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell();
-            }
-        
-    
-
-  });
+   
                   }}

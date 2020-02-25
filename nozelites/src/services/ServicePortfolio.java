@@ -65,14 +65,14 @@ public class ServicePortfolio {
             Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
         */
     
-      public void modifierPortfolio(Portfolio o){
+      public void modifierPortfolio(PortfolioForGUI o){
         try 
         {
             PreparedStatement pt = db.prepareStatement("update portfolio set titre=?,description=?,lien=? where id_port=?");
              pt.setString(1,o.getTitre());
                pt.setString(2,o.getDescription());
                pt.setString(3,o.getLien());
-            pt.setInt(4,o.getId_port());
+            pt.setInt(4,o.getId());
             pt.executeUpdate();  
         } 
         catch (SQLException ex) 
