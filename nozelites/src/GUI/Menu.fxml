@@ -22,12 +22,12 @@
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="commentaire" mnemonicParsing="false" onAction="#commentaire" prefHeight="39.0" prefWidth="237.0" style="-fx-background-color: #c41011;" text="Commentaire" textFill="WHITE">
+                  <Button fx:id="commentaire" mnemonicParsing="false" onAction="#commentaire" prefHeight="39.0" prefWidth="237.0" style="-fx-background-color: #c41011;" text="Forum" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="afficher" mnemonicParsing="false" onAction="#afficher" prefHeight="25.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="afficher" textFill="WHITE">
+                  <Button fx:id="afficher" mnemonicParsing="false" onAction="#afficher" prefHeight="25.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="Afficher mes Favoris" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>

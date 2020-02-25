@@ -67,6 +67,16 @@ public class MembreGroupeInterfaceController implements Initializable {
     public static int id_membre = 1;
     ObservableList<Membre> lss;
     ObservableList<Membre> lss_i;
+    @FXML
+    private Button pub;
+
+    @FXML
+    private void pub(ActionEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+                            root.getChildren().setAll(pane);
+        
+    }
 
     /**
      * Initializes the controller class.

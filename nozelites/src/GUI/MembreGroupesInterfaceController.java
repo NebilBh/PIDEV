@@ -59,7 +59,7 @@ public class MembreGroupesInterfaceController implements Initializable {
     private TableView<entities.Groupe> table_groupes;
     @FXML
     private TextField inpuitChercher;
-    private int id_membre = 1;
+    private int id_membre = 6;
     ObservableList<entities.Groupe> lss;
     @FXML
     private AnchorPane root;
@@ -68,6 +68,8 @@ public class MembreGroupesInterfaceController implements Initializable {
     ObservableList<entities.GroupeMembreInvite> ls_invitations;//membre(nom,prenom) + groupe(titre,description)
     @FXML
     private ComboBox<?> combobox_recherche;
+    
+   
 
     @FXML
     private void ajouter_groupe(ActionEvent event) throws IOException {
@@ -254,7 +256,9 @@ public class MembreGroupesInterfaceController implements Initializable {
                 	//remove selected item from the table list
                 	
                     try {
+                        System.out.println();
                         MembreGroupeInterfaceController.gr = currentgroupe;
+                        
                         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreGroupeInterface.fxml"));
                         root.getChildren().setAll(pane);
                     } catch (IOException ex) {
@@ -350,7 +354,8 @@ public class MembreGroupesInterfaceController implements Initializable {
         //add value
         lss= FXCollections.observableArrayList(list_g);
         table_groupes.setItems( lss);
-        table_groupes.getColumns().addAll(colVoir, colTitre, colDescription, colEtat,colsupprimer);
+        table_groupes.getColumns().addAll(colId,colVoir, colTitre, colDescription, colEtat,colsupprimer);
+        colId.setVisible(false);
         
       // trie
       colId.setSortType(TableColumn.SortType.DESCENDING);

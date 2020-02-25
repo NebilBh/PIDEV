@@ -67,7 +67,7 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
     private Button btn_retour;
     @FXML
     private AnchorPane root;
-    private int id_membre = 1;
+    private int id_membre = 6;
     ObservableList<Membre> lss;
     List<Integer> membres_invite = new ArrayList<>();
     @FXML
