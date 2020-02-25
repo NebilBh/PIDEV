@@ -174,7 +174,9 @@ public class ModifierChasseurInterfaceController implements Initializable {
     }
 
     @FXML
-    private void BoutonElitesGo(MouseEvent event) {
+    private void BoutonElitesGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AfficherElitesInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML

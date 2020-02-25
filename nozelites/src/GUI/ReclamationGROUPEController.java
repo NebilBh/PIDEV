@@ -111,7 +111,7 @@ public class ReclamationGROUPEController implements Initializable {
         }
     }
     private class ButtonCell1 extends TableCell<Disposer.Record, Boolean> {
-        final Button cellButton1 = new Button("traiter ");
+        final Button cellButton1 = new Button("en cours ");
      
 
         //Display button if the row is not empty
@@ -158,7 +158,43 @@ public class ReclamationGROUPEController implements Initializable {
             }
         }
     }
-    
+     private class ButtonCell2 extends TableCell<Disposer.Record, Boolean> {
+        final Button cellButton2 = new Button("traiter ");
+     
+
+        //Display button if the row is not empty
+     
+      ButtonCell2(){
+            
+        	//Action when the button is pressed
+            cellButton2.setOnAction(new EventHandler<ActionEvent>(){
+
+                @Override
+                public void handle(ActionEvent t) {
+                    	ReclamationForGroupe currentOffre = (ReclamationForGroupe) ButtonCell2.this.getTableView().getItems().get(ButtonCell2.this.getIndex());
+                //currentOffre.getEtat();
+             //currentOffre.setEtat("1");
+             srv.traiter1Reclamation(currentOffre.getId());
+             reclg.getItems().clear();
+             ObservableList<ReclamationForGroupe> olist = FXCollections.observableArrayList(srv.afficherGroupeReclamation());
+             reclg.getItems().addAll(olist);
+           
+                }
+            });
+        }
+
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+            setGraphic(cellButton2);
+            }
+            else{
+            setGraphic(null);
+            }
+        }
+    }
     
 @FXML
     private TableView<ReclamationForGroupe> reclg = new TableView<ReclamationForGroupe>();
@@ -212,6 +248,7 @@ public class ReclamationGROUPEController implements Initializable {
             
             TableColumn actionCol = new TableColumn<>("Supprimer");
             TableColumn traiterCol = new TableColumn<>("Traiter");
+            TableColumn traiter1Col = new TableColumn<>("Traiter1");
          
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -242,6 +279,14 @@ public class ReclamationGROUPEController implements Initializable {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
                 return new SimpleBooleanProperty(p.getValue() != null);
             }});
+         traiter1Col.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
+                ObservableValue<Boolean>>() {
+
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }});
         
         
     
@@ -258,7 +303,7 @@ public class ReclamationGROUPEController implements Initializable {
         actionCol.setMinWidth(100);
      
         
-        reclg.getColumns().addAll(idCol,nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
+        reclg.getColumns().addAll(idCol,nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,actionCol,traiterCol,traiter1Col);
         
         reclg.setItems(olist);
                //Adding the Button to the cell
@@ -280,11 +325,17 @@ public class ReclamationGROUPEController implements Initializable {
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
                 return new ButtonCell1();
             }
-            
-             
-           
         
-           
+        });
+        
+          traiter1Col.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new ButtonCell2();
+            }
+        
         });
         
         

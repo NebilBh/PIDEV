@@ -72,7 +72,7 @@ public class InterfaceMembreInboxController implements Initializable {
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
         anchorMessageEnvoyes.getChildren().setAll(pane);
     }
 

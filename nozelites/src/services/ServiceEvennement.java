@@ -690,6 +690,34 @@ public List<Membre> AfficherParticipant(Evennement e){
             Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
         }
     return null;
-}
+}   
+
+
+    public void ControlerEvenement(){
+        for(int ind=0;ind<affichertout2().size();ind++)
+        {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+     try {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	java.util.Date date = new java.util.Date();
+         System.out.println(dateFormat.format(date));
+        java.util.Date act=sdf.parse(dateFormat.format(date));
+         System.out.println(affichertout2().get(ind).getDate());
+       java.util.Date dateApres = sdf.parse(affichertout2().get(ind).getDate());
+       
+       long diff = dateApres.getTime() - act.getTime();
+       float res = (diff / (1000*60*60*24));
+       System.out.println("Nombre de jours entre les deux dates est: "+res);
+      
+       if(res<3 && affichertout2().get(ind).getNbParticipant()==0)
+       {
+           ServiceMembre srv=new ServiceMembre();
+           sendMail(srv.rechercherM(affichertout2().get(ind).getIdc()).getMail(), "About your Event", "please change the date of your event");
+       }
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+        }
+    }
     
 }

@@ -74,18 +74,18 @@ public class ServiceChasseur {
         
     }
     
-    public void afficher(){
+    public ResultSet afficher(){
         String qry ="Select * from chasseur_talent";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
             ResultSet usrList = stmt.executeQuery();
-            while(usrList.next()) {
-                System.out.println("User : [id : "+usrList.getInt(1));
-            }
+            return usrList;
         } catch (SQLException ex) {
             Logger.getLogger(ServiceChasseur.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return null;
     }
     
     public ResultSet afficherUsr(chasseurTalent usr){

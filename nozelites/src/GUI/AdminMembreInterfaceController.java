@@ -8,6 +8,7 @@ package GUI;
 import entities.Diplome;
 import entities.Membre;
 import entities.Membre;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -29,6 +31,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import services.ServiceMembre;
 
 /**
@@ -63,9 +66,9 @@ public class AdminMembreInterfaceController implements Initializable {
     @FXML
     private TableView<Membre> tableMembre;
     @FXML
-    private TableColumn<Membre, Membre> col_image;
-    @FXML
     private TableColumn<Membre, String> col_etat;
+    @FXML
+    private AnchorPane root;
 
     /**
      * Initializes the controller class.
@@ -75,6 +78,24 @@ public class AdminMembreInterfaceController implements Initializable {
         ObservableList<Membre>data;
         data = FXCollections.observableArrayList();
         ServiceMembre srvD = new ServiceMembre();
+        
+        fieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+        //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+
+        ObservableList<Membre> dataRech = FXCollections.observableArrayList();
+        dataRech.clear();
+
+        for (int i=0;i<data.size();i++){
+            if(data.get(i).getNom().contains(newValue) || data.get(i).getPrenom().contains(newValue) || Integer.toString(data.get(i).getAge()).contains(newValue) || data.get(i).getExp().contains(newValue) || Integer.toString(data.get(i).getType()).contains(newValue) || data.get(i).getMail().contains(newValue) || data.get(i).getLogin().contains(newValue) || Integer.toString(data.get(i).getTel()).contains(newValue))
+            {
+                dataRech.add(data.get(i));
+            }
+        }
+  
+        tableMembre.setItems(dataRech);
+        });
+
+        
         
         try {
             ResultSet listD = srvD.afficher();
@@ -90,7 +111,7 @@ public class AdminMembreInterfaceController implements Initializable {
             Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        col_etat.setCellValueFactory(new PropertyValueFactory<>("type"));
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         col_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         colMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
@@ -120,7 +141,33 @@ public class AdminMembreInterfaceController implements Initializable {
 
                 setGraphic(deleteButton);
                 deleteButton.setOnAction(event -> {
-                    data.remove(m);
+                    
+                    srvD.supprimer(m);
+                    
+                        });
+            }
+        });
+        
+        col_deb.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        col_deb.setCellFactory(param -> new TableCell<Membre, Membre>() {
+     
+            Button deleteButton = new Button("débloquer");
+            
+            
+            
+            @Override
+            protected void updateItem(Membre m, boolean empty) {
+                super.updateItem(m, empty);
+
+                if (m == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                setGraphic(deleteButton);
+                deleteButton.setOnAction(event -> {
+                    
+                    srvD.activer(m);
                     
                         });
             }
@@ -132,23 +179,33 @@ public class AdminMembreInterfaceController implements Initializable {
     }    
 
     @FXML
-    private void acceuil(MouseEvent event) {
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void reclamations(MouseEvent event) {
+    private void reclamations(MouseEvent event) throws IOException {
+        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);*/
     }
 
     @FXML
-    private void groupes(MouseEvent event) {
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void membres(MouseEvent event) {
+    private void membres(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminMembreInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void chasseurs(MouseEvent event) {
+    private void chasseurs(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminChasseurInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML

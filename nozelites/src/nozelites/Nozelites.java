@@ -34,6 +34,7 @@ import services.ServicesReclamation;
 
 import utils.JavaMail;
 import doryan.windowsnotificationapi.fr.Notification;
+import services.ServiceEvennement;
 
 
 
@@ -48,13 +49,13 @@ public class Nozelites extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+           
 
 
 
         //Parent root = FXMLLoader.load(getClass().getResource("/GUI/AdminAcceuilInterface.fxml"));
 
       Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
-
 
 //Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
    // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
@@ -95,6 +96,8 @@ public class Nozelites extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
+         ServiceEvennement srv=new ServiceEvennement();
+           srv.ControlerEvenement();
         launch(args);
 
               // ServicesReclamation srv = new ServicesReclamation();
@@ -102,7 +105,6 @@ public class Nozelites extends Application {
          //JavaMail.sendMailReclamation("mohamedkheireddine.bairam@esprit.tn");
          
         // srv.afficherGroupeReclamation();
-
 
         
 

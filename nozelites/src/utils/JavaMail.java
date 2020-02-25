@@ -85,8 +85,8 @@ public class JavaMail {
             message.setFrom(new InternetAddress(myAccount));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
 
-            message.setSubject("Reclamation Recu");
-            message.setText("Votre Réclamation est en cours de traitement");
+            //message.setSubject("Reclamation Recu");
+            //message.setText("Votre Réclamation est en cours de traitement");
 
             message.setSubject(objet);
             message.setText(texte);

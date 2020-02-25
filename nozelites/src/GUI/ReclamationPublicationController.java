@@ -106,7 +106,7 @@ public class ReclamationPublicationController implements Initializable {
         }
     }
     private class ButtonCell1 extends TableCell<Disposer.Record, Boolean> {
-        final Button cellButton1 = new Button("traiter ");
+        final Button cellButton1 = new Button("en cours ");
      
 
         //Display button if the row is not empty
@@ -147,6 +147,44 @@ public class ReclamationPublicationController implements Initializable {
             super.updateItem(t, empty);
             if(!empty){
             setGraphic(cellButton1);
+            }
+            else{
+            setGraphic(null);
+            }
+        }
+    }
+    
+      private class ButtonCell2 extends TableCell<Disposer.Record, Boolean> {
+        final Button cellButton2 = new Button("traiter ");
+     
+
+        //Display button if the row is not empty
+     
+      ButtonCell2(){
+            
+        	//Action when the button is pressed
+            cellButton2.setOnAction(new EventHandler<ActionEvent>(){
+
+                @Override
+                public void handle(ActionEvent t) {
+                    	ReclamationForPub currentOffre = (ReclamationForPub) ButtonCell2.this.getTableView().getItems().get(ButtonCell2.this.getIndex());
+                //currentOffre.getEtat();
+             //currentOffre.setEtat("1");
+             srv.traiter1Reclamation(currentOffre.getId());
+             reclp.getItems().clear();
+             ObservableList<ReclamationForPub> olist = FXCollections.observableArrayList(srv.afficherPublicationReclamation());
+             reclp.getItems().addAll(olist);
+        
+                }
+            });
+        }
+
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+            setGraphic(cellButton2);
             }
             else{
             setGraphic(null);
@@ -207,7 +245,7 @@ public class ReclamationPublicationController implements Initializable {
             
             TableColumn actionCol = new TableColumn<>("Supprimer");
             TableColumn traiterCol = new TableColumn<>("Traiter");
-         
+         TableColumn traiter1Col = new TableColumn<>("Traiter");
          idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
@@ -252,7 +290,7 @@ public class ReclamationPublicationController implements Initializable {
         actionCol.setMinWidth(100);
      
         
-        reclp.getColumns().addAll(nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
+        reclp.getColumns().addAll(nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,actionCol,traiterCol,traiter1Col);
         
         reclp.setItems(olist);
                //Adding the Button to the cell
@@ -274,11 +312,17 @@ public class ReclamationPublicationController implements Initializable {
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
                 return new ButtonCell1();
             }
-            
-             
-           
+     
+        });
         
-           
+           traiter1Col.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new ButtonCell2();
+            }
+     
         });
         
         

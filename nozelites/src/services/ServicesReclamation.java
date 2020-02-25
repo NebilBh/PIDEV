@@ -36,7 +36,22 @@ public class ServicesReclamation {
         try 
         {
             PreparedStatement pt = c.prepareStatement("update reclamation set etat=?  where idRecl=?");
-            pt.setBoolean(1, true); //ordre fel requete
+            //pt.setBoolean(1, true); //ordre fel requete
+            pt.setInt(1,1);
+            pt.setInt(2,id);
+            pt.executeUpdate();  
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void traiter1Reclamation(int id){
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("update reclamation set etat=?  where idRecl=?");
+            //pt.setBoolean(1, true); //ordre fel requete
+            pt.setInt(1,2);
             pt.setInt(2,id);
             pt.executeUpdate();  
         } 

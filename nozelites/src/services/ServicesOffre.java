@@ -284,21 +284,28 @@ public class ServicesOffre {
         }
     }
     
-    public void afficherOffre(){
+    public List<OffreForGUI> afficherOffre(){
+        
+        List<OffreForGUI> list = new ArrayList<OffreForGUI>();
+        
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select * from offre");
+            PreparedStatement pt = c.prepareStatement("select Type, Entreprise, Date, Etat from offre");
             ResultSet rs = pt.executeQuery();
             
             while(rs.next())
             {
-                System.out.println("Offre : \nType : "+rs.getString(2)+"\nEntreprise : "+rs.getString(5)+"\nDomaine : "+rs.getString(6)+"\nPoste : "+rs.getString(7)+"\nRequis : "+rs.getString(8)+"\nDescription : "+rs.getString(9)+"\nDate : "+rs.getString(10)+"\n"); //ordre fel table
+                //System.out.println("Offre : \nType : "+rs.getString(2)+"\nEntreprise : "+rs.getString(5)+"\nDomaine : "+rs.getString(6)+"\nPoste : "+rs.getString(7)+"\nRequis : "+rs.getString(8)+"\nDescription : "+rs.getString(9)+"\nDate : "+rs.getString(10)+"\n"); //ordre fel table
+                OffreForGUI o = new OffreForGUI(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+                list.add(o);
             }
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return list;
     }
     
     public void afficherUneOffre(Offre o){
@@ -332,4 +339,58 @@ public class ServicesOffre {
         }
     }
     
+    public int[] getStatOffre(){
+        
+        int[] r = new int[12];
+        String Mois;
+        
+        for(int i=0; i<12; i++){
+            try 
+            {
+                Mois = "-0"+(i+1)+"-";
+                if(i>8)
+                {
+                    Mois = "-"+(i+1)+"-";
+                }
+                PreparedStatement pt = c.prepareStatement("select count(*) from offre WHERE Date LIKE '%"+Mois+"%'");
+                ResultSet rs = pt.executeQuery();
+
+                while(rs.next())
+                {
+                    r[i] = rs.getInt(1);
+                    //System.out.println(rs.getInt(1));
+                }
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        
+        return r;
+    }
+    
+    public String getMailMeilleur(){
+        
+        String s = "";
+        int i = 0;
+        
+        try 
+        {
+            PreparedStatement pt = c.prepareStatement("select IdRecepteur, count(*) from offre GROUP BY IdRecepteur ORDER BY count(*) DESC");
+            ResultSet rs = pt.executeQuery();
+            
+            while(rs.next() && i<1)
+            {
+                i++;
+                s = getMailMembre(rs.getInt(1));   
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return s;
+    }
 }

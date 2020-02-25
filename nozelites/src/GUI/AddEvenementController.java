@@ -34,11 +34,16 @@ import services.ServiceEvennement;
 import com.sbix.jnotify.NPosition;
 import com.sbix.jnotify.NoticeWindow;
 import com.sbix.jnotify.NoticeType;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import utils.Session;
-
+import doryan.windowsnotificationapi.fr.Notification;
+import java.awt.AWTException;
+import java.awt.TrayIcon;
+import java.net.MalformedURLException;
 /**
  * FXML Controller class
  *
@@ -170,12 +175,36 @@ public class AddEvenementController implements Initializable {
         //java.util.Date date_util = new java.util.Date(12/12/2012);
        // java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
        //if(!nom.getText().equals("") && !lieu.getText().equals("") && !hh.getText().equals("") && !siteweb.getText().equals("") && !description.getText().equals("") && !nbplace.getText().equals("")){
+       int comp = 0;
+       try {
+            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date datee=new java.util.Date();
+            java.util.Date d1=sdf.parse(dat);
+             System.out.println(datee);
+             System.out.println(d1);
+            System.out.println(d1.compareTo(datee));
+            comp=d1.compareTo(datee);
+        } catch (ParseException ex) {
+            Logger.getLogger(AddEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println(comp);
+       if(comp!=-1){
        if(hh.getText().length()==2 && mm.getText().length()==2){
         Evennement e=new Evennement(Session.getIdSession(), name, lie, dat, heure, desc, site, 0, nbp, pathh);
         ServiceEvennement srv=new ServiceEvennement();
         srv.ajouterEvennement(e);
+           try {
+               Notification.sendNotification("module evennement", "evennement ajouté ",TrayIcon.MessageType.INFO);
+           } catch (AWTException ex) {
+               Logger.getLogger(AddEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (MalformedURLException ex) {
+               Logger.getLogger(AddEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }else {
           new NoticeWindow(NoticeType.ERROR_NOTIFICATION, "verifier l'heure", NoticeWindow.LONG_DELAY,NPosition.CENTER);
+       }}else{
+            new NoticeWindow(NoticeType.ERROR_NOTIFICATION, "verifier la date", NoticeWindow.LONG_DELAY,NPosition.CENTER);
        }
            
                 

@@ -78,7 +78,7 @@ public class Membre_Reclamation_PUBController implements Initializable {
         ServicesReclamation srv  = new ServicesReclamation();
         //Reclamation r = new Reclamation(1,2,3,description,selecteur);
         Session session = new Session();
-        Reclamation r =new Reclamation(session.getIdSession(),p.getId(),description,selecteur);
+        Reclamation r =new Reclamation(session.getIdSession(),Page_forumController.idkh,description,selecteur);
         srv.ajouterReclamation(r);
         Notification.sendNotification("Admin vous avez recu une reclamation", "RECLAMATION ",TrayIcon.MessageType.INFO);
         
@@ -116,11 +116,14 @@ public class Membre_Reclamation_PUBController implements Initializable {
 
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
-       
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
+
     @FXML
     private void profil(MouseEvent event) throws IOException {
-    
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
@@ -131,23 +134,30 @@ public class Membre_Reclamation_PUBController implements Initializable {
 
     @FXML
     private void groupes(MouseEvent event) throws IOException {
-       
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-      
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
     private void inbox(MouseEvent event) throws IOException {
-       
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void deconnexion(MouseEvent event) {
-    }
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
 
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
     @FXML
     private void goToRecl(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreReclamation.fxml"));

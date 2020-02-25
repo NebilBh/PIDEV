@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -10,6 +11,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Interface_publicationController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="788.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/back.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="272.0" layoutY="376.0" text="Saisir votre titre :" />
       <Label layoutX="272.0" layoutY="425.0" text="Saisir votre description :" />
       <TextField fx:id="txt_titre" layoutX="476.0" layoutY="372.0" />
@@ -17,7 +23,7 @@
       <Button fx:id="Button_Enregistrer" layoutX="521.0" layoutY="455.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="162.0" text="Enregistrer" />
       <Button fx:id="vider" layoutX="467.0" layoutY="455.0" mnemonicParsing="false" onAction="#vider" text="vider" />
       <Button fx:id="importer" layoutX="595.0" layoutY="30.0" mnemonicParsing="false" onAction="#importer" text="Importer image " />
-      <Label layoutX="455.0" layoutY="34.0" text="Choisir Votre image :" />
+      <Label layoutX="591.0" layoutY="14.0" text="Choisir Votre image :" />
       <ImageView fx:id="imgv" fitHeight="299.0" fitWidth="463.0" layoutX="270.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="favoris" layoutX="646.0" layoutY="421.0" mnemonicParsing="false" onAction="#favoris" text="favoris" />
       <Pane prefHeight="500.0" prefWidth="230.0" style="-fx-background-color: #c41011;">
@@ -27,6 +33,11 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
+            <ImageView fitHeight="94.0" fitWidth="230.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

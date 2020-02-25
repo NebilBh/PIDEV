@@ -118,7 +118,7 @@
             </Button>
          </children>
       </HBox>
-      <Button fx:id="goToReclamation" layoutX="17.0" layoutY="129.0" mnemonicParsing="false" onAction="#goToRecl" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="Envoyer une reclamation" textFill="#f8f5f5">
+      <Button fx:id="goToReclamation" layoutX="14.0" layoutY="129.0" mnemonicParsing="false" onAction="#goToRecl" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="Envoyer une reclamation" textFill="#f8f5f5">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
