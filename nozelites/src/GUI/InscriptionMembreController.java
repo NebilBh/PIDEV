@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.ServiceMembre;
+import static utils.JavaMail.sendMail;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -85,14 +88,20 @@ public class InscriptionMembreController implements Initializable {
     }
 
     @FXML
-    private void createCompte(MouseEvent event) throws IOException {
+    private void createCompte(MouseEvent event) throws IOException, Exception {
         Membre m = new Membre(labelNom.getText(), labelPrenom.getText(), labelMail.getText(), labelNdc.getText(), labelMdp.getText(),
-                labelExp.getText(), "0",Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()), 1, lienImg);
+                labelExp.getText(), "0",Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()), 0, lienImg);
          ServiceMembre srvM = new ServiceMembre();
          
          srvM.ajouter(m);
-       
-        Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+         
+        Random r = new Random();
+        int x = r.nextInt((10001));
+        Session s = new Session();
+        s.setId_select(x);
+        sendMail(labelMail.getText(),"Vérification","Bienvenue sur NOZELITES.\nVoici votre code de vérification : "+x+"\nA très vite!\n\nToute l'équipe NOZELITES.");
+
+        Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/ValidationMail.fxml"));
         
         
         Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();

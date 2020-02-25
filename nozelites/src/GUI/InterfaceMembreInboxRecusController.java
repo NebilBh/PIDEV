@@ -172,7 +172,7 @@ public class InterfaceMembreInboxRecusController implements Initializable {
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
         anchorMessageRecus.getChildren().setAll(pane);
     }
 

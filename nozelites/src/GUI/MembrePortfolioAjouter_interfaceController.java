@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -45,6 +46,8 @@ public class MembrePortfolioAjouter_interfaceController implements Initializable
     private ImageView notifications;
     @FXML
     private AnchorPane root;
+    @FXML
+    private Button ajouter;
 
   
     
@@ -57,7 +60,7 @@ public class MembrePortfolioAjouter_interfaceController implements Initializable
     }  
     
       @FXML
-    void ajouter(ActionEvent event) {
+    void ajouter(ActionEvent event) throws IOException {
 
         String titre = txttitre.getText();
         String description = txtdescr.getText();
@@ -69,6 +72,10 @@ public class MembrePortfolioAjouter_interfaceController implements Initializable
         Session session = new Session();
         Portfolio p = new Portfolio(session.getIdSession(),titre,description,lien);
         srv.ajouter(p);
+        
+          AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+        
         
     }
 

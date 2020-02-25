@@ -101,6 +101,38 @@ public class ServiceMembre {
         
     }
     
+    public int getMaxInt(){
+        PreparedStatement pstmt ;
+        String qry = "select idUsr from membre where idUsr = (select MAX(idUsr) from membre)";
+        try {
+            
+            pstmt = db.prepareStatement(qry);
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return 0;
+        
+    }
+    
+    public void activerMembre(){
+        PreparedStatement pstmt ;
+        String qry = "update membre set type = ? where idUsr = ?";
+        try {
+            
+            pstmt = db.prepareStatement(qry);
+            pstmt.setInt(1,1);
+            pstmt.setInt(2,getMaxInt());
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     public ResultSet afficher(){
         String qry ="Select * from membre";
         
@@ -215,8 +247,36 @@ public class ServiceMembre {
         JavaMail.sendMail(user.getMail(),"Confirmation email"+user.getMail(),"Monsieur"+user.getNom()+" "+user.getPrenom()+" Bienvenue \n");
                     
     }
-    public void statistiqueMois(String mois){ //date jj-mm-aaaa
+    
+    public int[] getStatCompte(){
         
+        int[] r = new int[12];
+        String Mois;
+        
+        for(int i=0; i<12; i++){
+            try 
+            {
+                Mois = "-0"+(i+1)+"-";
+                if(i>8)
+                {
+                    Mois = "-"+(i+1)+"-";
+                }
+                PreparedStatement pt = db.prepareStatement("select count(*) from membre WHERE Date LIKE '%"+Mois+"%'");
+                ResultSet rs = pt.executeQuery();
+
+                while(rs.next())
+                {
+                    r[i] = rs.getInt(1);
+                    //System.out.println(rs.getInt(1));
+                }
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(ServicesOffre.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        
+        return r;
     }
     
     public void statisqueAnnee(String annee){

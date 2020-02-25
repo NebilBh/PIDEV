@@ -33,6 +33,15 @@ public class OffreForGUI {
         this.prenom = prenom;
     }
 
+    public OffreForGUI(String type, String entreprise, String date, String etat) {
+        this.type = type;
+        this.entreprise = entreprise;
+        this.date = date;
+        this.etat = etat;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
