@@ -47,22 +47,9 @@ import utils.Session;
  *
  * @author Nebil
  */
-public class MembreProfilVisitInterfaceController implements Initializable {
+public class ChassMembreProfilVisitInterfaceController implements Initializable {
 
-    @FXML
-    private Label labelProfil;
-    private Label labelDip1;
-    private Label labelDip2;
-    private Label labelDip3;
-    private Label labelForm;
-    @FXML
-    private Label labelMail;
-    @FXML
-    private Label labelExp;
-    @FXML
-    private Circle circle;
-    @FXML
-    private Label labelTel;
+    
     @FXML
     private TableView<Diplome> tableDip;
     @FXML
@@ -77,20 +64,36 @@ public class MembreProfilVisitInterfaceController implements Initializable {
     @FXML
     private HBox listFormation;
     @FXML
+    private Label labelMail;
+    @FXML
+    private Label labelExp;
+    @FXML
+    private Label labelTel;
+    @FXML
+    private Circle circle;
+    @FXML
+    private Label labelProfil;
+    @FXML
     private Label labellogin;
     @FXML
-    private AnchorPane profilMembre;
+    private Label BoutonAcceuil;
     @FXML
-    private HBox btn_deconnection;
+    private Label BoutonProfil;
     @FXML
-    private ImageView notifications;
-    
+    private Label BoutonElites;
+    @FXML
+    private Label BoutonOffre;
+    @FXML
+    private Button BoutonDeco;
+    @FXML
+    private AnchorPane root;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         ObservableList<Diplome>data;
         data = FXCollections.observableArrayList();
         
@@ -176,69 +179,42 @@ public class MembreProfilVisitInterfaceController implements Initializable {
             Logger.getLogger(MembreProfilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
     }    
 
-    
     @FXML
-    private void acceuil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
-                profilMembre.getChildren().setAll(pane);  
-    }
-
-    @FXML
-    private void profil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
-                profilMembre.getChildren().setAll(pane); 
-    }
-
-
-    @FXML
-
-    private void groupes(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreGroupesInterface.fxml"));
-        profilMembre.getChildren().setAll(pane);
-    }
-        @FXML
-    private void portfolio(MouseEvent event) {
-    
-    }
-        
-
-    
-
-
-    @FXML
-    private void inbox(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
-        profilMembre.getChildren().setAll(pane);
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void deconnexion(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
-        profilMembre.getChildren().setAll(pane);
-    }
-
-
-    @FXML
-    private void evenements(MouseEvent event) {
-    }
-
-
-    @FXML
-    private void reclamer(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
-
-                profilMembre.getChildren().setAll(pane); 
-
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurTeteAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void voirPortfolio(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
-                profilMembre.getChildren().setAll(pane); 
+    private void BoutonProfilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
+    @FXML
+    private void BoutonElitesGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void envoyerOffre(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurEnvoyerOffre.fxml"));
+        root.getChildren().setAll(pane);
+    }
     
 }

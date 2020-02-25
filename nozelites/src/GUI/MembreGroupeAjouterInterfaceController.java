@@ -41,10 +41,14 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import services.ServiceMembre;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -67,11 +71,63 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
     private Button btn_retour;
     @FXML
     private AnchorPane root;
-    private int id_membre = 1;
+    
+    private int id_membre = Session.getIdSession();
     ObservableList<Membre> lss;
     List<Integer> membres_invite = new ArrayList<>();
     @FXML
     private TableView<Membre> table_membres;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
+    private TextField chercher_membre;
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
     
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
@@ -181,6 +237,35 @@ public class MembreGroupeAjouterInterfaceController implements Initializable {
         lss= FXCollections.observableArrayList(list_m);
         table_membres.setItems(lss);
         table_membres.getColumns().addAll( colId,colNom, colPrenom, colbloquer);
+        
+        chercher_membre.textProperty().addListener((observable, oldValue, newValue) -> 
+        {
+            //System.out.println("textfield changed from " + oldValue + " to " + newValue);
+            List<entities.Membre> list_m2 = new ArrayList<>();
+            for(Membre mii : list_m)
+            {
+                if(mii.getLogin().contains(chercher_membre.getText())||
+                                chercher_membre.getText().equals(""))
+                        list_m2.add(mii);
+            }
+            
+            /*SGroupeMembre sgm = new SGroupeMembre();
+            
+            List<entities.Membre> list2 = s_mb.afficher2();
+            for(entities.Membre gm : list2)
+            {
+                if(gm.getUsrId()!=id_membre)
+                {
+                    if(gm.getLogin().contains(chercher_membre.getText())||
+                                chercher_membre.getText().equals(""))
+                        list_m.add(gm);
+                }
+            }*/
+
+            lss.removeAll();
+            lss= FXCollections.observableArrayList(list_m2);
+            table_membres.setItems( lss);
+        });
     }    
 
     @FXML

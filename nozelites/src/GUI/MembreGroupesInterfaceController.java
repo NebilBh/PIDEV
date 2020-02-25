@@ -44,9 +44,13 @@ import services.ServiceMembre;
 import com.sun.prism.impl.Disposer.Record;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -59,7 +63,7 @@ public class MembreGroupesInterfaceController implements Initializable {
     private TableView<entities.Groupe> table_groupes;
     @FXML
     private TextField inpuitChercher;
-    private int id_membre = 1;
+    private int id_membre = Session.getIdSession();
     ObservableList<entities.Groupe> lss;
     @FXML
     private AnchorPane root;
@@ -68,6 +72,10 @@ public class MembreGroupesInterfaceController implements Initializable {
     ObservableList<entities.GroupeMembreInvite> ls_invitations;//membre(nom,prenom) + groupe(titre,description)
     @FXML
     private ComboBox<?> combobox_recherche;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
 
     @FXML
     private void ajouter_groupe(ActionEvent event) throws IOException {
@@ -86,6 +94,51 @@ public class MembreGroupesInterfaceController implements Initializable {
     private void map(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("APIGoogleMaps.fxml"));
         root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
     }
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
