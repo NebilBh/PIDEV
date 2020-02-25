@@ -32,6 +32,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.ConnexionDB;
+import GUI.Page_forumController;
+import entities.Groupe;
+import utils.Session;
+
 
 /**
  * FXML Controller class
@@ -59,7 +63,10 @@ public class Interface_publicationController implements Initializable {
     private Button favoris;
     @FXML
     private Button retourner;
+    
+    public static int id_selectionne;
 
+    Session session = new Session();
     
 
     /**
@@ -88,8 +95,10 @@ public class Interface_publicationController implements Initializable {
         //String pathh = pathimage;
         String colii;
         Publication_services srv  = new Publication_services();
-        Publication_entities p = new Publication_entities(titre,description,0,pathimage,1,4);
+        Publication_entities p = new Publication_entities(titre,description,0,pathimage,MembreGroupeInterfaceController.gr.getId(),session.getIdSession(),0);
         srv.ajouterPublication(p);
+        id_selectionne = p.getId();
+        System.out.println(id_selectionne);
         
       
       
@@ -129,12 +138,13 @@ public class Interface_publicationController implements Initializable {
 
     @FXML
     private void favoris(javafx.event.ActionEvent event) {
+        //id_selectionne = Integer.parseInt(favoris.getId());
         System.out.println("cccc");
         //String pathh = pathimage;
         String colii;
         
         Favoris_services srv  = new Favoris_services();
-        Favoris_entities p = new Favoris_entities(0,0,0);
+        Favoris_entities p = new Favoris_entities(0,id_selectionne,0);
         srv.ajouterfavoris(p);
         
     }

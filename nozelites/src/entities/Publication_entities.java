@@ -12,21 +12,30 @@ package entities;
  */
 public class Publication_entities {
     private String titre, description,image;
-    private int id,id_groupe,id_publicateur;
+    private int id,id_groupe,id_publicateur,nb_jaime;
      public Publication_entities() {
     }
-        public Publication_entities(String titre, String description,int id,String image,int id_groupe,int id_publicateur) {
+        public Publication_entities(String titre, String description,int id,String image,int id_groupe,int id_publicateur,int nb_jaime) {
         this.titre = titre;
         this.description = description;
         this.id=id;
         this.image=image;
         this.id_groupe=id_groupe;
         this.id_publicateur=id_publicateur;
+        this.nb_jaime=nb_jaime;
        
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setNb_jaime(int nb_jaime) {
+        this.nb_jaime = nb_jaime;
+    }
+
+    public int getNb_jaime() {
+        return nb_jaime;
     }
 
     public int getId_groupe() {

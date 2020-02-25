@@ -72,6 +72,16 @@ public class MembreGroupeInterfaceController implements Initializable {
     ObservableList<Membre> lss;
     ObservableList<Membre> lss_i;
     @FXML
+
+    private Button pub;
+
+    @FXML
+    private void pub(ActionEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+                            root.getChildren().setAll(pane);
+    }
+                            
     private HBox btn_deconnection;
     @FXML
     private ImageView notifications;
@@ -121,6 +131,7 @@ public class MembreGroupeInterfaceController implements Initializable {
         root.getChildren().setAll(pane);
         Session s = new Session();
         s.setSession(0);
+
     }
 
     @FXML

@@ -6,28 +6,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminPublicationInterfaceController">
    <children>
       <Pane prefHeight="501.0" prefWidth="212.0" style="-fx-background-color: #c41011;">
          <children>
             <VBox layoutX="-25.0" layoutY="118.0" prefHeight="301.0" prefWidth="279.0">
                <children>
-                  <Button fx:id="ajouter" mnemonicParsing="false" onAction="#ajouter" prefHeight="43.0" prefWidth="299.0" style="-fx-background-color: transparent;" text="Ajouter" textFill="#e8dede">
-                     <font>
-                        <Font name="System Bold Italic" size="18.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="traitement" mnemonicParsing="false" onAction="#traitement" prefHeight="39.0" prefWidth="281.0" style="-fx-background-color: transparent;" text="Traitement" textFill="#f2eded">
-                     <font>
-                        <Font name="System Bold Italic" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="commentaire" mnemonicParsing="false" onAction="#commentaire" prefHeight="39.0" prefWidth="237.0" style="-fx-background-color: #c41011;" text="Forum" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="afficher" mnemonicParsing="false" onAction="#afficher" prefHeight="25.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="Afficher mes Favoris" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>

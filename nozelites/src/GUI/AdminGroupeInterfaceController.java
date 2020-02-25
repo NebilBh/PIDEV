@@ -67,9 +67,9 @@ public class AdminGroupeInterfaceController implements Initializable {
     @FXML
     private TableView<Membre> table_membres;
     @FXML
-    private TableView<entities.Publication_entities> tables_publications;
-    @FXML
     private VBox menu;
+    @FXML
+    private Button pub;
 
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
@@ -111,6 +111,13 @@ public class AdminGroupeInterfaceController implements Initializable {
     private void offres(MouseEvent event) throws IOException {
         /*AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceAminOffre.fxml"));
         root.getChildren().setAll(pane);*/
+    }
+
+    @FXML
+    private void pub(ActionEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminPublicationInterface.fxml"));
+                            root.getChildren().setAll(pane);
     }
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {

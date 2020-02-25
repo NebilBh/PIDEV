@@ -24,11 +24,12 @@ import utils.ConnexionDB;
  */
 public class Publication_services {
     Connection c = ConnexionDB.getInstance().getCnx();
+    public int nb;
     public void ajouterPublication(Publication_entities p){
         try 
         {
              Statement st = c.createStatement();
-             String req = "insert into publication values ('"+p.getTitre()+"','"+p.getDescription()+"',"+p.getId()+",'"+p.getImage()+"',"+p.getId_groupe()+","+p.getId_publicateur()+")";
+             String req = "insert into publication values ('"+p.getTitre()+"','"+p.getDescription()+"',"+p.getId()+",'"+p.getImage()+"',"+p.getId_groupe()+","+p.getId_publicateur()+","+p.getNb_jaime()+")";
              st.executeUpdate(req);
         }
             catch (SQLException ex) 
@@ -166,7 +167,7 @@ public class Publication_services {
             
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-                Publication_entities e=new Publication_entities(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6));
+                Publication_entities e=new Publication_entities(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7));
            
                 myList.add(e);
                 
@@ -192,8 +193,9 @@ public class Publication_services {
                 String titre=rs.getString(1);
                 String description=rs.getString(2);
                 String image=rs.getString(4);
+                int nb_jaime=rs.getInt(7);
                 int id = rs.getInt(3);
-                Publication_entities e=new Publication_entities(titre,description,id,image,5,1);
+                Publication_entities e=new Publication_entities(titre,description,id,image,1,4,nb_jaime);
                 arr.add(e);
                
             }
@@ -205,5 +207,37 @@ public class Publication_services {
   
          return arr;
     }
+      public int ajouterjaime(Publication_entities p){
+           try 
+        {
+             
+             PreparedStatement pt = c.prepareStatement("update publication set nb_jaime=? where id=?");
+             nb=p.getNb_jaime();
+             nb=nb+1;
+             
+             pt.setInt(1, nb); //ordre fel requete
+            pt.setInt(2,p.getId());
+            pt.executeUpdate(); 
+             
+             
+             
+             
+            
+        }
+            catch (SQLException ex) 
+        {
+            Logger.getLogger(Publication_services.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+          
+          
+          
+          
+          
+          return nb;
+          
+          
+          
+      }
       
 }
