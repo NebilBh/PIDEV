@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,10 +9,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.AdminAcceuilInterfaceController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminAcceuilInterfaceController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="250.0" style="-fx-background-color: #c41011;">
+       <PieChart fx:id="pieChart_groupe" layoutX="263.0" layoutY="191.0" prefHeight="197.0" prefWidth="200.0" />
+      <VBox fx:id="menu" prefHeight="500.0" prefWidth="250.0" style="-fx-background-color: #c41011;">
          <children>
             <ImageView fitHeight="61.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                <image>

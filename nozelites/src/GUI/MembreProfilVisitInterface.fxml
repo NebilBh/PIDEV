@@ -14,11 +14,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembreProfilVisitInterfaceController">
+<AnchorPane id="AnchorPane" fx:id="profilMembre" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MembreProfilVisitInterfaceController">
    <children>
-      <HBox fx:id="btn_deconnection" alignment="CENTER_LEFT" layoutX="7.0" layoutY="7.0" prefHeight="60.0" prefWidth="740.0" style="-fx-background-color: white;">
+      <HBox fx:id="btn_deconnection" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="746.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/logo.jpg" />
                </image>
@@ -42,7 +42,7 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" minWidth="90.0" onMouseClicked="#portfolio" prefHeight="60.0" prefWidth="90.0" text="Portfolio" textFill="#c41011">
+            <Label alignment="CENTER" contentDisplay="CENTER" minWidth="74.0" onMouseClicked="#portfolio" prefHeight="60.0" prefWidth="74.0" text="Portfolio" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -55,7 +55,7 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <Label alignment="CENTER" onMouseClicked="#evenements" prefHeight="60.0" prefWidth="91.0" text="Evenements" textFill="#c41011">
+            <Label alignment="CENTER" onMouseClicked="#evenements" prefHeight="60.0" prefWidth="106.0" text="Evenements" textFill="#c41011">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -178,6 +178,16 @@
                   </Label>
                </children>
             </HBox>
+            <Button layoutX="673.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#reclamer" prefHeight="30.0" prefWidth="57.0" style="-fx-background-color: #c41011;" text="signaler" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="614.0" layoutY="132.0" mnemonicParsing="false" onMouseClicked="#voirPortfolio" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #c41011;" text="Portfolio" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

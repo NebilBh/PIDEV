@@ -98,7 +98,7 @@ public class AdminMembreInterfaceController implements Initializable {
         col_log.setCellValueFactory(new PropertyValueFactory<>("login"));
         col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
         col_exp.setCellValueFactory(new PropertyValueFactory<>("exp"));
-        
+        col_id.setCellValueFactory(new PropertyValueFactory<>("usrId"));
         col_id.setVisible(false);
         
         

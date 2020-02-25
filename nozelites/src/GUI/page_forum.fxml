@@ -72,6 +72,7 @@
                      </VBox.margin>
                      <children>
                         <Button fx:id="commenter" mnemonicParsing="false" onAction="#commenter" prefHeight="25.0" prefWidth="103.0" text="commenter" />
+                        <Button fx:id="button_jaime" mnemonicParsing="false" text="jaime " />
                      </children>
                   </HBox>
                </children>

@@ -11,9 +11,11 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.TextField;
@@ -97,6 +99,8 @@ public class MembreAcceuilInterfaceController implements Initializable {
     private Label EmailTop3;
     @FXML
     private Label TelephoneTop3;
+    @FXML
+    private Button signaler;
     
     private int topUn,topDeux,topTrois;
     
@@ -109,8 +113,10 @@ public class MembreAcceuilInterfaceController implements Initializable {
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
         // TODO
-        //NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
-        //NbrOffres.setText(srvOffres.nbrOffres());
+
+        NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
+
+        NbrOffres.setText(srvOffres.nbrOffres());
         
         LocalDate localDate = LocalDate.now();
         List<Membre> topOfTheMonth = srvOffres.afficherTopMois(localDate.toString().substring(4,4));
@@ -121,7 +127,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         ImageTop1.setFill(pattern);
         NomPrenomAgeTop1.setText(topOfTheMonth.get(0).getNom()+" "+topOfTheMonth.get(0).getPrenom()+" "+topOfTheMonth.get(0).getAge()+" ans");
         NomPrenomAgeTop1.maxWidth(200);
-        ExperienceTop1.setText(topOfTheMonth.get(0).getExp()+" d'expérience");
+        ExperienceTop1.setText(topOfTheMonth.get(0).getExp());
         ExperienceTop1.maxWidth(200);
         NbrOffresRecusCeMoisTop1.setText(topOfTheMonth.get(0).getType()+" Offre(s)");
         NbrOffresRecusCeMoisTop1.maxWidth(200);
@@ -136,7 +142,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         ImageTop2.setFill(pattern1);
         NomPrenomAgeTop2.setText(topOfTheMonth.get(1).getNom()+" "+topOfTheMonth.get(1).getPrenom()+" "+topOfTheMonth.get(1).getAge()+" ans");
         NomPrenomAgeTop2.maxWidth(200);
-        ExperienceTop2.setText(topOfTheMonth.get(1).getExp()+" d'expérience");
+        ExperienceTop2.setText(topOfTheMonth.get(1).getExp());
         ExperienceTop2.maxWidth(200);
         NbrOffresRecusCeMoisTop2.setText(topOfTheMonth.get(1).getType()+" Offre(s)");
         NbrOffresRecusCeMoisTop2.maxWidth(200);
@@ -151,7 +157,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         ImageTop3.setFill(pattern2);
         NomPrenomAgeTop3.setText(topOfTheMonth.get(2).getNom()+" "+topOfTheMonth.get(2).getPrenom()+" "+topOfTheMonth.get(2).getAge()+" ans");
         NomPrenomAgeTop3.maxWidth(200);
-        ExperienceTop3.setText(topOfTheMonth.get(2).getExp()+" d'expérience");
+        ExperienceTop3.setText(topOfTheMonth.get(2).getExp());
         ExperienceTop3.maxWidth(200);
         NbrOffresRecusCeMoisTop3.setText(topOfTheMonth.get(2).getType()+" Offre(s)");
         NbrOffresRecusCeMoisTop3.maxWidth(200);
@@ -217,6 +223,12 @@ public class MembreAcceuilInterfaceController implements Initializable {
     }
 
     @FXML
+
+    private void signaler(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+    @FXML
     private void ConsulterUn(MouseEvent event) throws IOException {
         Session s = new Session();
         
@@ -241,6 +253,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         s.setId_select(topTrois);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
                         root.getChildren().setAll(pane); 
+
     }
     
 }
