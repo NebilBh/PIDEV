@@ -79,7 +79,7 @@ public class MenuController implements Initializable {
     @FXML
     private void Retourner(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));        
+            Parent root = FXMLLoader.load(getClass().getResource("MembreGroupeInterface.fxml"));        
             Scene scene = new Scene(root);        
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
             app_stage.setScene(scene);        

@@ -57,6 +57,9 @@ public class AffichagecommController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        column_id_comm.setVisible(false);
+        column_id_mem.setVisible(false);
+        column_id_pub.setVisible(false);
         
         System.out.println(Page_forumController.idp);
                   Commentaire_services srv  = new Commentaire_services();

@@ -113,6 +113,13 @@ public class AdminGroupeInterfaceController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceAdminOffre.fxml"));
         root.getChildren().setAll(pane);
     }
+
+    @FXML
+    private void pub(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminPublicationInterface.fxml"));
+        root.getChildren().setAll(pane);
+        
+    }
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {
         final Button cellButton = new Button("Bloquer");

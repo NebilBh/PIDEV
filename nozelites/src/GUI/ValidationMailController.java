@@ -44,6 +44,7 @@ public class ValidationMailController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        erreur.setVisible(false);
     }    
 
     @FXML
@@ -54,6 +55,9 @@ public class ValidationMailController implements Initializable {
             srvM.activerMembre();
             AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
             authen.getChildren().setAll(pane);
+        }
+        else {
+            erreur.setVisible(true);
         }
     }
     

@@ -23,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import services.ServiceEvennement;
 import services.ServiceMembre;
 import services.ServicesOffre;
 import utils.Session;
@@ -97,12 +98,17 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
     private Button searchDom;
     @FXML
     private TextField domField;
+    @FXML
+    private Label nbEv;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        ServiceEvennement serEv = new ServiceEvennement();
+        nbEv.setText(Integer.toString(serEv.readAll().size()));
         // TODO
         ServiceMembre srvM = new ServiceMembre();
         int count = srvM.nbrMembre();

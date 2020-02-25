@@ -379,6 +379,7 @@ public class MembreGroupeInterfaceController implements Initializable {
         lss_i= FXCollections.observableArrayList(list_i);
         table_invitation.setItems(lss_i);
         table_invitation.getColumns().addAll(colId_i, colNom_i, colPrenom_i, colInviter);
+        colId_i.setVisible(false);
     }    
 
     @FXML
