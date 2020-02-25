@@ -97,6 +97,7 @@ public class ModifierMembreInterfaceController implements Initializable {
     private ImageView notifications;
     @FXML
     private AnchorPane root;
+    int type;
    
     /**
      * Initializes the controller class.
@@ -126,7 +127,7 @@ public class ModifierMembreInterfaceController implements Initializable {
             m.setPrenom(res.getString("prenom"));
             m.setTel(res.getInt("tel"));
             m.setAge(res.getInt("age"));
-            
+            type = res.getInt("type");
             m.setExp(res.getString("Experience"));
             m.setMail(res.getString("mail"));
             m.setMdp(res.getString("mdp"));
@@ -226,11 +227,11 @@ public class ModifierMembreInterfaceController implements Initializable {
         ServiceMembre srvM = new ServiceMembre();
         Membre oldMembre = new Membre();
         Membre m = new Membre(labelNom.getText(), labelPrenom.getText(), fieldMail.getText(),this.ndc,this.mdp,
-                fieldExp.getText(),"0",Integer.parseInt(fieldAge.getText()),Integer.parseInt(fieldTel.getText()), 0, this.lienImg);  
+                fieldExp.getText(),"0",Integer.parseInt(fieldAge.getText()),Integer.parseInt(fieldTel.getText()), type, this.lienImg);  
         oldMembre.setUsrId(this.s.getIdSession());
         srvM.modifier(oldMembre, m);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilInterface.fxml"));
-        modifWindow.getChildren().setAll(pane);
+        root.getChildren().setAll(pane);
     }
 
     @FXML
@@ -282,8 +283,8 @@ public class ModifierMembreInterfaceController implements Initializable {
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML

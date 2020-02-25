@@ -26,7 +26,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AllEvenementsController">
    <children>
-       <GoogleMapView fx:id="mapView" prefHeight="500.0" prefWidth="761.0" AnchorPane.bottomAnchor="-185.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-441.0" AnchorPane.topAnchor="0.0" />
+      <GoogleMapView fx:id="mapView" prefHeight="500.0" prefWidth="761.0" AnchorPane.bottomAnchor="-185.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-441.0" AnchorPane.topAnchor="0.0" />
       <BorderPane fx:id="container" layoutX="232.0" layoutY="272.0" prefHeight="238.0" prefWidth="502.0">
          <center>
             <ScrollPane hbarPolicy="NEVER" prefHeight="244.0" prefWidth="502.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" styleClass="mainFxmlClass" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">

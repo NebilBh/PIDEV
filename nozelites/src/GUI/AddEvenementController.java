@@ -40,7 +40,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import utils.Session;
-
+import doryan.windowsnotificationapi.fr.Notification;
+import java.awt.AWTException;
+import java.awt.TrayIcon;
+import java.net.MalformedURLException;
 /**
  * FXML Controller class
  *
@@ -191,6 +194,13 @@ public class AddEvenementController implements Initializable {
         Evennement e=new Evennement(Session.getIdSession(), name, lie, dat, heure, desc, site, 0, nbp, pathh);
         ServiceEvennement srv=new ServiceEvennement();
         srv.ajouterEvennement(e);
+           try {
+               Notification.sendNotification("module evennement", "evennement ajouté ",TrayIcon.MessageType.INFO);
+           } catch (AWTException ex) {
+               Logger.getLogger(AddEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (MalformedURLException ex) {
+               Logger.getLogger(AddEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }else {
           new NoticeWindow(NoticeType.ERROR_NOTIFICATION, "verifier l'heure", NoticeWindow.LONG_DELAY,NPosition.CENTER);
        }}else{

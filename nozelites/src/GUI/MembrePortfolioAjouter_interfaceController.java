@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -45,6 +46,8 @@ public class MembrePortfolioAjouter_interfaceController implements Initializable
     private ImageView notifications;
     @FXML
     private AnchorPane root;
+    @FXML
+    private Button ajouter;
 
   
     
@@ -57,7 +60,7 @@ public class MembrePortfolioAjouter_interfaceController implements Initializable
     }  
     
       @FXML
-    void ajouter(ActionEvent event) {
+    void ajouter(ActionEvent event) throws IOException {
 
         String titre = txttitre.getText();
         String description = txtdescr.getText();
@@ -70,41 +73,56 @@ public class MembrePortfolioAjouter_interfaceController implements Initializable
         Portfolio p = new Portfolio(session.getIdSession(),titre,description,lien);
         srv.ajouter(p);
         
-    }
-
-    @FXML
-    private void acceuil(MouseEvent event) throws IOException {
-         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
-                root.getChildren().setAll(pane);  
-    }
-
-    @FXML
-    private void profil(MouseEvent event) {
-    }
-
-    @FXML
-    private void portfolio(MouseEvent event) throws IOException { 
+          AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
         
-          AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));
-          root.getChildren().setAll(pane); 
+        
+    }
+
+  @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void groupes(MouseEvent event) {
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void evenements(MouseEvent event) {
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void inbox(MouseEvent event) {
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void deconnexion(MouseEvent event) {
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
     }
 
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
     @FXML
     private void voirportfolio(ActionEvent event) throws IOException {
                 AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAfficher_interface.fxml"));

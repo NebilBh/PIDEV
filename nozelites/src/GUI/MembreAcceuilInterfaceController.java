@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import utils.JavaMail;
 import entities.Membre;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -100,18 +102,20 @@ public class MembreAcceuilInterfaceController implements Initializable {
     private Label EmailTop3;
     @FXML
     private Label TelephoneTop3;
-    @FXML
-    private Button signaler;
     
     private int topUn,topDeux,topTrois;
     @FXML
     private Label nbEv;
+    @FXML
+    private Button btndom;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         ServiceMembre srvM = new ServiceMembre();
         ServiceEvennement serEv=new ServiceEvennement();
         
@@ -228,12 +232,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
         root.getChildren().setAll(pane);
     }
 
-    @FXML
-
-    private void signaler(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
-        root.getChildren().setAll(pane);
-    }
+    
     @FXML
     private void ConsulterUn(MouseEvent event) throws IOException {
         Session s = new Session();
@@ -260,6 +259,15 @@ public class MembreAcceuilInterfaceController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
                         root.getChildren().setAll(pane); 
 
+    }
+
+    @FXML
+    private void rechDom(ActionEvent event) throws IOException {
+        ServiceMembre srvM = new ServiceMembre();
+        srvM.setRecherche(searchDomaine.getText());
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("RechercheDomaine.fxml"));
+
+        root.getChildren().setAll(pane);
     }
     
 }

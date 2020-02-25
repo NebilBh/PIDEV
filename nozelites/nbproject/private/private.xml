@@ -3,8 +3,53 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/GUI/ConnectionInterfaceController.java</file>
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/GUI/AddEvenementController.java</file>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/utils/JavaMail.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/services/ServiceChasseur.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/services/ServiceMembre.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/ChasseurRechercheDomaineController.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/RechercheDomaineController.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/AfficherElitesInterfaceController.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/ChasseurRechercheDomaine.fxml</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/RechercheDomaine.fxml</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/AdminChasseurInterfaceController.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/entities/chasseurTalent.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/ChasseurTeteAcceuilInterfaceController.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/ResultatRechercheInterfaceController.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/AdminMembreInterfaceController.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/Afficher_reclamationController.java</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/AfficherElitesInterface.fxml</file>
+            <file>file:/C:/Users/Nebil/Desktop/PIDEV/nozelites/src/GUI/AdminAcceuilInterfaceController.java</file>
+=======
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/AllEvenementsController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/InterfaceEvenementController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/ConnectionInterfaceController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/MembreAcceuilInterfaceController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/BackEvenementController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/AllEvenements.fxml</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/AdminGroupeInterfaceController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/AdminAcceuilInterfaceController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/services/ServiceEvennement.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/AddEvenementController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/PageEvenementController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/ModifierEvenementController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/PageMembreEvController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/InterfaceEvenement.fxml</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/AdminEvenementController.java</file>
+            <file>file:/C:/Users/nadhir/Desktop/PIDEV/nozelites/src/GUI/AddEvenement.fxml</file>
+>>>>>>> 7da9b3ac6f343edd37da0a01b2b2cb3f50d4f5c0
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9cc8edae12239685ecb758d43123eed030e6277d
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/utils/ConnexionDB.java</file>
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/GUI/AdminAcceuilInterfaceController.java</file>
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/GUI/ListeTableauController.java</file>
@@ -14,6 +59,44 @@
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/GUI/MembreGroupeAjouterInterfaceController.java</file>
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/GUI/MembreAcceuilInterfaceController.java</file>
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
+<<<<<<< HEAD
+=======
+=======
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembrePortfolioAjouter_interfaceController.java</file>
+>>>>>>> d05d718704c518b8f1ff090b92794dab4121d034
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreReclamationController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/Membre_Reclamation_EVENTController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServicePortfolio.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/Membre_Reclamation_PUBController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/utils/ConnexionDB.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreAcceuilInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/Page_forumController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/Afficher_reclamationController.java</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreGroupeInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/Publication_services.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/PortfolioForGUI.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/PORTFOLIO_DU_PROFILController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/Portfolio.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/Membre_Reclamation_PUB.fxml</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreGroupeInterface.fxml</file>
+=======
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServiceEvennement.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/AdminMembreInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/utils/Session.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreGroupesInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/SGroupeMembre.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/ReclamationForGUI.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembrePortfolioAfficher_interfaceController.java</file>
+>>>>>>> d6f2b99af58ee9ea141ada6307af7572dc501943
+>>>>>>> d05d718704c518b8f1ff090b92794dab4121d034
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> 79eed3afb5f50acf1b85d65042cb8466b2cc6495
+>>>>>>> 7da9b3ac6f343edd37da0a01b2b2cb3f50d4f5c0
+>>>>>>> 9cc8edae12239685ecb758d43123eed030e6277d
         </group>
     </open-files>
 </project-private>

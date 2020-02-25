@@ -12,7 +12,7 @@
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReclamationGROUPEController">
    <children>
       <TableView fx:id="reclg" layoutX="275.0" layoutY="107.0" prefHeight="316.0" prefWidth="455.0" />
-      <Label layoutX="316.0" layoutY="47.0" text="Les Réclamations de Groupe">
+      <Label layoutX="375.0" layoutY="47.0" prefHeight="27.0" prefWidth="288.0" text="Les Réclamations des Groupes" textFill="#e10808">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

@@ -38,6 +38,22 @@ public class PortfolioForGUI {
     public String getLien() {
         return lien;
     }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLien(String lien) {
+        this.lien = lien;
+    }
     
     
     

@@ -48,6 +48,11 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
+                        <Button fx:id="btndom" mnemonicParsing="false" onAction="#rechDom" onMouseClicked="#recherche" prefHeight="21.0" prefWidth="35.0" text="Ok">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox layoutY="82.0" prefHeight="66.0" prefWidth="724.0">
@@ -374,11 +379,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Button fx:id="signaler" layoutX="591.0" layoutY="20.0" mnemonicParsing="false" onAction="#signaler" onMouseClicked="#deconnexion" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #c41011;" text="Signaler" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
+                  
                </children>
             </AnchorPane>
         </content>

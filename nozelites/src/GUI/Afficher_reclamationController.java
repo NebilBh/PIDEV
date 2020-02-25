@@ -75,35 +75,51 @@ public class Afficher_reclamationController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("afficher_reclamation.fxml"));
         root.getChildren().setAll(pane);
     }
-
-    @FXML
-    private void acceuil(MouseEvent event) {
+ @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void profil(MouseEvent event) {
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void portfolio(MouseEvent event) {
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void groupes(MouseEvent event) {
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void evenements(MouseEvent event) {
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void inbox(MouseEvent event) {
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void deconnexion(MouseEvent event) {
-    }
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
 
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
+    }
+   /////
     
     private class ButtonCell extends TableCell<Record, Boolean> {
         final Button cellButton = new Button("Supprimer ?");
@@ -138,52 +154,7 @@ public class Afficher_reclamationController implements Initializable {
             }
         }
     }
-    private class ButtonCell1 extends TableCell<Record, Boolean> {
-        final Button cellButton1 = new Button("traiter ");
-       
-        ButtonCell1(){
-            
-        	//Action when the button is pressed
-            cellButton1.setOnAction(new EventHandler<ActionEvent>(){
-
-                @Override
-                public void handle(ActionEvent t) {
-                    	ReclamationForGUI currentOffre = (ReclamationForGUI) ButtonCell1.this.getTableView().getItems().get(ButtonCell1.this.getIndex());
-                //currentOffre.getEtat();
-             //currentOffre.setEtat("1");
-             srv.traiterReclamation(currentOffre.getId());
-             tab_recl.getItems().clear();
-             Session session = new Session();
-             ObservableList<ReclamationForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(session.getIdSession()));
-             tab_recl.getItems().addAll(olist);
-             
-             
-               
-               /* 	
-                  //      currentOffre.getMail();
-                    try {
-                      
-                        JavaMail.sendMailReclamation(currentOffre.getMail());
-                    } catch (Exception ex) {
-                        Logger.getLogger(Afficher_reclamationController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                */
-                }
-            });
-        }
-
-        //Display button if the row is not empty
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if(!empty){
-            setGraphic(cellButton1);
-            }
-            else{
-            setGraphic(null);
-            }
-        }
-    }
+  
     
     
 
@@ -295,14 +266,7 @@ public class Afficher_reclamationController implements Initializable {
             }
  
         });
-        traiterCol.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Record, Boolean>, 
-                ObservableValue<Boolean>>() {
-
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue() != null);
-            }});
+     
         
         
         idCol.setVisible(false);
@@ -316,7 +280,7 @@ public class Afficher_reclamationController implements Initializable {
         actionCol.setMinWidth(100);
      
         
-        tab_recl.getColumns().addAll(idCol,descriptionCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
+        tab_recl.getColumns().addAll(idCol,descriptionCol,etatCol,selectCol,dateCol,actionCol);
         
      //aaaaaaaaa//   ServicesReclamation srv = new ServicesReclamation();
       // aaaa/// ObservableList<ReclamationForGUI> olist = FXCollections.observableArrayList(srv.afficherLesOffresEnvoyees(2));
@@ -389,37 +353,11 @@ public class Afficher_reclamationController implements Initializable {
           }
         });
         
-        traiterCol.setCellFactory(
-                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
-
-            @Override
-            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell1();
-            }
+         
+           
+        
             
-             
-           
         
-            public void chercher(ActionEvent event)
-                    {
-              
-                  // idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-      //  nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
-       // prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-       // mailCol.setCellValueFactory(new PropertyValueFactory<>("mail"));
-        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-        etatCol.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        selectCol.setCellValueFactory(new PropertyValueFactory<>("selecteur"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-              
-           
-        ServicesReclamation srv=new ServicesReclamation();
-        
-       olist= FXCollections.observableArrayList(srv.rechercher5(chercher.getText()));
-        
-         tab_recl.setItems(olist);
-          }
-        });
            
     }
          

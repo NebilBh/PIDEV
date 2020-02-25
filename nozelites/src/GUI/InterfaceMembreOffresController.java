@@ -74,7 +74,7 @@ public class InterfaceMembreOffresController implements Initializable {
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
         anchorOffre.getChildren().setAll(pane);
     }
 

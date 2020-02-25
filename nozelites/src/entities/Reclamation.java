@@ -17,7 +17,8 @@ public class Reclamation {
 
     private String description, selecteur;
     private int idRecl, id_emeteur, id_cible;
-    private boolean etat;
+    //private boolean etat;
+    private int etat;
 
     java.util.Date dt = new java.util.Date();
     java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -41,7 +42,7 @@ public class Reclamation {
         return description;
     }
 
-    public boolean getEtat() {
+    public int getEtat() {
         return etat;
     }
 
@@ -89,7 +90,7 @@ public class Reclamation {
         this.description = description;
     }
 
-    public void setEtat(boolean etat) {
+    public void setEtat(int etat) {
         this.etat = etat;
     }
 

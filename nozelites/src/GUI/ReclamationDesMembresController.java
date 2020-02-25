@@ -105,7 +105,7 @@ public class ReclamationDesMembresController implements Initializable {
         }
     }
     private class ButtonCell1 extends TableCell<Disposer.Record, Boolean> {
-        final Button cellButton1 = new Button("traiter ");
+        final Button cellButton1 = new Button("en cours ");
      
 
         //Display button if the row is not empty
@@ -124,18 +124,7 @@ public class ReclamationDesMembresController implements Initializable {
              reclm.getItems().clear();
              ObservableList<ReclamationForMembre> olist = FXCollections.observableArrayList(srv.afficherMembreReclamation());
              reclm.getItems().addAll(olist);
-             
-             
-               
-               /* 	
-                  //      currentOffre.getMail();
-                    try {
-                      
-                        JavaMail.sendMailReclamation(currentOffre.getMail());
-                    } catch (Exception ex) {
-                        Logger.getLogger(Afficher_reclamationController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                */
+          
                 }
             });
         }
@@ -152,7 +141,45 @@ public class ReclamationDesMembresController implements Initializable {
             }
         }
     }
-    
+     private class ButtonCell2 extends TableCell<Disposer.Record, Boolean> {
+        final Button cellButton2 = new Button("traiter ");
+     
+
+        //Display button if the row is not empty
+     
+      ButtonCell2(){
+            
+        	//Action when the button is pressed
+            cellButton2.setOnAction(new EventHandler<ActionEvent>(){
+
+                @Override
+                public void handle(ActionEvent t) {
+                    	ReclamationForMembre currentOffre = (ReclamationForMembre) ButtonCell2.this.getTableView().getItems().get(ButtonCell2.this.getIndex());
+                //currentOffre.getEtat();
+             //currentOffre.setEtat("1");
+             srv.traiter1Reclamation(currentOffre.getId());
+             reclm.getItems().clear();
+             ObservableList<ReclamationForMembre> olist = FXCollections.observableArrayList(srv.afficherMembreReclamation());
+             reclm.getItems().addAll(olist);
+          
+                }
+            });
+        }
+
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+            setGraphic(cellButton2);
+            }
+            else{
+            setGraphic(null);
+            }
+        }
+    }
+
+     
     
 @FXML
     private TableView<ReclamationForMembre> reclm = new TableView<ReclamationForMembre>();
@@ -206,6 +233,7 @@ public class ReclamationDesMembresController implements Initializable {
             
             TableColumn actionCol = new TableColumn<>("Supprimer");
             TableColumn traiterCol = new TableColumn<>("Traiter");
+              TableColumn traiter1Col = new TableColumn<>("Traiter");
          
          idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -236,6 +264,14 @@ public class ReclamationDesMembresController implements Initializable {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
                 return new SimpleBooleanProperty(p.getValue() != null);
             }});
+        traiter1Col.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Disposer.Record, Boolean>, 
+                ObservableValue<Boolean>>() {
+
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Disposer.Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }});
         
         
        idCol.setVisible(false);
@@ -251,7 +287,7 @@ public class ReclamationDesMembresController implements Initializable {
         actionCol.setMinWidth(100);
      
         
-        reclm.getColumns().addAll(idCol,nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,actionCol,traiterCol);
+        reclm.getColumns().addAll(idCol,nomCol,prenomCol,mailCol,titreCol,descriptionCol,descriptiongCol,etatCol,selectCol,dateCol,actionCol,traiterCol,traiter1Col);
         
         reclm.setItems(olist);
                //Adding the Button to the cell
@@ -273,13 +309,17 @@ public class ReclamationDesMembresController implements Initializable {
             public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
                 return new ButtonCell1();
             }
-            
-             
-           
-        
-           
+       
         });
-        
+         traiter1Col.setCellFactory(
+                new Callback<TableColumn<Disposer.Record, Boolean>, TableCell<Disposer.Record, Boolean>>() {
+
+            @Override
+            public TableCell<Disposer.Record, Boolean> call(TableColumn<Disposer.Record, Boolean> p) {
+                return new ButtonCell2();
+            }
+       
+        });
         
            
     }

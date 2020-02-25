@@ -216,5 +216,13 @@ public class ChassMembreProfilVisitInterfaceController implements Initializable 
         AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurEnvoyerOffre.fxml"));
         root.getChildren().setAll(pane);
     }
+
+    @FXML
+    private void voirPortfolio(MouseEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("CHASSEUR_PORTFOLIO.fxml"));
+        root.getChildren().setAll(pane);
+        
+    }
     
 }
