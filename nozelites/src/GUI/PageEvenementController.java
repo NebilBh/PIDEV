@@ -38,6 +38,7 @@ public class PageEvenementController implements Initializable {
     /**
      * Initializes the controller class.
      */
+     
     static int i;
     public  Evennement e;
     public  static Evennement ev;
@@ -57,6 +58,7 @@ public class PageEvenementController implements Initializable {
     private Button rejoindre;
      @FXML
     private Button demande;
+    
     @FXML
     private Button disjoindre;
     private ServiceEvennement Service;

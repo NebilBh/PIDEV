@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,7 +52,7 @@ public class ConnectionInterfaceController implements Initializable {
     @FXML
     private Button createChasseur;
     @FXML
-    private HBox listLabel;
+    private Label erreur;
 
     @FXML
     private void connect(MouseEvent event) throws IOException, SQLException {
@@ -78,7 +79,7 @@ public class ConnectionInterfaceController implements Initializable {
             hasResultM = resultatMembre.next();
             hasResultC = resultatChass.next();
             
-            if(hasResultM){
+            if(hasResultM && resultatMembre.getInt("type")!= 0){
                 
                 session.setSession(resultatMembre.getInt(1)); 
                 System.out.println("id cnx: "+session.getIdSession());
@@ -95,6 +96,7 @@ public class ConnectionInterfaceController implements Initializable {
             
             }
             else{
+                erreur.setVisible(true);
                 System.out.println("connexion echoué");
             }
        
@@ -110,10 +112,8 @@ public class ConnectionInterfaceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         
-        
-        
-        
-        
+        erreur.setVisible(false);
+       
         // TODO
     }    
 
@@ -132,6 +132,18 @@ public class ConnectionInterfaceController implements Initializable {
     @FXML
     private void createChass(MouseEvent event) throws IOException {
         Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/InscriptionChasseur.fxml"));
+        
+        
+        Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        Scene scene = new Scene(inscriptionM);
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
+    @FXML
+    private void loginAdmin(ActionEvent event) throws IOException {
+        Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/ConnectionAdminInterface.fxml"));
         
         
         Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();

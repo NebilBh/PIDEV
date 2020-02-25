@@ -78,7 +78,7 @@ public class Membre_Reclamation_PUBController implements Initializable {
         ServicesReclamation srv  = new ServicesReclamation();
         //Reclamation r = new Reclamation(1,2,3,description,selecteur);
         Session session = new Session();
-        Reclamation r =new Reclamation(session.getIdSession(),p.getId(),description,selecteur);
+        Reclamation r =new Reclamation(session.getIdSession(),Page_forumController.idkh,description,selecteur);
         srv.ajouterReclamation(r);
         Notification.sendNotification("Admin vous avez recu une reclamation", "RECLAMATION ",TrayIcon.MessageType.INFO);
         

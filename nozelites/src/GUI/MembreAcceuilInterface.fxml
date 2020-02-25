@@ -48,6 +48,11 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
+                        <Button fx:id="btndom" mnemonicParsing="false" onAction="#rechDom" onMouseClicked="#recherche" prefHeight="21.0" prefWidth="35.0" text="Ok">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox layoutY="82.0" prefHeight="66.0" prefWidth="724.0">
@@ -374,6 +379,7 @@
                         </VBox>
                      </children>
                   </HBox>
+                  
                </children>
             </AnchorPane>
         </content>

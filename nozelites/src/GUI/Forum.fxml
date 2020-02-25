@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ForumController">
    <children>
+      <ImageView fitHeight="540.0" fitWidth="744.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/back.jpg" />
+         </image>
+      </ImageView>
       <BorderPane fx:id="container" layoutX="242.0" layoutY="20.0" prefHeight="500.0" prefWidth="502.0">
          <center>
             <ScrollPane hbarPolicy="NEVER" prefHeight="433.0" prefWidth="510.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" styleClass="mainFxmlClass" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
@@ -28,7 +37,7 @@
                               <Insets top="10.0" />
                            </opaqueInsets>
                         </Separator>
-                        <Label prefHeight="39.0" prefWidth="219.0" text="Tout les Evenements">
+                        <Label prefHeight="39.0" prefWidth="219.0" text="Forum du groupe : ">
                            <padding>
                               <Insets bottom="10.0" top="10.0" />
                            </padding>
@@ -52,7 +61,7 @@
             </ScrollPane>
          </center>
          <top>
-            <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="980.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="980.0" rotate="-4.8" spacing="20.0" BorderPane.alignment="CENTER">
                <effect>
                   <DropShadow color="#000000bb" height="40.07" radius="14.7675" spread="0.23" />
                </effect>
@@ -65,5 +74,23 @@
             </HBox>
          </top>
       </BorderPane>
+      <Pane prefHeight="521.0" prefWidth="212.0" style="-fx-background-color: #c41011;">
+         <children>
+            <VBox layoutX="-25.0" layoutY="118.0" prefHeight="301.0" prefWidth="279.0">
+               <children>
+                  <Button fx:id="Retourner" mnemonicParsing="false" onAction="#Retourner" prefHeight="42.0" prefWidth="283.0" style="-fx-background-color: transparent;" text="Retourner" textFill="#eeeded">
+                     <font>
+                        <Font name="System Bold Italic" size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <ImageView fitHeight="100.0" fitWidth="212.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
