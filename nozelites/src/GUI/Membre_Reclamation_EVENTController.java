@@ -25,7 +25,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import services.ServicesReclamation;
-
 import utils.Session;
 
 /**
@@ -33,15 +32,14 @@ import utils.Session;
  *
  * @author KHAIRI
  */
-public class MembreReclamationController implements Initializable {
-  //Connection c = ConnexionDB.getInstance().getCnx();
-     @FXML
-    private TextArea txtdescr;
+public class Membre_Reclamation_EVENTController implements Initializable {
 
-    
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private TextArea txtdescr;
     @FXML
     private ComboBox txtselect;
-    private AnchorPane menuR;
     @FXML
     private Button goRECL;
     @FXML
@@ -50,17 +48,14 @@ public class MembreReclamationController implements Initializable {
     private ImageView notifications;
     @FXML
     private Button goToReclamation;
-    @FXML
-    private AnchorPane root;
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        txtselect.getItems().addAll("groupe","membre","evenement","publication");
+        // TODO
+     txtselect.getItems().addAll("evenement");
         // TODO
     }  
     
@@ -161,3 +156,4 @@ public class MembreReclamationController implements Initializable {
     }
     
 }
+

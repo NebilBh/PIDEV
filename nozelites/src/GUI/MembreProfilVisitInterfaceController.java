@@ -214,6 +214,7 @@ public class MembreProfilVisitInterfaceController implements Initializable {
     private void reclamer(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
                 root.getChildren().setAll(pane); 
+                
     }
 
     @FXML

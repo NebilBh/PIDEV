@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,23 +12,41 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReclamationInterfaceController">
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.Membre_Reclamation_EVENTController">
    <children>
-      <Pane layoutX="-1.0" layoutY="51.0" prefHeight="500.0" prefWidth="220.0" style="-fx-background-color: #c41011;">
+      <Button layoutX="479.0" layoutY="311.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #c41011;" text="Envoyer" textFill="#f5f2f2">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="314.0" layoutY="137.0" prefHeight="17.0" prefWidth="115.0" text="Selecteur" textFill="#320101">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="307.0" layoutY="220.0" prefHeight="25.0" prefWidth="91.0" text="Expliquez nous" textFill="#790a0a">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtdescr" layoutX="417.0" layoutY="181.0" prefHeight="104.0" prefWidth="270.0" />
+      <Label layoutX="406.0" layoutY="83.0" prefHeight="17.0" prefWidth="181.0" text="Réclamation" textFill="#f80e0e">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="txtselect" layoutX="472.0" layoutY="138.0" prefHeight="25.0" prefWidth="161.0" />
+      <Pane layoutY="1.0" prefHeight="506.0" prefWidth="220.0" style="-fx-background-color: #c41011;">
          <children>
-            <Button fx:id="goToReclamation" layoutX="-1.0" layoutY="99.0" mnemonicParsing="false" onAction="#goToRecl" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="Envoyer une reclamation" textFill="#f8f5f5">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="goRECL" layoutX="22.0" layoutY="143.0" mnemonicParsing="false" onAction="#goRECL" prefHeight="44.0" prefWidth="214.0" style="-fx-background-color: transparent;" text="Voir les reclamations" textFill="#f2efef">
+            <Button fx:id="goRECL" layoutX="15.0" layoutY="161.0" mnemonicParsing="false" onAction="#goRECL" prefHeight="44.0" prefWidth="214.0" style="-fx-background-color: transparent;" text="Voir les reclamations" textFill="#f2efef">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <HBox fx:id="btn_deconnection" alignment="CENTER_LEFT" layoutX="-4.0" prefHeight="60.0" prefWidth="740.0" style="-fx-background-color: white;">
+      <HBox fx:id="btn_deconnection" alignment="CENTER_LEFT" layoutY="-1.0" prefHeight="81.0" prefWidth="760.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -99,5 +119,10 @@
             </Button>
          </children>
       </HBox>
+      <Button fx:id="goToReclamation" layoutX="19.0" layoutY="119.0" mnemonicParsing="false" onAction="#goToRecl" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: transparent;" text="Envoyer une reclamation" textFill="#f8f5f5">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

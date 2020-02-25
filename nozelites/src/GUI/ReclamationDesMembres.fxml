@@ -1,13 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.ReclamationDesMembresController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReclamationDesMembresController">
    <children>
       <TableView fx:id="reclm" layoutX="231.0" layoutY="107.0" prefHeight="328.0" prefWidth="450.0" />
       <Label layoutX="370.0" layoutY="61.0" text="Reclamation des memebres" />
+      <VBox prefHeight="510.0" prefWidth="216.0" style="-fx-background-color: #c41011;">
+         <children>
+            <ImageView fitHeight="61.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="70.0" left="35.0" top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label onMouseClicked="#acceuil" text="Acceuil" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#reclamationgroupe" prefHeight="32.0" prefWidth="208.0" text="Groupes" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#reclamationpublication" text="Publication" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#reclamationmembres" text="Membres" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label onMouseClicked="#reclamationevenement" text="Evenements" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

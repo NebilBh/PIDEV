@@ -169,7 +169,7 @@ public class ServicesReclamation {
         
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select idRecl, nom, prenom, mail, description,etat,selecteur,date from reclamation INNER JOIN membre ON reclamation.id_emeteur=membre.idUsr where id_emeteur=?"
+            PreparedStatement pt = c.prepareStatement("select idRecl, nom, prenom, mail, description,etat,selecteur,reclamation.date from reclamation INNER JOIN membre ON reclamation.id_emeteur=membre.idUsr where id_emeteur=?"
                     + "                                                                                         ");
             pt.setInt(1, id_Emetteur);
             ResultSet rs = pt.executeQuery();

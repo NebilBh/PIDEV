@@ -9,6 +9,7 @@ import com.sun.prism.impl.Disposer;
 import entities.ReclamationForGUI;
 import entities.ReclamationForGroupe;
 import entities.ReclamationForGroupe;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -18,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -26,6 +28,7 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import services.ServicesReclamation;
@@ -36,6 +39,40 @@ import services.ServicesReclamation;
  */
 public class ReclamationGROUPEController implements Initializable {
 
+    @FXML
+    private AnchorPane root;
+
+     @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+        
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void reclamationgroupe(MouseEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationGROUPE.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void reclamationpublication(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationPublication.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void reclamationmembres(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationDesMembres.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void reclamationevenement(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationEvent.fxml"));
+        root.getChildren().setAll(pane);
+    }
     //@FXML
    // private TableView<?> reclg;
 
