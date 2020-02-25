@@ -25,7 +25,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import services.ServicesReclamation;
-
 import utils.Session;
 
 /**
@@ -33,15 +32,12 @@ import utils.Session;
  *
  * @author KHAIRI
  */
-public class MembreReclamationController implements Initializable {
-  //Connection c = ConnexionDB.getInstance().getCnx();
-     @FXML
-    private TextArea txtdescr;
+public class Membre_Reclamation_GRPController implements Initializable {
 
-    
+    @FXML
+    private TextArea txtdescr;
     @FXML
     private ComboBox txtselect;
-    private AnchorPane menuR;
     @FXML
     private Button goRECL;
     @FXML
@@ -53,25 +49,25 @@ public class MembreReclamationController implements Initializable {
     @FXML
     private AnchorPane root;
     
+    
+    
+    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        txtselect.getItems().addAll("groupe","membre","evenement","publication");
         // TODO
-    }  
-    
-   
-    
-        @FXML
-     void ajouter(ActionEvent event) throws AWTException, MalformedURLException {
+         txtselect.getItems().addAll("groupe");
+    }    
+
+    @FXML
+ void ajouter(ActionEvent event) throws AWTException, MalformedURLException {
 
     
        
-     // txtselect.getItems().addAll("membre","groupe","evenement","publication");
+   
         String description = txtdescr.getText();
           String selecteur = txtselect.getSelectionModel().getSelectedItem().toString();
        
@@ -82,7 +78,7 @@ public class MembreReclamationController implements Initializable {
         ServicesReclamation srv  = new ServicesReclamation();
         //Reclamation r = new Reclamation(1,2,3,description,selecteur);
         Session session = new Session();
-        Reclamation r =new Reclamation(session.getIdSession(),session.getId_select(),description,selecteur);
+        Reclamation r =new Reclamation(session.getIdSession(),MembreGroupeInterfaceController.gr.getId(),description,selecteur);
         srv.ajouterReclamation(r);
         Notification.sendNotification("Admin vous avez recu une reclamation", "RECLAMATION ",TrayIcon.MessageType.INFO);
         
@@ -159,5 +155,6 @@ public class MembreReclamationController implements Initializable {
         
         
     }
+    
     
 }

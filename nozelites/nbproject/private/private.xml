@@ -3,10 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/utils/ConnexionDB.java</file>
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/GUI/AdminAcceuilInterfaceController.java</file>
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/GUI/MembreGroupeAjouterInterfaceController.java</file>
             <file>file:/C:/Users/syrine/Desktop/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
+=======
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembrePortfolioAjouter_interfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreReclamationController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/ConnectionInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/utils/ConnexionDB.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServicesReclamation.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreProfilVisitInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreAcceuilInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/Afficher_reclamationController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/ServiceEvennement.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/AdminMembreInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/utils/Session.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/nozelites/Nozelites.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembreGroupesInterfaceController.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/services/SGroupeMembre.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/entities/ReclamationForGUI.java</file>
+            <file>file:/C:/Users/KHAIRI/Desktop/PIDEV/nozelites/src/GUI/MembrePortfolioAfficher_interfaceController.java</file>
+>>>>>>> d6f2b99af58ee9ea141ada6307af7572dc501943
         </group>
     </open-files>
 </project-private>

@@ -22,7 +22,7 @@ public class Commentaire_services {
     
     public void ajoutercommentaire(Commentaire_entities k){
         try 
-        {
+        {System.out.println(k.getId_membre()+" --- ");
              Statement st = c.createStatement();
              String req = "insert into commentaire values ("+k.getId_commentaire()+","+k.getId_membre()+","+k.getId_publication()+",'"+k.getCommentaire()+"')";
              st.executeUpdate(req);

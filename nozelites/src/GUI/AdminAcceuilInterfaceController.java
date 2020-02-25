@@ -68,8 +68,8 @@ public class AdminAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void reclamations(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationDesMembres.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
@@ -92,6 +92,7 @@ public class AdminAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("BackEvenement.fxml"));
         root.getChildren().setAll(pane);
     }

@@ -49,13 +49,12 @@ public class Nozelites extends Application {
     public void start(Stage stage) throws Exception {
 
 
-    
-       
-       
 
 
+        //Parent root = FXMLLoader.load(getClass().getResource("/GUI/AdminAcceuilInterface.fxml"));
 
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+      //Parent root = FXMLLoader.load(getClass().getResource("/GUI/ConnectionInterface.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("/GUI/AdminAcceuilInterface.fxml"));
 
 //Parent root = FXMLLoader.load(getClass().getResource("/GUI/ReclamationInterface.fxml"));
    // Parent root = FXMLLoader.load(getClass().getResource("/GUI/MembrePortfolioAjouter_interface.fxml"));
@@ -69,6 +68,8 @@ public class Nozelites extends Application {
 
         
           //Parent root = FXMLLoader.load(getClass().getResource("/GUI/AdminAcceuilInterface.fxml"));
+
+
 
 
        // Parent root = FXMLLoader.load(getClass().getResource("/GUI/ResultatRechercheInterface.fxml"));
@@ -105,9 +106,9 @@ public class Nozelites extends Application {
 
         
 
-       // Session s = new Session();
+       Session s = new Session();
         
-      //  System.out.println("id Session main"+s.getIdSession());
+       System.out.println("id Session main"+s.getIdSession());
 
         
         

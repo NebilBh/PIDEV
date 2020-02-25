@@ -13,7 +13,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 
 /**
  * FXML Controller class
@@ -22,12 +25,17 @@ import javafx.scene.layout.AnchorPane;
  */
 public class ReclamationInterfaceController implements Initializable {
 
-    @FXML
     private AnchorPane menuRecl;
     @FXML
     private Button goToReclamation;
     @FXML
     private Button goRECL;
+    @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
+    private AnchorPane root;
 
     /**
      * Initializes the controller class.
@@ -44,17 +52,45 @@ public class ReclamationInterfaceController implements Initializable {
     @FXML
     private void goToRecl(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreReclamation.fxml"));
-        menuRecl.getChildren().setAll(pane);
+        root.getChildren().setAll(pane);
     }
     
      @FXML
     private void goRECL(ActionEvent event) throws IOException{
  
     AnchorPane pane = FXMLLoader.load(getClass().getResource("afficher_reclamation.fxml"));
-        menuRecl.getChildren().setAll(pane);
+        root.getChildren().setAll(pane);
         
         
         
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) {
+    }
+
+    @FXML
+    private void profil(MouseEvent event) {
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) {
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) {
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) {
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) {
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) {
     }
 
     

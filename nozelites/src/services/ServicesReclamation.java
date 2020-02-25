@@ -169,7 +169,7 @@ public class ServicesReclamation {
         
         try 
         {
-            PreparedStatement pt = c.prepareStatement("select idRecl, nom, prenom, mail, description,etat,selecteur,date from reclamation INNER JOIN membre ON reclamation.id_emeteur=membre.idUsr where id_emeteur=?"
+            PreparedStatement pt = c.prepareStatement("select idRecl, nom, prenom, mail, description,etat,selecteur,reclamation.date from reclamation INNER JOIN membre ON reclamation.id_emeteur=membre.idUsr where id_emeteur=?"
                     + "                                                                                         ");
             pt.setInt(1, id_Emetteur);
             ResultSet rs = pt.executeQuery();
@@ -283,7 +283,7 @@ public class ServicesReclamation {
                     int id_membre = rs.getInt(2);
                     if(selecteur.equals("groupe"))
                     {
-                         PreparedStatement tt = c.prepareStatement("select reclamation.idRecl, membre.nom, membre.prenom, membre.mail, groupe.titre, reclamation.description, groupe.descriptiong, reclamation.etat, reclamation.selecteur, reclamation.date from reclamation inner join groupe on groupe.idGroupe ="+id_cible+" inner join membre on membre.idUsr ="+id_membre+" where reclamation.idRecl="+rs.getInt(1) );
+                         PreparedStatement tt = c.prepareStatement("select reclamation.idRecl, membre.nom, membre.prenom, membre.mail, groupe.titre, reclamation.description, groupe.description, reclamation.etat, reclamation.selecteur, reclamation.date from reclamation inner join groupe on groupe.id_groupe ="+id_cible+" inner join membre on membre.idUsr ="+id_membre+" where reclamation.idRecl="+rs.getInt(1) );
                          ResultSet ff = tt.executeQuery();
                          
                          while(ff.next())

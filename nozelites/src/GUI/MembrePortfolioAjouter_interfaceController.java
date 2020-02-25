@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import services.ServicePortfolio;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -64,7 +65,9 @@ public class MembrePortfolioAjouter_interfaceController implements Initializable
     
        // String typee = type.getSelectionModel().getSelectedItem().toString();
         ServicePortfolio srv  = new ServicePortfolio();
-        Portfolio p = new Portfolio(5,titre,description,lien);
+        
+        Session session = new Session();
+        Portfolio p = new Portfolio(session.getIdSession(),titre,description,lien);
         srv.ajouter(p);
         
     }
