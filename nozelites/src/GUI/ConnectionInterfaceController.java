@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,8 +51,6 @@ public class ConnectionInterfaceController implements Initializable {
     private Button btnElite;
     @FXML
     private Button createChasseur;
-    @FXML
-    private HBox listLabel;
     @FXML
     private Label erreur;
 
@@ -114,9 +113,7 @@ public class ConnectionInterfaceController implements Initializable {
         
         
         erreur.setVisible(false);
-        
-        
-        
+       
         // TODO
     }    
 
@@ -135,6 +132,18 @@ public class ConnectionInterfaceController implements Initializable {
     @FXML
     private void createChass(MouseEvent event) throws IOException {
         Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/InscriptionChasseur.fxml"));
+        
+        
+        Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();
+        
+        Scene scene = new Scene(inscriptionM);
+        fenetre.setScene(scene);
+        fenetre.show();
+    }
+
+    @FXML
+    private void loginAdmin(ActionEvent event) throws IOException {
+        Parent inscriptionM = FXMLLoader.load(getClass().getResource("/GUI/ConnectionAdminInterface.fxml"));
         
         
         Stage fenetre = (Stage)((Node)event.getSource()).getScene().getWindow();

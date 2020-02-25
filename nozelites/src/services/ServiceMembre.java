@@ -247,4 +247,23 @@ public class ServiceMembre {
     
     return null;
 }
+    public ResultSet authenAdmin(String login ,String mdp){
+        String qry = "Select * from admin where login = ? AND mdp = ?";
+         
+        
+        try {
+            PreparedStatement stmt = db.prepareStatement(qry);
+            stmt.setString(1,login);
+            stmt.setString(2,mdp);
+            ResultSet usrList = stmt.executeQuery();
+            
+            return usrList;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+        
+    }
 }
