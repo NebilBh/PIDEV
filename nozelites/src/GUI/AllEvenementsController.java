@@ -35,11 +35,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import services.ServiceEvennement;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -73,7 +76,12 @@ public class AllEvenementsController implements Initializable, MapComponentIniti
     
     private GoogleMap map;
     @FXML
+    private HBox btn_deconnection;
+    @FXML
+    private ImageView notifications;
+    @FXML
     private AnchorPane root;
+     Session session = new Session();
     @FXML
      public void MesE(ActionEvent event) {
      
@@ -121,29 +129,13 @@ public class AllEvenementsController implements Initializable, MapComponentIniti
 
     @Override
     public void mapInitialized() {
-           LatLong joeSmithLocation = new LatLong(47.6197, -122.3231);
-        LatLong joshAndersonLocation = new LatLong(47.6297, -122.3431);
+        //   LatLong joeSmithLocation = new LatLong(47.6197, -122.3231);
+       /* LatLong joshAndersonLocation = new LatLong(47.6297, -122.3431);
         LatLong bobUnderwoodLocation = new LatLong(47.6397, -122.3031);
         LatLong tomChoiceLocation = new LatLong(47.6497, -122.3325);
         LatLong fredWilkieLocation = new LatLong(47.6597, -122.3357);
+        */
         
-        ArrayList<Evennement> list = new ArrayList<>();
-        list = (ArrayList) service.affichertout2();
-        for(int in=0; in<list.size(); in++)
-        {
-          String n=  list.get(in).getLieu();
-          int p=n.indexOf("/");
-          String l1=n.substring(0, p);
-          String l2=n.substring(p+1);
-          int la=Integer.parseInt(l1);
-          int lb=Integer.parseInt(l2);
-          
-          LatLong place = new LatLong(la, lb);
-         MarkerOptions Options = new MarkerOptions();
-        Options.position(place);
-        Marker placeMarker = new Marker(Options);
-        map.addMarker( placeMarker );
-        }
             /*
         LatLong joeSmithLocation = new LatLong(47.6197, -122.3231);
         MarkerOptions markerOptions1 = new MarkerOptions();
@@ -169,9 +161,9 @@ public class AllEvenementsController implements Initializable, MapComponentIniti
 
         //Add markers to the map
         MarkerOptions markerOptions1 = new MarkerOptions();
-        markerOptions1.position(joeSmithLocation);
+     //   markerOptions1.position(joeSmithLocation);
         
-        MarkerOptions markerOptions2 = new MarkerOptions();
+       /* MarkerOptions markerOptions2 = new MarkerOptions();
         markerOptions2.position(joshAndersonLocation);
         
         MarkerOptions markerOptions3 = new MarkerOptions();
@@ -194,14 +186,35 @@ public class AllEvenementsController implements Initializable, MapComponentIniti
         map.addMarker( bobUnderwoodMarker );
         map.addMarker( tomChoiceMarker );
         map.addMarker( fredWilkieMarker );
-        
+        */
+       ArrayList<Evennement> list = new ArrayList<>();
+        list = (ArrayList) service.affichertout2();
+        for(int in=0; in<list.size(); in++)
+        {System.out.println(in);
+          String n=  list.get(in).getLieu();
+          int p=n.indexOf("/");
+          String l1=n.substring(0, p);
+          String l2=n.substring(p+1);System.out.println(l1+"  "+l2);
+          float la=Float.parseFloat(l1);
+          float lb=Float.parseFloat(l2);
+            
+          LatLong place = new LatLong(la, lb);
+         MarkerOptions Options = new MarkerOptions();
+        Options.position(place);
+        Marker placeMarker = new Marker(Options);
+        map.addMarker( placeMarker );System.out.println(l1+"  ---------- "+l2);
+        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+        infoWindowOptions.content("<h3>"+list.get(in).getNom()+"    "+list.get(in).getDate()+"</h3>" );
+        InfoWindow placeInfoWindow = new InfoWindow(infoWindowOptions);
+        placeInfoWindow.open(map, placeMarker);
+        }
         InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
         infoWindowOptions.content("<h2>Fred Wilkie</h2>"
                                 + "Current Location: Safeway<br>"
                                 + "ETA: 45 minutes" );
 
         InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
-        fredWilkeInfoWindow.open(map, fredWilkieMarker);
+        //fredWilkeInfoWindow.open(map, fredWilkieMarker);
     }
     
      public void AfficherCards() {
@@ -238,5 +251,50 @@ public class AllEvenementsController implements Initializable, MapComponentIniti
         int nbr=panierService.LonguerPanier();
         nombre_article.setText("("+nbr+")");*/
         
+    }
+
+    @FXML
+    private void acceuil(MouseEvent event) throws IOException {
+         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void profil(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void portfolio(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembrePortfolioAfficher_interface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void groupes(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void evenements(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void inbox(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void deconnexion(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+
+        root.getChildren().setAll(pane);
+        Session s = new Session();
+        s.setSession(0);
     }
 }

@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import utils.JavaMail;
 import entities.Membre;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -103,12 +105,16 @@ public class MembreAcceuilInterfaceController implements Initializable {
     private Button signaler;
     
     private int topUn,topDeux,topTrois;
+    @FXML
+    private Button btndom;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         ServiceMembre srvM = new ServiceMembre();
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
@@ -254,6 +260,15 @@ public class MembreAcceuilInterfaceController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
                         root.getChildren().setAll(pane); 
 
+    }
+
+    @FXML
+    private void rechDom(ActionEvent event) throws IOException {
+        ServiceMembre srvM = new ServiceMembre();
+        srvM.setRecherche(searchDomaine.getText());
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("RechercheDomaine.fxml"));
+
+        root.getChildren().setAll(pane);
     }
     
 }

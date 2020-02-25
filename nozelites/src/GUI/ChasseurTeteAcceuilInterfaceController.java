@@ -93,6 +93,10 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
     @FXML
     private Label nbProfil;
     private int topUn , topDeux,topTrois;
+    @FXML
+    private Button searchDom;
+    @FXML
+    private TextField domField;
     
     /**
      * Initializes the controller class.
@@ -180,7 +184,7 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void BoutonElitesGo(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AfficherElitesInterface.fxml"));
         root.getChildren().setAll(pane);
     }
 
@@ -200,7 +204,12 @@ public class ChasseurTeteAcceuilInterfaceController implements Initializable {
     }
 
     @FXML
-    private void rechercheDomaine(MouseEvent event) {
+    private void rechercheDomaine(MouseEvent event) throws IOException {
+        ServiceMembre srvM = new ServiceMembre();
+        srvM.setRecherche(domField.getText());
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurRechercheDomaine.fxml"));
+
+        root.getChildren().setAll(pane);
     }
    
 

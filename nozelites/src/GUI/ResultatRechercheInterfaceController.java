@@ -186,8 +186,8 @@ public class ResultatRechercheInterfaceController implements Initializable {
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML

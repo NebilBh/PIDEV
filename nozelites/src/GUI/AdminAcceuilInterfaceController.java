@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -86,12 +87,13 @@ public class AdminAcceuilInterfaceController implements Initializable {
 
     @FXML
     private void chasseurs(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminChasseurInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("BackEvenement.fxml"));
         root.getChildren().setAll(pane);
     }
@@ -99,6 +101,12 @@ public class AdminAcceuilInterfaceController implements Initializable {
     @FXML
     private void offres(MouseEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceAdminOffre.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void decoGo(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionAdminInterface.fxml"));
         root.getChildren().setAll(pane);
     }
     

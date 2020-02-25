@@ -87,7 +87,7 @@ public class InscriptionMembreController implements Initializable {
     @FXML
     private void createCompte(MouseEvent event) throws IOException {
         Membre m = new Membre(labelNom.getText(), labelPrenom.getText(), labelMail.getText(), labelNdc.getText(), labelMdp.getText(),
-                labelExp.getText(), "0",Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()), 0, lienImg);
+                labelExp.getText(), "0",Integer.parseInt(labelAge.getText()),Integer.parseInt(labelTel.getText()), 1, lienImg);
          ServiceMembre srvM = new ServiceMembre();
          
          srvM.ajouter(m);

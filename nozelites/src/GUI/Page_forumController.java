@@ -25,7 +25,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+
 import javafx.scene.input.MouseEvent;
+
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import services.Commentaire_services;
 import utils.Session;
@@ -47,8 +50,6 @@ public class Page_forumController implements Initializable {
     private Label id_annonce;
     @FXML
     private Label lbl_prix;
-    @FXML
-    private VBox vbox;
     private Publication_services Service;
     public int idd=ForumController.obsl.get(i).getId();
     public int t;
@@ -56,8 +57,6 @@ public class Page_forumController implements Initializable {
     public int iduser;
     public double xx;
     java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-    @FXML
-    private Label lbl_id;
     @FXML
     private Button commenter;
     @FXML
@@ -67,6 +66,16 @@ public class Page_forumController implements Initializable {
     @FXML
     private Button aff_comm;
     Commentaire_services srv;
+
+    @FXML
+    private Button signaler;
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private Label lbl_id;
+
     /**
      * Initializes the controller class.
      */
@@ -161,6 +170,7 @@ public class Page_forumController implements Initializable {
         
     }
 
+
    /* @FXML
     private void aff_comm(ActionEvent event) {
          try {
@@ -178,8 +188,16 @@ public class Page_forumController implements Initializable {
     }*/
 
     @FXML
-    private void jaime(MouseEvent event) {
+    private void jaime(MouseEvent event) 
+    {
     }
     
+
+    @FXML
+    private void signaler(ActionEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Membre_Reclamation_PUB.fxml"));
+        root.getChildren().setAll(pane);
+    }
     
 }

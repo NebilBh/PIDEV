@@ -73,11 +73,26 @@ public class ServiceMembre {
     }
     public void supprimer(Membre user){
         PreparedStatement pstmt ;
-        String qry = "update membre set type = ?where idUsr = ?";
+        String qry = "update membre set type = ? where idUsr = ?";
         try {
             
             pstmt = db.prepareStatement(qry);
             pstmt.setInt(1,0);
+            pstmt.setInt(2,user.getUsrId());
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void activer(Membre user){
+        PreparedStatement pstmt ;
+        String qry = "update membre set type = ? where idUsr = ?";
+        try {
+            
+            pstmt = db.prepareStatement(qry);
+            pstmt.setInt(1,1);
             pstmt.setInt(2,user.getUsrId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
@@ -134,13 +149,13 @@ public class ServiceMembre {
         return null;
         
     }
-    public ResultSet RecherchePrenom(String recherche){
-        
-                String qry ="Select * from membre where prenom LIKE ? ";
+    
+    public ResultSet RechercheDom(String recherche){
+                String qry ="Select * from membre INNER JOIN formation ON membre.idUsr = formation.id_membre where formation.titre = '"+recherche+"'";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
-            stmt.setString(1,"%"+recherche+"%");
+            
             ResultSet usrList = stmt.executeQuery();
             return usrList;
             
@@ -148,8 +163,9 @@ public class ServiceMembre {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-  
+        
     }
+    
     public ResultSet authen(String login ,String mdp){
         String qry = "Select * from membre where login = ? AND mdp = ?";
          
@@ -193,6 +209,7 @@ public class ServiceMembre {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    
     public void confirmationMail(Membre user) throws Exception{
         
         JavaMail.sendMail(user.getMail(),"Confirmation email"+user.getMail(),"Monsieur"+user.getNom()+" "+user.getPrenom()+" Bienvenue \n");
@@ -245,4 +262,23 @@ public class ServiceMembre {
     
     return null;
 }
+    public ResultSet authenAdmin(String login ,String mdp){
+        String qry = "Select * from admin where login = ? AND mdp = ?";
+         
+        
+        try {
+            PreparedStatement stmt = db.prepareStatement(qry);
+            stmt.setString(1,login);
+            stmt.setString(2,mdp);
+            ResultSet usrList = stmt.executeQuery();
+            
+            return usrList;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+        
+    }
 }
