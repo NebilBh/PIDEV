@@ -46,7 +46,7 @@ public class ServiceEvennement{
     public void pdf() throws FileNotFoundException
     {
         try {
-            String file_name ="C:\\Users\\syrine\\Desktop\\pdf\\Ssyrine.pdf";
+            String file_name ="C:\\Users\\nadhir\\Documents\\sisou\\Syrine.pdf";
             Document document = new Document();
             try {
                 //file_name.setReadable(true,false);
@@ -55,7 +55,8 @@ public class ServiceEvennement{
                 Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
             }
             document.open();
-            PreparedStatement pt = c.prepareStatement("select * from Evenement");
+            PreparedStatement pt = c.prepareStatement("select * from Evenement WHERE etat=?");
+            pt.setInt(1, 1);
             ResultSet rs = pt.executeQuery();
             
             while (rs.next()) { 
@@ -74,7 +75,14 @@ public class ServiceEvennement{
         }
 }
     
-    
+    public void imprimer(){
+        try {
+            pdf();
+            System.out.println("fichier imprimé!");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
      public List<Evennement> rechercherEvent (String auteur){
         
         String requete="select * FROM evenement where (nom LIKE ? )";
@@ -262,11 +270,11 @@ public class ServiceEvennement{
                 String image=rs.getString(11);
                 Evennement e=new Evennement(idc,ide,nom, lieu,date,heure,description,siteweb,Nbparticipant,NbPlace,image);
                 arr.add(e);
-                try {
+                /*try {
                     pdf();
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                }*/
                
             }
            
