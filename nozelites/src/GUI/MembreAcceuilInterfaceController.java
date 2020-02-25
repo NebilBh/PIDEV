@@ -32,6 +32,7 @@ import utils.Session;
 
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import services.ServiceEvennement;
 import services.ServicesOffre;
 
 
@@ -103,6 +104,8 @@ public class MembreAcceuilInterfaceController implements Initializable {
     private Button signaler;
     
     private int topUn,topDeux,topTrois;
+    @FXML
+    private Label nbEv;
     
     /**
      * Initializes the controller class.
@@ -110,8 +113,11 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ServiceMembre srvM = new ServiceMembre();
+        ServiceEvennement serEv=new ServiceEvennement();
+        
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
+        nbEv.setText(Integer.toString(serEv.readAll().size()));
         // TODO
 
         NbrOffresAcceptees.setText(srvOffres.nbrOffresAcceptees());
