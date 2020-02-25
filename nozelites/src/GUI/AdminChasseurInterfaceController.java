@@ -5,9 +5,7 @@
  */
 package GUI;
 
-import entities.Diplome;
-import entities.Membre;
-import entities.Membre;
+import entities.chasseurTalent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -32,61 +30,58 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import services.ServiceMembre;
-
+import services.ServiceChasseur;
 /**
  * FXML Controller class
  *
  * @author Nebil
  */
-public class AdminMembreInterfaceController implements Initializable {
+public class AdminChasseurInterfaceController implements Initializable {
 
     @FXML
-    private TableColumn<Membre, Integer> col_id;
+    private TableView<chasseurTalent> tableMembre;
     @FXML
-    private TableColumn<Membre, String> col_nom;
+    private TableColumn<chasseurTalent, Integer> col_id;
     @FXML
-    private TableColumn<Membre, String> col_prenom;
+    private TableColumn<chasseurTalent, String> col_nom;
     @FXML
-    private TableColumn<Membre, String> colMail;
+    private TableColumn<chasseurTalent, String> col_prenom;
     @FXML
-    private TableColumn<Membre, Integer> col_tel;
+    private TableColumn<chasseurTalent, String> colMail;
     @FXML
-    private TableColumn<Membre, String> col_log;
+    private TableColumn<chasseurTalent, Integer> col_tel;
     @FXML
-    private TableColumn<Membre, Integer> col_age;
+    private TableColumn<chasseurTalent, String> col_log;
     @FXML
-    private TableColumn<Membre, String> col_exp;
+    private TableColumn<chasseurTalent, Integer> col_age;
     @FXML
-    private TableColumn<Membre, Membre> col_bloq;
+    private TableColumn<chasseurTalent, String> col_ent;
+    
     @FXML
-    private TableColumn<Membre, Membre> col_deb;
+    private TableColumn<chasseurTalent, chasseurTalent> col_bloq;
     @FXML
     private TextField fieldSearch;
     @FXML
-    private TableView<Membre> tableMembre;
-    @FXML
-    private TableColumn<Membre, String> col_etat;
-    @FXML
     private AnchorPane root;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<Membre>data;
+        ObservableList<chasseurTalent>data;
         data = FXCollections.observableArrayList();
-        ServiceMembre srvD = new ServiceMembre();
+        ServiceChasseur srvD = new ServiceChasseur();
         
         fieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
         //System.out.println("textfield changed from " + oldValue + " to " + newValue);
 
-        ObservableList<Membre> dataRech = FXCollections.observableArrayList();
+        ObservableList<chasseurTalent> dataRech = FXCollections.observableArrayList();
         dataRech.clear();
 
         for (int i=0;i<data.size();i++){
-            if(data.get(i).getNom().contains(newValue) || data.get(i).getPrenom().contains(newValue) || Integer.toString(data.get(i).getAge()).contains(newValue) || data.get(i).getExp().contains(newValue) || Integer.toString(data.get(i).getType()).contains(newValue) || data.get(i).getMail().contains(newValue) || data.get(i).getLogin().contains(newValue) || Integer.toString(data.get(i).getTel()).contains(newValue))
+            if(data.get(i).getNom().contains(newValue) || data.get(i).getPrenom().contains(newValue) || Integer.toString(data.get(i).getAge()).contains(newValue) || data.get(i).getEntreprise().contains(newValue) ||data.get(i).getMail().contains(newValue) || data.get(i).getLogin().contains(newValue) || Integer.toString(data.get(i).getTel()).contains(newValue))
             {
                 dataRech.add(data.get(i));
             }
@@ -101,9 +96,9 @@ public class AdminMembreInterfaceController implements Initializable {
             ResultSet listD = srvD.afficher();
             while(listD.next()){
                 //String nom, String prenom, String mail, String login, String mdp, String Exp, String Formation, int age, int tel, int id,int type,String image
-                data.add(new Membre(listD.getString("nom"),listD.getString("prenom"), listD.getString("mail"),listD.getString("login"),listD.getString("mdp"),
-                listD.getString("Experience"),listD.getString("Formation"),listD.getInt("age"),listD.getInt("tel"),listD.getInt(1),
-                listD.getInt("type"),listD.getString("image"))); 
+                data.add(new chasseurTalent(listD.getString("nom"),listD.getString("prenom"), listD.getString("mail"),listD.getString("login"),listD.getString("mdp"),
+                listD.getInt("age"),listD.getInt("tel"),listD.getInt(1),listD.getString("entreprise")
+                ,listD.getString("image"))); 
                 System.out.println(listD.getInt(1));
             }
             
@@ -118,20 +113,20 @@ public class AdminMembreInterfaceController implements Initializable {
         col_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         col_log.setCellValueFactory(new PropertyValueFactory<>("login"));
         col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
-        col_exp.setCellValueFactory(new PropertyValueFactory<>("exp"));
+        col_ent.setCellValueFactory(new PropertyValueFactory<>("entreprise"));
         col_id.setCellValueFactory(new PropertyValueFactory<>("usrId"));
         col_id.setVisible(false);
         
         
         col_bloq.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-        col_bloq.setCellFactory(param -> new TableCell<Membre, Membre>() {
+        col_bloq.setCellFactory(param -> new TableCell<chasseurTalent, chasseurTalent>() {
      
             Button deleteButton = new Button("bloquer");
             
             
             
             @Override
-            protected void updateItem(Membre m, boolean empty) {
+            protected void updateItem(chasseurTalent m, boolean empty) {
                 super.updateItem(m, empty);
 
                 if (m == null) {
@@ -184,11 +179,11 @@ public class AdminMembreInterfaceController implements Initializable {
     }
 
     @FXML
-    private void evenements(MouseEvent event) {
+    private void offres(MouseEvent event) {
     }
 
     @FXML
-    private void offres(MouseEvent event) {
+    private void evenements(MouseEvent event) {
     }
     
 }

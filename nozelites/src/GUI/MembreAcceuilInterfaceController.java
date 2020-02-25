@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import utils.JavaMail;
 import entities.Membre;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -109,6 +111,12 @@ public class MembreAcceuilInterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        try {
+            JavaMail.sendMail("nebil.benhamouda@esprit.tn","test","SYRINE MAHOUCH BECH YEKHDEM");
+        } catch (Exception ex) {
+            Logger.getLogger(MembreAcceuilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ServiceMembre srvM = new ServiceMembre();
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));

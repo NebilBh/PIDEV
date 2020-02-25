@@ -11,24 +11,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminMembreInterfaceController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="500.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminChasseurInterfaceController">
    <children>
-      <TableView fx:id="tableMembre" layoutX="250.0" layoutY="64.0" prefHeight="435.0" prefWidth="490.0">
-        <columns>
-          <TableColumn fx:id="col_id" prefWidth="75.0" text="idUsr" />
-          <TableColumn fx:id="col_nom" prefWidth="100.0" text="Nom" />
+      <TableView fx:id="tableMembre" layoutX="250.0" layoutY="74.0" prefHeight="436.0" prefWidth="500.0">
+         <columns>
+            <TableColumn fx:id="col_id" prefWidth="75.0" text="idUsr" />
+            <TableColumn fx:id="col_nom" prefWidth="100.0" text="Nom" />
             <TableColumn fx:id="col_prenom" prefWidth="100.0" text="Prenom" />
             <TableColumn fx:id="colMail" prefWidth="100.0" text="Mail" />
             <TableColumn fx:id="col_tel" prefWidth="100.0" text="Téléphone" />
             <TableColumn fx:id="col_log" prefWidth="75.0" text="Login" />
             <TableColumn fx:id="col_age" prefWidth="100.0" text="Age" />
-            <TableColumn fx:id="col_exp" prefWidth="100.0" text="Experience" />
-            <TableColumn fx:id="col_etat" prefWidth="100.0" text="Etat" />
+            <TableColumn fx:id="col_ent" prefWidth="100.0" text="Entreprise" />
             <TableColumn fx:id="col_bloq" prefWidth="100.0" text="Bloquer" />
-            <TableColumn fx:id="col_deb" prefWidth="100.0" text="Debloquer" />
-        </columns>
+         </columns>
       </TableView>
-      <VBox prefHeight="500.0" prefWidth="250.0" style="-fx-background-color: #c41011;">
+      <VBox layoutY="-2.0" prefHeight="519.0" prefWidth="250.0" style="-fx-background-color: #c41011;">
          <children>
             <ImageView fitHeight="61.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -96,6 +94,6 @@
             </Label>
          </children>
       </VBox>
-      <TextField fx:id="fieldSearch" layoutX="258.0" layoutY="23.0" promptText="Recherche" />
+      <TextField fx:id="fieldSearch" layoutX="268.0" layoutY="33.0" promptText="Recherche" />
    </children>
 </AnchorPane>
