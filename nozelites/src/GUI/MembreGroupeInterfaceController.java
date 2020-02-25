@@ -75,6 +75,8 @@ public class MembreGroupeInterfaceController implements Initializable {
     private HBox btn_deconnection;
     @FXML
     private ImageView notifications;
+    @FXML
+    private Button reclamer_btn;
 
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
@@ -119,6 +121,12 @@ public class MembreGroupeInterfaceController implements Initializable {
         root.getChildren().setAll(pane);
         Session s = new Session();
         s.setSession(0);
+    }
+
+    @FXML
+    private void reclamation(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Membre_Reclamation_GRP.fxml"));        
+        root.getChildren().setAll(pane);
     }
 
     /**

@@ -236,7 +236,7 @@ public class MembreProfilVisitInterfaceController implements Initializable {
 
     @FXML
     private void voirPortfolio(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreAcceuilInterface.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/PORTFOLIO_DU_PROFIL.fxml"));
                 profilMembre.getChildren().setAll(pane); 
     }
 
