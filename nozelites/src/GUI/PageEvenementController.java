@@ -26,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import services.ServiceEvennement;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -37,6 +38,7 @@ public class PageEvenementController implements Initializable {
     /**
      * Initializes the controller class.
      */
+     
     static int i;
     public  Evennement e;
     public  static Evennement ev;
@@ -64,6 +66,7 @@ public class PageEvenementController implements Initializable {
     private Button rejoindre;
      @FXML
     private Button demande;
+    
     @FXML
     private Button disjoindre;
     private ServiceEvennement Service;
@@ -79,6 +82,7 @@ public class PageEvenementController implements Initializable {
     private Label lbl_id;
     @FXML
     private Label lbl_date;
+     Session session = new Session();
     
    
 
@@ -96,7 +100,7 @@ public class PageEvenementController implements Initializable {
                 lbl_date.setText(AllEvenementsController.obsl.get(i).getDate());
                 t = AllEvenementsController.obsl.get(i).getIdE();
                 e= AllEvenementsController.obsl.get(i);
-               id=e.getIdc();
+               id=Session.getIdSession();
                 String path="file:/"+AllEvenementsController.obsl.get(i).getImage();
                  ServiceEvennement sr= new ServiceEvennement();
                  if(sr.RechercherMembre(e, id)){

@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -38,6 +39,9 @@ public class MenuController implements Initializable {
     private Button commentaire;
     @FXML
     private Button afficher;
+    
+    Session session = new Session();
+    //int i = session.getIdSession();
    
     /**
      * Initializes the controller class.
@@ -89,7 +93,7 @@ public class MenuController implements Initializable {
     @FXML
     private void commentaire(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Interface_commentaire.fxml"));        
+            Parent root = FXMLLoader.load(getClass().getResource("Forum.fxml"));        
             Scene scene = new Scene(root);        
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
             app_stage.setScene(scene);        

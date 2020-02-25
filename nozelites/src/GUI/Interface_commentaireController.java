@@ -10,6 +10,8 @@ import com.sbix.jnotify.NoticeWindow;
 import services.Commentaire_services;
 import entities.Commentaire_entities;
 import entities.Publication_entities;
+import entities.Membre;
+import services.ServiceMembre;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import services.Publication_services;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -40,7 +43,7 @@ public class Interface_commentaireController implements Initializable {
     private Button envoyer;
     @FXML
     private Button retourner;
-
+    Session session = new Session();
     /**
      * Initializes the controller class.
      */
@@ -56,9 +59,11 @@ public class Interface_commentaireController implements Initializable {
         System.out.println("cccc");
         String commentaire = this.commentaire.getText();
         //String pathh = pathimage;
+        
         String colii;
+        Membre m =new Membre();
         Commentaire_services srv  = new Commentaire_services();
-        Commentaire_entities p = new Commentaire_entities(0,1,Page_forumController.pub_selectione,commentaire);
+        Commentaire_entities p = new Commentaire_entities(0,Session.getIdSession(),Page_forumController.pub_selectione,commentaire);
         srv.ajoutercommentaire(p);
         new NoticeWindow("ce commentaire a été ajouté", NPosition.TOP_LEFT);
         new NoticeWindow(NoticeType.ERROR_NOTIFICATION,"ce commentaire a été ajouté",NoticeWindow.LONG_DELAY,NPosition.TOP_LEFT);

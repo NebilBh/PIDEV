@@ -102,8 +102,8 @@ public class InterfaceAdminOffreController implements Initializable {
 
     @FXML
     private void reclamations(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationDesMembres.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
@@ -120,14 +120,14 @@ public class InterfaceAdminOffreController implements Initializable {
 
     @FXML
     private void chasseurs(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminChasseurInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("BackEvenement.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML

@@ -143,7 +143,7 @@ public class SGroupeMembre {
         } catch (SQLException ex) {
             Logger.getLogger(SGroupeMembre.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return new GroupeMembre();
+        return null;
     }
     
     public boolean membre_est_fondateur(int id_groupe, int id_membre)

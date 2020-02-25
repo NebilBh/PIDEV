@@ -42,7 +42,7 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" onMouseClicked="#rechercheDomaine" text="OK">
+                        <Button fx:id="searchDom" mnemonicParsing="false" onMouseClicked="#rechercheDomaine" text="OK">
                            <HBox.margin>
                               <Insets left="60.0" />
                            </HBox.margin>
@@ -56,7 +56,7 @@
                               <Insets left="30.0" right="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField prefHeight="26.0" prefWidth="372.0" promptText="Chercher par domaine" style="-fx-background-color: transparent; -fx-border-color: #B3B3B3; -fx-border-radius: 2px;">
+                        <TextField fx:id="domField" prefHeight="26.0" prefWidth="372.0" promptText="Chercher par domaine" style="-fx-background-color: transparent; -fx-border-color: #B3B3B3; -fx-border-radius: 2px;">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

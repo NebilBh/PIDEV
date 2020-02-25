@@ -348,7 +348,7 @@ public class ServicesOffre {
             try 
             {
                 Mois = "-0"+(i+1)+"-";
-                if(i>9)
+                if(i>8)
                 {
                     Mois = "-"+(i+1)+"-";
                 }
