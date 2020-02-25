@@ -105,6 +105,8 @@ public class MembreAcceuilInterfaceController implements Initializable {
     private Button signaler;
     
     private int topUn,topDeux,topTrois;
+    @FXML
+    private Button btndom;
     
     /**
      * Initializes the controller class.
@@ -112,11 +114,7 @@ public class MembreAcceuilInterfaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        try {
-            JavaMail.sendMail("nebil.benhamouda@esprit.tn","test","SYRINE MAHOUCH BECH YEKHDEM");
-        } catch (Exception ex) {
-            Logger.getLogger(MembreAcceuilInterfaceController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         ServiceMembre srvM = new ServiceMembre();
         int count = srvM.nbrMembre();
         nbProfil.setText(Integer.toString(count));
@@ -260,6 +258,15 @@ public class MembreAcceuilInterfaceController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
                         root.getChildren().setAll(pane); 
 
+    }
+
+    @FXML
+    private void rechDom(ActionEvent event) throws IOException {
+        ServiceMembre srvM = new ServiceMembre();
+        srvM.setRecherche(searchDomaine.getText());
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("RechercheDomaine.fxml"));
+
+        root.getChildren().setAll(pane);
     }
     
 }

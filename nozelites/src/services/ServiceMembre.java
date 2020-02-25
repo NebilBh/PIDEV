@@ -134,13 +134,13 @@ public class ServiceMembre {
         return null;
         
     }
-    public ResultSet RecherchePrenom(String recherche){
-        
-                String qry ="Select * from membre where prenom LIKE ? ";
+    
+    public ResultSet RechercheDom(String recherche){
+                String qry ="Select * from membre INNER JOIN formation ON membre.idUsr = formation.id_membre where formation.titre = '"+recherche+"'";
         
         try {
             PreparedStatement stmt= db.prepareStatement(qry);
-            stmt.setString(1,"%"+recherche+"%");
+            
             ResultSet usrList = stmt.executeQuery();
             return usrList;
             
@@ -148,8 +148,9 @@ public class ServiceMembre {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-  
+        
     }
+    
     public ResultSet authen(String login ,String mdp){
         String qry = "Select * from membre where login = ? AND mdp = ?";
          
@@ -193,6 +194,7 @@ public class ServiceMembre {
             Logger.getLogger(ServiceMembre.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    
     public void confirmationMail(Membre user) throws Exception{
         
         JavaMail.sendMail(user.getMail(),"Confirmation email"+user.getMail(),"Monsieur"+user.getNom()+" "+user.getPrenom()+" Bienvenue \n");
