@@ -20,7 +20,7 @@
          </children></HBox>
       <VBox alignment="CENTER" layoutX="440.0" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: C41011;">
          <children>
-            <Button fx:id="createChasseur" mnemonicParsing="false" onMouseClicked="#createChass" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #231F20;" text="Creer un compte chasseur" textFill="#f5f0f0">
+            <Button fx:id="createChasseur" mnemonicParsing="false" onMouseClicked="#createChass" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #231F20;" text="Créer un compte chasseur" textFill="#f5f0f0">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -28,7 +28,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnElite" layoutX="75.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#createElite" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #231F20;" text="Creer un compte Elite" textFill="#f5f0f0">
+            <Button fx:id="btnElite" layoutX="75.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#createElite" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #231F20;" text="Créer un compte Elite" textFill="#f5f0f0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

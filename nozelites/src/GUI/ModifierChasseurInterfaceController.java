@@ -55,8 +55,19 @@ public class ModifierChasseurInterfaceController implements Initializable {
     private String ndc;
     private Session s = new Session();
     private String lienImg;
-    @FXML
     private AnchorPane modifWindow;
+    @FXML
+    private Label BoutonAcceuil1;
+    @FXML
+    private Label BoutonProfil1;
+    @FXML
+    private Label BoutonElites1;
+    @FXML
+    private Label BoutonOffre1;
+    @FXML
+    private Button BoutonDeco1;
+    @FXML
+    private AnchorPane root;
     /**
      * Initializes the controller class.
      */
@@ -146,7 +157,36 @@ public class ModifierChasseurInterfaceController implements Initializable {
         oldchasseur.setUsrId(s.getIdSession());
         srvM.modifier(oldchasseur, c);
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/GUI/ChasseurProfilInterface.fxml"));
-        modifWindow.getChildren().setAll(pane);
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurTeteAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
+        
+    }
+
+    @FXML
+    private void BoutonProfilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonElitesGo(MouseEvent event) {
+    }
+
+    @FXML
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        root.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
     
 }

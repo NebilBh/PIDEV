@@ -113,7 +113,7 @@ public class ResultatRechercheChassInterfaceController implements Initializable 
                         Button clicked = (Button)actionEvent.getSource();
                         s.setId_select(Integer.parseInt(clicked.getId()));
                         System.out.println(clicked.getId());
-                        pane = FXMLLoader.load(getClass().getResource("/GUI/MembreProfilVisitInterface.fxml"));
+                        pane = FXMLLoader.load(getClass().getResource("/GUI/ChassMembreProfilVisitInterface.fxml"));
                         root.getChildren().setAll(pane); 
                         
                         

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.ReclamationDesMembresController">
+   <children>
+      <TableView fx:id="reclm" layoutX="231.0" layoutY="107.0" prefHeight="328.0" prefWidth="450.0" />
+      <Label layoutX="370.0" layoutY="61.0" text="Reclamation des memebres" />
+   </children>
+</AnchorPane>

@@ -129,6 +129,7 @@ public class ChasseurProfilInterfaceController implements Initializable {
 
     private void acceuil(MouseEvent event) throws IOException {
         
+        
     }
 
     @FXML
@@ -146,11 +147,16 @@ public class ChasseurProfilInterfaceController implements Initializable {
     }
 
     @FXML
-    private void BoutonOffreGo(MouseEvent event) {
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        profilChass.getChildren().setAll(pane);
+        
     }
 
     @FXML
-    private void BoutonDecoGo(MouseEvent event) {
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+        profilChass.getChildren().setAll(pane);
     }
 
     
