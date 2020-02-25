@@ -52,6 +52,8 @@ public class ConnectionInterfaceController implements Initializable {
     private Button createChasseur;
     @FXML
     private HBox listLabel;
+    @FXML
+    private Label erreur;
 
     @FXML
     private void connect(MouseEvent event) throws IOException, SQLException {
@@ -95,6 +97,7 @@ public class ConnectionInterfaceController implements Initializable {
             
             }
             else{
+                erreur.setVisible(true);
                 System.out.println("connexion echoué");
             }
        
@@ -110,7 +113,7 @@ public class ConnectionInterfaceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         
-        
+        erreur.setVisible(false);
         
         
         
