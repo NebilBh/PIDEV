@@ -92,7 +92,6 @@ public class MembreGroupesInterfaceController implements Initializable {
         System.out.println("fff");
     }
 
-    @FXML
     private void map(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("APIGoogleMaps.fxml"));
         root.getChildren().setAll(pane);

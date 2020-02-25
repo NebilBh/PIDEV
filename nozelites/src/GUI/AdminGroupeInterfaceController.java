@@ -79,8 +79,8 @@ public class AdminGroupeInterfaceController implements Initializable {
 
     @FXML
     private void reclamations(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminAcceuilInterface.fxml"));
-        root.getChildren().setAll(pane);*/
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ReclamationDesMembres.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
@@ -103,21 +103,15 @@ public class AdminGroupeInterfaceController implements Initializable {
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("BackEvenement.fxml"));
         root.getChildren().setAll(pane);
     }
 
     @FXML
     private void offres(MouseEvent event) throws IOException {
-        /*AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceAminOffre.fxml"));
-        root.getChildren().setAll(pane);*/
-    }
-
-    @FXML
-    private void pub(ActionEvent event) throws IOException {
-        
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("AdminPublicationInterface.fxml"));
-                            root.getChildren().setAll(pane);
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceAdminOffre.fxml"));
+        root.getChildren().setAll(pane);
     }
     
     private class ButtonCell extends TableCell<Disposer.Record, Boolean> {

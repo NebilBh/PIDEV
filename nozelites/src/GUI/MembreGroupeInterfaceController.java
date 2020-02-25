@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import entities.Publication_entities;
 import entities.Groupe;
 import entities.GroupeMembre;
 import java.net.URL;
@@ -42,7 +41,6 @@ import java.io.IOException;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import services.SGroupe;
 import utils.Session;
 
 /**
@@ -63,8 +61,6 @@ public class MembreGroupeInterfaceController implements Initializable {
     @FXML
     private TableView<Membre> table_membres;
     @FXML
-    private TableView<Publication_entities> tables_publications;
-    @FXML
     private TableView<Membre> table_invitation;
     
     public static Groupe gr ;
@@ -82,6 +78,7 @@ public class MembreGroupeInterfaceController implements Initializable {
                             root.getChildren().setAll(pane);
     }
                             
+    @FXML
     private HBox btn_deconnection;
     @FXML
     private ImageView notifications;
