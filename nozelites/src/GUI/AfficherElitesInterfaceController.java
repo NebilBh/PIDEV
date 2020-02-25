@@ -158,23 +158,33 @@ public class AfficherElitesInterfaceController implements Initializable {
     }    
 
     @FXML
-    private void BoutonAcceuilGo(MouseEvent event) {
+    private void BoutonOffreGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceChasseurOffre.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void BoutonProfilGo(MouseEvent event) {
+    private void BoutonAcceuilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurTeteAcceuilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void BoutonElitesGo(MouseEvent event) {
+    private void BoutonProfilGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ChasseurProfilInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void BoutonOffreGo(MouseEvent event) {
+    private void BoutonElitesGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AfficherElitesInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
 
     @FXML
-    private void BoutonDecoGo(MouseEvent event) {
+    private void BoutonDecoGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
+        root.getChildren().setAll(pane);
     }
     
 }

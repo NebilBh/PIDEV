@@ -143,7 +143,9 @@ public class ChasseurProfilInterfaceController implements Initializable {
     }
 
     @FXML
-    private void BoutonElitesGo(MouseEvent event) {
+    private void BoutonElitesGo(MouseEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("AfficherElitesInterface.fxml"));
+        profilChass.getChildren().setAll(pane);
     }
 
     @FXML
