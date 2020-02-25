@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Session;
 
@@ -37,8 +38,6 @@ public class MenuController implements Initializable {
     private Button Retourner;
     @FXML
     private Button commentaire;
-    @FXML
-    private Button afficher;
     
     Session session = new Session();
     //int i = session.getIdSession();
@@ -103,10 +102,50 @@ public class MenuController implements Initializable {
         }
     }
 
-    @FXML
     private void afficher(ActionEvent event) {
            try {
             Parent root = FXMLLoader.load(getClass().getResource("Interface_favoris_affichage.fxml"));        
+            Scene scene = new Scene(root);        
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
+            app_stage.setScene(scene);        
+            app_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Interface_publicationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    @FXML
+    private void aajouter(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Interface_publication.fxml"));        
+            Scene scene = new Scene(root);        
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
+            app_stage.setScene(scene);        
+            app_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Interface_publicationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    @FXML
+    private void ttrait(MouseEvent event) {
+         try {
+            Parent root = FXMLLoader.load(getClass().getResource("Interface_publication_affichage.fxml"));        
+            Scene scene = new Scene(root);        
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
+            app_stage.setScene(scene);        
+            app_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Interface_publicationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void fforum(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Forum.fxml"));        
             Scene scene = new Scene(root);        
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
             app_stage.setScene(scene);        

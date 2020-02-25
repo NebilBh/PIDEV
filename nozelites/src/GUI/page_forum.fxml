@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -17,10 +18,10 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="407.0" prefWidth="583.0">
          <children>
-            <VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="408.0" style="-fx-border-insets: 5; -fx-background-color: white; -fx-border-width: 3;">
+            <VBox fx:id="vbox" layoutY="-16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="420.0" style="-fx-border-insets: 5; -fx-background-color: white; -fx-border-width: 3;">
                <children>
                   <Label fx:id="id_annonce" text="5" />
-                  <ImageView fx:id="img_annoce" fitHeight="150.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="img_annoce" fitHeight="150.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets left="57.0" />
                      </VBox.margin>
@@ -71,8 +72,24 @@
                         <Insets />
                      </VBox.margin>
                      <children>
+                        <ImageView fitHeight="24.0" fitWidth="31.0" onMouseClicked="#jaime" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/1111px-Love_Heart_symbol.svg.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="button_jaime" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="jaime " />
+                        <ImageView fitHeight="26.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Bubble_chat_speech_bubble_comment_talk-512.png" />
+                           </image>
+                        </ImageView>
                         <Button fx:id="commenter" mnemonicParsing="false" onAction="#commenter" prefHeight="25.0" prefWidth="103.0" text="commenter" />
-                        <Button fx:id="button_jaime" mnemonicParsing="false" text="jaime " />
+                        <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/ffff.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="aff_comm" mnemonicParsing="false" text="afficher les commentaires " />
                      </children>
                   </HBox>
                </children>

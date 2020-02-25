@@ -19,9 +19,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import services.Publication_services;
 import entities.Publication_entities;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -35,30 +41,13 @@ public class ForumController implements Initializable {
      // public static int idm;
      @FXML
     private FlowPane flow;
-     @FXML
-    private ImageView panier;
     
    @FXML
     private BorderPane container;
 
-    @FXML
-     private Label nombre_article;
-
-   
-    @FXML
-    private Button btn_my;
-    @FXML
-    private Button btnall;
-    
-    //private ComboBox<Categorie_Annonce> cmb_cat;
-    //private ISignalAnnonceService signalAnnonceService;
-    @FXML
-    private Button btn_liked;
-    @FXML
-    private Button btn_viwed;
-    @FXML
-    private Button btn_my1;
      private Publication_services service;
+    @FXML
+    private Button Retourner;
    
     /**
      * Initializes the controller class.
@@ -93,6 +82,19 @@ public class ForumController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @FXML
+    private void Retourner(ActionEvent event) {
+          try {
+            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));        
+            Scene scene = new Scene(root);        
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
+            app_stage.setScene(scene);        
+            app_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Interface_publicationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

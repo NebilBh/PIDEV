@@ -25,7 +25,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import services.Commentaire_services;
 import utils.Session;
 /**
  * FXML Controller class
@@ -34,6 +36,7 @@ import utils.Session;
  */
 public class Page_forumController implements Initializable {
 
+    static int idp;
      static int i;
     public static int pub_selectione;
     @FXML
@@ -47,7 +50,7 @@ public class Page_forumController implements Initializable {
     @FXML
     private VBox vbox;
     private Publication_services Service;
-    
+    public int idd=ForumController.obsl.get(i).getId();
     public int t;
    
     public int iduser;
@@ -61,7 +64,9 @@ public class Page_forumController implements Initializable {
     private Button button_jaime;
     
     public int numjaime;
-
+    @FXML
+    private Button aff_comm;
+    Commentaire_services srv;
     /**
      * Initializes the controller class.
      */
@@ -80,7 +85,7 @@ public class Page_forumController implements Initializable {
         String image = ForumController.obsl.get(i).getImage();
          int nb=ForumController.obsl.get(i).getNb_jaime();
                 t = ForumController.obsl.get(i).getId();
-               
+              // int idd=ForumController.obsl.get(i).getId();
                 String path="file:/"+ForumController.obsl.get(i).getImage();
                 Publication_services sr= new Publication_services();       
                
@@ -92,6 +97,7 @@ public class Page_forumController implements Initializable {
                 System.out.println("i : "+i);
                 
                 commenter.setId(Integer.toString(ForumController.obsl.get(i).getId()));
+                
                 button_jaime.setOnAction((e)->{
                     System.out.println(t);
  
@@ -99,6 +105,19 @@ public class Page_forumController implements Initializable {
         Publication_entities p = new Publication_entities(titre,description,t,image,1,4,nb);
         srv.ajouterjaime(p);
         System.out.println(p.getNb_jaime());
+                });
+                aff_comm.setOnAction((e)->{
+                   idp=idd;
+                System.out.println(idp);
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("affichagecomm.fxml"));
+                Scene scene = new Scene(root);
+                Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                app_stage.setScene(scene);
+                app_stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Page_forumController.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 });
                 
                 i++;
@@ -111,6 +130,7 @@ public class Page_forumController implements Initializable {
         pub_selectione = Integer.parseInt(commenter.getId());
        
         try {
+
             Parent root = FXMLLoader.load(getClass().getResource("Interface_commentaire.fxml"));        
             Scene scene = new Scene(root);        
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
@@ -139,6 +159,26 @@ public class Page_forumController implements Initializable {
         
         
         
+    }
+
+   /* @FXML
+    private void aff_comm(ActionEvent event) {
+         try {
+      
+              idp=idd;
+            Parent root = FXMLLoader.load(getClass().getResource("affichagecomm.fxml"));        
+            Scene scene = new Scene(root);        
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
+            app_stage.setScene(scene);        
+            app_stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Interface_publicationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }*/
+
+    @FXML
+    private void jaime(MouseEvent event) {
     }
     
     
