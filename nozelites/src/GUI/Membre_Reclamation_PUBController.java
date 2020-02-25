@@ -25,23 +25,19 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import services.ServicesReclamation;
-
 import utils.Session;
-
+import entities.Publication_entities;
 /**
  * FXML Controller class
  *
  * @author KHAIRI
  */
-public class MembreReclamationController implements Initializable {
-  //Connection c = ConnexionDB.getInstance().getCnx();
-     @FXML
-    private TextArea txtdescr;
+public class Membre_Reclamation_PUBController implements Initializable {
 
-    
+ @FXML
+    private TextArea txtdescr;
     @FXML
     private ComboBox txtselect;
-    private AnchorPane menuR;
     @FXML
     private Button goRECL;
     @FXML
@@ -53,25 +49,25 @@ public class MembreReclamationController implements Initializable {
     @FXML
     private AnchorPane root;
     
+    
+    Publication_entities p = new Publication_entities();
+    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        txtselect.getItems().addAll("membre");
         // TODO
-    }  
-    
-   
-    
-        @FXML
-     void ajouter(ActionEvent event) throws AWTException, MalformedURLException {
+         txtselect.getItems().addAll("publication");
+    }    
+
+    @FXML
+ void ajouter(ActionEvent event) throws AWTException, MalformedURLException {
 
     
        
-     // txtselect.getItems().addAll("membre","groupe","evenement","publication");
+   
         String description = txtdescr.getText();
           String selecteur = txtselect.getSelectionModel().getSelectedItem().toString();
        
@@ -82,7 +78,7 @@ public class MembreReclamationController implements Initializable {
         ServicesReclamation srv  = new ServicesReclamation();
         //Reclamation r = new Reclamation(1,2,3,description,selecteur);
         Session session = new Session();
-        Reclamation r =new Reclamation(session.getIdSession(),session.getId_select(),description,selecteur);
+        Reclamation r =new Reclamation(session.getIdSession(),p.getId(),description,selecteur);
         srv.ajouterReclamation(r);
         Notification.sendNotification("Admin vous avez recu une reclamation", "RECLAMATION ",TrayIcon.MessageType.INFO);
         
@@ -120,14 +116,11 @@ public class MembreReclamationController implements Initializable {
 
     @FXML
     private void acceuil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreAcceuilInterface.fxml"));
-        root.getChildren().setAll(pane);
+       
     }
-
     @FXML
     private void profil(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreProfilInterface.fxml"));
-        root.getChildren().setAll(pane);
+    
     }
 
     @FXML
@@ -138,30 +131,23 @@ public class MembreReclamationController implements Initializable {
 
     @FXML
     private void groupes(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreGroupesInterface.fxml"));
-        root.getChildren().setAll(pane);
+       
     }
 
     @FXML
     private void evenements(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceEvenement.fxml"));
-        root.getChildren().setAll(pane);
+      
     }
 
     @FXML
     private void inbox(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("InterfaceMembreInboxRecus.fxml"));
-        root.getChildren().setAll(pane);
+       
     }
 
     @FXML
-    private void deconnexion(MouseEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ConnectionInterface.fxml"));
-
-        root.getChildren().setAll(pane);
-        Session s = new Session();
-        s.setSession(0);
+    private void deconnexion(MouseEvent event) {
     }
+
     @FXML
     private void goToRecl(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("MembreReclamation.fxml"));
@@ -170,4 +156,6 @@ public class MembreReclamationController implements Initializable {
         
     }
     
+    
 }
+

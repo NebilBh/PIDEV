@@ -8,6 +8,7 @@ package GUI;
 import com.sun.prism.impl.Disposer;
 import com.sun.prism.impl.Disposer.Record;
 import entities.Portfolio;
+import entities.PortfolioForGUI;
 import entities.ReclamationForGUI;
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +35,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import services.ServicePortfolio;
+import utils.Session;
 
 /**
  * FXML Controller class
@@ -110,11 +112,11 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
                 @Override
                 public void handle(ActionEvent t) {
                     // get Selected Item
-                	Portfolio currentOffre = (Portfolio) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+                	PortfolioForGUI currentOffre = (PortfolioForGUI) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
                 	//remove selected item from the table list
                 	olist.remove(currentOffre);
                         //remove from DB
-                        srv.supprimer(currentOffre);
+                        srv.supprimerReclamationPort(currentOffre);
                 }
             });
         }
@@ -135,10 +137,13 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
     
     
  @FXML
-    private TableView<Portfolio> tabPorte = new TableView<Portfolio>();
+    private TableView<PortfolioForGUI> tabPorte = new TableView<PortfolioForGUI>();
     
     ServicePortfolio srv = new ServicePortfolio();
-        ObservableList<Portfolio> olist = FXCollections.observableArrayList(srv.afficher());
+     Session session = new Session();
+        
+    
+        ObservableList<PortfolioForGUI> olist = FXCollections.observableArrayList(srv.afficherLePORTFOLIO(session.getIdSession()));
         
 
     /**
@@ -148,23 +153,23 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
           tabPorte.setEditable(true);
-           TableColumn<Portfolio, Integer> idCol //
-             = new TableColumn<Portfolio, Integer>("Id");
+           TableColumn<PortfolioForGUI, Integer> idCol //
+             = new TableColumn<PortfolioForGUI, Integer>("Id");
         
         
-       TableColumn<Portfolio, Integer> idmembreCol //
-             = new TableColumn<Portfolio, Integer>("Id Membre");
+       TableColumn<PortfolioForGUI, Integer> idmembreCol //
+             = new TableColumn<PortfolioForGUI, Integer>("Id Membre");
         
         
-       TableColumn<Portfolio, String> titreCol //
-              = new TableColumn<Portfolio, String>("Titre");
+       TableColumn<PortfolioForGUI, String> titreCol //
+              = new TableColumn<PortfolioForGUI, String>("Titre");
         
         
-        TableColumn<Portfolio, String> descriptionCol //
-              = new TableColumn<Portfolio, String>("Description");
+        TableColumn<PortfolioForGUI, String> descriptionCol //
+              = new TableColumn<PortfolioForGUI, String>("Description");
         
-        TableColumn<Portfolio, String> lienCol //
-              = new TableColumn<Portfolio, String>("Lien");
+        TableColumn<PortfolioForGUI, String> lienCol //
+              = new TableColumn<PortfolioForGUI, String>("Lien");
         
         
            TableColumn actionCol = new TableColumn<>("Supprimer");
@@ -199,41 +204,41 @@ public class MembrePortfolioAfficher_interfaceController implements Initializabl
         
         tabPorte.setItems(olist);
         
-            titreCol.setCellFactory(TextFieldTableCell.<Portfolio> forTableColumn());
-        titreCol.setOnEditCommit((TableColumn.CellEditEvent<Portfolio, String> event) -> {
-            TablePosition<Portfolio, String> pos = event.getTablePosition();
+            titreCol.setCellFactory(TextFieldTableCell.<PortfolioForGUI> forTableColumn());
+        titreCol.setOnEditCommit((TableColumn.CellEditEvent<PortfolioForGUI, String> event) -> {
+            TablePosition<PortfolioForGUI, String> pos = event.getTablePosition();
  
             String newTitre = event.getNewValue();
  
             int row = pos.getRow();
-            Portfolio o = event.getTableView().getItems().get(row);
+            PortfolioForGUI o = event.getTableView().getItems().get(row);
  
             o.setTitre(newTitre);
             
             srv.modifierPortfolio(o);
         }); 
-         descriptionCol.setCellFactory(TextFieldTableCell.<Portfolio> forTableColumn());
-        descriptionCol.setOnEditCommit((TableColumn.CellEditEvent<Portfolio, String> event) -> {
-            TablePosition<Portfolio, String> pos = event.getTablePosition();
+         descriptionCol.setCellFactory(TextFieldTableCell.<PortfolioForGUI> forTableColumn());
+        descriptionCol.setOnEditCommit((TableColumn.CellEditEvent<PortfolioForGUI, String> event) -> {
+            TablePosition<PortfolioForGUI, String> pos = event.getTablePosition();
  
             String newDescription = event.getNewValue();
  
             int row = pos.getRow();
-            Portfolio o = event.getTableView().getItems().get(row);
+            PortfolioForGUI o = event.getTableView().getItems().get(row);
  
             o.setDescription(newDescription);
             
             srv.modifierPortfolio(o);
         }); 
     
-         lienCol.setCellFactory(TextFieldTableCell.<Portfolio> forTableColumn());
-        lienCol.setOnEditCommit((TableColumn.CellEditEvent<Portfolio, String> event) -> {
-            TablePosition<Portfolio, String> pos = event.getTablePosition();
+         lienCol.setCellFactory(TextFieldTableCell.<PortfolioForGUI> forTableColumn());
+        lienCol.setOnEditCommit((TableColumn.CellEditEvent<PortfolioForGUI, String> event) -> {
+            TablePosition<PortfolioForGUI, String> pos = event.getTablePosition();
  
             String newLien = event.getNewValue();
  
             int row = pos.getRow();
-            Portfolio o = event.getTableView().getItems().get(row);
+            PortfolioForGUI o = event.getTableView().getItems().get(row);
  
             o.setLien(newLien);
             

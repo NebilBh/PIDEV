@@ -25,6 +25,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import utils.Session;
 /**
@@ -61,6 +62,10 @@ public class Page_forumController implements Initializable {
     private Button button_jaime;
     
     public int numjaime;
+    @FXML
+    private Button signaler;
+    @FXML
+    private AnchorPane root;
 
     /**
      * Initializes the controller class.
@@ -138,6 +143,14 @@ public class Page_forumController implements Initializable {
         System.out.println(p.getNb_jaime());
         
         
+        
+    }
+
+    @FXML
+    private void signaler(ActionEvent event) throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Membre_Reclamation_PUB.fxml"));
+        root.getChildren().setAll(pane);
         
     }
     

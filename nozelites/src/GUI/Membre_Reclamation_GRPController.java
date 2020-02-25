@@ -78,7 +78,7 @@ public class Membre_Reclamation_GRPController implements Initializable {
         ServicesReclamation srv  = new ServicesReclamation();
         //Reclamation r = new Reclamation(1,2,3,description,selecteur);
         Session session = new Session();
-        Reclamation r =new Reclamation(session.getIdSession(),session.getId_select(),description,selecteur);
+        Reclamation r =new Reclamation(session.getIdSession(),MembreGroupeInterfaceController.gr.getId(),description,selecteur);
         srv.ajouterReclamation(r);
         Notification.sendNotification("Admin vous avez recu une reclamation", "RECLAMATION ",TrayIcon.MessageType.INFO);
         
